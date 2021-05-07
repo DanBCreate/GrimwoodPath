@@ -14,7 +14,14 @@ let config = {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
-    scene:[Menu]
+    scene:[Menu,Cave,Credits,FirstForest,HappyEnd,NoBroEnd,OpeningCutscene,Ravine,SadEnd,SecondForest],
+    Physics:{
+        default:'arcade',
+        arcade:{
+            gravity: {y:10},
+            debug: true
+        }
+    }
 }
 //define the game
 let game = new Phaser.Game(config);
