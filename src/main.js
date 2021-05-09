@@ -14,7 +14,7 @@ let config = {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
-    scene:[Menu/*,Cave,Credits,FirstForest,HappyEnd,NoBroEnd,OpeningCutscene,Ravine,SadEnd,SecondForest*/],
+    scene:[Menu,Cave,Credit,FForest,HEnd,NoBro,Opening,Ravine,SEnd,LForest],
     Physics:{
         default:'arcade',
         arcade:{
