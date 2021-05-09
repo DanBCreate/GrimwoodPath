@@ -1,7 +1,7 @@
 //SlidySprite.js
 //creates a sprite object with attached tween functions for sliding and rotation
 
-class SlidySprite extends Phaser.GameObject.Sprite {
+class SlidySprite extends Phaser.Physics.Arcade.Sprite {
     constructor(scene,x,y,texture,frame){
     super(scene,x,y,texture,frame)
     }
