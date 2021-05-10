@@ -7,7 +7,7 @@ class Opening extends Phaser.Scene {
     }
 
     preload(){
-        this.load.image('wipeTree','assets/tempAssets/tempTree.png');
+        this.load.image('wipeTree','assets/tempCutsceneAssets/tempTree.png');
     }
     create(){
 
