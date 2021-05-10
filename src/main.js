@@ -21,7 +21,8 @@ let config = {
             gravity: {y:10},
             debug: true
         }
-    }
+    },
+    backgroundColor: 0xFFFFFF
 }
 //define the game
 let game = new Phaser.Game(config);
