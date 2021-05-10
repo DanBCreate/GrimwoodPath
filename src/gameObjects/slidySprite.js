@@ -7,7 +7,7 @@ class SlidySprite extends Phaser.Physics.Arcade.Sprite {
     }
 
     //tween from current position to x,y over time (in miliseconds)
-    slide(x,y,time, ease = 'liner'){
+    slide(x,y,time, ease = 'Linear'){
         this.scene.tweens.add({
             targets: this,
             x: x,
@@ -18,7 +18,7 @@ class SlidySprite extends Phaser.Physics.Arcade.Sprite {
     }
 
     //tween from current angle to angle over time(in miliseconds)
-    rotate(angle,time,ease = 'liner'){
+    rotate(angle,time,ease = 'Linear'){
         this.scene.tweens.add({
             targets: this,
             angle: angle,
