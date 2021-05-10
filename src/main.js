@@ -15,10 +15,10 @@ let config = {
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
     scene:[Menu,Cave,Credit,FForest,HEnd,NoBro,Opening,Ravine,SEnd,LForest],
-    Physics:{
+    physics:{
         default:'arcade',
         arcade:{
-            gravity: {y:10},
+            gravity: {y:0},
             debug: true
         }
     },
@@ -45,3 +45,38 @@ let key1,key2,key3,key4,key5,key6,key7,key8,key9,key0;
 // 8 - SEnd
 // 9 - HEnd
 // 0 - Credit
+
+
+function debugUpdate(scene){
+    //debugging mode features
+    if(debugToggle){
+        //debugging navigaiton checks
+        if(Phaser.Input.Keyboard.JustDown(key1)){scene.scene.start('menuScene')}
+        if(Phaser.Input.Keyboard.JustDown(key2)){scene.scene.start('openingScene')}
+        if(Phaser.Input.Keyboard.JustDown(key3)){scene.scene.start('ravineScene')}
+        if(Phaser.Input.Keyboard.JustDown(key4)){scene.scene.start('fForestScene')}
+        if(Phaser.Input.Keyboard.JustDown(key5)){scene.scene.start('caveScene')}
+        if(Phaser.Input.Keyboard.JustDown(key6)){scene.scene.start('lForestScene')}
+        if(Phaser.Input.Keyboard.JustDown(key7)){scene.scene.start('noBroScene')}
+        if(Phaser.Input.Keyboard.JustDown(key8)){scene.scene.start('sEndScene')}
+        if(Phaser.Input.Keyboard.JustDown(key9)){scene.scene.start('hEndScene')}
+        if(Phaser.Input.Keyboard.JustDown(key0)){scene.scene.start('creditScene')}
+    }
+}
+
+function debugCreate(scene){
+    if(debugToggle){        
+        console.log('opening cutscene');
+        //debugging navigation keys
+        key1 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE)        
+        key2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TWO)
+        key3 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE)
+        key4 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FOUR)
+        key5 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FIVE)
+        key6 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SIX)
+        key7 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SEVEN)
+        key8 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.EIGHT)
+        key9 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NINE)
+        key0 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ZERO)
+    }   
+}
