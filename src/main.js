@@ -66,7 +66,7 @@ function debugUpdate(scene){
 
 function debugCreate(scene){
     if(debugToggle){        
-        console.log('opening cutscene');
+        console.log(scene);
         //debugging navigation keys
         key1 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE)        
         key2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TWO)
