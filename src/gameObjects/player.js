@@ -3,7 +3,8 @@
 // Utilizes arcade physics
 //
 // __Functions_Below__
-// playerMovement(): Handles the movement of the player
+// playerControls(): Handles the movement and controls of the player
+// getAction(): Returns true if we are using the interact button, false otherwise
 
 // Keyboard inputs for player.js
 let keyA, keyD, keyW, keyLEFT, keyRIGHT, keyUP, keySPACE;
@@ -29,16 +30,17 @@ class player extends Phaser.Physics.Arcade.Sprite {
 
         // Players movement settings
         this.jumpHeight = -400;
+        this.actionButton = false;
     }
 
     create(){}
 
     update(){
         // Controls the players movement
-        this.playerMovement(); 
+        this.playerControls(); 
     }
 
-    playerMovement(){
+    playerControls(){
         // A key || LEFT arrow
         if(Phaser.Input.Keyboard.JustDown(keyA)){this.setVelocityX(-playerMovementSpeed); this.isMovingLeft = true; this.isMovingRight = false;}
         else if(Phaser.Input.Keyboard.JustUp(keyA) && this.isMovingRight == false){this.setVelocityX(0); this.isMovingLeft = false; }
@@ -53,14 +55,26 @@ class player extends Phaser.Physics.Arcade.Sprite {
         if(Phaser.Input.Keyboard.JustDown(keyRIGHT)){this.setVelocityX(playerMovementSpeed); this.isMovingRight = true; this.isMovingLeft = false;}
         else if(Phaser.Input.Keyboard.JustUp(keyRIGHT) && this.isMovingLeft == false){this.setVelocityX(0); this.isMovingRight = false;}
 
-        // W key || UP arrow || SPACE key >> Only allows jumping when on a physics 'body'
+        // W key || UP arrow  <Only allows jumping when on a physics 'body'>
         if(Phaser.Input.Keyboard.JustDown(keyW) && this.body.touching.down){this.setVelocityY(this.jumpHeight);}
 
         if(Phaser.Input.Keyboard.JustDown(keyUP) && this.body.touching.down){this.setVelocityY(this.jumpHeight);}
 
-        if(Phaser.Input.Keyboard.JustDown(keySPACE) && this.body.touching.down){this.setVelocityY(this.jumpHeight);}
+        // SPACE key <Used for interacting with objects>
+        if(Phaser.Input.Keyboard.JustDown(keySPACE)){this.actionButton = true;}
+        else if(Phaser.Input.Keyboard.JustDown(keySPACE)){this.actionButton = false;}
+
 
         // Collides with world bounds
         this.setCollideWorldBounds(true); 
+    }
+
+    getAction(){
+        if(this.actionButton == true){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
