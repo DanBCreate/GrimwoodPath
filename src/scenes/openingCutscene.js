@@ -17,10 +17,7 @@ class Opening extends Phaser.Scene {
         this.wipetree = new SlidySprite(this,screenWidth,screenHeight,'wipeTree').setOrigin(0.5,1);
         this.add.existing(this.wipetree);
         this.physics.add.existing(this.wipetree);
-
-
-
-
+        this.wipetree.setImmovable(true); // Sets ground to immovable
     }
     update(){
         debugUpdate(this)

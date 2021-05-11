@@ -8,11 +8,12 @@ class player extends Phaser.Physics.Arcade.Sprite {
     create(){
         //keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         //keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
-        this.setCollideWorldBounds(true);  
     }
 
     update(){
-        this.setVelocity(100,200);
+        this.setCollideWorldBounds(true); // Collides with world bounds
+
+        //this.setVelocity(200);
         //player.setVelocityX(-160);
         //if(keyLEFT.isDown) {
         //    console.log("test");
