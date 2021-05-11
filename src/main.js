@@ -87,18 +87,31 @@ function debugCreate(scene){
 function RLWipe(scene,time,texture){
 
     scene.wipetree = new SlidySprite(scene,screenWidth,0,texture).setOrigin(0.5,0);
-    scene.wipetree.x += scene.wipetree.x/2
     scene.trailTree = new SlidySprite(scene,screenWidth*2,0,texture).setOrigin(0.5,0);
-    scene.trailtree.x += scene.wipetree.x/2
     scene.add.existing(scene.wipetree);
     scene.add.existing(scene.trailTree);
     scene.wipebox = scene.add.rectangle(screenWidth,0,screenWidth,screenHeight,0x000000).setOrigin(0)
-    scene.wipebox.x += scene.wipetree.x/2
     scene.wipetree.slide(-screenWidth,0,time)
     scene.trailTree.slide(0,0,time)
     scene.tweens.add({
         targets: scene.wipebox,
         x: -screenWidth,
+        ease: 'Linear',
+        duration: time
+    })
+}
+
+function LRWipe(scene,time,texture){
+    scene.wipetree = new SlidySprite(scene,0,0,texture).setOrigin(0.5,0);
+    scene.trailTree = new SlidySprite(scene,-screenWidth,0,texture).setOrigin(0.5,0);
+    scene.add.existing(scene.wipetree);
+    scene.add.existing(scene.trailTree);
+    scene.wipebox = scene.add.rectangle(-screenWidth,0,screenWidth,screenHeight,0x000000).setOrigin(0)
+    scene.wipetree.slide(screenWidth*2,0,time)
+    scene.trailTree.slide(screenWidth,0,time)
+    scene.tweens.add({
+        targets: scene.wipebox,
+        x: screenWidth,
         ease: 'Linear',
         duration: time
     })
