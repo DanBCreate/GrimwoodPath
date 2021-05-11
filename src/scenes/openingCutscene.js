@@ -13,10 +13,9 @@ class Opening extends Phaser.Scene {
 
         //debugging mode features
         debugCreate(this);
+        RLWipe(this,3000,'wipeTree')
 
-        this.wipetree = new SlidySprite(this,screenWidth,screenHeight,'wipeTree').setOrigin(0.5,1);
-        this.add.existing(this.wipetree);
-        this.physics.add.existing(this.wipetree);
+        
     }
     update(){
         debugUpdate(this)
@@ -24,3 +23,4 @@ class Opening extends Phaser.Scene {
     }
 
 }
+
