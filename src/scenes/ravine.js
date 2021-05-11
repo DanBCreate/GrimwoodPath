@@ -14,14 +14,12 @@ class Ravine extends Phaser.Scene {
         //debugging mode features
         debugCreate(this);     
 
-        this.platforms = this.physics.add.staticGroup();
-        this.platforms.create(screenCenterX, (screenCenterY + screenCenterY / 2), 'ground').setScale(0.05);
-        //this.ground = this.physics.add.sprite(screenCenterX, screenCenterY + screenCenterY /2, 'ground').setScale(0.05); // Initialize our ground
-        //this.ground.body.allowGravity = true;
+        this.ground = this.physics.add.sprite(screenCenterX, screenCenterY + screenCenterY /2, 'ground').setScale(0.05); // Initialize our ground
+        this.ground.setImmovable(true); // Sets ground to immovable
 
         this.player = new player(this, screenCenterX, screenCenterY, 'player').setScale(0.05); // Initialize our Player
     
-        this.physics.add.collider(this.player, this.platforms);
+        this.physics.add.collider(this.player, this.ground); // Collider between ground and player.
     }
 
     update(){
