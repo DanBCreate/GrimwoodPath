@@ -5,6 +5,8 @@
 //game config
 const screenWidth = 1920;
 const screenHeight = 1080;
+let screenCenterX = screenWidth / 2;
+let screenCenterY = screenHeight / 2;
 
 let config = {
     type: Phaser.AUTO,
@@ -30,7 +32,8 @@ let game = new Phaser.Game(config);
 //global vars:
 debugToggle = true;
 
-
+//keyboard inputs for gameplay
+let keyLEFT, keyRIGHT, keySPACE;
 
 //keys for scene navigation
 let key1,key2,key3,key4,key5,key6,key7,key8,key9,key0;
