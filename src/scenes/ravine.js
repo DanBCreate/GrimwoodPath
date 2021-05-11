@@ -1,5 +1,3 @@
-
-
 class Ravine extends Phaser.Scene {
     constructor(){
         super('ravineScene')
@@ -22,6 +20,7 @@ class Ravine extends Phaser.Scene {
         // Setting up our player
         this.player = new player(this, screenCenterX, screenCenterY, 'player').setScale(0.05); // Initialize our Player
     
+        // Colliders
         this.physics.add.collider(this.player, this.ground); // Collider between ground and player.
     }
 
@@ -30,6 +29,5 @@ class Ravine extends Phaser.Scene {
         debugUpdate(this);
 
         this.player.update(); // Update function in player.js
-
     }
 }

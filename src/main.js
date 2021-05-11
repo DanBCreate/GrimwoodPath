@@ -20,7 +20,7 @@ let config = {
     physics:{
         default:'arcade',
         arcade:{
-            gravity: {y:500},
+            gravity: {y:700},
             debug: true
         }
     },
@@ -31,9 +31,7 @@ let game = new Phaser.Game(config);
 
 //global vars:
 debugToggle = true;
-
-//keyboard inputs for gameplay
-let keyLEFT, keyRIGHT, keySPACE;
+playerMovementSpeed = 200;
 
 //keys for scene navigation
 let key1,key2,key3,key4,key5,key6,key7,key8,key9,key0;

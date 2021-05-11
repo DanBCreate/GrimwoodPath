@@ -1,26 +1,66 @@
+// player.js
+// Class for our playable character
+// Utilizes arcade physics
+//
+// __Functions_Below__
+// playerMovement(): Handles the movement of the player
+
+// Keyboard inputs for player.js
+let keyA, keyD, keyW, keyLEFT, keyRIGHT, keyUP, keySPACE;
+
 class player extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x , y, texture, frame) {
         super(scene, x, y, texture, frame);
         scene.physics.add.existing(this);
-        scene.add.existing(this);     
+        scene.add.existing(this);    
+
+        // Defining our keys
+        keyA = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        keyD = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        keyW = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        keyLEFT = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+        keyRIGHT = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        keyUP = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+        keySPACE = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
+        // Used for smoothing movement
+        this.isMovingLeft = false;
+        this.isMovingRight = false;
+
+        // Players movement settings
+        this.jumpHeight = -400;
     }
 
-    create(){
-        //keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
-        //keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
-    }
+    create(){}
 
     update(){
-        this.setCollideWorldBounds(true); // Collides with world bounds
+        // Controls the players movement
+        this.playerMovement(); 
+    }
 
-        //this.setVelocity(200);
-        //player.setVelocityX(-160);
-        //if(keyLEFT.isDown) {
-        //    console.log("test");
-            
-        //}
-        //if(keyRIGHT.isDown) {
-        //}
+    playerMovement(){
+        // A key || LEFT arrow
+        if(Phaser.Input.Keyboard.JustDown(keyA)){this.setVelocityX(-playerMovementSpeed); this.isMovingLeft = true; this.isMovingRight = false;}
+        else if(Phaser.Input.Keyboard.JustUp(keyA) && this.isMovingRight == false){this.setVelocityX(0); this.isMovingLeft = false; }
 
+        if(Phaser.Input.Keyboard.JustDown(keyLEFT)){this.setVelocityX(-playerMovementSpeed); this.isMovingLeft = true; this.isMovingRight = false;}
+        else if(Phaser.Input.Keyboard.JustUp(keyLEFT) && this.isMovingRight == false){this.setVelocityX(0); this.isMovingLeft = false; }
+
+        // D key || RIGHT arrow
+        if(Phaser.Input.Keyboard.JustDown(keyD)){this.setVelocityX(playerMovementSpeed); this.isMovingRight = true; this.isMovingLeft = false;}
+        else if(Phaser.Input.Keyboard.JustUp(keyD) && this.isMovingLeft == false){this.setVelocityX(0); this.isMovingRight = false;}
+
+        if(Phaser.Input.Keyboard.JustDown(keyRIGHT)){this.setVelocityX(playerMovementSpeed); this.isMovingRight = true; this.isMovingLeft = false;}
+        else if(Phaser.Input.Keyboard.JustUp(keyRIGHT) && this.isMovingLeft == false){this.setVelocityX(0); this.isMovingRight = false;}
+
+        // W key || UP arrow || SPACE key >> Only allows jumping when on a physics 'body'
+        if(Phaser.Input.Keyboard.JustDown(keyW) && this.body.touching.down){this.setVelocityY(this.jumpHeight);}
+
+        if(Phaser.Input.Keyboard.JustDown(keyUP) && this.body.touching.down){this.setVelocityY(this.jumpHeight);}
+
+        if(Phaser.Input.Keyboard.JustDown(keySPACE) && this.body.touching.down){this.setVelocityY(this.jumpHeight);}
+
+        // Collides with world bounds
+        this.setCollideWorldBounds(true); 
     }
 }
