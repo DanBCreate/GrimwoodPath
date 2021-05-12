@@ -46,7 +46,7 @@ class Ravine extends Phaser.Scene {
 
     checkSlidyBlock() {
         if(this.block.checkProximity(this.player.x) == true){
-            if(this.player.getAction() == true) {
+            if(this.player.getAction(this.block.y) == true) {
                 this.physics.world.removeCollider(this.blockCollider);
                 this.block.setMovable(true, this.player.body.velocity.x);
             }

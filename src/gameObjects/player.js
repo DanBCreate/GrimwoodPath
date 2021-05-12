@@ -4,7 +4,7 @@
 //
 // __Functions_Below__
 // playerControls(): Handles the movement and controls of the player
-// getAction(): Returns true if we are using the interact button, false otherwise
+// getAction(blockY): Returns true if we are using the interact button, false otherwise. Disables pushing/pulling when ontop of block
 
 // Keyboard inputs for player.js
 let keyA, keyD, keyW, keyLEFT, keyRIGHT, keyUP, keySPACE;
@@ -31,6 +31,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
         // Players movement settings
         this.jumpHeight = -400;
         this.actionButton = false;
+        this.bufferY = 20; // This will control the ability to push/pull while on top of a block
     }
 
     create(){}
@@ -42,39 +43,75 @@ class player extends Phaser.Physics.Arcade.Sprite {
 
     playerControls(){
         // A key || LEFT arrow
-        if(Phaser.Input.Keyboard.JustDown(keyA)){this.setVelocityX(-playerMovementSpeed); this.isMovingLeft = true; this.isMovingRight = false;}
-        else if(Phaser.Input.Keyboard.JustUp(keyA) && this.isMovingRight == false){this.setVelocityX(0); this.isMovingLeft = false;}
+        if(Phaser.Input.Keyboard.JustDown(keyA)){
+            this.setVelocityX(-playerMovementSpeed); 
+            this.isMovingLeft = true; 
+            this.isMovingRight = false;
+        }
+        else if(Phaser.Input.Keyboard.JustUp(keyA) && this.isMovingRight == false){
+            this.setVelocityX(0); 
+            this.isMovingLeft = false;
+        }
 
-        if(Phaser.Input.Keyboard.JustDown(keyLEFT)){this.setVelocityX(-playerMovementSpeed); this.isMovingLeft = true; this.isMovingRight = false;}
-        else if(Phaser.Input.Keyboard.JustUp(keyLEFT) && this.isMovingRight == false){this.setVelocityX(0); this.isMovingLeft = false;}
+        if(Phaser.Input.Keyboard.JustDown(keyLEFT)){
+            this.setVelocityX(-playerMovementSpeed); 
+            this.isMovingLeft = true; 
+            this.isMovingRight = false;
+        }
+        else if(Phaser.Input.Keyboard.JustUp(keyLEFT) && this.isMovingRight == false)
+        {
+            this.setVelocityX(0); 
+            this.isMovingLeft = false;
+        }
 
         // D key || RIGHT arrow
-        if(Phaser.Input.Keyboard.JustDown(keyD)){this.setVelocityX(playerMovementSpeed); this.isMovingRight = true; this.isMovingLeft = false;}
-        else if(Phaser.Input.Keyboard.JustUp(keyD) && this.isMovingLeft == false){this.setVelocityX(0); this.isMovingRight = false;}
+        if(Phaser.Input.Keyboard.JustDown(keyD)){
+            this.setVelocityX(playerMovementSpeed); 
+            this.isMovingRight = true; 
+            this.isMovingLeft = false;
+        }
+        else if(Phaser.Input.Keyboard.JustUp(keyD) && this.isMovingLeft == false){
+            this.setVelocityX(0);
+             this.isMovingRight = false;
+        }
 
-        if(Phaser.Input.Keyboard.JustDown(keyRIGHT)){this.setVelocityX(playerMovementSpeed); this.isMovingRight = true; this.isMovingLeft = false;}
-        else if(Phaser.Input.Keyboard.JustUp(keyRIGHT) && this.isMovingLeft == false){this.setVelocityX(0); this.isMovingRight = false;}
+        if(Phaser.Input.Keyboard.JustDown(keyRIGHT)){
+            this.setVelocityX(playerMovementSpeed); 
+            this.isMovingRight = true; 
+            this.isMovingLeft = false;
+        }
+        else if(Phaser.Input.Keyboard.JustUp(keyRIGHT) && this.isMovingLeft == false){
+            this.setVelocityX(0); 
+            this.isMovingRight = false;
+        }
 
         // W key || UP arrow  <Only allows jumping when on a physics 'body'>
-        if(Phaser.Input.Keyboard.JustDown(keyW) && this.body.touching.down){this.setVelocityY(this.jumpHeight);}
+        if(Phaser.Input.Keyboard.JustDown(keyW) && this.body.touching.down && this.actionButton == false){
+            this.setVelocityY(this.jumpHeight);
+        }
 
-        if(Phaser.Input.Keyboard.JustDown(keyUP) && this.body.touching.down){this.setVelocityY(this.jumpHeight);}
+        if(Phaser.Input.Keyboard.JustDown(keyUP) && this.body.touching.down && this.actionButton == false){
+            this.setVelocityY(this.jumpHeight);
+        }
 
         // SPACE key <Used for interacting with objects>
-        if(Phaser.Input.Keyboard.JustDown(keySPACE)){this.actionButton = true;}
-        else if(Phaser.Input.Keyboard.JustUp(keySPACE)){this.actionButton = false;}
+        if(Phaser.Input.Keyboard.JustDown(keySPACE) && this.body.touching.down){
+            this.actionButton = true;
+        }
+        else if(Phaser.Input.Keyboard.JustUp(keySPACE)){
+            this.actionButton = false;
+        }
 
         // Collides with world bounds
         this.setCollideWorldBounds(true); 
     }
 
-    getAction(){
-        if(this.actionButton == true){
+    getAction(blockY){
+        if(this.actionButton == true && this.y >= blockY - this.bufferY){
             return true;
         }
         else{
             return false;
         }
     }
-
 }
