@@ -11,18 +11,22 @@ class Opening extends Phaser.Scene {
         this.load.image('wipeTree','assets/tempAssets/tempTree.png');
         this.load.image('car','assets/tempAssets/car.png');
         this.load.image('trail','assets/tempAssets/trail.png');
+        this.load.image('forest','assets/tempAssets/tempForest.png');
+        this.load.image('dude','assets/tempAssets/tempFigure.png');
     }
     create(){
 
         //debugging mode features
         debugCreate(this);
+
+        this.timesequence = 0;
         
         //first vignette
         this.car = new SlidySprite(this,0,screenHeight/2,'car').setOrigin(0)
         this.add.existing(this.car);
         this.car.slide(screenWidth/2,screenHeight/2,2000);
         
-        //black out scene
+        //black out first vignette
         RLWipe(this,2000,'wipeTree',100)
         
         //second vignette
@@ -36,14 +40,33 @@ class Opening extends Phaser.Scene {
             }
         })
 
-        //black screen
-        RLWipe(this,4000,'wipeTree',2500)
+        //black second vignette
+        RLWipe(this,3000,'wipeTree',2500)
 
         //third vignette
         this.time.addEvent({
-            delay: 4500,
+            delay: 4000,
             callback: () =>{
                 this.trail.destroy()
+                this.forestPath = new SlidySprite(this,0,0,'forest').setOrigin(0)
+                this.add.existing(this.forestPath)
+                this.mainCharacter = new SlidySprite(this,500,700,'dude').setOrigin(0)
+                this.add.existing(this.mainCharacter)
+                this.mainCharacter.slide(screenWidth,700,6000)
+                this.forestPath.slide(-100,0,6000)
+
+            }
+        })
+
+        //blank blank third vinette
+        RLWipe(this,4000,'wipeTree',6000)
+
+        //fourth vignette
+        this.time.addEvent({
+            delay: 8000,
+            callback: ()=> {
+                this.mainCharacter.destroy()
+                this.forestPath.destroy()
                 this.scene.start('ravineScene')
             }
         })
@@ -52,7 +75,6 @@ class Opening extends Phaser.Scene {
     }
     update(){
         debugUpdate(this)
-
     }
 
 }
