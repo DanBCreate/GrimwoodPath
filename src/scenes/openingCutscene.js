@@ -52,7 +52,10 @@ class Opening extends Phaser.Scene {
                 this.add.existing(this.forestPath)
                 this.mainCharacter = new SlidySprite(this,500,700,'dude').setOrigin(0)
                 this.add.existing(this.mainCharacter)
+                this.sideCharacter = new SlidySprite(this,200,700,'dude').setOrigin(0)
+                this.add.existing(this.sideCharacter)
                 this.mainCharacter.slide(screenWidth,700,6000)
+                this.sideCharacter.slide(screenWidth,700,8000)
                 this.forestPath.slide(-100,0,6000)
 
             }
@@ -66,9 +69,33 @@ class Opening extends Phaser.Scene {
             delay: 8000,
             callback: ()=> {
                 this.mainCharacter.destroy()
+                this.sideCharacter.destroy()
+                this.forestPath.destroy()
+                this.forestPath = new SlidySprite(this,0,0,'forest').setOrigin(0)
+                this.add.existing(this.forestPath)
+                this.mainCharacter = new SlidySprite(this,500,700,'dude').setOrigin(0)
+                this.add.existing(this.mainCharacter)   
+                this.mainCharacter.slide(600,700,2000)
+                this.mainCharacter.slide(550,700,500,2050)
+                this.mainCharacter.slide(560,700,200,2600)
+                this.mainCharacter.slide(0,700,1000,2850)
+
+
+            }
+        })
+
+        //blank fourth vignette
+        LRWipe(this,2000,'wipeTree',11500)
+
+        //fifth vignette
+        this.time.addEvent({
+            delay: 12500,
+            callback: ()=> {
+                this.mainCharacter.destroy()
                 this.forestPath.destroy()
                 this.scene.start('ravineScene')
             }
+
         })
 
         
