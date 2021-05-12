@@ -4,6 +4,7 @@ class Ravine extends Phaser.Scene {
     }
 
     preload(){
+        // Preload our images
         this.load.image('player', 'assets/tempAssets/tempPlayer.png'); // Player Asset
         this.load.image('ground', 'assets/tempAssets/tempGround.png'); // Ground Asset
         this.load.image('slidyBlock', 'assets/tempAssets/tempBlock.png') // Slidy Block Asset
@@ -11,7 +12,7 @@ class Ravine extends Phaser.Scene {
 
     create(){
         // Debugging mode features
-        debugCreate(this);     
+        debugCreate(this); 
 
         // Setting up our ground
         this.ground = this.physics.add.sprite(screenCenterX, screenCenterY + screenCenterY / 2, 'ground').setScale(0.05); // Initialize our ground
@@ -22,22 +23,41 @@ class Ravine extends Phaser.Scene {
         this.player = new player(this, screenCenterX, screenCenterY, 'player').setScale(0.05); // Initialize our Player
 
         // Setting up slidy block
-        this.block = new slidyBlock(this, screenCenterX + 150, screenCenterY + screenCenterY / 3 + 6, 'slidyBlock').setScale(0.05);
-        this.block.setImmovable(true);
-        this.block.body.allowGravity = false; // So gravity has no effect ground
+        this.block = new slidyBlock(this, screenCenterX + 150, screenCenterY, 'slidyBlock').setScale(0.05);
     
         // Colliders
         this.physics.add.collider(this.player, this.ground); // Collider between ground and player.
         this.physics.add.collider(this.block, this.ground); // Collider between block and ground.
-        this.physics.add.collider(this.player, this.block); // Collider between player and block.
+        this.blockCollider = this.physics.add.collider(this.player, this.block); // Collider between player and the block
+
     }
 
     update(){
         // Debugging mode features
         debugUpdate(this);
 
-        this.player.update(); // Update function in player.js
+        // Update functions for our gameObjects
+        this.player.update();
+        this.block.update(); 
 
-        //this.physics.add.overlap(this.player, this.block, this.checkSlidyBlock(), null, this);
+        // Checks if in range of our slidy Block and allows pushing/pulling
+        this.checkSlidyBlock();
+    }
+
+    checkSlidyBlock() {
+        if(this.block.checkProximity(this.player.x) == true){
+            if(this.player.getAction() == true) {
+                this.physics.world.removeCollider(this.blockCollider);
+                this.block.setMovable(true, this.player.body.velocity.x);
+            }
+            else{
+                this.block.setMovable(false, this.player.body.velocity.x);
+                this.blockCollider = this.physics.add.collider(this.player, this.block); 
+            }
+        }
+        else{
+            this.block.setMovable(false, this.player.body.velocity.x);
+            this.blockCollider = this.physics.add.collider(this.player, this.block);
+        }
     }
 }

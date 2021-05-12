@@ -43,10 +43,10 @@ class player extends Phaser.Physics.Arcade.Sprite {
     playerControls(){
         // A key || LEFT arrow
         if(Phaser.Input.Keyboard.JustDown(keyA)){this.setVelocityX(-playerMovementSpeed); this.isMovingLeft = true; this.isMovingRight = false;}
-        else if(Phaser.Input.Keyboard.JustUp(keyA) && this.isMovingRight == false){this.setVelocityX(0); this.isMovingLeft = false; }
+        else if(Phaser.Input.Keyboard.JustUp(keyA) && this.isMovingRight == false){this.setVelocityX(0); this.isMovingLeft = false;}
 
         if(Phaser.Input.Keyboard.JustDown(keyLEFT)){this.setVelocityX(-playerMovementSpeed); this.isMovingLeft = true; this.isMovingRight = false;}
-        else if(Phaser.Input.Keyboard.JustUp(keyLEFT) && this.isMovingRight == false){this.setVelocityX(0); this.isMovingLeft = false; }
+        else if(Phaser.Input.Keyboard.JustUp(keyLEFT) && this.isMovingRight == false){this.setVelocityX(0); this.isMovingLeft = false;}
 
         // D key || RIGHT arrow
         if(Phaser.Input.Keyboard.JustDown(keyD)){this.setVelocityX(playerMovementSpeed); this.isMovingRight = true; this.isMovingLeft = false;}
@@ -62,8 +62,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
 
         // SPACE key <Used for interacting with objects>
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){this.actionButton = true;}
-        else if(Phaser.Input.Keyboard.JustDown(keySPACE)){this.actionButton = false;}
-
+        else if(Phaser.Input.Keyboard.JustUp(keySPACE)){this.actionButton = false;}
 
         // Collides with world bounds
         this.setCollideWorldBounds(true); 
@@ -77,4 +76,5 @@ class player extends Phaser.Physics.Arcade.Sprite {
             return false;
         }
     }
+
 }
