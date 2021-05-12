@@ -73,12 +73,12 @@ class Opening extends Phaser.Scene {
                 this.forestPath.destroy()
                 this.forestPath = new SlidySprite(this,0,0,'forest').setOrigin(0)
                 this.add.existing(this.forestPath)
-                this.mainCharacter = new SlidySprite(this,500,700,'dude').setOrigin(0)
+                this.mainCharacter = new SlidySprite(this,800,700,'dude').setOrigin(0)
                 this.add.existing(this.mainCharacter)   
-                this.mainCharacter.slide(600,700,2000)
-                this.mainCharacter.slide(550,700,500,2050)
-                this.mainCharacter.slide(560,700,200,2600)
-                this.mainCharacter.slide(0,700,1000,2850)
+                this.mainCharacter.slide(900,700,2000)
+                this.mainCharacter.slide(850,700,500,2050)
+                this.mainCharacter.slide(860,700,200,2600)
+                this.mainCharacter.slide(200,700,1000,2850)
 
 
             }
@@ -93,6 +93,55 @@ class Opening extends Phaser.Scene {
             callback: ()=> {
                 this.mainCharacter.destroy()
                 this.forestPath.destroy()
+                this.forestPath = new SlidySprite(this,0,0,'forest').setOrigin(0)
+                this.add.existing(this.forestPath)
+                this.mainCharacter = new SlidySprite(this,screenWidth,700,'dude').setOrigin(0)
+                this.add.existing(this.mainCharacter) 
+                this.monster = new SlidySprite(this,200,200,'dude').setOrigin(0)
+                this.add.existing(this.monster) 
+                this.monster.displayHeight = 600;
+                this.mainCharacter.slide(screenWidth-200,700,1000)
+                this.mainCharacter.slide(screenWidth-200,500,500,1000)
+                this.mainCharacter.slide(screenWidth-200,700,500,1500)
+                this.mainCharacter.slide(screenWidth,700,1000,2000)
+                this.monster.slide(screenWidth/2,200,6000)
+            }
+
+        })
+
+        //blank fifth vignette
+        RLWipe(this,2000,'wipeTree',16000)
+
+        //sixth vignette
+        this.time.addEvent({
+            delay: 17000,
+            callback: ()=> {
+                this.mainCharacter.destroy()
+                this.forestPath.destroy()
+                this.monster.destroy()
+                this.forestPath = new SlidySprite(this,-screenWidth/2,0,'forest').setOrigin(0)
+                this.add.existing(this.forestPath)
+                this.mainCharacter = new SlidySprite(this,screenWidth/3,700,'dude').setOrigin(0)
+                this.add.existing(this.mainCharacter) 
+                this.monster = new SlidySprite(this,100,200,'dude').setOrigin(0)
+                this.add.existing(this.monster) 
+                this.monster.displayHeight = 600;
+                this.monster.slide(screenWidth/2-50,200,4000)
+                this.mainCharacter.slide(screenWidth/2+50,700,1000)
+                this.mainCharacter.slide(screenWidth/2+50,screenHeight+200,1000,1000)
+                this.mainCharacter.rotate(90,1000,1000)
+
+            }
+
+        })
+
+        //blank sixth vignette
+        RLWipe(this,2000,'wipeTree',20500)
+
+        //end scene
+        this.time.addEvent({
+            delay: 19500,
+            callback: ()=> {
                 this.scene.start('ravineScene')
             }
 
