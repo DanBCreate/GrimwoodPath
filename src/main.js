@@ -82,35 +82,63 @@ function debugCreate(scene){
     }   
 }
 
-function RLWipe(scene,time,texture){
 
-    scene.wipetree = new SlidySprite(scene,screenWidth,0,texture).setOrigin(0.5,0);
-    scene.trailTree = new SlidySprite(scene,screenWidth*2,0,texture).setOrigin(0.5,0);
-    scene.add.existing(scene.wipetree);
-    scene.add.existing(scene.trailTree);
-    scene.wipebox = scene.add.rectangle(screenWidth,0,screenWidth,screenHeight,0x000000).setOrigin(0)
-    scene.wipetree.slide(-screenWidth,0,time)
-    scene.trailTree.slide(0,0,time)
-    scene.tweens.add({
-        targets: scene.wipebox,
-        x: -screenWidth,
-        ease: 'Linear',
-        duration: time
-    })
+function RLWipe(scene,duration,texture,delay = 0){
+    scene.time.addEvent({
+        delay: delay,
+        callback:() =>{
+            scene.wipetree = new SlidySprite(scene,screenWidth,0,texture).setOrigin(0);
+            scene.trailTree = new SlidySprite(scene,screenWidth*2,0,texture).setOrigin(0);
+            scene.add.existing(scene.wipetree);
+            scene.add.existing(scene.trailTree);
+            scene.wipebox = scene.add.rectangle(screenWidth+scene.trailTree.width/2,0,screenWidth,screenHeight,0x000000).setOrigin(0)
+            scene.wipetree.slide(-screenWidth-scene.wipetree.width,0,duration)
+            scene.trailTree.slide(0-scene.trailTree.width,0,duration)
+            scene.tweens.add({
+                targets: scene.wipebox,
+                x: -screenWidth -scene.trailTree.width/2,
+                ease: 'Linear',
+                duration: duration
+            })
+            //garbage collection
+            scene.time.addEvent({
+                delay: duration,
+                callback: () =>{
+                    scene.wipetree.destroy()
+                    scene.trailTree.destroy()
+                    scene.wipebox.destroy()
+                }
+            })
+    }
+})
 }
 
-function LRWipe(scene,time,texture){
-    scene.wipetree = new SlidySprite(scene,0,0,texture).setOrigin(0.5,0);
-    scene.trailTree = new SlidySprite(scene,-screenWidth,0,texture).setOrigin(0.5,0);
-    scene.add.existing(scene.wipetree);
-    scene.add.existing(scene.trailTree);
-    scene.wipebox = scene.add.rectangle(-screenWidth,0,screenWidth,screenHeight,0x000000).setOrigin(0)
-    scene.wipetree.slide(screenWidth*2,0,time)
-    scene.trailTree.slide(screenWidth,0,time)
-    scene.tweens.add({
-        targets: scene.wipebox,
-        x: screenWidth,
-        ease: 'Linear',
-        duration: time
+function LRWipe(scene,duration,texture,delay = 0){
+    scene.time.addEvent({
+        delay: delay,
+        callback:() =>{
+            scene.wipetree = new SlidySprite(scene,0,0,texture).setOrigin(1,0);
+            scene.trailTree = new SlidySprite(scene,-screenWidth,0,texture).setOrigin(1,0);
+            scene.add.existing(scene.wipetree);
+            scene.add.existing(scene.trailTree);
+            scene.wipebox = scene.add.rectangle(-screenWidth-scene.wipetree.width/2,0,screenWidth,screenHeight,0x000000).setOrigin(0)
+            scene.wipetree.slide(screenWidth*2 +scene.wipetree.width,0,duration)
+            scene.trailTree.slide(screenWidth+ scene.trailTree.width,0,duration)
+            scene.tweens.add({
+                targets: scene.wipebox,
+                x: screenWidth + scene.wipetree.width/2,
+                ease: 'Linear',
+                duration: duration
+            })
+            //garbage collection
+            scene.time.addEvent({
+                delay: duration,
+                callback: () =>{
+                    scene.wipetree.destroy()
+                    scene.trailTree.destroy()
+                    scene.wipebox.destroy()
+                }
+            })
+        }
     })
 }
