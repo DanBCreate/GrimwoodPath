@@ -43,48 +43,31 @@ class player extends Phaser.Physics.Arcade.Sprite {
 
     playerControls(){
         // A key || LEFT arrow
-        if(Phaser.Input.Keyboard.JustDown(keyA)){
+        if(keyA.isDown){
             this.setVelocityX(-playerMovementSpeed); 
             this.isMovingLeft = true; 
             this.isMovingRight = false;
         }
-        else if(Phaser.Input.Keyboard.JustUp(keyA) && this.isMovingRight == false){
-            this.setVelocityX(0); 
-            this.isMovingLeft = false;
-        }
-
-        if(Phaser.Input.Keyboard.JustDown(keyLEFT)){
+        else if(keyLEFT.isDown){
             this.setVelocityX(-playerMovementSpeed); 
             this.isMovingLeft = true; 
             this.isMovingRight = false;
         }
-        else if(Phaser.Input.Keyboard.JustUp(keyLEFT) && this.isMovingRight == false)
-        {
-            this.setVelocityX(0); 
-            this.isMovingLeft = false;
-        }
-
-        // D key || RIGHT arrow
-        if(Phaser.Input.Keyboard.JustDown(keyD)){
+        else if(keyD.isDown){
             this.setVelocityX(playerMovementSpeed); 
             this.isMovingRight = true; 
             this.isMovingLeft = false;
         }
-        else if(Phaser.Input.Keyboard.JustUp(keyD) && this.isMovingLeft == false){
-            this.setVelocityX(0);
-             this.isMovingRight = false;
-        }
-
-        if(Phaser.Input.Keyboard.JustDown(keyRIGHT)){
+        else if(keyRIGHT.isDown){
             this.setVelocityX(playerMovementSpeed); 
             this.isMovingRight = true; 
             this.isMovingLeft = false;
         }
-        else if(Phaser.Input.Keyboard.JustUp(keyRIGHT) && this.isMovingLeft == false){
-            this.setVelocityX(0); 
+        else{
+            this.setVelocityX(0)
             this.isMovingRight = false;
+            this.isMovingLeft = false;
         }
-
         // W key || UP arrow  <Only allows jumping when on a physics 'body'>
         if(Phaser.Input.Keyboard.JustDown(keyW) && this.body.touching.down && this.actionButton == false){
             this.setVelocityY(this.jumpHeight);
