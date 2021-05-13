@@ -7,12 +7,6 @@ class Opening extends Phaser.Scene {
     }
 
     preload(){
-        //temp assets only, final asset to be loaded before menu
-        this.load.image('wipeTree','assets/tempAssets/tempTree.png');
-        this.load.image('car','assets/tempAssets/car.png');
-        this.load.image('trail','assets/tempAssets/trail.png');
-        this.load.image('forest','assets/tempAssets/tempForest.png');
-        this.load.image('dude','assets/tempAssets/tempFigure.png');
     }
     create(){
 

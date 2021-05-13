@@ -6,8 +6,22 @@ class Menu extends Phaser.Scene {
     }
 
     preload(){
+        //loading screen
+        this.LoadingBackground = this.add.rectangle(0,0,screenWidth,screenHeight,0x000000).setOrigin(0,0)
+ 
+        this.loadingText = this.add.text(screenWidth/2,screenHeight/2,'Loading...',textConfig).setOrigin(0.5)
+
+        //load all assets here:
         this.load.image('forest','assets/tempAssets/tempForest.png')
         this.load.image('car','assets/tempAssets/car.png')
+        this.load.image('wipeTree','assets/tempAssets/tempTree.png');
+        this.load.image('trail','assets/tempAssets/trail.png');
+        this.load.image('dude','assets/tempAssets/tempFigure.png');
+
+        //remove loading screen
+        this.LoadingBackground.destroy()
+        this.loadingText.destroy()
+
     }
     create(){
 
@@ -23,18 +37,7 @@ class Menu extends Phaser.Scene {
             ease:'Quad.InOut',
             loop: -1
         })
-
-        this.textConfig = {
-            fontFamily: 'Courier',
-            fontSize: '100px',
-            color: '#FF0000',
-            align: 'center',
-            padding: {
-                top: 5,
-                bottom: 5,
-            }
-        }    
-        this.add.text(screenWidth/2,screenHeight/2,'press 2 to start',this.textConfig).setOrigin(0.5)
+        this.add.text(screenWidth/2,screenHeight/2,'press 2 to start',textConfig).setOrigin(0.5)
 
 
     }
