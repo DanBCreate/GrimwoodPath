@@ -26,6 +26,18 @@ let config = {
     },
     backgroundColor: 0xFFFFFF
 }
+
+let textConfig = {
+    fontFamily: 'Courier',
+    fontSize: '100px',
+    color: '#FF0000',
+    align: 'center',
+    padding: {
+        top: 5,
+        bottom: 5,
+    }
+}  
+
 //define the game
 let game = new Phaser.Game(config);
 
