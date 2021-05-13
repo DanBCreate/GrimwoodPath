@@ -42,38 +42,37 @@ class player extends Phaser.Physics.Arcade.Sprite {
     }
 
     playerControls(){
-        // A key || LEFT arrow
-        if(keyA.isDown){
+        if(keyA.isDown){ // A Key 
             this.setVelocityX(-playerMovementSpeed); 
             this.isMovingLeft = true; 
             this.isMovingRight = false;
         }
-        else if(keyLEFT.isDown){
+        else if(keyLEFT.isDown){ // LEFT Key
             this.setVelocityX(-playerMovementSpeed); 
             this.isMovingLeft = true; 
             this.isMovingRight = false;
         }
-        else if(keyD.isDown){
+        else if(keyD.isDown){ // D Key
             this.setVelocityX(playerMovementSpeed); 
             this.isMovingRight = true; 
             this.isMovingLeft = false;
         }
-        else if(keyRIGHT.isDown){
+        else if(keyRIGHT.isDown){ // RIGHT Key
             this.setVelocityX(playerMovementSpeed); 
             this.isMovingRight = true; 
             this.isMovingLeft = false;
         }
-        else{
+        else{ // Stop movement
             this.setVelocityX(0)
             this.isMovingRight = false;
             this.isMovingLeft = false;
         }
         // W key || UP arrow  <Only allows jumping when on a physics 'body'>
-        if(Phaser.Input.Keyboard.JustDown(keyW) && this.body.touching.down && this.actionButton == false){
+        if(keyW.isDown && this.body.touching.down && this.actionButton == false){
             this.setVelocityY(this.jumpHeight);
         }
 
-        if(Phaser.Input.Keyboard.JustDown(keyUP) && this.body.touching.down && this.actionButton == false){
+        if(keyUP.isDown && this.body.touching.down && this.actionButton == false){
             this.setVelocityY(this.jumpHeight);
         }
 
