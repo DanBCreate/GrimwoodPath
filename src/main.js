@@ -47,6 +47,18 @@ let game = new Phaser.Game(config);
 debugToggle = true;
 playerMovementSpeed = 200;
 
+//colletable flags
+let hasRope = false     //allows exit from ravine
+let hasShirt = false    //allows marking of trees
+let hasWood = false     //allows full movement speed when combined with hasJacket
+let hasJacket = false   //allows full movement speed when combined with hasWood
+let hasFlash = false    //allows entering cave when combined with hasBat
+let hasBat = false      //allows entering cave when combined with hasFlash
+let hasAxe = false      //allows entry to clearing with brother
+let hasKey = false      //allows entry to cabin
+let hasCrowbar = false  //used to set hasAxe
+let hasKnife = false    //? - cosmetic?
+
 //keys for scene navigation
 let key1,key2,key3,key4,key5,key6,key7,key8,key9,key0;
 //map
