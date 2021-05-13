@@ -1,3 +1,10 @@
+// Ravine.js
+// Class for ravine scene
+//
+// __Functions_Below__
+// checkSlidyBlock(): Checks if we are near a slidy block and our action key is pressed
+
+
 class Ravine extends Phaser.Scene {
     constructor(){
         super('ravineScene')
@@ -21,8 +28,10 @@ class Ravine extends Phaser.Scene {
 
         // Setting up our player and camera to follow player
         this.player = new player(this, screenCenterX, screenCenterY, 'player').setScale(0.05); // Initialize our Player
-        this.cameras.main.startFollow(this.player);
+        this.sceneCamera = this.cameras.main.startFollow(this.player);
+        this.sceneCamera.setLerp(cameraLerp,cameraLerp)
         
+
         // Setting up slidy block
         this.block = new slidyBlock(this, screenCenterX + 150, screenCenterY, 'slidyBlock').setScale(0.05);
     

@@ -22,13 +22,17 @@ class slidyBlock extends Phaser.Physics.Arcade.Sprite {
         // Used for initially spawning the block
         this.block.body.allowGravity = true; 
         this.setVelocityX(0);
+
+        //this.helpText = this.scene.add.text(this.x, this.y - 30, "Press [SPACE] to Push/Pull", textConfig);
     }
 
     update(){    
+
         // Moves the block with the player
         if(this.movable == true){
             this.setImmovable(false);
             this.setVelocityX(this.playerX);
+
         }
         else{
             this.setVelocityX(0);
