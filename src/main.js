@@ -2,12 +2,13 @@
 //creates the game object, and declairs global variables
 
 
-//game config
+//screen configs
 const screenWidth = 1920;
 const screenHeight = 1080;
 let screenCenterX = screenWidth / 2;
 let screenCenterY = screenHeight / 2;
 
+//game config
 let config = {
     type: Phaser.AUTO,
     width: screenWidth,
@@ -27,6 +28,7 @@ let config = {
     backgroundColor: 0xFFFFFF
 }
 
+//standard text config
 let textConfig = {
     fontFamily: 'Courier',
     fontSize: '100px',
