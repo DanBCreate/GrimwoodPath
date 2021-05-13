@@ -22,7 +22,6 @@ class slidyBlock extends Phaser.Physics.Arcade.Sprite {
         // Used for initially spawning the block
         this.block.body.allowGravity = true; 
         this.setVelocityX(0);
-
     }
 
     update(){    
@@ -33,6 +32,7 @@ class slidyBlock extends Phaser.Physics.Arcade.Sprite {
         }
         else{
             this.setVelocityX(0);
+            this.setPushable(false);
         }
 
         // Collides with world bounds
@@ -40,7 +40,7 @@ class slidyBlock extends Phaser.Physics.Arcade.Sprite {
     }
 
     checkProximity(playerX){
-        if(Math.abs(playerX - this.x) < 120){
+        if(Math.abs(playerX - this.x) < 100){
             return true;
         }
     }
