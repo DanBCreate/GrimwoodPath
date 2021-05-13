@@ -19,9 +19,10 @@ class Ravine extends Phaser.Scene {
         this.ground.setImmovable(true); // Sets ground to immovable
         this.ground.body.allowGravity = false; // So gravity has no effect ground
 
-        // Setting up our player
+        // Setting up our player and camera to follow player
         this.player = new player(this, screenCenterX, screenCenterY, 'player').setScale(0.05); // Initialize our Player
-
+        this.cameras.main.startFollow(this.player);
+        
         // Setting up slidy block
         this.block = new slidyBlock(this, screenCenterX + 150, screenCenterY, 'slidyBlock').setScale(0.05);
     
