@@ -53,6 +53,17 @@ class Menu extends Phaser.Scene {
         })
         this.add.text(screenWidth/2,screenHeight/2,'press 2 to start',textConfig).setOrigin(0.5)
 
+        //unset colletable flags
+        hasRope = false     //allows exit from ravine
+        hasShirt = false    //allows marking of trees
+        hasWood = false     //allows full movement speed when combined with hasJacket
+        hasJacket = false   //allows full movement speed when combined with hasWood
+        hasFlash = false    //allows entering cave when combined with hasBat
+        hasBat = false      //allows entering cave when combined with hasFlash
+        hasAxe = false      //allows entry to clearing with brother
+        hasKey = false      //allows entry to cabin
+        hasCrowbar = false  //used to set hasAxe
+        hasKnife = false    //? - cosmetic?
 
     }
     update(){
