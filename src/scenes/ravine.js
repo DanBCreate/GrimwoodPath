@@ -11,10 +11,6 @@ class Ravine extends Phaser.Scene {
     }
 
     preload(){
-        // Preload our images
-        this.load.image('player', 'assets/tempAssets/tempPlayer.png'); // Player Asset
-        this.load.image('ground', 'assets/tempAssets/tempGround.png'); // Ground Asset
-        this.load.image('slidyBlock', 'assets/tempAssets/tempBlock.png') // Slidy Block Asset
     }
 
     create(){

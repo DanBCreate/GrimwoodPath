@@ -17,6 +17,19 @@ class Menu extends Phaser.Scene {
         this.load.image('wipeTree','assets/tempAssets/tempTree.png');
         this.load.image('trail','assets/tempAssets/trail.png');
         this.load.image('dude','assets/tempAssets/tempFigure.png');
+        this.load.image('axe','assets/tempAssets/tempAxe.png');
+        this.load.image('bat','assets/tempAssets/tempBat.png');
+        this.load.image('bar','assets/tempAssets/tempCrowbar.png');
+        this.load.image('jacket','assets/tempAssets/tempJacket.png');
+        this.load.image('key','assets/tempAssets/tempKey.png');
+        this.load.image('knife','assets/tempAssets/tempKnife.png');
+        this.load.image('light','assets/tempAssets/tempLight.png');
+        this.load.image('rope','assets/tempAssets/tempRope.png');
+        this.load.image('shirt','assets/tempAssets/tempShirt.png');
+        this.load.image('wood','assets/tempAssets/tempWood.png');
+        this.load.image('player', 'assets/tempAssets/tempPlayer.png'); // Player Asset
+        this.load.image('ground', 'assets/tempAssets/tempGround.png'); // Ground Asset
+        this.load.image('slidyBlock', 'assets/tempAssets/tempBlock.png') // Slidy Block Asset
 
         //remove loading screen
         this.LoadingBackground.destroy()
