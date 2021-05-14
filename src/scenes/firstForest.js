@@ -128,7 +128,7 @@ class FForest extends Phaser.Scene {
 
         //deal with entering the clearing
         this.physics.add.overlap(this.player,this.clearingEntrance,()=>{
-            if(this.noInstruct && hasFlash && hasBat){
+            if(this.noInstruct && hasAxe){
                 this.instructions = this.add.text(this.clearingEntrance.x,this.clearingEntrance.y -200,'[space] to enter',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             } 
