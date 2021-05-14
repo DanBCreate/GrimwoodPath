@@ -100,21 +100,20 @@ class FForest extends Phaser.Scene {
                 this.tweens.add({
                     targets: this.sceneCamera,
                     zoom: 10,
-                    alpha: 0,
-                    duration: 10000,
+                    duration: 2000,
                     ease: 'linear'                     
                 })
                 this.tweens.add({
                     targets: this.screentint,
                     alpha: 1,
-                    duration: 10000,     
+                    duration: 2000,     
                     ease: 'linear'               
                 })
                 this.time.addEvent({
-                    delay: 10000,
+                    delay: 2000,
                     callback: ()=> {
-                        this.scene.start('caveScene')
                         this.noInstruct = true;
+                        this.scene.start('caveScene')
                     }
                 })
             }
