@@ -12,7 +12,7 @@ class NoBro extends Phaser.Scene {
 
         //debugging mode features
         debugCreate(this);      
-        this.add.text(screenWidth/2,screenHeight/2,'You abandoned you bro',textConfig).setOrigin(0.5)
+        this.add.text(screenWidth/2,screenHeight/2,'You abandoned your bro',textConfig).setOrigin(0.5)
 
 
     }
