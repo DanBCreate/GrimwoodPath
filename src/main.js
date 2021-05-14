@@ -59,7 +59,8 @@ let hasAxe = false      //allows entry to clearing with brother
 let hasKey = false      //allows entry to cabin
 let hasCrowbar = false  //used to set hasAxe
 let hasKnife = false    //? - cosmetic?
-let axeWallFlag = true
+let axeWallFlag = true  //is the wall obstructing access to the axe
+let keyWallFlag = true  //is the keywall obstructing access to the crowbar
 
 //keys for scene navigation
 let key1,key2,key3,key4,key5,key6,key7,key8,key9,key0;
