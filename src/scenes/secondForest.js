@@ -46,15 +46,15 @@ class LForest extends Phaser.Scene {
         this.physics.add.collider(this.player,this.keyWall,()=>{
             console.log('collision')
             if(this.noInstruct && hasKey){
-                this.batPick = this.add.text(this.keyWall.x,this.keyWall.y -200,'[space] open',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.keyWall.x,this.keyWall.y -200,'[space] open',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             }
             else if(this.noInstruct){
-                this.batPick = this.add.text(this.keyWall.x,this.keyWall.y -200,'maybe there\'s a key',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.keyWall.x,this.keyWall.y -200,'maybe there\'s a key',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             }
             if(this.player.actionButton && hasKey){
-                this.batPick.destroy()  
+                this.instructions.destroy()  
                 this.keyWall.destroy()
                 keyWallFlag = false;
                 this.noInstruct = true;
@@ -69,7 +69,7 @@ class LForest extends Phaser.Scene {
         //deal with entering the cave
         this.physics.add.overlap(this.player,this.caveExit,()=>{
             if(this.noInstruct){
-                this.batPick = this.add.text(this.caveExit.x,this.caveExit.y -200,'[space] to enter',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.caveExit.x,this.caveExit.y -200,'[space] to enter',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             } 
             //transition to cave scene
@@ -107,11 +107,11 @@ class LForest extends Phaser.Scene {
         //collecting the axe
         this.physics.add.overlap(this.player,this.key,()=>{
             if(this.noInstruct){
-                this.batPick = this.add.text(this.key.x,this.key.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.key.x,this.key.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             }
             if(this.player.actionButton){
-                this.batPick.destroy()
+                this.instructions.destroy()
                 this.key.destroy()
                 hasKey = true
                 this.noInstruct = true;
@@ -126,11 +126,11 @@ class LForest extends Phaser.Scene {
         //collecting the axe
         this.physics.add.overlap(this.player,this.crowbar,()=>{
             if(this.noInstruct){
-                this.batPick = this.add.text(this.crowbar.x,this.crowbar.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.crowbar.x,this.crowbar.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             }
             if(this.player.actionButton){
-                this.batPick.destroy()
+                this.instructions.destroy()
                 this.crowbar.destroy()
                 hasCrowbar = true
                 this.noInstruct = true;
@@ -151,7 +151,7 @@ class LForest extends Phaser.Scene {
                 delay: 2000,
                 callback: () => {
                     this.noInstruct = true
-                    this.batPick.destroy()
+                    this.instructions.destroy()
                     this.instructDestructor = true
                 }
             })

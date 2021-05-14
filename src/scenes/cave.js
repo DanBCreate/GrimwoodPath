@@ -53,11 +53,11 @@ class Cave extends Phaser.Scene {
         //collecting the axe
         this.physics.add.overlap(this.player,this.axe,()=>{
             if(this.noInstruct){
-                this.batPick = this.add.text(this.axe.x,this.axe.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.axe.x,this.axe.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             }
             if(this.player.actionButton){
-                this.batPick.destroy()
+                this.instructions.destroy()
                 this.axe.destroy()
                 hasAxe = true
                 this.noInstruct = true;
@@ -67,15 +67,15 @@ class Cave extends Phaser.Scene {
         //destroying the wall
         this.physics.add.collider(this.player,this.axeWall,()=>{
             if(this.noInstruct && hasCrowbar){
-                this.batPick = this.add.text(this.axeWall.x,this.axeWall.y -200,'[space] to pry',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.axeWall.x,this.axeWall.y -200,'[space] to pry',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             }
             else if(this.noInstruct && !hasCrowbar){
-                this.batPick = this.add.text(this.axeWall.x,this.axeWall.y -200,'maybe with more levarage...',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.axeWall.x,this.axeWall.y -200,'maybe with more levarage...',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             }
             if(this.player.actionButton && hasCrowbar){
-                this.batPick.destroy()
+                this.instructions.destroy()
                 this.axeWall.destroy()
                 axeWallFlag = false;
                 this.noInstruct = true;
@@ -89,7 +89,7 @@ class Cave extends Phaser.Scene {
         //deal with entering the cave
         this.physics.add.overlap(this.player,this.caveEntrance,()=>{
             if(this.noInstruct){
-                this.batPick = this.add.text(this.caveEntrance.x,this.caveEntrance.y -200,'[space] to enter',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.caveEntrance.x,this.caveEntrance.y -200,'[space] to enter',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             } 
             //transition to cave scene
@@ -125,7 +125,7 @@ class Cave extends Phaser.Scene {
         //deal with entering the cave
         this.physics.add.overlap(this.player,this.caveExit,()=>{
             if(this.noInstruct){
-                this.batPick = this.add.text(this.caveExit.x,this.caveExit.y -200,'[space] to enter',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.caveExit.x,this.caveExit.y -200,'[space] to enter',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             } 
             //transition to cave scene
@@ -166,7 +166,7 @@ class Cave extends Phaser.Scene {
                 delay: 2000,
                 callback: () => {
                     this.noInstruct = true
-                    this.batPick.destroy()
+                    this.instructions.destroy()
                     this.instructDestructor = true
                 }
             })

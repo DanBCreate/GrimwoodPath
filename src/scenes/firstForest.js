@@ -51,11 +51,11 @@ class FForest extends Phaser.Scene {
         //collecting the battery
         this.physics.add.overlap(this.player,this.battery,()=>{
             if(this.noInstruct){
-                this.batPick = this.add.text(this.battery.x,this.battery.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.battery.x,this.battery.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             }
             if(this.player.actionButton){
-                this.batPick.destroy()
+                this.instructions.destroy()
                 this.battery.destroy()
                 hasBat = true
                 this.noInstruct = true;
@@ -64,11 +64,11 @@ class FForest extends Phaser.Scene {
         //collecting the light
         this.physics.add.overlap(this.player,this.light,()=>{
             if(this.noInstruct){
-                this.batPick = this.add.text(this.light.x,this.light.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.light.x,this.light.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             } 
             if(this.player.actionButton){
-                this.batPick.alpha = 0;
+                this.instructions.alpha = 0;
                 this.light.destroy()
                 hasFlash = true
                 this.noInstruct = true;
@@ -77,11 +77,11 @@ class FForest extends Phaser.Scene {
         //collecting the knife
         this.physics.add.overlap(this.player,this.knife,()=>{
             if(this.noInstruct){
-                this.batPick = this.add.text(this.knife.x,this.knife.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.knife.x,this.knife.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             } 
             if(this.player.actionButton){
-                this.batPick.alpha = 0;
+                this.instructions.alpha = 0;
                 this.knife.destroy()
                 hasKnife = true
                 this.noInstruct = true;
@@ -91,11 +91,11 @@ class FForest extends Phaser.Scene {
         //deal with entering the cave
         this.physics.add.overlap(this.player,this.caveEntrance,()=>{
             if(this.noInstruct && hasFlash && hasBat){
-                this.batPick = this.add.text(this.caveEntrance.x,this.caveEntrance.y -200,'[space] to enter',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.caveEntrance.x,this.caveEntrance.y -200,'[space] to enter',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             } 
             else if (this.noInstruct){
-                this.batPick = this.add.text(this.caveEntrance.x,this.caveEntrance.y -200,'It\'s dark in there',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.caveEntrance.x,this.caveEntrance.y -200,'It\'s dark in there',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             }
             //transition to cave scene
@@ -143,7 +143,7 @@ class FForest extends Phaser.Scene {
                 delay: 2000,
                 callback: () => {
                     this.noInstruct = true
-                    this.batPick.destroy()
+                    this.instructions.destroy()
                     this.instructDestructor = true
                 }
             })
