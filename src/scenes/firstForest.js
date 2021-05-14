@@ -20,6 +20,8 @@ class FForest extends Phaser.Scene {
         this.caveEntrance = this.physics.add.sprite(screenWidth/3,screenHeight-100,'caveEntrance').setOrigin(0.5,1)
         this.caveEntrance.body.allowGravity = false
         
+        this.clearingEntrance = this.physics.add.sprite(7*screenWidth/8,screenHeight-100,'clearing').setOrigin(0.5,1)
+        this.clearingEntrance.body.allowGravity = false
 
         //spawn collectables
         if(!hasBat){
@@ -124,11 +126,41 @@ class FForest extends Phaser.Scene {
             }
         })
 
-        //I don't know why this doesn't work
-        this.ping = false
-        this.physics.add.overlap(this.player,this.battery,()=>{
-            console.log('this should never be seen')
-        },this.ping)
+        //deal with entering the clearing
+        this.physics.add.overlap(this.player,this.clearingEntrance,()=>{
+            if(this.noInstruct && hasFlash && hasBat){
+                this.instructions = this.add.text(this.clearingEntrance.x,this.clearingEntrance.y -200,'[space] to enter',textConfig).setOrigin(0.5)
+                this.noInstruct = false
+            } 
+            else if (this.noInstruct){
+                this.instructions = this.add.text(this.clearingEntrance.x,this.clearingEntrance.y -200,'It\'s too dense',textConfig).setOrigin(0.5)
+                this.noInstruct = false
+            }
+            //transition to end scene
+            if(this.player.actionButton && hasAxe){
+                this.screentint =this.add.rectangle(screenWidth,screenHeight,screenWidth,screenHeight,0x000000).setOrigin(1)
+                this.screentint.alpha = 0
+                this.tweens.add({
+                    targets: this.sceneCamera,
+                    zoom: 10,
+                    duration: 2000,
+                    ease: 'linear'                     
+                })
+                this.tweens.add({
+                    targets: this.screentint,
+                    alpha: 1,
+                    duration: 2000,     
+                    ease: 'linear'               
+                })
+                this.time.addEvent({
+                    delay: 2000,
+                    callback: ()=> {
+                        this.noInstruct = true;
+                        this.scene.start('hEndScene')
+                    }
+                })
+            }
+        })
     }
 
     update(){
