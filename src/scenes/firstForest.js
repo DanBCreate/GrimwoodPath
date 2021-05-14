@@ -46,6 +46,7 @@ class FForest extends Phaser.Scene {
 
         //object interactions
         this.noInstruct = true
+        this.instructDestructor = true
 
         //collecting the battery
         this.physics.add.overlap(this.player,this.battery,()=>{
@@ -93,6 +94,10 @@ class FForest extends Phaser.Scene {
                 this.batPick = this.add.text(this.caveEntrance.x,this.caveEntrance.y -200,'[space] to enter',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             } 
+            else if (this.noInstruct){
+                this.batPick = this.add.text(this.caveEntrance.x,this.caveEntrance.y -200,'It\'s dark in there',textConfig).setOrigin(0.5)
+                this.noInstruct = false
+            }
             //transition to cave scene
             if(this.player.actionButton && hasBat && hasFlash){
                 this.screentint =this.add.rectangle(screenWidth,screenHeight,screenWidth,screenHeight,0x000000).setOrigin(1)
@@ -130,6 +135,19 @@ class FForest extends Phaser.Scene {
         //debugging mode features
         debugUpdate(this);
         this.player.update()
+
+        //remove unused instructions
+        if(!this.noInstruct && this.instructDestructor){
+            this.instructDestructor = false
+            this.time.addEvent({
+                delay: 2000,
+                callback: () => {
+                    this.noInstruct = true
+                    this.batPick.destroy()
+                    this.instructDestructor = true
+                }
+            })
+        }
     }
 
 }
