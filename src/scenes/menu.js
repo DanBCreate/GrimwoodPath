@@ -64,6 +64,7 @@ class Menu extends Phaser.Scene {
         hasKey = false      //allows entry to cabin
         hasCrowbar = false  //used to set hasAxe
         hasKnife = false    //? - cosmetic?
+        axeWallFlag = true  //is the wall obstructing access to the axe
 
     }
     update(){
