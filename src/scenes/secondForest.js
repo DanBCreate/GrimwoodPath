@@ -137,6 +137,42 @@ class LForest extends Phaser.Scene {
             }
         })
 
+        //car
+        this.escapeCar = this.physics.add.sprite(screenWidth,screenHeight-100,'car').setOrigin(0.5,1)
+        this.escapeCar.body.allowGravity = false
+
+        //deal with entering the car
+        this.physics.add.overlap(this.player,this.escapeCar,()=>{
+            if(this.noInstruct){
+                this.instructions = this.add.text(this.escapeCar.x,this.escapeCar.y -200,'[space] to flee in terror',textConfig).setOrigin(0.5)
+                this.noInstruct = false
+            } 
+            //transition to cave scene
+            if(this.player.actionButton){
+                this.screentint =this.add.rectangle(screenWidth,screenHeight,screenWidth,screenHeight,0x000000).setOrigin(1)
+                this.screentint.alpha = 0
+                this.tweens.add({
+                    targets: this.sceneCamera,
+                    zoom: 10,
+                    duration: 2000,
+                    ease: 'linear'                     
+                })
+                this.tweens.add({
+                    targets: this.screentint,
+                    alpha: 1,
+                    duration: 2000,     
+                    ease: 'linear'               
+                })
+                this.time.addEvent({
+                    delay: 2000,
+                    callback: ()=> {
+                        this.noInstruct = true;
+                        this.scene.start('noBroScene')
+                    }
+                })
+            }
+        })  
+
 
     }
     update(){
