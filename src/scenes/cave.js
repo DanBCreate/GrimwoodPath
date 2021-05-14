@@ -50,7 +50,7 @@ class Cave extends Phaser.Scene {
             this.axe.body.allowGravity = false
         }
 
-        //collecting the battery
+        //collecting the axe
         this.physics.add.overlap(this.player,this.axe,()=>{
             if(this.noInstruct){
                 this.batPick = this.add.text(this.axe.x,this.axe.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
