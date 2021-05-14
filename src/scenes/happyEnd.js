@@ -11,7 +11,7 @@ class HEnd extends Phaser.Scene {
 
         //debugging mode features
         debugCreate(this);      
-
+        this.add.text(screenWidth/2,screenHeight/2,'You found your bro, good job',textConfig).setOrigin(0.5)
 
 
     }
