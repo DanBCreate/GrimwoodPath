@@ -16,18 +16,12 @@ class slidyBlock extends Phaser.Physics.Arcade.Sprite {
         // Used for moving the block with the player
         this.movable = false;
         this.playerX = 0;
-    }
 
-    create(){
-        // Used for initially spawning the block
-        this.block.body.allowGravity = true; 
-        this.setVelocityX(0);
-
-        //this.helpText = this.scene.add.text(this.x, this.y - 30, "Press [SPACE] to Push/Pull", textConfig);
+        this.helpText = this.scene.add.text(this.x, this.y - 5, "Press [SPACE] to Push/Pull", textConfig).setOrigin(0.5).setFontSize(40);
+        this.helpText.setVisible(false);
     }
 
     update(){    
-
         // Moves the block with the player
         if(this.movable == true){
             this.setImmovable(false);
@@ -45,7 +39,13 @@ class slidyBlock extends Phaser.Physics.Arcade.Sprite {
 
     checkProximity(playerX){
         if(Math.abs(playerX - this.x) < 100){
+            this.helpText.x = this.x;
+            this.helpText.y = this.y - 100;
+            this.helpText.setVisible(true);
             return true;
+        }
+        else{
+            this.helpText.setVisible(false);
         }
     }
 
@@ -53,6 +53,7 @@ class slidyBlock extends Phaser.Physics.Arcade.Sprite {
         if(movable == true){
             this.playerX = player;
             this.movable = true;
+            this.helpText.setVisible(false);
         }
         else{
             this.playerX = 0;

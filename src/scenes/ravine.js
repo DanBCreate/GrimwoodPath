@@ -27,7 +27,6 @@ class Ravine extends Phaser.Scene {
         this.sceneCamera = this.cameras.main.startFollow(this.player);
         this.sceneCamera.setLerp(cameraLerp,cameraLerp)
         
-
         // Setting up slidy block
         this.block = new slidyBlock(this, screenCenterX + 150, screenCenterY, 'slidyBlock').setScale(0.05);
     
@@ -35,7 +34,6 @@ class Ravine extends Phaser.Scene {
         this.physics.add.collider(this.player, this.ground); // Collider between ground and player.
         this.physics.add.collider(this.block, this.ground); // Collider between block and ground.
         this.blockCollider = this.physics.add.collider(this.player, this.block); // Collider between player and the block
-
     }
 
     update(){
