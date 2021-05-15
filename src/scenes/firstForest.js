@@ -44,6 +44,15 @@ class FForest extends Phaser.Scene {
 
         //collide with the ground
         this.physics.add.collider(this.player, this.ground);
+
+        //sound Effects
+        this.giggle = this.sound.add('giggle')
+        this.sfxConfig = {
+            volume: 1,
+            loop: false,
+        }
+        this.sfxActive = false;
+        this.resetSFXactive = true;
         
 
         //object interactions
@@ -128,6 +137,10 @@ class FForest extends Phaser.Scene {
 
         //deal with entering the clearing
         this.physics.add.overlap(this.player,this.clearingEntrance,()=>{
+            if(!this.sfxActive){
+                this.giggle.play(this.sfxConfig) 
+                this.sfxActive = true;
+            }
             if(this.noInstruct && hasAxe){
                 this.instructions = this.add.text(this.clearingEntrance.x,this.clearingEntrance.y -200,'[space] to enter',textConfig).setOrigin(0.5)
                 this.noInstruct = false
@@ -177,6 +190,18 @@ class FForest extends Phaser.Scene {
                     this.noInstruct = true
                     this.instructions.destroy()
                     this.instructDestructor = true
+                }
+            })
+        }
+
+        //reset sound effect
+        if(this.sfxActive && this.resetSFXactive){
+            this.resetSFXactive = false;
+            this.time.addEvent({
+                delay: 2000,
+                callback: () => {
+                    this.sfxActive = false
+                    this.resetSFXactive = true
                 }
             })
         }

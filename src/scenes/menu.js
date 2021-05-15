@@ -32,6 +32,8 @@ class Menu extends Phaser.Scene {
         this.load.image('player', 'assets/tempAssets/tempPlayer.png'); // Player Asset
         this.load.image('ground', 'assets/tempAssets/tempGround.png'); // Ground Asset
         this.load.image('slidyBlock', 'assets/tempAssets/tempBlock.png') // Slidy Block Asset
+        
+        this.load.audio('giggle','assets/tempAssets/ChildGiggle.wav')
 
         //remove loading screen
         this.LoadingBackground.destroy()
