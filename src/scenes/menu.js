@@ -34,6 +34,9 @@ class Menu extends Phaser.Scene {
         this.load.image('slidyBlock', 'assets/tempAssets/tempBlock.png') // Slidy Block Asset
         
         this.load.audio('giggle','assets/tempAssets/ChildGiggle.wav')
+        this.load.audio('engine', 'assets/tempAssets/CarEngineLoop.wav')
+        this.load.audio('driveCrickets', 'assets/tempAssets/NightDriveLoop.wav')
+        this.load.audio('nightAmbience', 'assets/tempAssets/NightAmbienceLoop.wav')
 
         //remove loading screen
         this.LoadingBackground.destroy()
@@ -46,6 +49,20 @@ class Menu extends Phaser.Scene {
         debugCreate(this);
         this.background = this.add.tileSprite(0,0,screenWidth,screenHeight,'forest').setOrigin(0)
         this.car = this.add.sprite(screenWidth/3,890,'car').setOrigin(0.5)
+
+        this.engine = this.sound.add('engine');
+        this.driveCrickets = this.sound.add('driveCrickets');
+        this.sfxConfigEngine = {
+            volume: 0.17,
+            loop: true,
+        }
+        this.sfxConfigDrive = {
+            volume: 3.3,
+            loop: true,
+        }
+        this.engine.play(this.sfxConfigEngine) ;
+        this.driveCrickets.play(this.sfxConfigDrive);
+
         this.tweens.add({
             targets:this.car,
             x: 2*screenWidth/3,

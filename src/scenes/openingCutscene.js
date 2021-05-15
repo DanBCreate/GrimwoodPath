@@ -22,11 +22,20 @@ class Opening extends Phaser.Scene {
         
         //black out first vignette
         RLWipe(this,2000,'wipeTree',100)
+
+        this.ambience = this.sound.add('nightAmbience');
+        this.sfxConfig = {
+            volume: 1.5,
+            loop: false,
+        }
         
         //second vignette
         this.time.addEvent({
             delay: 1100,
             callback: () =>{
+                this.game.sound.stopAll();
+                this.ambience.play(this.sfxConfig) ;
+
                 this.car.destroy()
                 this.trail = new SlidySprite(this,0,0,'trail').setOrigin(0)
                 this.add.existing(this.trail)
