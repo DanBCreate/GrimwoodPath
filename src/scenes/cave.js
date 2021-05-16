@@ -152,12 +152,23 @@ class Cave extends Phaser.Scene {
                     }
                 })
             }
-        })        
+        })
+        
+    // Setting up slidy block
+    this.block = new slidyBlock(this, screenCenterX + 200, screenCenterY, 'slidyBlock').setScale(0.05);
+    // Colliders
+    this.physics.add.collider(this.block, this.ground); // Collider between block and ground.
+    this.physics.add.collider(this.block, this.axeWall); // Collider between block and ground.
+    this.blockCollider = this.physics.add.collider(this.player, this.block); // Collider between player and the block
 
     }
     update(){
         debugUpdate(this);
         this.player.update()
+        this.block.update(); 
+
+        // Checks if in range of our slidy Block and allows pushing/pulling
+        this.checkSlidyBlock();
 
         //remove unused instructions
         if(!this.noInstruct && this.instructDestructor){
@@ -170,6 +181,23 @@ class Cave extends Phaser.Scene {
                     this.instructDestructor = true
                 }
             })
+        }
+    }
+
+    checkSlidyBlock() {
+        if(this.block.checkProximity(this.player.x) == true){
+            if(this.player.getAction(this.block.y) == true) {
+                this.physics.world.removeCollider(this.blockCollider);
+                this.block.setMovable(true, this.player.body.velocity.x);
+            }
+            else{
+                this.block.setMovable(false, this.player.body.velocity.x);
+                this.blockCollider = this.physics.add.collider(this.player, this.block); 
+            }
+        }
+        else{
+            this.block.setMovable(false, this.player.body.velocity.x);
+            this.blockCollider = this.physics.add.collider(this.player, this.block);
         }
     }
 
