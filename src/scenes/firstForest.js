@@ -25,16 +25,16 @@ class FForest extends Phaser.Scene {
 
         //spawn collectables
         if(!hasBat){
-        this.battery = this.physics.add.sprite(3*screenWidth/4,screenHeight - 100,'bat').setOrigin(0.5,1)
-        this.battery.body.allowGravity = false
+            this.battery = this.physics.add.sprite(3*screenWidth/4,screenHeight - 100,'bat').setOrigin(0.5,1)
+            this.battery.body.allowGravity = false
         }
         if(!hasFlash){
-        this.light = this.physics.add.sprite(screenWidth/2,screenHeight - 100,'light').setOrigin(0.5,1)
-        this.light.body.allowGravity = false
+            this.light = this.physics.add.sprite(screenWidth/2,screenHeight - 100,'light').setOrigin(0.5,1)
+            this.light.body.allowGravity = false
         }
         if(!hasKnife){
-        this.knife = this.physics.add.sprite(screenWidth/6,screenHeight - 100,'knife').setOrigin(0.5,1)
-        this.knife.body.allowGravity = false
+            this.knife = this.physics.add.sprite(screenWidth/6,screenHeight - 100,'knife').setOrigin(0.5,1)
+            this.knife.body.allowGravity = false
         }
 
         // Setting up our player and camera to follow player
