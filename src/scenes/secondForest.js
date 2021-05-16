@@ -44,7 +44,6 @@ class LForest extends Phaser.Scene {
 
         //destroying the wall
         this.physics.add.collider(this.player,this.keyWall,()=>{
-            console.log('collision')
             if(this.noInstruct && hasKey){
                 this.instructions = this.add.text(this.keyWall.x,this.keyWall.y -200,'[space] open',textConfig).setOrigin(0.5)
                 this.noInstruct = false
