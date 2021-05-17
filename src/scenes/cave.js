@@ -174,7 +174,7 @@ class Cave extends Phaser.Scene {
         if(!this.noInstruct && this.instructDestructor){
             this.instructDestructor = false
             this.time.addEvent({
-                delay: 2000,
+                delay: instrctionDelay,
                 callback: () => {
                     this.noInstruct = true
                     this.instructions.destroy()

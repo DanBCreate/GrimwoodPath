@@ -47,6 +47,7 @@ let game = new Phaser.Game(config);
 debugToggle = true;
 playerMovementSpeed = 200;
 cameraLerp = 0.05; // Lerp is how delayed is the camera following our player, I.E Smoothness
+instrctionDelay = 1000
 
 //colletable flags
 let hasRope = false     //allows exit from ravine
