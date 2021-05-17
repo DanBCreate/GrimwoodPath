@@ -68,11 +68,11 @@ class player extends Phaser.Physics.Arcade.Sprite {
             this.isMovingLeft = false;
         }
         // W key || UP arrow  <Only allows jumping when on a physics 'body'>
-        if(keyW.isDown && this.body.touching.down && this.actionButton == false){
+        if(keyW.isDown && this.body.velocity.y === 0  && this.actionButton == false){
             this.setVelocityY(this.jumpHeight);
         }
 
-        if(keyUP.isDown && this.body.touching.down && this.actionButton == false){
+        if(keyUP.isDown && this.body.velocity.y === 0 && this.actionButton == false){
             this.setVelocityY(this.jumpHeight);
         }
 
