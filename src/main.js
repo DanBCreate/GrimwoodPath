@@ -30,7 +30,7 @@ let config = {
 
 //standard text config
 let textConfig = {
-    fontFamily: 'Courier',
+    fontFamily: 'horror',
     fontSize: '100px',
     color: '#FF0000',
     align: 'center',
