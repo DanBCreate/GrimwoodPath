@@ -49,7 +49,7 @@ class Ravine extends Phaser.Scene {
         this.ropeTree.body.allowGravity = false
 
         // Setting up our player and camera to follow player
-        this.player = new player(this, screenCenterX, screenCenterY, 'player').setScale(0.05); // Initialize our Player
+        this.player = new player(this, screenCenterX, screenCenterY, 'player').setScale(0.15); // Initialize our Player
         this.sceneCamera = this.cameras.main.startFollow(this.player);
         this.sceneCamera.setLerp(cameraLerp,cameraLerp)
         

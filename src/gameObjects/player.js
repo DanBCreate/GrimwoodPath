@@ -31,7 +31,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
         // Players movement settings
         this.jumpHeight = -400;
         this.actionButton = false;
-        this.bufferY = 20; // This will control the ability to push/pull while on top of a block
+        this.bufferY = 50; // This will control the ability to push/pull while on top of a block
     }
 
     create(){}

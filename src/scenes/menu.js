@@ -29,7 +29,7 @@ class Menu extends Phaser.Scene {
         this.load.image('wood','assets/tempAssets/tempWood.png');
         this.load.image('caveEntrance','assets/tempAssets/tempCave.png');
         this.load.image('clearing','assets/tempAssets/tempClearing.png');
-        this.load.image('player', 'assets/tempAssets/tempPlayer.png'); // Player Asset
+        this.load.image('player', 'assets/player/playerIdle.png'); // Player Asset
         this.load.image('ground', 'assets/tempAssets/tempGround.png'); // Ground Asset
         this.load.image('slidyBlock', 'assets/tempAssets/tempBlock.png') // Slidy Block Asset
         
