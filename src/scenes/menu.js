@@ -32,6 +32,9 @@ class Menu extends Phaser.Scene {
         this.load.image('player', 'assets/player/playerIdle.png'); // Player Asset
         this.load.image('ground', 'assets/tempAssets/tempGround.png'); // Ground Asset
         this.load.image('slidyBlock', 'assets/tempAssets/tempBlock.png') // Slidy Block Asset
+
+        this.load.spritesheet('walkLeft','assets/player/LeftRunSheet.png',{frameWidth: 767,frameHeight:1085,startFrame:0,endFrame:9});
+        this.load.spritesheet('walkRight','assets/player/RightRunSheet.png',{frameWidth: 767,frameHeight:1085,startFrame:0,endFrame:9});
         
         this.load.audio('giggle','assets/tempAssets/ChildGiggle.wav')
         this.load.audio('engine', 'assets/tempAssets/CarEngineLoop.wav')
@@ -86,6 +89,20 @@ class Menu extends Phaser.Scene {
         hasKnife = false    //? - cosmetic?
         axeWallFlag = true  //is the wall obstructing access to the axe
         keyWallFlag = true  //is the keywall obstructing access to the crowbar
+
+        //create animations for later use
+        this.anims.create({
+            key: 'walkL',
+            frames: this.anims.generateFrameNumbers('walkLeft', {frames:[0,1,2,3,4,5,6,7,8,9]}),
+            frameRate: 10,
+            repeat: -1
+        })
+        this.anims.create({
+            key: 'walkR',
+            frames: this.anims.generateFrameNumbers('walkRight', {frames:[0,1,2,3,4,5,6,7,8,9]}),
+            frameRate: 10,
+            repeat: -1
+        })
 
     }
     update(){

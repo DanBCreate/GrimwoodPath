@@ -32,9 +32,11 @@ class player extends Phaser.Physics.Arcade.Sprite {
         this.jumpHeight = -400;
         this.actionButton = false;
         this.bufferY = 50; // This will control the ability to push/pull while on top of a block
+        this.currentAnimKey;
     }
 
-    create(){}
+    create(){
+    }
 
     update(){
         // Controls the players movement
@@ -46,26 +48,43 @@ class player extends Phaser.Physics.Arcade.Sprite {
             this.setVelocityX(-playerMovementSpeed); 
             this.isMovingLeft = true; 
             this.isMovingRight = false;
+            if(!this.anims.isPlaying || this.anims.currentAnim.key != 'walkL'){
+                this.anims.play('walkL')
+            }
+            this.currentAnimKey ='walkL'
         }
         else if(keyLEFT.isDown){ // LEFT Key
             this.setVelocityX(-playerMovementSpeed); 
             this.isMovingLeft = true; 
             this.isMovingRight = false;
+            if(!this.anims.isPlaying || this.anims.currentAnim.key != 'walkL'){
+                this.anims.play('walkL')
+            }
+            this.currentAnimKey ='walkL'
         }
         else if(keyD.isDown){ // D Key
             this.setVelocityX(playerMovementSpeed); 
             this.isMovingRight = true; 
             this.isMovingLeft = false;
+            if(!this.anims.isPlaying || this.anims.currentAnim.key != 'walkR'){
+                this.anims.play('walkR')
+            }
+            this.currentAnimKey ='walkR'
         }
         else if(keyRIGHT.isDown){ // RIGHT Key
             this.setVelocityX(playerMovementSpeed); 
             this.isMovingRight = true; 
             this.isMovingLeft = false;
+            if(!this.anims.isPlaying || this.anims.currentAnim.key != 'walkR'){
+                this.anims.play('walkR')
+            }
+            this.currentAnimKey ='walkR'
         }
         else{ // Stop movement
             this.setVelocityX(0)
             this.isMovingRight = false;
             this.isMovingLeft = false;
+            this.anims.pause()
         }
         // W key || UP arrow  <Only allows jumping when on a physics 'body'>
         if(keyW.isDown && this.body.velocity.y === 0  && this.actionButton == false){
