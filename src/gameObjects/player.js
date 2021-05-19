@@ -29,7 +29,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
         this.isMovingRight = false;
 
         // Players movement settings
-        this.jumpHeight = -250;
+        this.jumpHeight = -700;
         this.actionButton = false;
         this.bufferY = 50; // This will control the ability to push/pull while on top of a block
         this.currentAnimKey;
@@ -104,7 +104,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
         }
 
         // Collides with world bounds
-        this.setCollideWorldBounds(true); 
+        this.setCollideWorldBounds(false); 
     }
 
     getAction(blockY){
