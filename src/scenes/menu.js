@@ -11,7 +11,7 @@ class Menu extends Phaser.Scene {
  
         this.loadingText = this.add.text(screenWidth/2,screenHeight/2,'Loading...',textConfig).setOrigin(0.5)
 
-        //load all assets here:
+        //temp assets
         this.load.image('forest','assets/tempAssets/tempForest.png')
         this.load.image('car','assets/tempAssets/car.png')
         this.load.image('wipeTree','assets/tempAssets/tempTree.png');
@@ -29,13 +29,24 @@ class Menu extends Phaser.Scene {
         this.load.image('wood','assets/tempAssets/tempWood.png');
         this.load.image('caveEntrance','assets/tempAssets/tempCave.png');
         this.load.image('clearing','assets/tempAssets/tempClearing.png');
-        this.load.image('player', 'assets/player/playerIdle.png'); // Player Asset
         this.load.image('ground', 'assets/tempAssets/tempGround.png'); // Ground Asset
         this.load.image('slidyBlock', 'assets/tempAssets/tempBlock.png') // Slidy Block Asset
 
+        //player assets
+        this.load.image('player', 'assets/player/playerIdle.png'); // Player Asset
         this.load.spritesheet('walkLeft','assets/player/LeftRunSheet.png',{frameWidth: 767,frameHeight:1085,startFrame:0,endFrame:9});
         this.load.spritesheet('walkRight','assets/player/RightRunSheet.png',{frameWidth: 767,frameHeight:1085,startFrame:0,endFrame:9});
         
+        //forest assets
+        this.load.image('forBG','assets/forest/ForestSolidBG.png')
+        this.load.image('forFog','assets/forest/ForestFog.png')
+        this.load.image('for1Ground','assets/forest/Forest1Ground.png')
+        this.load.image('forTree1','assets/forest/ForestTrees1.png')
+        this.load.image('forTree2','assets/forest/ForestTrees2.png')
+        this.load.image('forTree3','assets/forest/ForestTrees3.png')
+        this.load.image('forTree4','assets/forest/ForestTrees4.png')
+
+        //audio
         this.load.audio('giggle','assets/tempAssets/ChildGiggle.wav')
         this.load.audio('engine', 'assets/tempAssets/CarEngineLoop.wav')
         this.load.audio('driveCrickets', 'assets/tempAssets/NightDriveLoop.wav')
@@ -89,6 +100,7 @@ class Menu extends Phaser.Scene {
         hasKnife = false    //? - cosmetic?
         axeWallFlag = true  //is the wall obstructing access to the axe
         keyWallFlag = true  //is the keywall obstructing access to the crowbar
+        fromRavine = true   //controls where the player spawns in fForest
 
         //create animations for later use
         this.anims.create({
