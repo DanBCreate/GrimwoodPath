@@ -45,7 +45,7 @@ let game = new Phaser.Game(config);
 
 //global vars:
 debugToggle = true;
-playerMovementSpeed = 200;
+playerMovementSpeed = 65;
 cameraLerp = 0.05; // Lerp is how delayed is the camera following our player, I.E Smoothness
 instrctionDelay = 1000
 

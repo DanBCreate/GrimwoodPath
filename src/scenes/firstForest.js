@@ -87,8 +87,8 @@ class FForest extends Phaser.Scene {
         else{
             this.player = new player(this, screenWidth/3, screenHeight-6, 'player').setScale(0.15).setOrigin(0.5,1); // Initialize our Player
         }
-        this.player.displayWidth = 50
-        this.player.displayHeight = 50 
+        this.player.displayWidth = 30
+        this.player.displayHeight = 30 
 
         //set up the camera following
         this.sceneCamera = this.cameras.main.startFollow(this.player);
