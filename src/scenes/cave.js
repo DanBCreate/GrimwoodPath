@@ -71,7 +71,7 @@ class Cave extends Phaser.Scene {
                 this.noInstruct = false
             }
             else if(this.noInstruct && !hasCrowbar){
-                this.instructions = this.add.text(this.axeWall.x,this.axeWall.y -200,'maybe with more levarage...',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.axeWall.x,this.axeWall.y -200,'maybe with more leverage...',textConfig).setOrigin(0.5)
                 this.noInstruct = false
             }
             if(this.player.actionButton && hasCrowbar){
