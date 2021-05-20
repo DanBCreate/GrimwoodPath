@@ -47,7 +47,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
     }
 
     update(){
-        // Controls the players movement
+        // Controls the players movement and SFX sounds
         this.playerControls(); 
     }
 
