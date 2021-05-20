@@ -48,10 +48,12 @@ class Menu extends Phaser.Scene {
         this.load.image('forTree4','assets/forest/ForestTrees4.png')
 
         //audio
-        this.load.audio('giggle','assets/tempAssets/ChildGiggle.wav')
-        this.load.audio('engine', 'assets/tempAssets/CarEngineLoop.wav')
-        this.load.audio('driveCrickets', 'assets/tempAssets/NightDriveLoop.wav')
-        this.load.audio('nightAmbience', 'assets/tempAssets/NightAmbienceLoop.wav')
+        this.load.audio('giggle','assets/sounds/ChildGiggle.wav')
+        this.load.audio('engine', 'assets/sounds/CarEngineLoop.wav')
+        this.load.audio('driveCrickets', 'assets/sounds/NightDriveLoop.wav')
+        this.load.audio('nightAmbience', 'assets/sounds/NightAmbienceLoop.wav')
+        this.load.audio('stoneFootstep', 'assets/sounds/StoneFootstep.wav')
+        this.load.audio('grassFootstep', 'assets/sounds/GrassFootstep.wav')
 
         //remove loading screen
         this.LoadingBackground.destroy()
