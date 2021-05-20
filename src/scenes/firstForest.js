@@ -22,7 +22,15 @@ class FForest extends Phaser.Scene {
         this.backTree4 = this.add.sprite(0,screenHeight,'forTree4').setOrigin(0.5,1)
         this.forGround = this.add.sprite(0,screenHeight,'for1Ground').setOrigin(0.5,1)
 
-
+        //invisible bounding boxes
+        this.rightBound = this.physics.add.sprite((14400)/2,screenHeight,'clear').setOrigin(0,1)
+        this.rightBound.body.allowGravity = false
+        this.rightBound.setImmovable(true)
+        this.rightBound.displayHeight = screenHeight
+        this.leftBound = this.physics.add.sprite(-(14400)/2 + 1200,screenHeight,'clear').setOrigin(0,1)
+        this.leftBound.body.allowGravity = false
+        this.leftBound.setImmovable(true)
+        this.leftBound.displayHeight = screenHeight
 
 
 
@@ -66,7 +74,7 @@ class FForest extends Phaser.Scene {
 
         // Setting up our player
         if(fromRavine){
-            this.player = new player(this, 200, screenHeight/2, 'player').setScale(0.3).setOrigin(0.5,1); // Initialize our Player
+            this.player = new player(this, -5700, screenHeight/2, 'player').setScale(0.3).setOrigin(0.5,1); // Initialize our Player
             fromRavine = false
         }
         else{
@@ -79,8 +87,15 @@ class FForest extends Phaser.Scene {
         this.sceneCamera.zoom = 1
         this.sceneCamera.setBounds(-14400/2,0,14400,screenHeight)
 
-        //collide with the ground
+        //collide with the ground and bounding boxes
         this.physics.add.collider(this.player, this.ground);
+        this.physics.add.collider(this.player, this.rightBound);
+        this.physics.add.collider(this.player, this.leftBound,()=>{
+            if(this.noInstruct){
+                this.instructions = this.add.text(this.leftBound.x + 200,this.leftBound.y -500,'Don\'t want to fall back down',textConfig).setOrigin(0.5)
+                this.noInstruct = false
+            }
+        });
 
         //sound Effects
         this.giggle = this.sound.add('giggle')
@@ -225,7 +240,7 @@ class FForest extends Phaser.Scene {
         //debugging mode features
         debugUpdate(this);
         this.player.update()
-
+        console.log(this.player.body.x)
         //remove unused instructions
         if(!this.noInstruct && this.instructDestructor){
             this.instructDestructor = false
