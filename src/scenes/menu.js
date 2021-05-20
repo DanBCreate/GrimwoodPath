@@ -49,6 +49,12 @@ class Menu extends Phaser.Scene {
         this.load.image('singleTree','assets/forest/singleTree.png')
         this.load.spritesheet('markedTree','assets/forest/markedSingleTree.png',{frameWidth: 300, frameHeight:1080,startFrame:0,endFrame:7});
 
+        //ravine assets
+        this.load.image('ravineBG','assets/ravine/insideRavineBG.png')
+        this.load.image('ravinebase','assets/ravine/insideRavineBase.png')
+        this.load.image('ravineborder','assets/ravine/insideRavineBorder.png')
+        this.load.image('ravinefog','assets/ravine/insideRavineFog.png')
+
         //audio
         this.load.audio('giggle','assets/sounds/ChildGiggle.wav')
         this.load.audio('engine', 'assets/sounds/CarEngineLoop.wav')
