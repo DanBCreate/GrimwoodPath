@@ -243,34 +243,39 @@ class FForest extends Phaser.Scene {
 
         //foreground trees
         this.firstTree = this.physics.add.sprite(4000,screenHeight,'singleTree').setOrigin(0.5,1)
-        this.firstTree.marked = false
+        if(ffTree1Marked){
+            this.firstTree.anims.play('mkTree')
+        }
         this.secondTree = this.physics.add.sprite(1000,screenHeight,'singleTree').setOrigin(0.5,1)
+        if(ffTree2Marked){
+            this.secondTree.anims.play('mkTree')
+        }
         this.secondTree.marked = false
         this.firstTree.body.allowGravity = false
         this.secondTree.body.allowGravity =- false
 
         //deal with foreground trees
         this.physics.add.overlap(this.player,this.firstTree,()=>{
-            if(this.noInstruct && hasShirt && !this.firstTree.marked){
+            if(this.noInstruct && hasShirt && !ffTree1Marked){
                 this.instructions = this.add.text(this.firstTree.x,this.firstTree.y -600,'[space] to mark',textConfig).setOrigin(0.5)
                 this.instructions.setFontSize('40px')
                 this.noInstruct = false
             } 
             if(this.player.actionButton && hasShirt){
                 this.firstTree.anims.play('mkTree')
-                this.firstTree.marked = true
+                ffTree1Marked = true
             }
         })
 
         this.physics.add.overlap(this.player,this.secondTree,()=>{
-            if(this.noInstruct && hasShirt && !this.secondTree.marked){
+            if(this.noInstruct && hasShirt && !ffTree2Marked){
                 this.instructions = this.add.text(this.secondTree.x,this.secondTree.y -600,'[space] to mark',textConfig).setOrigin(0.5)
                 this.instructions.setFontSize('40px')
                 this.noInstruct = false
             } 
             if(this.player.actionButton && hasShirt){
                 this.secondTree.anims.play('mkTree')
-                this.secondTree.marked = true
+                ffTree2Marked = true
             }
         })
 
