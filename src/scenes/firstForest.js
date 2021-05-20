@@ -175,7 +175,7 @@ class FForest extends Phaser.Scene {
             }
             //transition to cave scene
             if(this.player.actionButton && hasBat && hasFlash){
-                this.screentint =this.add.rectangle(screenWidth,screenHeight,screenWidth,screenHeight,0x000000).setOrigin(1)
+                this.screentint =this.add.rectangle(screenWidth/2,screenHeight,14400,screenHeight,0x000000).setOrigin(0.5,1)
                 this.screentint.alpha = 0
                 this.tweens.add({
                     targets: this.sceneCamera,
@@ -217,7 +217,7 @@ class FForest extends Phaser.Scene {
             }
             //transition to end scene
             if(this.player.actionButton && hasAxe){
-                this.screentint =this.add.rectangle(screenWidth,screenHeight,screenWidth,screenHeight,0x000000).setOrigin(1)
+                this.screentint =this.add.rectangle(screenWidth/2,screenHeight,14400,screenHeight,0x000000).setOrigin(0.51)
                 this.screentint.alpha = 0
                 this.tweens.add({
                     targets: this.sceneCamera,
