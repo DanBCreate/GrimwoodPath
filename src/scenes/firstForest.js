@@ -36,37 +36,43 @@ class FForest extends Phaser.Scene {
 
 
         //set up the ground
-        this.ground = this.physics.add.sprite(screenCenterX, screenHeight - 5, 'ground').setScale(0.05); // Initialize our ground
+        this.ground = this.physics.add.sprite(screenCenterX, screenHeight - 50, 'ground').setScale(0.05); // Initialize our ground
         this.ground.setImmovable(true); // Sets ground to immovable
         this.ground.body.allowGravity = false; // So gravity has no effect ground
         this.ground.displayWidth = 17000;
         this.ground.setOrigin(0.5,0)
+        //set up the ground
+        this.highground = this.physics.add.sprite(-1700, screenHeight - 130, 'clear').setScale(0.05); // Initialize our ground
+        this.highground.setImmovable(true); // Sets ground to immovable
+        this.highground.body.allowGravity = false; // So gravity has no effect ground
+        this.highground.displayWidth = 13000;
+        this.highground.setOrigin(0.5,0)
         //cave transition
-        this.caveEntrance = this.physics.add.sprite(screenWidth/3,screenHeight-20,'caveEntrance').setOrigin(0.5,1)
+        this.caveEntrance = this.physics.add.sprite(screenWidth,screenHeight-150,'caveEntrance').setOrigin(0.5,1)
         // this.caveEntrance.displayHeight = 60
         // this.caveEntrance.displayWidth = 60
         this.caveEntrance.body.allowGravity = false
         
-        this.clearingEntrance = this.physics.add.sprite(7*screenWidth/8 - 100,screenHeight-20,'clearing').setOrigin(0.5,1)
+        this.clearingEntrance = this.physics.add.sprite(0,screenHeight-150,'clearing').setOrigin(0.5,1)
         // this.clearingEntrance.displayWidth = 60
         // this.clearingEntrance.displayHeight = 60
         this.clearingEntrance.body.allowGravity = false
 
         //spawn collectables
         if(!hasBat){
-            this.battery = this.physics.add.sprite(3*screenWidth/4,screenHeight - 20,'bat').setOrigin(0.5,1)
+            this.battery = this.physics.add.sprite(3000,screenHeight - 150,'bat').setOrigin(0.5,1)
             // this.battery.displayHeight = 10
             // this.battery.displayWidth = 10
             this.battery.body.allowGravity = false
         }
         if(!hasFlash){
-            this.light = this.physics.add.sprite(screenWidth/2,screenHeight - 20,'light').setOrigin(0.5,1)
+            this.light = this.physics.add.sprite(5000,screenHeight - 150,'light').setOrigin(0.5,1)
             // this.light.displayHeight = 10
             // this.light.displayWidth = 10
             this.light.body.allowGravity = false
         }
         if(!hasKnife){
-            this.knife = this.physics.add.sprite(screenWidth/6,screenHeight - 20,'knife').setOrigin(0.5,1)
+            this.knife = this.physics.add.sprite(-4000,screenHeight - 150,'knife').setOrigin(0.5,1)
             // this.knife.displayWidth = 10
             // this.knife.displayHeight = 10
             this.knife.body.allowGravity = false
@@ -74,11 +80,11 @@ class FForest extends Phaser.Scene {
 
         // Setting up our player
         if(fromRavine){
-            this.player = new player(this, -5700, screenHeight/2, 'player').setScale(0.3).setOrigin(0.5,1); // Initialize our Player
+            this.player = new player(this, -5700, screenHeight - 136, 'player').setScale(0.3).setOrigin(0.5,1); // Initialize our Player
             fromRavine = false
         }
         else{
-            this.player = new player(this, screenWidth/3, screenHeight/2, 'player').setScale(0.3).setOrigin(0.5,0.5); // Initialize our Player
+            this.player = new player(this, screenWidth, screenHeight - 136, 'player').setScale(0.3).setOrigin(0.5,1); // Initialize our Player
         }
 
         //set up the camera following
@@ -89,6 +95,7 @@ class FForest extends Phaser.Scene {
 
         //collide with the ground and bounding boxes
         this.physics.add.collider(this.player, this.ground);
+        this.physics.add.collider(this.player, this.highground);
         this.physics.add.collider(this.player, this.rightBound);
         this.physics.add.collider(this.player, this.leftBound,()=>{
             if(this.noInstruct){
@@ -240,7 +247,6 @@ class FForest extends Phaser.Scene {
         //debugging mode features
         debugUpdate(this);
         this.player.update()
-        console.log(this.player.body.x)
         //remove unused instructions
         if(!this.noInstruct && this.instructDestructor){
             this.instructDestructor = false
