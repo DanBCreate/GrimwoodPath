@@ -16,12 +16,6 @@ class Ravine extends Phaser.Scene {
     create(){
         // Debugging mode features
         debugCreate(this); 
-
-        this.load.image('ravineBG','assets/ravine/insideRavineBG.png')
-        this.load.image('ravinebase','assets/ravine/insideRavineBase.png')
-        this.load.image('ravineborder','assets/ravine/insideRavineBorder.png')
-        this.load.image('ravinefog','assets/ravine/insideRavineFog.png')
-
         this.backDrop = this.add.sprite(0,screenHeight,'ravineBG').setOrigin(0,1)
         this.backBase = this.add.sprite(0,screenHeight,'ravinebase').setOrigin(0,1)
         this.backFog = this.add.sprite(0,screenHeight,'ravinefog').setOrigin(0,1)
