@@ -34,7 +34,8 @@ class Menu extends Phaser.Scene {
         this.load.image('clear','assets/other/transparent.png') // fully transparent 100x100 square for creating invisible obsitcles
 
         //player assets
-        this.load.image('player', 'assets/player/playerIdle.png'); // Player Asset
+        this.load.image('player', 'assets/player/playerIdle.png');
+        this.load.spritesheet('playerIdle', 'assets/player/PlayerIdleSheet.png',{frameWidth: 767,frameHeight:1085,startFrame:0, endFrame:1}); // Player Asset
         this.load.spritesheet('walkLeft','assets/player/LeftRunSheet.png',{frameWidth: 767,frameHeight:1085,startFrame:0,endFrame:9});
         this.load.spritesheet('walkRight','assets/player/RightRunSheet.png',{frameWidth: 767,frameHeight:1085,startFrame:0,endFrame:9});
         
@@ -141,6 +142,18 @@ class Menu extends Phaser.Scene {
             key: 'mkTree',
             frames: this.anims.generateFrameNumbers('markedTree', {frames:[0,1,2,3,4,5,6,7]}),
             frameRate: 7,
+            repeat: -1
+        })
+        this.anims.create({
+            key: 'IdleRight',
+            frames: this.anims.generateFrameNumbers('playerIdle', {frames:[1]}),
+            frameRate: 0,
+            repeat: -1
+        })
+        this.anims.create({
+            key: 'IdleLeft',
+            frames: this.anims.generateFrameNumbers('playerIdle', {frames:[0]}),
+            frameRate: 0,
             repeat: -1
         })
     }

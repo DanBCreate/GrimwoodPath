@@ -29,6 +29,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
         this.actionButton = false;
         this.bufferY = 50; // This will control the ability to push/pull while on top of a block
         this.currentAnimKey;
+        this.direction = 0; // 0 is Right 1 is Left
         
         // Player SFX Settings
         this.sfxLock = false;
@@ -54,6 +55,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
     playerControls(){
         if(keyA.isDown){ // A Key 
             this.setVelocityX(-playerMovementSpeed); 
+            this.direction = 1;
 
             if(!this.anims.isPlaying || this.anims.currentAnim.key != 'walkL'){
                 this.anims.play('walkL')
@@ -82,6 +84,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
         }
         else if(keyLEFT.isDown){ // LEFT Key
             this.setVelocityX(-playerMovementSpeed); 
+            this.direction = 1;
 
             if(!this.anims.isPlaying || this.anims.currentAnim.key != 'walkL'){
                 this.anims.play('walkL')
@@ -110,6 +113,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
         }
         else if(keyD.isDown){ // D Key
             this.setVelocityX(playerMovementSpeed); 
+            this.direction = 0;
 
             if(!this.anims.isPlaying || this.anims.currentAnim.key != 'walkR'){
                 this.anims.play('walkR')
@@ -138,6 +142,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
         }
         else if(keyRIGHT.isDown){ // RIGHT Key
             this.setVelocityX(playerMovementSpeed); 
+            this.direction = 0;
 
             if(!this.anims.isPlaying || this.anims.currentAnim.key != 'walkR'){
                 this.anims.play('walkR')
@@ -166,7 +171,15 @@ class player extends Phaser.Physics.Arcade.Sprite {
         }
         else{ // Stop movement
             this.setVelocityX(0)
+
             this.anims.pause()
+            if(this.direction == 1){
+                this.anims.play('IdleRight');
+            }
+            else{
+                this.anims.play('IdleLeft');
+            }
+
             this.sfxLock = false;
             this.grass.stop();
             this.stone.stop();
