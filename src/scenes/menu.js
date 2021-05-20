@@ -62,8 +62,23 @@ class Menu extends Phaser.Scene {
 
         //debugging mode features
         debugCreate(this);
-        this.background = this.add.tileSprite(0,0,screenWidth,screenHeight,'forest').setOrigin(0)
-        this.car = this.add.sprite(screenWidth/3,890,'car').setOrigin(0.5)
+
+        this.blackDrop = this.add.sprite(screenWidth/2,screenHeight/2,'ground').setOrigin(0.5)
+        this.blackDrop.displayHeight = screenHeight*2
+        this.blackDrop.displayWidth = 17000
+
+        this.backGround = this.add.sprite(0,screenHeight,'forBG').setOrigin(0.5,1)
+        this.backTree1 = this.add.tileSprite(0,0,screenWidth,screenHeight,'forTree1').setOrigin(0)
+        this.backTree2 = this.add.tileSprite(0,0,screenWidth,screenHeight,'forTree2').setOrigin(0)
+        this.backFog = this.add.tileSprite(0,0,screenWidth,screenHeight,'forFog').setOrigin(0)
+        this.backTree3 = this.add.tileSprite(0,0,screenWidth,screenHeight,'forTree3').setOrigin(0)
+        this.backTree4 = this.add.tileSprite(0,0,screenWidth,screenHeight,'forTree4').setOrigin(0)
+        this.ground = this.add.sprite(0,screenHeight,'ground').setOrigin(0,1)
+        this.ground.displayWidth = screenWidth
+        this.ground.displayHeight = 150
+
+        //this.background = this.add.tileSprite(0,0,screenWidth,screenHeight,'forest').setOrigin(0)
+        this.car = this.add.sprite(screenWidth/3,830,'car').setOrigin(0.5)
 
         this.engine = this.sound.add('engine');
         this.driveCrickets = this.sound.add('driveCrickets');
@@ -120,7 +135,12 @@ class Menu extends Phaser.Scene {
     update(){
         //debugging mode features
         debugUpdate(this);
-        this.background.tilePositionX +=10
+        //this.background.tilePositionX +=10
+        this.backTree1.tilePositionX += 10
+        this.backTree2.tilePositionX += 9
+        this.backFog.tilePositionX += 8
+        this.backTree3.tilePositionX +=11
+        this.backTree4.tilePositionX +=12
     }
 
 }
