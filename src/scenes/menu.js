@@ -46,6 +46,8 @@ class Menu extends Phaser.Scene {
         this.load.image('forTree2','assets/forest/ForestTrees2.png')
         this.load.image('forTree3','assets/forest/ForestTrees3.png')
         this.load.image('forTree4','assets/forest/ForestTrees4.png')
+        this.load.image('singleTree','assets/forest/singleTree.png')
+        this.load.spritesheet('markedTree','assets/forest/markedSingleTree.png',{frameWidth: 300, frameHeight:1080,startFrame:0,endFrame:7});
 
         //audio
         this.load.audio('giggle','assets/sounds/ChildGiggle.wav')
@@ -119,6 +121,8 @@ class Menu extends Phaser.Scene {
         axeWallFlag = true  //is the wall obstructing access to the axe
         keyWallFlag = true  //is the keywall obstructing access to the crowbar
         fromRavine = true   //controls where the player spawns in fForest
+        ffTree1Marked = false //are trees marked?
+        ffTree2Marked = false //are trees marked?
 
         //create animations for later use
         this.anims.create({
@@ -131,6 +135,12 @@ class Menu extends Phaser.Scene {
             key: 'walkR',
             frames: this.anims.generateFrameNumbers('walkRight', {frames:[0,1,2,3,4,5,6,7,8,9]}),
             frameRate: 10,
+            repeat: -1
+        })
+        this.anims.create({
+            key: 'mkTree',
+            frames: this.anims.generateFrameNumbers('markedTree', {frames:[0,1,2,3,4,5,6,7]}),
+            frameRate: 7,
             repeat: -1
         })
     }
