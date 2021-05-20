@@ -25,7 +25,7 @@ class Cave extends Phaser.Scene {
         this.ground.setImmovable(true); // Sets ground to immovable
         this.ground.body.allowGravity = false; // So gravity has no effect ground
         this.ground.displayWidth = screenWidth;
-        this.ground.setOrigin(0.5,1)       
+        this.ground.setOrigin(0.5,1)   
 
         // Setting up our player and camera to follow player
         this.player = new player(this, screenCenterX, screenCenterY, 'player').setScale(0.15); // Initialize our Player
@@ -154,12 +154,26 @@ class Cave extends Phaser.Scene {
             }
         })
         
-    // Setting up slidy block
-    this.block = new slidyBlock(this, screenCenterX + 200, screenCenterY, 'slidyBlock').setScale(0.05);
-    // Colliders
-    this.physics.add.collider(this.block, this.ground); // Collider between block and ground.
-    this.physics.add.collider(this.block, this.axeWall); // Collider between block and ground.
-    this.physics.add.collider(this.player, this.block); // Collider between player and the block
+        // Setting up slidy block
+        this.block = new slidyBlock(this, screenCenterX + 200, screenCenterY, 'slidyBlock').setScale(0.05);
+        // Colliders
+        this.physics.add.collider(this.block, this.ground); // Collider between block and ground.
+        this.physics.add.collider(this.block, this.axeWall); // Collider between block and ground.
+        this.physics.add.collider(this.player, this.block); // Collider between player and the block
+
+        //setting up the lighting
+        this.lights.enable().setAmbientColor(0x222222); // enable lighting, and tint the background dark
+        //make the lighting effect all the things
+        this.block.setPipeline('Light2D')
+        this.player.setPipeline('Light2D')
+        this.ground.setPipeline('Light2D')
+        this.caveEntrance.setPipeline('Light2D')
+        this.caveExit.setPipeline('Light2D')
+        this.axe.setPipeline('Light2D')
+        this.axeWall.setPipeline('Light2D')
+
+        //create the actural light
+        this.playerLight = this.lights.addLight(0,0,1000).setColor(0xffffff).setIntensity(2)
 
     }
     update(){
@@ -182,8 +196,13 @@ class Cave extends Phaser.Scene {
                 }
             })
         }
+
+        //move the light to follow the player
+        this.playerLight.x = this.player.body.x + this.player.displayWidth/2
+        this.playerLight.y = this.player.body.y
     }
 
+    //checks if slidy block should be pushed
     checkSlidyBlock() {
         if(this.block.checkProximity(this.player.x) == true){
             
