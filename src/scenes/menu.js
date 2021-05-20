@@ -46,6 +46,8 @@ class Menu extends Phaser.Scene {
         this.load.image('forTree2','assets/forest/ForestTrees2.png')
         this.load.image('forTree3','assets/forest/ForestTrees3.png')
         this.load.image('forTree4','assets/forest/ForestTrees4.png')
+        this.load.image('singleTree','assets/forest/singleTree.png')
+        this.load.spritesheet('markedTree','assets/forest/markedSingleTree.png',{frameWidth: 300, frameHeight:1080,startFrame:0,endFrame:7});
 
         //audio
         this.load.audio('giggle','assets/tempAssets/ChildGiggle.wav')
@@ -129,6 +131,12 @@ class Menu extends Phaser.Scene {
             key: 'walkR',
             frames: this.anims.generateFrameNumbers('walkRight', {frames:[0,1,2,3,4,5,6,7,8,9]}),
             frameRate: 10,
+            repeat: -1
+        })
+        this.anims.create({
+            key: 'mkTree',
+            frames: this.anims.generateFrameNumbers('markedTree', {frames:[0,1,2,3,4,5,6,7]}),
+            frameRate: 7,
             repeat: -1
         })
     }
