@@ -135,7 +135,6 @@ class FForest extends Phaser.Scene {
         if(ffTree2Marked){
             this.secondTree.anims.play('mkTree')
         }
-        this.secondTree.marked = false
         this.firstTree.body.allowGravity = false
         this.secondTree.body.allowGravity =- false
 
