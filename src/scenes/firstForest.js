@@ -15,11 +15,11 @@ class FForest extends Phaser.Scene {
         this.blackDrop.displayHeight = screenHeight*2
         this.blackDrop.displayWidth = 17000
         this.backGround = this.add.sprite(0,screenHeight,'forBG').setOrigin(0.5,1)
-        this.backTree1 = this.add.sprite(0,screenHeight,'forTree1').setOrigin(0.5,1)
-        this.backTree2 = this.add.sprite(0,screenHeight,'forTree2').setOrigin(0.5,1)
-        this.backFog = this.add.sprite(0,screenHeight,'forFog').setOrigin(0.5,1)
         this.backTree3 = this.add.sprite(0,screenHeight,'forTree3').setOrigin(0.5,1)
         this.backTree4 = this.add.sprite(0,screenHeight,'forTree4').setOrigin(0.5,1)
+        this.backFog = this.add.sprite(0,screenHeight,'forFog').setOrigin(0.5,1)
+        this.backTree2 = this.add.sprite(0,screenHeight,'forTree2').setOrigin(0.5,1)
+        this.backTree1 = this.add.sprite(0,screenHeight,'forTree1').setOrigin(0.5,1)
         this.forGround = this.add.sprite(0,screenHeight,'for1Ground').setOrigin(0.5,1)
 
         //invisible bounding boxes
