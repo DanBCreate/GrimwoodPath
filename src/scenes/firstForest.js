@@ -15,6 +15,19 @@ class FForest extends Phaser.Scene {
         this.blackDrop.displayHeight = screenHeight*2
         this.blackDrop.displayWidth = 17000
         this.backGround = this.add.sprite(0,screenHeight,'forBG').setOrigin(0.5,1)
+        //background marked trees
+        this.backFirstTree = this.physics.add.sprite(4100,screenHeight,'singleTree').setOrigin(0.5,1)
+        if(lfTree1Marked){
+            this.backFirstTree.anims.play('mkTree')
+            this.backFirstTree.displayWidth = 100
+        }
+        this.backSecondTree = this.physics.add.sprite(1100,screenHeight,'singleTree').setOrigin(0.5,1)
+        if(lfTree2Marked){
+            this.backSecondTree.anims.play('mkTree')
+            this.backSecondTree.displayWidth = 100
+        }
+        this.backFirstTree.body.allowGravity = false
+        this.backSecondTree.body.allowGravity =- false
         this.backTree3 = this.add.sprite(0,screenHeight,'forTree3').setOrigin(0.5,1)
         this.backTree4 = this.add.sprite(0,screenHeight,'forTree4').setOrigin(0.5,1)
         this.backTree2 = this.add.sprite(0,screenHeight,'forTree2').setOrigin(0.5,1)
@@ -174,7 +187,6 @@ class FForest extends Phaser.Scene {
         }
 
         //paralax the background
-
         this.backFog.x = this.player.x/25
         this.backTree1.x = this.player.x/40
         this.backTree2.x = this.player.x/50

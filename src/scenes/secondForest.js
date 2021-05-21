@@ -22,6 +22,21 @@ class LForest extends Phaser.Scene {
         this.blackDrop.displayHeight = screenHeight*2
         this.blackDrop.displayWidth = 17000
         this.backGround = this.add.sprite(0,screenHeight,'forBG').setOrigin(0,1)
+
+        //background marked trees
+        this.backFirstTree = this.physics.add.sprite(11300,screenHeight,'singleTree').setOrigin(0.5,1)
+        if(ffTree1Marked){
+            this.backFirstTree.anims.play('mkTree')
+            this.backFirstTree.displayWidth = 100
+        }
+        this.backSecondTree = this.physics.add.sprite(8300,screenHeight,'singleTree').setOrigin(0.5,1)
+        if(ffTree2Marked){
+            this.backSecondTree.anims.play('mkTree')
+            this.backSecondTree.displayWidth = 100
+        }
+        this.backFirstTree.body.allowGravity = false
+        this.backSecondTree.body.allowGravity =- false
+
         this.backTree3 = this.add.sprite(0,screenHeight,'forTree3').setOrigin(0,1)
         this.backTree4 = this.add.sprite(0,screenHeight,'forTree4').setOrigin(0,1)
         this.backTree2 = this.add.sprite(0,screenHeight,'forTree2').setOrigin(0,1)
@@ -47,7 +62,7 @@ class LForest extends Phaser.Scene {
         this.leftBound.displayHeight = screenHeight
 
         // Setting up our player and camera to follow player
-        this.player = new player(this, screenCenterX, screenCenterY, 'player').setScale(0.15); // Initialize our Player
+        this.player = new player(this, 7000, screenCenterY, 'player').setScale(0.15); // Initialize our Player
         this.sceneCamera = this.cameras.main.startFollow(this.player);
         this.sceneCamera.setLerp(cameraLerp,cameraLerp)
         this.sceneCamera.setBounds(0,0,14400,screenHeight)
@@ -89,17 +104,17 @@ class LForest extends Phaser.Scene {
 
 
         //cave entrance
-        this.caveExit = this.physics.add.sprite(screenWidth/2,screenHeight-100,'caveEntrance').setOrigin(0.5,1)
+        this.caveExit = this.physics.add.sprite(7000,screenHeight-100,'caveEntrance').setOrigin(0.5,1)
         this.caveExit.body.allowGravity = false
 
         //car
-        this.escapeCar = this.physics.add.sprite(screenWidth,screenHeight-100,'car').setOrigin(0.5,1)
+        this.escapeCar = this.physics.add.sprite(14300,screenHeight-100,'car').setOrigin(0.5,1)
         this.escapeCar.body.allowGravity = false
 
 
         //collectables
         if(!hasKey){
-            this.key = this.physics.add.sprite(7*screenWidth/8,screenHeight - 100,'key').setOrigin(0.5,1)
+            this.key = this.physics.add.sprite(14000,screenHeight - 100,'key').setOrigin(0.5,1)
             this.key.body.allowGravity = false
         }
 
@@ -113,11 +128,11 @@ class LForest extends Phaser.Scene {
         collect(this,this.crowbar,'crowbar')
 
         //foreground trees
-        this.firstTree = this.physics.add.sprite(4000,screenHeight,'singleTree').setOrigin(0.5,1)
+        this.firstTree = this.physics.add.sprite(11200,screenHeight,'singleTree').setOrigin(0.5,1)
         if(lfTree1Marked){
             this.firstTree.anims.play('mkTree')
         }
-        this.secondTree = this.physics.add.sprite(1000,screenHeight,'singleTree').setOrigin(0.5,1)
+        this.secondTree = this.physics.add.sprite(8200,screenHeight,'singleTree').setOrigin(0.5,1)
         if(lfTree2Marked){
             this.secondTree.anims.play('mkTree')
         }
@@ -150,6 +165,13 @@ class LForest extends Phaser.Scene {
                 }
             })
         }
+
+        //paralax the background
+        this.backFog.x = this.player.x/25
+        this.backTree1.x = this.player.x/40
+        this.backTree2.x = this.player.x/50
+        this.backTree3.x = this.player.x/30
+        this.backTree4.x = this.player.x/20
 
     }
 
