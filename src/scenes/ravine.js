@@ -79,64 +79,10 @@ class Ravine extends Phaser.Scene {
         this.physics.add.collider(this.player, this.leftBound);
 
         //collecting the rope
-        this.physics.add.overlap(this.player,this.rope,()=>{
-            if(this.noInstruct){
-                this.instructions = this.add.text(this.rope.x,this.rope.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
-                this.instructions.setFontSize('40px')
-                this.noInstruct = false
-            }
-            if(this.player.actionButton){
-                this.instructions.destroy()
-                this.rope.destroy()
-                hasRope = true
-                this.noInstruct = true;
-            }
-        })
-
-        //collecting the rope
-        this.physics.add.overlap(this.player,this.shirt,()=>{
-            if(this.noInstruct){
-                this.instructions = this.add.text(this.shirt.x,this.shirt.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
-                this.instructions.setFontSize('40px')
-                this.noInstruct = false
-            }
-            if(this.player.actionButton){
-                this.instructions.destroy()
-                this.shirt.destroy()
-                hasShirt = true
-                this.noInstruct = true;
-            }
-        })
-
-        //collecting the rope
-        this.physics.add.overlap(this.player,this.wood,()=>{
-            if(this.noInstruct){
-                this.instructions = this.add.text(this.wood.x,this.wood.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
-                this.instructions.setFontSize('40px')
-                this.noInstruct = false
-            }
-            if(this.player.actionButton){
-                this.instructions.destroy()
-                this.wood.destroy()
-                hasWood = true
-                this.noInstruct = true;
-            }
-        })
-
-        //collecting the rope
-        this.physics.add.overlap(this.player,this.jacket,()=>{
-            if(this.noInstruct){
-                this.instructions = this.add.text(this.jacket.x,this.jacket.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
-                this.instructions.setFontSize('40px')
-                this.noInstruct = false
-            }
-            if(this.player.actionButton){
-                this.instructions.destroy()
-                this.jacket.destroy()
-                hasJacket = true
-                this.noInstruct = true;
-            }
-        })
+        collect(this,this.rope,'rope')
+        collect(this,this.shirt,'shirt')
+        collect(this,this.jacket,'jacket')
+        collect(this,this.wood,'wood')
 
         //deal with climbing the tree
         this.physics.add.overlap(this.player,this.ropeTree,()=>{

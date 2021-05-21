@@ -103,38 +103,14 @@ class LForest extends Phaser.Scene {
             this.key.body.allowGravity = false
         }
 
-        //collecting the axe
-        this.physics.add.overlap(this.player,this.key,()=>{
-            if(this.noInstruct){
-                this.instructions = this.add.text(this.key.x,this.key.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
-                this.noInstruct = false
-            }
-            if(this.player.actionButton){
-                this.instructions.destroy()
-                this.key.destroy()
-                hasKey = true
-                this.noInstruct = true;
-            }
-        })
-
         if(!hasCrowbar){
             this.crowbar = this.physics.add.sprite(screenWidth/8,screenHeight - 100,'bar').setOrigin(0.5,1)
             this.crowbar.body.allowGravity = false
         }
 
-        //collecting the axe
-        this.physics.add.overlap(this.player,this.crowbar,()=>{
-            if(this.noInstruct){
-                this.instructions = this.add.text(this.crowbar.x,this.crowbar.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
-                this.noInstruct = false
-            }
-            if(this.player.actionButton){
-                this.instructions.destroy()
-                this.crowbar.destroy()
-                hasCrowbar = true
-                this.noInstruct = true;
-            }
-        })
+        //collecting things
+        collect(this,this.key,'key')
+        collect(this,this.crowbar,'crowbar')
 
         //car
         this.escapeCar = this.physics.add.sprite(screenWidth,screenHeight-100,'car').setOrigin(0.5,1)

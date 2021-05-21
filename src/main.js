@@ -176,3 +176,31 @@ function LRWipe(scene,duration,texture,delay = 0){
         }
     })
 }
+
+function collect(scene,item,key){
+    scene.physics.add.overlap(scene.player,item,()=>{
+        if(scene.noInstruct){
+            scene.instructions = scene.add.text(item.x,item.y -400,'[space] to pick up',textConfig).setOrigin(0.5)
+            scene.instructions.setFontSize('40px')
+            scene.noInstruct = false
+        } 
+        if(scene.player.actionButton){
+            scene.instructions.alpha = 0;
+            item.destroy()
+            //I wish pass by referance was a thing
+            //set the appropreate flag
+            if(key === 'knife'){hasKnife = true}
+            else if(key === 'shirt'){hasShirt = true}
+            else if(key === 'key'){hasKey = true}
+            else if(key === 'jacket'){hasJacket = true}
+            else if(key === 'rope'){hasRope = true}
+            else if(key === 'wood'){hasWood = true}
+            else if(key === 'crowbar'){hasCrowbar = true}
+            else if(key === 'axe'){hasAxe = true}
+            else if(key === 'bat'){hasBat = true}
+            else if(key === 'flash'){hasFlash = true}
+            else{console.log('Invalid Key')}
+            scene.noInstruct = true;
+        }
+    })
+}

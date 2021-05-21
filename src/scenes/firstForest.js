@@ -117,49 +117,11 @@ class FForest extends Phaser.Scene {
         //object interactions
         this.noInstruct = true
         this.instructDestructor = true
+        
+        collect(this,this.battery,'bat')
+        collect(this,this.light,'flash')
+        collect(this,this.knife,'knife')
 
-        //collecting the battery
-        this.physics.add.overlap(this.player,this.battery,()=>{
-            if(this.noInstruct){
-                this.instructions = this.add.text(this.battery.x,this.battery.y -400,'[space] to pick up',textConfig).setOrigin(0.5)
-                this.instructions.setFontSize('40px')
-                this.noInstruct = false
-            }
-            if(this.player.actionButton){
-                this.instructions.destroy()
-                this.battery.destroy()
-                hasBat = true
-                this.noInstruct = true;
-            }
-        })
-        //collecting the light
-        this.physics.add.overlap(this.player,this.light,()=>{
-            if(this.noInstruct){
-                this.instructions = this.add.text(this.light.x,this.light.y -400,'[space] to pick up',textConfig).setOrigin(0.5)
-                this.instructions.setFontSize('40px')
-                this.noInstruct = false
-            } 
-            if(this.player.actionButton){
-                this.instructions.alpha = 0;
-                this.light.destroy()
-                hasFlash = true
-                this.noInstruct = true;
-            }
-        })
-        //collecting the knife
-        this.physics.add.overlap(this.player,this.knife,()=>{
-            if(this.noInstruct){
-                this.instructions = this.add.text(this.knife.x,this.knife.y -400,'[space] to pick up',textConfig).setOrigin(0.5)
-                this.instructions.setFontSize('40px')
-                this.noInstruct = false
-            } 
-            if(this.player.actionButton){
-                this.instructions.alpha = 0;
-                this.knife.destroy()
-                hasKnife = true
-                this.noInstruct = true;
-            }
-        })
 
         //deal with entering the cave
         this.physics.add.overlap(this.player,this.caveEntrance,()=>{

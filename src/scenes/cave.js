@@ -51,18 +51,7 @@ class Cave extends Phaser.Scene {
         }
 
         //collecting the axe
-        this.physics.add.overlap(this.player,this.axe,()=>{
-            if(this.noInstruct){
-                this.instructions = this.add.text(this.axe.x,this.axe.y -200,'[space] to pick up',textConfig).setOrigin(0.5)
-                this.noInstruct = false
-            }
-            if(this.player.actionButton){
-                this.instructions.destroy()
-                this.axe.destroy()
-                hasAxe = true
-                this.noInstruct = true;
-            }
-        })
+        collect(this,this.axe,'axe')
 
         //destroying the wall
         this.physics.add.collider(this.player,this.axeWall,()=>{
@@ -169,8 +158,8 @@ class Cave extends Phaser.Scene {
         this.ground.setPipeline('Light2D')
         this.caveEntrance.setPipeline('Light2D')
         this.caveExit.setPipeline('Light2D')
-        this.axe.setPipeline('Light2D')
-        this.axeWall.setPipeline('Light2D')
+        if(!hasAxe){this.axe.setPipeline('Light2D')}
+        if(axeWallFlag){this.axeWall.setPipeline('Light2D')}
 
         //create the actural light
         this.playerLight = this.lights.addLight(0,0,1000).setColor(0xffffff).setIntensity(2)
