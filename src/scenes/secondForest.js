@@ -65,37 +65,10 @@ class LForest extends Phaser.Scene {
         this.caveExit = this.physics.add.sprite(screenWidth/2,screenHeight-100,'caveEntrance').setOrigin(0.5,1)
         this.caveExit.body.allowGravity = false
 
-        //deal with entering the cave
-        this.physics.add.overlap(this.player,this.caveExit,()=>{
-            if(this.noInstruct){
-                this.instructions = this.add.text(this.caveExit.x,this.caveExit.y -200,'[space] to enter',textConfig).setOrigin(0.5)
-                this.noInstruct = false
-            } 
-            //transition to cave scene
-            if(this.player.actionButton){
-                this.screentint =this.add.rectangle(screenWidth,screenHeight,screenWidth,screenHeight,0x000000).setOrigin(1)
-                this.screentint.alpha = 0
-                this.tweens.add({
-                    targets: this.sceneCamera,
-                    zoom: 10,
-                    duration: 2000,
-                    ease: 'linear'                     
-                })
-                this.tweens.add({
-                    targets: this.screentint,
-                    alpha: 1,
-                    duration: 2000,     
-                    ease: 'linear'               
-                })
-                this.time.addEvent({
-                    delay: 2000,
-                    callback: ()=> {
-                        this.noInstruct = true;
-                        this.scene.start('caveScene')
-                    }
-                })
-            }
-        })  
+        //car
+        this.escapeCar = this.physics.add.sprite(screenWidth,screenHeight-100,'car').setOrigin(0.5,1)
+        this.escapeCar.body.allowGravity = false
+
 
         //collectables
         if(!hasKey){
@@ -112,42 +85,9 @@ class LForest extends Phaser.Scene {
         collect(this,this.key,'key')
         collect(this,this.crowbar,'crowbar')
 
-        //car
-        this.escapeCar = this.physics.add.sprite(screenWidth,screenHeight-100,'car').setOrigin(0.5,1)
-        this.escapeCar.body.allowGravity = false
-
-        //deal with entering the car
-        this.physics.add.overlap(this.player,this.escapeCar,()=>{
-            if(this.noInstruct){
-                this.instructions = this.add.text(this.escapeCar.x,this.escapeCar.y -200,'[space] to flee in terror',textConfig).setOrigin(0.5)
-                this.noInstruct = false
-            } 
-            //transition to cave scene
-            if(this.player.actionButton){
-                this.screentint =this.add.rectangle(screenWidth,screenHeight,screenWidth,screenHeight,0x000000).setOrigin(1)
-                this.screentint.alpha = 0
-                this.tweens.add({
-                    targets: this.sceneCamera,
-                    zoom: 10,
-                    duration: 2000,
-                    ease: 'linear'                     
-                })
-                this.tweens.add({
-                    targets: this.screentint,
-                    alpha: 1,
-                    duration: 2000,     
-                    ease: 'linear'               
-                })
-                this.time.addEvent({
-                    delay: 2000,
-                    callback: ()=> {
-                        this.noInstruct = true;
-                        this.scene.start('noBroScene')
-                    }
-                })
-            }
-        })  
-
+        //deal with scene changes
+        leave(this,this.caveExit,'cave','caveScene')
+        leave(this,this.escapeCar,'car','noBroScene')
 
     }
     update(){

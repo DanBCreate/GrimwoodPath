@@ -177,6 +177,7 @@ function LRWipe(scene,duration,texture,delay = 0){
     })
 }
 
+//collectables!!!
 function collect(scene,item,key){
     scene.physics.add.overlap(scene.player,item,()=>{
         if(scene.noInstruct){
@@ -201,6 +202,89 @@ function collect(scene,item,key){
             else if(key === 'flash'){hasFlash = true}
             else{console.log('Invalid Key')}
             scene.noInstruct = true;
+        }
+    })
+}
+
+//creates scene transistions
+function leave(scene,entrance,type,destination){
+    scene.physics.add.overlap(scene.player,entrance,()=>{
+        //flag used to know if a player is allowed to enter
+        let happy = false
+
+        //if cave
+        if(scene.noInstruct && hasFlash && hasBat && type === 'cave'){
+            scene.instructions = scene.add.text(entrance.x,entrance.y -400,'[space] to enter',textConfig).setOrigin(0.5)
+            scene.instructions.setFontSize('40px')
+            scene.noInstruct = false
+            happy = true
+        } 
+        else if (scene.noInstruct && type === 'cave'){
+            scene.instructions = scene.add.text(entrance.x,entrance.y -400,'It\'s dark in there',textConfig).setOrigin(0.5)
+            scene.instructions.setFontSize('40px')
+            scene.noInstruct = false
+        }
+
+        //if tree
+        if(scene.noInstruct && hasRope && type === 'tree'){
+            scene.instructions = scene.add.text(entrance.x,entrance.y -350,'[space] to climb',textConfig).setOrigin(0.5)
+            scene.instructions.setFontSize('40px')
+            scene.noInstruct = false
+            happy = true
+        } 
+        else if (scene.noInstruct && type === 'tree'){
+            scene.instructions = scene.add.text(entrance.x,entrance.y -350,'maybe with a rope',textConfig).setOrigin(0.5)
+            scene.instructions.setFontSize('40px')
+            scene.noInstruct = false
+        }
+
+        //if clearing
+        if(!scene.sfxActive && type === 'clearing'){
+            scene.giggle.play(scene.sfxConfig) 
+            scene.sfxActive = true;
+        }
+        if(scene.noInstruct && hasAxe && type === 'clearing'){
+            scene.instructions = scene.add.text(entrance.x,entrance.y -400,'[space] to enter',textConfig).setOrigin(0.5)
+            scene.instructions.setFontSize('40px')
+            scene.noInstruct = false
+            happy = true
+        } 
+        else if (scene.noInstruct && type === 'clearing'){
+            scene.instructions = scene.add.text(entrance.x,entrance.y -400,'It\'s too dense',textConfig).setOrigin(0.5)
+            scene.instructions.setFontSize('40px')
+            scene.noInstruct = false
+        }
+
+        //if car
+        if(scene.noInstruct && type === 'car'){
+            scene.instructions = scene.add.text(entrance.x,entrance.y -200,'[space] to flee in terror',textConfig).setOrigin(0.5)
+            scene.noInstruct = false
+            happy = true
+        } 
+
+        //transition to cave scene
+        if(scene.player.actionButton && happy){
+            scene.screentint = scene.add.rectangle(screenWidth/2,screenHeight,14400,screenHeight,0x000000).setOrigin(0.5,1)
+            scene.screentint.alpha = 0
+            scene.tweens.add({
+                targets: scene.sceneCamera,
+                zoom: 10,
+                duration: 1000,
+                ease: 'linear'                     
+            })
+            scene.tweens.add({
+                targets: scene.screentint,
+                alpha: 1,
+                duration: 1000,     
+                ease: 'linear'               
+            })
+            scene.time.addEvent({
+                delay: 1000,
+                callback: ()=> {
+                    scene.noInstruct = true;
+                    scene.scene.start(destination)
+                }
+            })
         }
     })
 }

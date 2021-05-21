@@ -74,53 +74,17 @@ class Ravine extends Phaser.Scene {
         this.sceneCamera.setBounds(0,0,4800,screenHeight)
 
         this.physics.add.collider(this.player, this.ground); // Collider between ground and player.  
-
         this.physics.add.collider(this.player, this.rightBound);
         this.physics.add.collider(this.player, this.leftBound);
 
-        //collecting the rope
+        //collecting things
         collect(this,this.rope,'rope')
         collect(this,this.shirt,'shirt')
         collect(this,this.jacket,'jacket')
         collect(this,this.wood,'wood')
 
         //deal with climbing the tree
-        this.physics.add.overlap(this.player,this.ropeTree,()=>{
-            if(this.noInstruct && hasRope){
-                this.instructions = this.add.text(this.ropeTree.x,this.ropeTree.y -350,'[space] to climb',textConfig).setOrigin(0.5)
-                this.instructions.setFontSize('40px')
-                this.noInstruct = false
-            } 
-            else if (this.noInstruct){
-                this.instructions = this.add.text(this.ropeTree.x,this.ropeTree.y -350,'maybe with a rope',textConfig).setOrigin(0.5)
-                this.instructions.setFontSize('40px')
-                this.noInstruct = false
-            }
-            //transition to end scene
-            if(this.player.actionButton && hasRope){
-                this.screentint =this.add.rectangle(screenWidth,screenHeight,screenWidth,screenHeight,0x000000).setOrigin(1)
-                this.screentint.alpha = 0
-                this.tweens.add({
-                    targets: this.sceneCamera,
-                    zoom: 10,
-                    duration: 2000,
-                    ease: 'linear'                     
-                })
-                this.tweens.add({
-                    targets: this.screentint,
-                    alpha: 1,
-                    duration: 2000,     
-                    ease: 'linear'               
-                })
-                this.time.addEvent({
-                    delay: 2000,
-                    callback: ()=> {
-                        this.noInstruct = true;
-                        this.scene.start('fForestScene')
-                    }
-                })
-            }
-        })        
+        leave(this, this.ropeTree,'tree','fForestScene')
 
 
     }

@@ -75,73 +75,14 @@ class Cave extends Phaser.Scene {
         this.caveEntrance = this.physics.add.sprite(screenWidth/2,screenHeight-100,'caveEntrance').setOrigin(0.5,1)
         this.caveEntrance.body.allowGravity = false
 
-        //deal with entering the cave
-        this.physics.add.overlap(this.player,this.caveEntrance,()=>{
-            if(this.noInstruct){
-                this.instructions = this.add.text(this.caveEntrance.x,this.caveEntrance.y -200,'[space] to enter',textConfig).setOrigin(0.5)
-                this.noInstruct = false
-            } 
-            //transition to cave scene
-            if(this.player.actionButton){
-                this.screentint =this.add.rectangle(screenWidth,screenHeight,screenWidth,screenHeight,0x000000).setOrigin(1)
-                this.screentint.alpha = 0
-                this.tweens.add({
-                    targets: this.sceneCamera,
-                    zoom: 10,
-                    duration: 2000,
-                    ease: 'linear'                     
-                })
-                this.tweens.add({
-                    targets: this.screentint,
-                    alpha: 1,
-                    duration: 2000,     
-                    ease: 'linear'               
-                })
-                this.time.addEvent({
-                    delay: 2000,
-                    callback: ()=> {
-                        this.noInstruct = true;
-                        this.scene.start('fForestScene')
-                    }
-                })
-            }
-        })
-
         //cave to SecondForest
         this.caveExit = this.physics.add.sprite(screenWidth/5,screenHeight-100,'caveEntrance').setOrigin(0.5,1)
         this.caveExit.body.allowGravity = false
 
-        //deal with entering the cave
-        this.physics.add.overlap(this.player,this.caveExit,()=>{
-            if(this.noInstruct){
-                this.instructions = this.add.text(this.caveExit.x,this.caveExit.y -200,'[space] to enter',textConfig).setOrigin(0.5)
-                this.noInstruct = false
-            } 
-            //transition to cave scene
-            if(this.player.actionButton){
-                this.screentint =this.add.rectangle(screenWidth,screenHeight,screenWidth,screenHeight,0x000000).setOrigin(1)
-                this.screentint.alpha = 0
-                this.tweens.add({
-                    targets: this.sceneCamera,
-                    zoom: 10,
-                    duration: 2000,
-                    ease: 'linear'                     
-                })
-                this.tweens.add({
-                    targets: this.screentint,
-                    alpha: 1,
-                    duration: 2000,     
-                    ease: 'linear'               
-                })
-                this.time.addEvent({
-                    delay: 2000,
-                    callback: ()=> {
-                        this.noInstruct = true;
-                        this.scene.start('lForestScene')
-                    }
-                })
-            }
-        })
+        //scene transitions
+        leave(this,this.caveEntrance,'cave','fForestScene')
+        leave(this,this.caveExit,'cave','lForestScene')
+       
         
         // Setting up slidy block
         this.block = new slidyBlock(this, screenCenterX + 200, screenCenterY, 'slidyBlock').setScale(0.05);
@@ -161,7 +102,7 @@ class Cave extends Phaser.Scene {
         if(!hasAxe){this.axe.setPipeline('Light2D')}
         if(axeWallFlag){this.axeWall.setPipeline('Light2D')}
 
-        //create the actural light
+        //create the actual light
         this.playerLight = this.lights.addLight(0,0,1000).setColor(0xffffff).setIntensity(2)
 
     }

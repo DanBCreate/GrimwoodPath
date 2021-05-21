@@ -117,91 +117,14 @@ class FForest extends Phaser.Scene {
         //object interactions
         this.noInstruct = true
         this.instructDestructor = true
-        
+
         collect(this,this.battery,'bat')
         collect(this,this.light,'flash')
         collect(this,this.knife,'knife')
 
-
-        //deal with entering the cave
-        this.physics.add.overlap(this.player,this.caveEntrance,()=>{
-            if(this.noInstruct && hasFlash && hasBat){
-                this.instructions = this.add.text(this.caveEntrance.x,this.caveEntrance.y -400,'[space] to enter',textConfig).setOrigin(0.5)
-                this.instructions.setFontSize('40px')
-                this.noInstruct = false
-            } 
-            else if (this.noInstruct){
-                this.instructions = this.add.text(this.caveEntrance.x,this.caveEntrance.y -400,'It\'s dark in there',textConfig).setOrigin(0.5)
-                this.instructions.setFontSize('40px')
-                this.noInstruct = false
-            }
-            //transition to cave scene
-            if(this.player.actionButton && hasBat && hasFlash){
-                this.screentint =this.add.rectangle(screenWidth/2,screenHeight,14400,screenHeight,0x000000).setOrigin(0.5,1)
-                this.screentint.alpha = 0
-                this.tweens.add({
-                    targets: this.sceneCamera,
-                    zoom: 10,
-                    duration: 2000,
-                    ease: 'linear'                     
-                })
-                this.tweens.add({
-                    targets: this.screentint,
-                    alpha: 1,
-                    duration: 2000,     
-                    ease: 'linear'               
-                })
-                this.time.addEvent({
-                    delay: 2000,
-                    callback: ()=> {
-                        this.noInstruct = true;
-                        this.scene.start('caveScene')
-                    }
-                })
-            }
-        })
-
-        //deal with entering the clearing
-        this.physics.add.overlap(this.player,this.clearingEntrance,()=>{
-            if(!this.sfxActive){
-                this.giggle.play(this.sfxConfig) 
-                this.sfxActive = true;
-            }
-            if(this.noInstruct && hasAxe){
-                this.instructions = this.add.text(this.clearingEntrance.x,this.clearingEntrance.y -400,'[space] to enter',textConfig).setOrigin(0.5)
-                this.instructions.setFontSize('40px')
-                this.noInstruct = false
-            } 
-            else if (this.noInstruct){
-                this.instructions = this.add.text(this.clearingEntrance.x,this.clearingEntrance.y -400,'It\'s too dense',textConfig).setOrigin(0.5)
-                this.instructions.setFontSize('40px')
-                this.noInstruct = false
-            }
-            //transition to end scene
-            if(this.player.actionButton && hasAxe){
-                this.screentint =this.add.rectangle(screenWidth/2,screenHeight,14400,screenHeight,0x000000).setOrigin(0.51)
-                this.screentint.alpha = 0
-                this.tweens.add({
-                    targets: this.sceneCamera,
-                    zoom: 10,
-                    duration: 2000,
-                    ease: 'linear'                     
-                })
-                this.tweens.add({
-                    targets: this.screentint,
-                    alpha: 1,
-                    duration: 2000,     
-                    ease: 'linear'               
-                })
-                this.time.addEvent({
-                    delay: 2000,
-                    callback: ()=> {
-                        this.noInstruct = true;
-                        this.scene.start('hEndScene')
-                    }
-                })
-            }
-        })
+        //scene changes
+        leave(this,this.caveEntrance, 'cave', 'caveScene')
+        leave(this,this.clearingEntrance,'clearing','hEndScene')
 
         //foreground trees
         this.firstTree = this.physics.add.sprite(4000,screenHeight,'singleTree').setOrigin(0.5,1)
