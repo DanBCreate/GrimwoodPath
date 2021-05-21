@@ -170,7 +170,8 @@ class Menu extends Phaser.Scene {
     update(){
         //debugging mode features
         debugUpdate(this);
-        //this.background.tilePositionX +=10
+        
+        //paralax
         this.backTree1.tilePositionX += 12
         this.backTree2.tilePositionX += 11
         this.backFog.tilePositionX += 10
