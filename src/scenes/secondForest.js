@@ -17,20 +17,45 @@ class LForest extends Phaser.Scene {
         this.noInstruct = true
         this.instructDestructor = true
         
+        //background
+        this.blackDrop = this.add.sprite(0,0,'ground').setOrigin(0)
+        this.blackDrop.displayHeight = screenHeight*2
+        this.blackDrop.displayWidth = 17000
+        this.backGround = this.add.sprite(0,screenHeight,'forBG').setOrigin(0,1)
+        this.backTree3 = this.add.sprite(0,screenHeight,'forTree3').setOrigin(0,1)
+        this.backTree4 = this.add.sprite(0,screenHeight,'forTree4').setOrigin(0,1)
+        this.backTree2 = this.add.sprite(0,screenHeight,'forTree2').setOrigin(0,1)
+        this.backTree1 = this.add.sprite(0,screenHeight,'forTree1').setOrigin(0,1)
+        this.backFog = this.add.sprite(0,screenHeight,'forFog').setOrigin(0,1)
+
         //set up the ground
-        this.ground = this.physics.add.sprite(screenCenterX, screenHeight, 'ground').setScale(0.05); // Initialize our ground
+        this.ground = this.physics.add.sprite(0, screenHeight, 'ground'); // Initialize our ground
         this.ground.setImmovable(true); // Sets ground to immovable
         this.ground.body.allowGravity = false; // So gravity has no effect ground
-        this.ground.displayWidth = screenWidth;
-        this.ground.setOrigin(0.5,1)       
+        this.ground.displayWidth = 14400;
+        this.ground.displayHeight = 100
+        this.ground.setOrigin(0,1)     
+        
+        //set up the bounds
+        this.rightBound = this.physics.add.sprite(14400,screenHeight,'clear').setOrigin(0.5,1)
+        this.rightBound.body.allowGravity = false
+        this.rightBound.setImmovable(true)
+        this.rightBound.displayHeight = screenHeight
+        this.leftBound = this.physics.add.sprite(0,screenHeight,'clear').setOrigin(0.5,1)
+        this.leftBound.body.allowGravity = false
+        this.leftBound.setImmovable(true)
+        this.leftBound.displayHeight = screenHeight
 
         // Setting up our player and camera to follow player
         this.player = new player(this, screenCenterX, screenCenterY, 'player').setScale(0.15); // Initialize our Player
         this.sceneCamera = this.cameras.main.startFollow(this.player);
         this.sceneCamera.setLerp(cameraLerp,cameraLerp)
+        this.sceneCamera.setBounds(0,0,14400,screenHeight)
 
         //collide with the ground
         this.physics.add.collider(this.player, this.ground);
+        this.physics.add.collider(this.player, this.rightBound);
+        this.physics.add.collider(this.player, this.leftBound);
 
         if(keyWallFlag){
             //set up the axewall
@@ -46,10 +71,12 @@ class LForest extends Phaser.Scene {
         this.physics.add.collider(this.player,this.keyWall,()=>{
             if(this.noInstruct && hasKey){
                 this.instructions = this.add.text(this.keyWall.x,this.keyWall.y -200,'[space] open',textConfig).setOrigin(0.5)
+                this.instructions.setFontSize('40px')
                 this.noInstruct = false
             }
             else if(this.noInstruct){
                 this.instructions = this.add.text(this.keyWall.x,this.keyWall.y -200,'maybe there\'s a key',textConfig).setOrigin(0.5)
+                this.instructions.setFontSize('40px')
                 this.noInstruct = false
             }
             if(this.player.actionButton && hasKey){
