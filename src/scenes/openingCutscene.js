@@ -13,6 +13,11 @@ class Opening extends Phaser.Scene {
         //debugging mode features
         debugCreate(this);
 
+        //skip buttons
+        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
+        keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
+        keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
+
         this.timesequence = 0;
         
         //first vignette
@@ -150,10 +155,24 @@ class Opening extends Phaser.Scene {
 
         })
 
+        //skip insturctions
+        this.skipText = this.add.text(screenWidth,screenHeight,favKeys+' to skip',textConfig).setOrigin(1)
         
     }
     update(){
         debugUpdate(this)
+
+        this.children.bringToTop(this.skipText)
+        //skip buttons
+        if(Phaser.Input.Keyboard.JustDown(keyS)){
+            this.scene.start('fForestScene')
+        }
+        if(Phaser.Input.Keyboard.JustDown(keyDOWN)){
+            this.scene.start('fForestScene')
+        }
+        if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+            this.scene.start('fForestScene')
+        }
     }
 
 }
