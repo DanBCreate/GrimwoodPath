@@ -66,6 +66,8 @@ let fromRavine = true   //controls where the player spawns in fForest
 
 let ffTree1Marked = false //are trees marked?
 let ffTree2Marked = false //are trees marked?
+let lfTree1Marked = false //are trees marked?
+let lfTree2Marked = false //are trees marked?
 
 //keys for scene navigation
 let key1,key2,key3,key4,key5,key6,key7,key8,key9,key0;
@@ -294,6 +296,8 @@ function markTree(scene,tree,flag){
     scene.physics.add.overlap(scene.player,tree,()=>{
         if(flag === 'ff2'){tempbool = ffTree2Marked}
         else if(flag === 'ff1'){tempbool = ffTree1Marked}
+        else if(flag === 'lf1'){tempbool = lfTree1Marked}
+        else if(flag === 'lf2'){tempbool = lfTree2Marked}
         else{console.log('invalid flag');tempbool=true}
 
         if(scene.noInstruct && hasShirt && !tempbool){
@@ -303,7 +307,10 @@ function markTree(scene,tree,flag){
         } 
         if(scene.player.actionButton && hasShirt){
             tree.anims.play('mkTree')
-            ffTree2Marked = true
+            if(flag === 'ff2'){ffTree2Marked = true}
+            else if(flag === 'ff1'){ffTree1Marked = true}
+            else if(flag === 'lf1'){lfTree1Marked = true}
+            else if(flag === 'lf2'){lfTree2Marked = true}
         }
     })
 }

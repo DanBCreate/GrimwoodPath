@@ -112,6 +112,22 @@ class LForest extends Phaser.Scene {
         collect(this,this.key,'key')
         collect(this,this.crowbar,'crowbar')
 
+        //foreground trees
+        this.firstTree = this.physics.add.sprite(4000,screenHeight,'singleTree').setOrigin(0.5,1)
+        if(lfTree1Marked){
+            this.firstTree.anims.play('mkTree')
+        }
+        this.secondTree = this.physics.add.sprite(1000,screenHeight,'singleTree').setOrigin(0.5,1)
+        if(lfTree2Marked){
+            this.secondTree.anims.play('mkTree')
+        }
+        this.firstTree.body.allowGravity = false
+        this.secondTree.body.allowGravity =- false
+
+        //deal with foreground trees
+        markTree(this,this.firstTree,'lf1')
+        markTree(this,this.secondTree,'lf2')
+
         //deal with scene changes
         leave(this,this.caveExit,'cave','caveScene')
         leave(this,this.escapeCar,'car','noBroScene')
