@@ -17,7 +17,7 @@ class slidyBlock extends Phaser.Physics.Arcade.Sprite {
         this.movable = false;
         this.playerX = 0;
 
-        this.helpText = this.scene.add.text(this.x, this.y - 5, "Press [SPACE] to Push/Pull", textConfig).setOrigin(0.5).setFontSize(40);
+        this.helpText = this.scene.add.text(this.x, this.y - 5, favKeys +" to Push/Pull", textConfig).setOrigin(0.5).setFontSize(40);
         this.helpText.setVisible(false);
     }
 

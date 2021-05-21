@@ -13,6 +13,7 @@ debugToggle = true;
 playerMovementSpeed = 400;
 cameraLerp = 0.05; // Lerp is how delayed is the camera following our player, I.E Smoothness
 instrctionDelay = 500
+let favKeys = '[space]'
 
 //game config
 let config = {
@@ -71,6 +72,7 @@ let lfTree2Marked = false //are trees marked?
 
 //keys for scene navigation
 let key1,key2,key3,key4,key5,key6,key7,key8,key9,key0;
+let keyDOWN,keyS;
 //map
 // 1 - menu
 // 2 - Opening
@@ -183,7 +185,7 @@ function LRWipe(scene,duration,texture,delay = 0){
 function collect(scene,item,key){
     scene.physics.add.overlap(scene.player,item,()=>{
         if(scene.noInstruct){
-            scene.instructions = scene.add.text(item.x,item.y -400,'[space] to pick up',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(item.x,item.y -400,favKeys +' to pick up',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
         } 
@@ -216,7 +218,7 @@ function leave(scene,entrance,type,destination){
 
         //if cave
         if(scene.noInstruct && hasFlash && hasBat && type === 'cave'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -400,'[space] to enter',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -400,favKeys +' to enter',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
@@ -229,7 +231,7 @@ function leave(scene,entrance,type,destination){
 
         //if tree
         if(scene.noInstruct && hasRope && type === 'tree'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -350,'[space] to climb',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -350,favKeys +' to climb',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
@@ -246,7 +248,7 @@ function leave(scene,entrance,type,destination){
             scene.sfxActive = true;
         }
         if(scene.noInstruct && hasAxe && type === 'clearing'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -400,'[space] to enter',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -400,favKeys +' to enter',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
@@ -259,13 +261,13 @@ function leave(scene,entrance,type,destination){
 
         //if car
         if(scene.noInstruct && type === 'car'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -200,'[space] to flee in terror',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -200,favKeys +' to flee in terror',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
         } 
 
-        //transition to cave scene
+        //transition to scene
         if(scene.player.actionButton && happy){
             scene.screentint = scene.add.rectangle(screenWidth/2,screenHeight,14400,screenHeight,0x000000).setOrigin(0.5,1)
             scene.screentint.alpha = 0
@@ -301,7 +303,7 @@ function markTree(scene,tree,flag){
         else{console.log('invalid flag');tempbool=true}
 
         if(scene.noInstruct && hasShirt && !tempbool){
-            scene.instructions = scene.add.text(tree.x,tree.y -600,'[space] to mark',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(tree.x,tree.y -600,favKeys +' to mark',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
         } 

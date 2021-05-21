@@ -23,6 +23,8 @@ class player extends Phaser.Physics.Arcade.Sprite {
         keyRIGHT = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         keyUP = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
         keySPACE = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        keyS = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
+        keyDOWN = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
 
         // Players movement settings
         this.jumpHeight = -700;
@@ -198,6 +200,18 @@ class player extends Phaser.Physics.Arcade.Sprite {
             this.actionButton = true;
         }
         else if(Phaser.Input.Keyboard.JustUp(keySPACE)){
+            this.actionButton = false;
+        }
+        if(Phaser.Input.Keyboard.JustDown(keyS) && this.body.touching.down){
+            this.actionButton = true;
+        }
+        else if(Phaser.Input.Keyboard.JustUp(keyS)){
+            this.actionButton = false;
+        }
+        if(Phaser.Input.Keyboard.JustDown(keyDOWN) && this.body.touching.down){
+            this.actionButton = true;
+        }
+        else if(Phaser.Input.Keyboard.JustUp(keyDOWN)){
             this.actionButton = false;
         }
 

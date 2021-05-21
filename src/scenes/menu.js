@@ -74,6 +74,10 @@ class Menu extends Phaser.Scene {
         //debugging mode features
         debugCreate(this);
 
+        //keys
+        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
+        keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
+
         this.blackDrop = this.add.sprite(screenWidth/2,screenHeight/2,'ground').setOrigin(0.5)
         this.blackDrop.displayHeight = screenHeight*2
         this.blackDrop.displayWidth = 17000
@@ -112,7 +116,7 @@ class Menu extends Phaser.Scene {
             ease:'Quad.InOut',
             loop: -1
         })
-        this.add.text(screenWidth/2,screenHeight/2,'press 2 to start',textConfig).setOrigin(0.5)
+        this.add.text(screenWidth/2,screenHeight/2,'press 2 to start\ninteract:↓ walk:←→ jump:↑\ninteract:s walk:ad jump:w',textConfig).setOrigin(0.5)
 
         //unset colletable flags
         hasRope = false     //allows exit from ravine
@@ -172,6 +176,15 @@ class Menu extends Phaser.Scene {
         this.backFog.tilePositionX += 10
         this.backTree3.tilePositionX +=9
         this.backTree4.tilePositionX +=8
+
+        if(Phaser.Input.Keyboard.JustDown(keyS)){
+            favKeys = '[s]'
+            this.scene.start('openingScene')
+        }
+        if(Phaser.Input.Keyboard.JustDown(keyDOWN)){
+            favKeys = '[↓]'
+            this.scene.start('openingScene')
+        }
     }
 
 }
