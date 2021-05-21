@@ -258,6 +258,7 @@ function leave(scene,entrance,type,destination){
         //if car
         if(scene.noInstruct && type === 'car'){
             scene.instructions = scene.add.text(entrance.x,entrance.y -200,'[space] to flee in terror',textConfig).setOrigin(0.5)
+            scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
         } 
