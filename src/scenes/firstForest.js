@@ -139,30 +139,8 @@ class FForest extends Phaser.Scene {
         this.secondTree.body.allowGravity =- false
 
         //deal with foreground trees
-        this.physics.add.overlap(this.player,this.firstTree,()=>{
-            if(this.noInstruct && hasShirt && !ffTree1Marked){
-                this.instructions = this.add.text(this.firstTree.x,this.firstTree.y -600,'[space] to mark',textConfig).setOrigin(0.5)
-                this.instructions.setFontSize('40px')
-                this.noInstruct = false
-            } 
-            if(this.player.actionButton && hasShirt){
-                this.firstTree.anims.play('mkTree')
-                ffTree1Marked = true
-            }
-        })
-
-        this.physics.add.overlap(this.player,this.secondTree,()=>{
-            if(this.noInstruct && hasShirt && !ffTree2Marked){
-                this.instructions = this.add.text(this.secondTree.x,this.secondTree.y -600,'[space] to mark',textConfig).setOrigin(0.5)
-                this.instructions.setFontSize('40px')
-                this.noInstruct = false
-            } 
-            if(this.player.actionButton && hasShirt){
-                this.secondTree.anims.play('mkTree')
-                ffTree2Marked = true
-            }
-        })
-
+        markTree(this,this.firstTree,'ff1')
+        markTree(this,this.secondTree,'ff2')
 
     }
 

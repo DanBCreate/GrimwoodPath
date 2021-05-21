@@ -8,6 +8,12 @@ const screenHeight = 1080;
 let screenCenterX = screenWidth / 2;
 let screenCenterY = screenHeight / 2;
 
+//global vars:
+debugToggle = true;
+playerMovementSpeed = 400;
+cameraLerp = 0.05; // Lerp is how delayed is the camera following our player, I.E Smoothness
+instrctionDelay = 500
+
 //game config
 let config = {
     type: Phaser.AUTO,
@@ -22,7 +28,7 @@ let config = {
         default:'arcade',
         arcade:{
             gravity: {y:1300},
-            debug: true
+            debug: debugToggle
         }
     },
     backgroundColor: 0xFFFFFF
@@ -42,12 +48,6 @@ let textConfig = {
 
 //define the game
 let game = new Phaser.Game(config);
-
-//global vars:
-debugToggle = true;
-playerMovementSpeed = 400;
-cameraLerp = 0.05; // Lerp is how delayed is the camera following our player, I.E Smoothness
-instrctionDelay = 500
 
 //colletable flags
 let hasRope = false     //allows exit from ravine
@@ -286,6 +286,24 @@ function leave(scene,entrance,type,destination){
                     scene.scene.start(destination)
                 }
             })
+        }
+    })
+}
+
+function markTree(scene,tree,flag){
+    scene.physics.add.overlap(scene.player,tree,()=>{
+        if(flag === 'ff2'){tempbool = ffTree2Marked}
+        else if(flag === 'ff1'){tempbool = ffTree1Marked}
+        else{console.log('invalid flag');tempbool=true}
+
+        if(scene.noInstruct && hasShirt && !tempbool){
+            scene.instructions = scene.add.text(tree.x,tree.y -600,'[space] to mark',textConfig).setOrigin(0.5)
+            scene.instructions.setFontSize('40px')
+            scene.noInstruct = false
+        } 
+        if(scene.player.actionButton && hasShirt){
+            tree.anims.play('mkTree')
+            ffTree2Marked = true
         }
     })
 }
