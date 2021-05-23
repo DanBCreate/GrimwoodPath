@@ -37,7 +37,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
         this.sfxLock = false;
         this.jumpLock = false;
         this.sfxConfigGrass = {
-            volume: 0.22,
+            volume: 0.25,
             loop: true
         } 
         this.sfxConfigStone = {

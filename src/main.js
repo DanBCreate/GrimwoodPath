@@ -182,6 +182,11 @@ function LRWipe(scene,duration,texture,delay = 0){
 }
 
 //collectables!!!
+let sfxCollect = {
+    volume: 3,
+    loop: false
+} 
+
 function collect(scene,item,key){
     scene.physics.add.overlap(scene.player,item,()=>{
         if(scene.noInstruct){
@@ -190,6 +195,8 @@ function collect(scene,item,key){
             scene.noInstruct = false
         } 
         if(scene.player.actionButton){
+            scene.collectingSFX = scene.sound.add('item');
+            scene.collectingSFX.play(sfxCollect);
             scene.instructions.alpha = 0;
             item.destroy()
             //I wish pass by referance was a thing
