@@ -165,12 +165,15 @@ class Opening extends Phaser.Scene {
         this.children.bringToTop(this.skipText)
         //skip buttons
         if(Phaser.Input.Keyboard.JustDown(keyS)){
+            this.game.sound.stopAll();
             this.scene.start('fForestScene')
         }
         if(Phaser.Input.Keyboard.JustDown(keyDOWN)){
+            this.game.sound.stopAll();
             this.scene.start('fForestScene')
         }
         if(Phaser.Input.Keyboard.JustDown(keySPACE)){
+            this.game.sound.stopAll();
             this.scene.start('fForestScene')
         }
     }

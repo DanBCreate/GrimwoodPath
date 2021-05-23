@@ -21,8 +21,13 @@ class Ravine extends Phaser.Scene {
         this.backFog = this.add.sprite(0,screenHeight,'ravinefog').setOrigin(0,1)
         this.backBorder = this.add.sprite(0,screenHeight,'ravineborder').setOrigin(0,1)
 
-
-        
+        // Setting up our Ravine Ambience Sounds
+        this.sfxConfig = {
+            volume: 0.75,
+            loop: true,
+        }
+        this.ravineBG = this.sound.add('ravineBG');
+        this.ravineBG.play(this.sfxConfig) ;
 
 
         // Setting up our ground

@@ -183,7 +183,7 @@ function LRWipe(scene,duration,texture,delay = 0){
 
 //collectables!!!
 let sfxCollect = {
-    volume: 3,
+    volume: 1.5,
     loop: false
 } 
 
