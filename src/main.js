@@ -28,8 +28,9 @@ let config = {
     physics:{
         default:'arcade',
         arcade:{
-            gravity: {y:1300},
-            debug: debugToggle
+            gravity: {y:1450},
+            //debug: debugToggle
+            
         }
     },
     backgroundColor: 0xFFFFFF
@@ -294,6 +295,7 @@ function leave(scene,entrance,type,destination){
                 delay: 1000,
                 callback: ()=> {
                     scene.noInstruct = true;
+                    game.sound.stopAll();
                     scene.scene.start(destination)
                 }
             })
