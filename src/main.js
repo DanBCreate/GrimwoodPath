@@ -29,7 +29,7 @@ let config = {
         default:'arcade',
         arcade:{
             gravity: {y:1450},
-            //debug: debugToggle
+            debug: debugToggle
             
         }
     },
