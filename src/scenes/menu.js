@@ -12,7 +12,7 @@ class Menu extends Phaser.Scene {
         var loadingText = this.add.text(screenCenterX,screenCenterY + 100,'Loading: ', textConfig);
         this.backDrop = new Phaser.Geom.Rectangle(0, 0, 5000, 5000);
 		this.progressBarFill = new Phaser.Geom.Rectangle(screenCenterX, screenCenterY, screenWidth/2 - 10, 40);
-        oldLoad.fillStyle(0x292929, 1) // Controls color of loading screen backdrop
+        oldLoad.fillStyle(0x292929, 1) // Controls color and alpha of loading screen backdrop
         oldLoad.fillRectShape(this.backDrop);
 		newLoad.fillStyle(0x9a6363, 1);
 		newLoad.fillRectShape(this.progressBarFill);
@@ -49,7 +49,7 @@ class Menu extends Phaser.Scene {
         this.load.spritesheet('playerIdle', 'assets/player/PlayerIdleSheet.png',{frameWidth: 767,frameHeight:1085,startFrame:0, endFrame:1}); // Player Asset
         this.load.spritesheet('walkLeft','assets/player/LeftRunSheet.png',{frameWidth: 767,frameHeight:1085,startFrame:0,endFrame:9});
         this.load.spritesheet('walkRight','assets/player/RightRunSheet.png',{frameWidth: 767,frameHeight:1085,startFrame:0,endFrame:9});
-        
+
         //forest assets
         this.load.image('forBG','assets/forest/ForestSolidBG.png')
         this.load.image('forFog','assets/forest/ForestFog.png')
@@ -80,12 +80,12 @@ class Menu extends Phaser.Scene {
         //remove loading screen
         this.LoadingBackground.destroy()
         this.loadingText.destroy()
- 
+
         // For Loading Screen
         this.load.on('progress', function(value) {
             newLoad.clear();
-            newLoad.fillStyle(0xb48181, 0.8); // Controls color of loading screen progressbar
-            newLoad.fillRectShape(new Phaser.Geom.Rectangle(screenCenterX - 300, screenCenterY - 40, value * 590, 60));
+            newLoad.fillStyle(0xb48181, 0.8); // Controls color of loading screen progress bar
+            newLoad.fillRectShape(new Phaser.Geom.Rectangle(screenCenterX - 310, screenCenterY - 40, value * 590, 60));
             loadingText.setText("Loading: " + Phaser.Math.RoundTo(value * 100, -1)+ "%");
             loadingText.setFontSize(80);
             loadingText.setOrigin(0.5, 0.5);
