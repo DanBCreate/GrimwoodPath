@@ -83,11 +83,11 @@ class FForest extends Phaser.Scene {
 
         // Setting up our player
         if(fromRavine){
-            this.player = new player(this, -5700, screenHeight - 140, 'player').setScale(0.3).setOrigin(0.5,1); // Initialize our Player
+            this.player = new player(this, -5700, screenHeight - 140, 'player').setScale(0.15).setOrigin(0.5,1); // Initialize our Player
             fromRavine = false
         }
         else{
-            this.player = new player(this, screenWidth, screenHeight - 140, 'player').setScale(0.3).setOrigin(0.5,1); // Initialize our Player
+            this.player = new player(this, screenWidth, screenHeight - 140, 'player').setScale(0.15).setOrigin(0.5,1); // Initialize our Player
         }
 
         //set up the camera following
