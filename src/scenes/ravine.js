@@ -91,7 +91,13 @@ class Ravine extends Phaser.Scene {
         //deal with climbing the tree
         leave(this, this.ropeTree,'tree','fForestScene')
 
-
+        this.inventory = genInventory(this);
+        //this.inventory.fixedToCamera = true;
+        /*this.tweens.add({
+            targets: this.screentint,
+            alpha: 255,     
+            ease: 'linear'
+        });*/
     }
 
     update(){
@@ -116,5 +122,6 @@ class Ravine extends Phaser.Scene {
         //parallax things
         this.backFog.x = this.player.x/25
         this.backDrop.x = this.player.x/40
+        update_inv();
     }
 }
