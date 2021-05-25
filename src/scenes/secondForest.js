@@ -63,6 +63,7 @@ class LForest extends Phaser.Scene {
 
         // Setting up our player and camera to follow player
         this.player = new player(this, 7000, screenCenterY, 'player').setScale(0.15); // Initialize our Player
+        this.player.depth = 200
         this.sceneCamera = this.cameras.main.startFollow(this.player);
         this.sceneCamera.setLerp(cameraLerp,cameraLerp)
         this.sceneCamera.setBounds(0,0,14400,screenHeight)
@@ -138,6 +139,9 @@ class LForest extends Phaser.Scene {
         }
         this.firstTree.body.allowGravity = false
         this.secondTree.body.allowGravity =- false
+
+        this.firstTree.depth = 300
+        this.secondTree.depth = 300
 
         //deal with foreground trees
         markTree(this,this.firstTree,'lf1')
