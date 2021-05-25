@@ -48,6 +48,18 @@ let textConfig = {
     }
 }  
 
+//text for the player
+let playerTextConfig = {
+    fontFamily: 'player',
+    fontSize: '30px',
+    color: '#FF0000',
+    align: 'center',
+    padding: {
+        top: 5,
+        bottom: 5,
+    }
+}  
+
 //define the game
 let game = new Phaser.Game(config);
 
