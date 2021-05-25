@@ -89,6 +89,7 @@ class FForest extends Phaser.Scene {
         else{
             this.player = new player(this, screenWidth, screenHeight - 140, 'player').setScale(0.15).setOrigin(0.5,1); // Initialize our Player
         }
+        this.player.depth = 200
 
         //set up the camera following
         this.sceneCamera = this.cameras.main.startFollow(this.player);
@@ -139,6 +140,8 @@ class FForest extends Phaser.Scene {
         }
         this.firstTree.body.allowGravity = false
         this.secondTree.body.allowGravity =- false
+        this.firstTree.depth = 300
+        this.firstTree.depth = 300
 
         //deal with foreground trees
         markTree(this,this.firstTree,'ff1')
