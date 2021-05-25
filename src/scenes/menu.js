@@ -67,6 +67,27 @@ class Menu extends Phaser.Scene {
         this.load.image('ravineborder','assets/ravine/insideRavineBorder.png')
         this.load.image('ravinefog','assets/ravine/insideRavineFog.png')
 
+        //opening cutscene assets 
+        this.load.spritesheet('carAnim','assets/introCutscene/carSpriteSheet(reducedBounce).png',{frameWidth: 1100, frameHeight:460,startFrame:0,endFrame:1})
+        this.load.image('parkingLot','assets/introCutscene/introBGF1.png')
+        this.load.image('sunForest','assets/introCutscene/introBGF2.png')
+        this.load.image('moonForest','assets/introCutscene/introBGF3.png')
+        this.load.image('shortForest','assets/introCutscene/introBGF4_8.png')
+        this.load.image('cliffForest','assets/introCutscene/introBGF9.png')
+        this.load.image('cliff','assets/introCutscene/introBGF10.png')
+        this.load.spritesheet('flee','assets/introCutscene/introSpriteAnimF9.png',{frameWidth: 767, frameHeight:1085,startFrame:0,endFrame:2})
+        this.load.image('withBro','assets/introCutscene/introSpriteF1.png')
+        this.load.image('withBroWalk','assets/introCutscene/introSpriteF2.png')
+        this.load.image('broDistracted','assets/introCutscene/introSpriteF3.png')
+        this.load.image('searchLeft','assets/introCutscene/introSpriteF4part1.png')
+        this.load.image('closeBro','assets/introCutscene/introSpriteF4part2.png')
+        this.load.image('searchRight','assets/introCutscene/introSpriteF5.png')
+        this.load.image('monSil','assets/introCutscene/introSpriteF6.png')
+        this.load.image('monStare','assets/introCutscene/introSpriteF7.png')
+        this.load.image('monHead','assets/introCutscene/introSpriteF8.png')
+        this.load.image('monWave','assets/introCutscene/introSpriteF8part2.png')
+        this.load.image('fall','assets/introCutscene/introSpriteF10.png')
+
         //audio
         this.load.audio('giggle','assets/sounds/ChildGiggle.wav')
         this.load.audio('engine', 'assets/sounds/CarEngineLoop.wav')
@@ -99,63 +120,6 @@ class Menu extends Phaser.Scene {
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
 
-        this.blackDrop = this.add.sprite(screenWidth/2,screenHeight/2,'ground').setOrigin(0.5)
-        this.blackDrop.displayHeight = screenHeight*2
-        this.blackDrop.displayWidth = 17000
-
-        this.backGround = this.add.sprite(0,screenHeight,'forBG').setOrigin(0.5,1)
-        this.backTree3 = this.add.tileSprite(0,0,screenWidth,screenHeight,'forTree3').setOrigin(0)
-        this.backTree4 = this.add.tileSprite(0,0,screenWidth,screenHeight,'forTree4').setOrigin(0)
-        this.backFog = this.add.tileSprite(0,0,screenWidth,screenHeight,'forFog').setOrigin(0)
-        this.backTree2 = this.add.tileSprite(0,0,screenWidth,screenHeight,'forTree2').setOrigin(0)
-        this.backTree1 = this.add.tileSprite(0,0,screenWidth,screenHeight,'forTree1').setOrigin(0)
-        this.ground = this.add.sprite(0,screenHeight,'ground').setOrigin(0,1)
-        this.ground.displayWidth = screenWidth
-        this.ground.displayHeight = 150
-
-        //this.background = this.add.tileSprite(0,0,screenWidth,screenHeight,'forest').setOrigin(0)
-        this.car = this.add.sprite(screenWidth/3,830,'car').setOrigin(0.5)
-
-        this.engine = this.sound.add('engine');
-        this.driveCrickets = this.sound.add('driveCrickets');
-        this.sfxConfigEngine = {
-            volume: 0.13,
-            loop: true,
-        }
-        this.sfxConfigDrive = {
-            volume: 1.8,
-            loop: true,
-        }
-        this.engine.play(this.sfxConfigEngine) ;
-        this.driveCrickets.play(this.sfxConfigDrive);
-
-        this.tweens.add({
-            targets:this.car,
-            x: 2*screenWidth/3,
-            duration: 10000,
-            yoyo: true,
-            ease:'Quad.InOut',
-            loop: -1
-        })
-        this.add.text(screenWidth/2,screenHeight/2,'press 2 to start\n\ninteract:↓ walk:←→ jump:↑\n\ninteract:s walk:ad jump:w',textConfig).setOrigin(0.5)
-
-        //unset colletable flags
-        hasRope = false     //allows exit from ravine
-        hasShirt = false    //allows marking of trees
-        hasWood = false     //allows full movement speed when combined with hasJacket
-        hasJacket = false   //allows full movement speed when combined with hasWood
-        hasFlash = false    //allows entering cave when combined with hasBat
-        hasBat = false      //allows entering cave when combined with hasFlash
-        hasAxe = false      //allows entry to clearing with brother
-        hasKey = false      //allows entry to cabin
-        hasCrowbar = false  //used to set hasAxe
-        hasKnife = false    //? - cosmetic?
-        axeWallFlag = true  //is the wall obstructing access to the axe
-        keyWallFlag = true  //is the keywall obstructing access to the crowbar
-        fromRavine = true   //controls where the player spawns in fForest
-        ffTree1Marked = false //are trees marked?
-        ffTree2Marked = false //are trees marked?
-
         //create animations for later use
         this.anims.create({
             key: 'walkL',
@@ -187,6 +151,91 @@ class Menu extends Phaser.Scene {
             frameRate: 0,
             repeat: -1
         })
+        this.anims.create({
+            key: 'drive',
+            frames: this.anims.generateFrameNumbers('carAnim', {frames:[0,1]}),
+            frameRate: 10,
+            repeat: -1
+        })
+        this.anims.create({
+            key: 'fleeOne',
+            frames: this.anims.generateFrameNumbers('flee', {frames:[0]}),
+            frameRate: 0,
+            repeat: -1
+        })
+        this.anims.create({
+            key: 'fleeTwo',
+            frames: this.anims.generateFrameNumbers('flee', {frames:[1]}),
+            frameRate: 0,
+            repeat: -1
+        })
+        this.anims.create({
+            key: 'fleeThree',
+            frames: this.anims.generateFrameNumbers('flee', {frames:[3]}),
+            frameRate: 0,
+            repeat: -1
+        })
+
+        //stuff displayed on the menu
+        this.blackDrop = this.add.sprite(screenWidth/2,screenHeight/2,'ground').setOrigin(0.5)
+        this.blackDrop.displayHeight = screenHeight*2
+        this.blackDrop.displayWidth = 17000
+
+        this.backGround = this.add.sprite(0,screenHeight,'forBG').setOrigin(0.5,1)
+        this.backTree3 = this.add.tileSprite(0,0,screenWidth,screenHeight,'forTree3').setOrigin(0)
+        this.backTree4 = this.add.tileSprite(0,0,screenWidth,screenHeight,'forTree4').setOrigin(0)
+        this.backFog = this.add.tileSprite(0,0,screenWidth,screenHeight,'forFog').setOrigin(0)
+        this.backTree2 = this.add.tileSprite(0,0,screenWidth,screenHeight,'forTree2').setOrigin(0)
+        this.backTree1 = this.add.tileSprite(0,0,screenWidth,screenHeight,'forTree1').setOrigin(0)
+        this.ground = this.add.sprite(0,screenHeight,'ground').setOrigin(0,1)
+        this.ground.displayWidth = screenWidth
+        this.ground.displayHeight = 150
+
+        //this.background = this.add.tileSprite(0,0,screenWidth,screenHeight,'forest').setOrigin(0)
+        this.car = this.add.sprite(screenWidth/3,830,'drive').setOrigin(0.5)
+        this.car.anims.play('drive')
+        this.car.displayWidth = screenWidth/4
+        this.car.displayHeight = screenWidth/8
+
+        this.engine = this.sound.add('engine');
+        this.driveCrickets = this.sound.add('driveCrickets');
+        this.sfxConfigEngine = {
+            volume: 0.13,
+            loop: true,
+        }
+        this.sfxConfigDrive = {
+            volume: 1.8,
+            loop: true,
+        }
+        this.engine.play(this.sfxConfigEngine) ;
+        this.driveCrickets.play(this.sfxConfigDrive);
+
+        this.cardrift = this.tweens.add({
+            targets:this.car,
+            x: 2*screenWidth/3,
+            duration: 10000,
+            yoyo: true,
+            ease:'Quad.InOut',
+            loop: -1
+        })
+        this.menuText = this.add.text(screenWidth/2,screenHeight/2,'press [interact] to start\n\ninteract:↓ walk:←→ jump:↑\n\ninteract:s walk:ad jump:w',textConfig).setOrigin(0.5)
+
+        //unset colletable flags
+        hasRope = false     //allows exit from ravine
+        hasShirt = false    //allows marking of trees
+        hasWood = false     //allows full movement speed when combined with hasJacket
+        hasJacket = false   //allows full movement speed when combined with hasWood
+        hasFlash = false    //allows entering cave when combined with hasBat
+        hasBat = false      //allows entering cave when combined with hasFlash
+        hasAxe = false      //allows entry to clearing with brother
+        hasKey = false      //allows entry to cabin
+        hasCrowbar = false  //used to set hasAxe
+        hasKnife = false    //? - cosmetic?
+        axeWallFlag = true  //is the wall obstructing access to the axe
+        keyWallFlag = true  //is the keywall obstructing access to the crowbar
+        fromRavine = true   //controls where the player spawns in fForest
+        ffTree1Marked = false //are trees marked?
+        ffTree2Marked = false //are trees marked?
     }
     update(){
         //debugging mode features
@@ -199,13 +248,42 @@ class Menu extends Phaser.Scene {
         this.backTree3.tilePositionX +=9
         this.backTree4.tilePositionX +=8
 
+        //transition between scenens
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             favKeys = '[s]'
-            this.scene.start('openingScene')
+            this.cardrift.stop()
+            this.menuText.destroy()
+            this.tweens.add({
+                targets:this.car,
+                x: screenWidth*2,
+                duration: 10000,
+                ease:'Quad.InOut'
+            })
+            RLWipe(this,1000,'wipeTree',2500)
+            this.time.addEvent({
+                delay: 3000,
+                callback: () =>{
+                    this.scene.start('openingScene')
+                }
+            })
         }
         if(Phaser.Input.Keyboard.JustDown(keyDOWN)){
             favKeys = '[↓]'
-            this.scene.start('openingScene')
+            this.cardrift.stop()
+            this.menuText.destroy()
+            this.tweens.add({
+                targets:this.car,
+                x: screenWidth*2,
+                duration: 10000,
+                ease:'Quad.InOut'
+            })
+            RLWipe(this,1000,'wipeTree',2500)
+            this.time.addEvent({
+                delay: 3000,
+                callback: () =>{
+                    this.scene.start('openingScene')
+                }
+            })
         }
     }
 }
