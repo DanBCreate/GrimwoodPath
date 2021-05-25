@@ -226,7 +226,7 @@ function leave(scene,entrance,type,destination){
 
         //if cave
         if(scene.noInstruct && hasFlash && hasBat && type === 'cave'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -400,favKeys +' to enter',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -400,"hold "+favKeys +' to enter',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
@@ -239,7 +239,7 @@ function leave(scene,entrance,type,destination){
 
         //if tree
         if(scene.noInstruct && hasRope && type === 'tree'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -350,favKeys +' to climb',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -350,"hold "+favKeys +' to climb',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
@@ -256,7 +256,7 @@ function leave(scene,entrance,type,destination){
             scene.sfxActive = true;
         }
         if(scene.noInstruct && hasAxe && type === 'clearing'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -400,favKeys +' to enter',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -400,"hold "+favKeys +' to enter',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
@@ -269,7 +269,7 @@ function leave(scene,entrance,type,destination){
 
         //if car
         if(scene.noInstruct && type === 'car'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -200,favKeys +' to flee in terror',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -200,"hold "+favKeys +' to flee in terror',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
