@@ -208,7 +208,6 @@ class Menu extends Phaser.Scene {
             this.scene.start('openingScene')
         }
     }
-<<<<<<< HEAD
 }
 
 function genInventory(scene) {
@@ -295,6 +294,4 @@ function update_inv() {
     if (hasWood) {
         invWood.alpha = 255;
     }
-=======
->>>>>>> 1564ccad4374f222fc3864de77051eee92e2f405
 }
