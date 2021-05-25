@@ -93,7 +93,6 @@ class FForest extends Phaser.Scene {
         //set up the camera following
         this.sceneCamera = this.cameras.main.startFollow(this.player);
         this.sceneCamera.setLerp(cameraLerp,cameraLerp)
-        this.sceneCamera.zoom = 1
         this.sceneCamera.setBounds(-14400/2,0,14400,screenHeight)
 
         //collide with the ground and bounding boxes
