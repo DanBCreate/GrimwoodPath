@@ -86,7 +86,6 @@ let keyDOWN,keyS;
 // 9 - HEnd
 // 0 - Credit
 
-
 function debugUpdate(scene){
     //debugging mode features
     if(debugToggle){

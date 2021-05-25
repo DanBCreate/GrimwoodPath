@@ -6,6 +6,17 @@ class Menu extends Phaser.Scene {
     }
 
     preload(){
+        // Loading Screen
+        var oldLoad = this.add.graphics();
+		var newLoad = this.add.graphics();
+        var loadingText = this.add.text(screenCenterX,screenCenterY + 100,'Loading: ', textConfig);
+        this.backDrop = new Phaser.Geom.Rectangle(0, 0, 5000, 5000);
+		this.progressBarFill = new Phaser.Geom.Rectangle(screenCenterX, screenCenterY, screenWidth/2 - 10, 40);
+        oldLoad.fillStyle(0x292929, 1) // Controls color and alpha of loading screen backdrop
+        oldLoad.fillRectShape(this.backDrop);
+		newLoad.fillStyle(0x9a6363, 1);
+		newLoad.fillRectShape(this.progressBarFill);
+
         //loading screen
         this.LoadingBackground = this.add.rectangle(0,0,screenWidth,screenHeight,0x000000).setOrigin(0,0)
  
@@ -38,7 +49,7 @@ class Menu extends Phaser.Scene {
         this.load.spritesheet('playerIdle', 'assets/player/PlayerIdleSheet.png',{frameWidth: 767,frameHeight:1085,startFrame:0, endFrame:1}); // Player Asset
         this.load.spritesheet('walkLeft','assets/player/LeftRunSheet.png',{frameWidth: 767,frameHeight:1085,startFrame:0,endFrame:9});
         this.load.spritesheet('walkRight','assets/player/RightRunSheet.png',{frameWidth: 767,frameHeight:1085,startFrame:0,endFrame:9});
-        
+
         //forest assets
         this.load.image('forBG','assets/forest/ForestSolidBG.png')
         this.load.image('forFog','assets/forest/ForestFog.png')
@@ -70,9 +81,17 @@ class Menu extends Phaser.Scene {
         this.LoadingBackground.destroy()
         this.loadingText.destroy()
 
+        // For Loading Screen
+        this.load.on('progress', function(value) {
+            newLoad.clear();
+            newLoad.fillStyle(0xb48181, 0.8); // Controls color of loading screen progress bar
+            newLoad.fillRectShape(new Phaser.Geom.Rectangle(screenCenterX - 310, screenCenterY - 40, value * 590, 60));
+            loadingText.setText("Loading: " + Phaser.Math.RoundTo(value * 100, -1)+ "%");
+            loadingText.setFontSize(80);
+            loadingText.setOrigin(0.5, 0.5);
+        });
     }
     create(){
-
         //debugging mode features
         debugCreate(this);
 
@@ -100,11 +119,11 @@ class Menu extends Phaser.Scene {
         this.engine = this.sound.add('engine');
         this.driveCrickets = this.sound.add('driveCrickets');
         this.sfxConfigEngine = {
-            volume: 0.17,
+            volume: 0.13,
             loop: true,
         }
         this.sfxConfigDrive = {
-            volume: 3.3,
+            volume: 1.8,
             loop: true,
         }
         this.engine.play(this.sfxConfigEngine) ;
@@ -118,7 +137,7 @@ class Menu extends Phaser.Scene {
             ease:'Quad.InOut',
             loop: -1
         })
-        this.add.text(screenWidth/2,screenHeight/2,'press 2 to start\ninteract:↓ walk:←→ jump:↑\ninteract:s walk:ad jump:w',textConfig).setOrigin(0.5)
+        this.add.text(screenWidth/2,screenHeight/2,'press 2 to start\n\ninteract:↓ walk:←→ jump:↑\n\ninteract:s walk:ad jump:w',textConfig).setOrigin(0.5)
 
         //unset colletable flags
         hasRope = false     //allows exit from ravine
@@ -189,6 +208,7 @@ class Menu extends Phaser.Scene {
             this.scene.start('openingScene')
         }
     }
+<<<<<<< HEAD
 }
 
 function genInventory(scene) {
@@ -275,4 +295,6 @@ function update_inv() {
     if (hasWood) {
         invWood.alpha = 255;
     }
+=======
+>>>>>>> 1564ccad4374f222fc3864de77051eee92e2f405
 }
