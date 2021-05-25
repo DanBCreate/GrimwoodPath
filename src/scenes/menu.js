@@ -171,7 +171,7 @@ class Menu extends Phaser.Scene {
         })
         this.anims.create({
             key: 'fleeThree',
-            frames: this.anims.generateFrameNumbers('flee', {frames:[3]}),
+            frames: this.anims.generateFrameNumbers('flee', {frames:[2]}),
             frameRate: 0,
             repeat: -1
         })
