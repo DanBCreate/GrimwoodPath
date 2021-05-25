@@ -99,9 +99,11 @@ class Ravine extends Phaser.Scene {
             alpha: 255,     
             ease: 'linear'
         });*/
+
     }
 
     update(){
+        this.player.ravineFall();
         // Debugging mode features
         debugUpdate(this);
 

@@ -32,6 +32,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
         this.bufferY = 50; // This will control the ability to push/pull while on top of a block
         this.currentAnimKey;
         this.direction = 0; // 0 is Right 1 is Left
+        this.fallen = false;
         
         // Player SFX Settings
         this.sfxLock = false;
@@ -51,7 +52,9 @@ class player extends Phaser.Physics.Arcade.Sprite {
 
     update(){
         // Controls the players movement and SFX sounds
-        this.playerControls(); 
+        if(this.fallen == true){
+            this.playerControls(); 
+        }   
     }
 
     playerControls(){
@@ -175,11 +178,13 @@ class player extends Phaser.Physics.Arcade.Sprite {
             this.setVelocityX(0)
 
             this.anims.pause()
-            if(this.direction == 1){
-                this.anims.play('IdleRight');
-            }
-            else{
-                this.anims.play('IdleLeft');
+            if(this.fallen == true) {
+                if(this.direction == 1){
+                    this.anims.play('IdleRight');
+                }
+                else{
+                    this.anims.play('IdleLeft');
+                }
             }
 
             this.sfxLock = false;
@@ -225,6 +230,15 @@ class player extends Phaser.Physics.Arcade.Sprite {
         }
         else{
             return false;
+        }
+    }
+
+    ravineFall(){
+        if(this.y < 885 && this.fallen == false){
+            this.setTexture('fall');
+        }
+        else {
+            this.fallen = true;
         }
     }
 }
