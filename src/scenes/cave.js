@@ -107,6 +107,7 @@ class Cave extends Phaser.Scene {
         //create the actual light
         this.playerLight = this.lights.addLight(0,0,1000).setColor(0xffffff).setIntensity(2)
 
+        genInventory(this);
     }
     update(){
         debugUpdate(this);
@@ -132,6 +133,8 @@ class Cave extends Phaser.Scene {
         //move the light to follow the player
         this.playerLight.x = this.player.body.x + this.player.displayWidth/2
         this.playerLight.y = this.player.body.y
+
+        update_inv();
     }
 
     //checks if slidy block should be pushed

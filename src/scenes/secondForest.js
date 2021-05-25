@@ -147,6 +147,7 @@ class LForest extends Phaser.Scene {
         leave(this,this.caveExit,'cave','caveScene')
         leave(this,this.escapeCar,'car','noBroScene')
 
+        genInventory(this);
     }
     update(){
         //debugging mode features
@@ -172,6 +173,8 @@ class LForest extends Phaser.Scene {
         this.backTree2.x = this.player.x/50
         this.backTree3.x = this.player.x/30
         this.backTree4.x = this.player.x/20
+
+        update_inv();
 
     }
 

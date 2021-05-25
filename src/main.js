@@ -90,16 +90,16 @@ function debugUpdate(scene){
     //debugging mode features
     if(debugToggle){
         //debugging navigaiton checks
-        if(Phaser.Input.Keyboard.JustDown(key1)){scene.scene.start('menuScene')}
-        if(Phaser.Input.Keyboard.JustDown(key2)){scene.scene.start('openingScene')}
-        if(Phaser.Input.Keyboard.JustDown(key3)){scene.scene.start('ravineScene')}
-        if(Phaser.Input.Keyboard.JustDown(key4)){scene.scene.start('fForestScene')}
-        if(Phaser.Input.Keyboard.JustDown(key5)){scene.scene.start('caveScene')}
-        if(Phaser.Input.Keyboard.JustDown(key6)){scene.scene.start('lForestScene')}
-        if(Phaser.Input.Keyboard.JustDown(key7)){scene.scene.start('noBroScene')}
-        if(Phaser.Input.Keyboard.JustDown(key8)){scene.scene.start('sEndScene')}
-        if(Phaser.Input.Keyboard.JustDown(key9)){scene.scene.start('hEndScene')}
-        if(Phaser.Input.Keyboard.JustDown(key0)){scene.scene.start('creditScene')}
+        if(Phaser.Input.Keyboard.JustDown(key1)){scene.game.sound.stopAll(); scene.scene.start('menuScene')}
+        if(Phaser.Input.Keyboard.JustDown(key2)){scene.game.sound.stopAll(); scene.scene.start('openingScene')}
+        if(Phaser.Input.Keyboard.JustDown(key3)){scene.game.sound.stopAll(); scene.scene.start('ravineScene')}
+        if(Phaser.Input.Keyboard.JustDown(key4)){scene.game.sound.stopAll(); scene.scene.start('fForestScene')}
+        if(Phaser.Input.Keyboard.JustDown(key5)){scene.game.sound.stopAll(); scene.scene.start('caveScene')}
+        if(Phaser.Input.Keyboard.JustDown(key6)){scene.game.sound.stopAll(); scene.scene.start('lForestScene')}
+        if(Phaser.Input.Keyboard.JustDown(key7)){scene.game.sound.stopAll(); scene.scene.start('noBroScene')}
+        if(Phaser.Input.Keyboard.JustDown(key8)){scene.game.sound.stopAll(); scene.scene.start('sEndScene')}
+        if(Phaser.Input.Keyboard.JustDown(key9)){scene.game.sound.stopAll(); scene.scene.start('hEndScene')}
+        if(Phaser.Input.Keyboard.JustDown(key0)){scene.game.sound.stopAll(); scene.scene.start('creditScene')}
     }
 }
 
@@ -225,7 +225,7 @@ function leave(scene,entrance,type,destination){
 
         //if cave
         if(scene.noInstruct && hasFlash && hasBat && type === 'cave'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -400,favKeys +' to enter',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -400,"hold "+favKeys +' to enter',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
@@ -238,7 +238,7 @@ function leave(scene,entrance,type,destination){
 
         //if tree
         if(scene.noInstruct && hasRope && type === 'tree'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -350,favKeys +' to climb',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -350,"hold "+favKeys +' to climb',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
@@ -255,7 +255,7 @@ function leave(scene,entrance,type,destination){
             scene.sfxActive = true;
         }
         if(scene.noInstruct && hasAxe && type === 'clearing'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -400,favKeys +' to enter',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -400,"hold "+favKeys +' to enter',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
@@ -268,7 +268,7 @@ function leave(scene,entrance,type,destination){
 
         //if car
         if(scene.noInstruct && type === 'car'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -200,favKeys +' to flee in terror',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -200,"hold "+favKeys +' to flee in terror',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
@@ -324,3 +324,4 @@ function markTree(scene,tree,flag){
         }
     })
 }
+

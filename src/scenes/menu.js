@@ -209,3 +209,89 @@ class Menu extends Phaser.Scene {
         }
     }
 }
+
+function genInventory(scene) {
+    invAxe = scene.add.sprite(screenWidth/4,screenHeight/16,'axe');
+    invAxe.displayWidth = screenWidth/16;
+    invAxe.scaleY = invAxe.scaleX;
+    invAxe.alpha = 0;
+    invAxe.setScrollFactor(0);
+    invBat = scene.add.sprite(screenWidth/4 + screenWidth/16,screenHeight/16,'bat');
+    invBat.displayWidth = screenWidth/16;
+    invBat.scaleY = invBat.scaleX;
+    invBat.alpha = 0;
+    invBat.setScrollFactor(0);
+    invBar = scene.add.sprite(screenWidth/4 + 2*screenWidth/16,screenHeight/16,'bar');
+    invBar.displayWidth = screenWidth/16;
+    invBar.scaleY = invBar.scaleX;
+    invBar.alpha = 0;
+    invBar.setScrollFactor(0);
+    invJacket = scene.add.sprite(screenWidth/4 + 3*screenWidth/16,screenHeight/16,'jacket');
+    invJacket.displayWidth = screenWidth/16;
+    invJacket.scaleY = invJacket.scaleX;
+    invJacket.alpha = 0;
+    invJacket.setScrollFactor(0);
+    invKey = scene.add.sprite(screenWidth/4 + 4*screenWidth/16,screenHeight/16,'key');
+    invKey.displayWidth = screenWidth/16;
+    invKey.scaleY = invKey.scaleX;
+    invKey.alpha = 0;
+    invKey.setScrollFactor(0);
+    invKnife = scene.add.sprite(screenWidth/4 + 5*screenWidth/16,screenHeight/16,'knife');
+    invKnife.displayWidth = screenWidth/16;
+    invKnife.scaleY = invKnife.scaleX;
+    invKnife.alpha = 0;
+    invKnife.setScrollFactor(0);
+    invLight = scene.add.sprite(screenWidth/4 + 6*screenWidth/16,screenHeight/16,'light');
+    invLight.displayWidth = screenWidth/16;
+    invLight.scaleY = invLight.scaleX;
+    invLight.alpha = 0;
+    invLight.setScrollFactor(0);
+    invRope = scene.add.sprite(screenWidth/4 + 7*screenWidth/16,screenHeight/16,'rope');
+    invRope.displayWidth = screenWidth/16;
+    invRope.scaleY = invRope.scaleX;
+    invRope.alpha = 0;
+    invRope.setScrollFactor(0);
+    invShirt = scene.add.sprite(screenWidth/4 + 8*screenWidth/16,screenHeight/16,'shirt');
+    invShirt.displayWidth = screenWidth/16;
+    invShirt.scaleY = invShirt.scaleX;
+    invShirt.alpha = 0;
+    invShirt.setScrollFactor(0);
+    invWood = scene.add.sprite(screenWidth/4 + 9*screenWidth/16,screenHeight/16,'wood');
+    invWood.displayWidth = screenWidth/16;
+    invWood.scaleY = invWood.scaleX;
+    invWood.alpha = 0;
+    invWood.setScrollFactor(0);
+}
+
+function update_inv() {
+    if (hasAxe) {
+        invAxe.alpha = 255;
+    }
+    if (hasBat) {
+        invBat.alpha = 255;
+    }
+    if (hasCrowbar){
+        invBar.alpha = 255;
+    }
+    if (hasJacket) {
+        invJacket.alpha = 255;
+    }
+    if (hasKey) {
+        invKey.alpha = 255;
+    }
+    if (hasKnife) {
+        invKnife.alpha = 255;
+    }
+    if (hasFlash) {
+        invLight.alpha = 255;
+    }
+    if (hasRope) {
+        invRope.alpha = 255;
+    }
+    if (hasShirt) {
+        invShirt.alpha = 255;
+    }
+    if (hasWood) {
+        invWood.alpha = 255;
+    }
+}
