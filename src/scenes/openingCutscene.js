@@ -18,137 +18,318 @@ class Opening extends Phaser.Scene {
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
 
-        this.timesequence = 0;
-        
-        //first vignette
-        this.car = new SlidySprite(this,0,screenHeight/2,'car').setOrigin(0)
-        this.add.existing(this.car);
-        this.car.slide(screenWidth/2,screenHeight/2,2000);
-        
-        //black out first vignette
-        RLWipe(this,2000,'wipeTree',100)
-
+        //sound ambiance
         this.ambience = this.sound.add('nightAmbience');
         this.sfxConfig = {
             volume: 1.5,
             loop: false,
         }
-        
-        //second vignette
-        this.time.addEvent({
-            delay: 1100,
-            callback: () =>{
-                this.game.sound.stopAll();
-                this.ambience.play(this.sfxConfig) ;
+        this.game.sound.stopAll();
+        this.ambience.play(this.sfxConfig) ;
 
-                this.car.destroy()
-                this.trail = new SlidySprite(this,0,0,'trail').setOrigin(0)
-                this.add.existing(this.trail)
-                this.trail.slide(-200,0,4000)
+        //continue the treeWipe from the menu scene
+        this.timesequence = 0
+        this.wipetime = 1000
+
+        this.startBlack = this.add.rectangle(screenWidth,screenHeight,screenWidth,screenHeight,0x000000).setOrigin(1)
+        RLWipe(this,this.wipetime,'wipeTree',this.timesequence)
+        
+        this.timesequence += this.wipetime + 100 //half of wipe time + a bit of padding due to scene startup being weird
+
+        //replace the background with the first vignette
+        this.time.addEvent({
+            delay: this.timesequence,
+            callback: () =>{
+                //create this vignette
+                this.lot = new SlidySprite(this,0,0,'parkingLot').setOrigin(0)               
+                this.walkers = new SlidySprite(this,400,screenHeight,'withBro').setOrigin(0,1)
+                this.add.existing(this.lot)
+                this.add.existing(this.walkers)
+                //animate
+                this.walkers.slide(800,screenHeight,10000)
+                this.lot.slide(-100,0,10000)
+
             }
         })
 
+        this.timesequence += 2400 //duration of scene
+        this.wipetime = 2000 //nice looking time
+        
+        //black out first vignette
+        RLWipe(this,this.wipetime,'wipeTree',this.timesequence)
+        
+        this.timesequence += this.wipetime/2 
+
+        //second vignette
+        this.time.addEvent({
+            delay: this.timesequence,
+            callback: () =>{
+                //remove last vignette
+                this.walkers.destroy()
+                this.lot.destroy()
+                //create this vignette
+                this.sf = new SlidySprite(this,0,0,'sunForest').setOrigin(0)
+                this.exploring = new SlidySprite(this,400,screenHeight,'withBroWalk').setOrigin(0,1)
+                this.add.existing(this.sf)
+                this.add.existing(this.exploring)
+                //animate
+                this.exploring.slide(800,screenHeight,10000)
+                this.sf.slide(-100,0,10000)
+            }
+        })
+
+        this.timesequence += 2000 //duration of scene
+
         //black second vignette
-        RLWipe(this,3000,'wipeTree',2500)
+        RLWipe(this,this.wipetime,'wipeTree',this.timesequence)
+
+        this.timesequence += this.wipetime/2
 
         //third vignette
         this.time.addEvent({
-            delay: 4000,
+            delay: this.timesequence,
             callback: () =>{
-                this.trail.destroy()
-                this.forestPath = new SlidySprite(this,0,0,'forest').setOrigin(0)
-                this.add.existing(this.forestPath)
-                this.mainCharacter = new SlidySprite(this,500,700,'dude').setOrigin(0)
-                this.add.existing(this.mainCharacter)
-                this.sideCharacter = new SlidySprite(this,200,700,'dude').setOrigin(0)
-                this.add.existing(this.sideCharacter)
-                this.mainCharacter.slide(screenWidth,700,6000)
-                this.sideCharacter.slide(screenWidth,700,8000)
-                this.forestPath.slide(-100,0,6000)
-
+                //remove last vignette
+                this.sf.destroy()
+                this.exploring.destroy()
+                //create this vignette
+                this.nf = new SlidySprite(this,0,0,'moonForest').setOrigin(0)
+                this.lookBack = new SlidySprite(this,400,screenHeight,'broDistracted').setOrigin(0,1)
+                this.add.existing(this.nf)
+                this.add.existing(this.lookBack)
+                //animate
+                this.lookBack.slide(800,screenHeight,20000)
+                this.nf.slide(-100,0,10000)
             }
         })
 
-        //blank blank third vinette
-        RLWipe(this,4000,'wipeTree',6000)
+        this.timesequence += 2000 //duration of scene
+
+        //black third vignette
+        RLWipe(this,this.wipetime,'wipeTree',this.timesequence)
+
+        this.timesequence+= this.wipetime/2
 
         //fourth vignette
         this.time.addEvent({
-            delay: 8000,
-            callback: ()=> {
-                this.mainCharacter.destroy()
-                this.sideCharacter.destroy()
-                this.forestPath.destroy()
-                this.forestPath = new SlidySprite(this,0,0,'forest').setOrigin(0)
-                this.add.existing(this.forestPath)
-                this.mainCharacter = new SlidySprite(this,800,700,'dude').setOrigin(0)
-                this.add.existing(this.mainCharacter)   
-                this.mainCharacter.slide(900,700,2000)
-                this.mainCharacter.slide(850,700,500,2050)
-                this.mainCharacter.slide(860,700,200,2600)
-                this.mainCharacter.slide(200,700,1000,2850)
-
-
+            delay: this.timesequence,
+            callback: () =>{
+                //remove last vignette
+                this.nf.destroy()
+                this.lookBack.destroy()
+                //create this vignette
+                this.cf = new SlidySprite(this,0,0,'shortForest').setOrigin(0)
+                this.search = new SlidySprite(this,400,screenHeight,'searchLeft').setOrigin(0,1)
+                this.add.existing(this.cf)
+                this.add.existing(this.search)
+                //animate
+                this.search.slide(200,screenHeight,20000)
+                this.cf.slide(100,0,10000)
             }
         })
 
-        //blank fourth vignette
-        LRWipe(this,2000,'wipeTree',11500)
+        this.timesequence += 2000 // duration of scene
 
-        //fifth vignette
+        //black fourth vignette
+        LRWipe(this,this.wipetime,'wipeTree',this.timesequence)
+
+        this.timesequence += this.wipetime/2
+
+        //fith vignette
         this.time.addEvent({
-            delay: 12500,
-            callback: ()=> {
-                this.mainCharacter.destroy()
-                this.forestPath.destroy()
-                this.forestPath = new SlidySprite(this,0,0,'forest').setOrigin(0)
-                this.add.existing(this.forestPath)
-                this.mainCharacter = new SlidySprite(this,screenWidth,700,'dude').setOrigin(0)
-                this.add.existing(this.mainCharacter) 
-                this.monster = new SlidySprite(this,200,200,'dude').setOrigin(0)
-                this.add.existing(this.monster) 
-                this.monster.displayHeight = 600;
-                this.mainCharacter.slide(screenWidth-200,700,1000)
-                this.mainCharacter.slide(screenWidth-200,500,500,1000)
-                this.mainCharacter.slide(screenWidth-200,700,500,1500)
-                this.mainCharacter.slide(screenWidth,700,1000,2000)
-                this.monster.slide(screenWidth/2,200,6000)
+            delay: this.timesequence,
+            callback: () =>{
+                //remove last vignette
+                this.cf.destroy()
+                this.search.destroy()
+                //create this vignette
+                this.clof = new SlidySprite(this,0,0,'shortForest').setOrigin(0)
+                this.searchRight = new SlidySprite(this,1000,screenHeight,'searchRight').setOrigin(0,1)
+                this.add.existing(this.clof)
+                this.add.existing(this.searchRight)
+                //animate
+                this.searchRight.slide(1200,screenHeight,20000)
+                this.clof.slide(-100,0,10000)
             }
-
         })
 
-        //blank fifth vignette
-        RLWipe(this,2000,'wipeTree',16000)
+        this.timesequence += 2000 // duration of scene
+
+        //black fith vignette
+        RLWipe(this,this.wipetime,'wipeTree',this.timesequence)
+
+        this.timesequence += this.wipetime/2
 
         //sixth vignette
         this.time.addEvent({
-            delay: 17000,
-            callback: ()=> {
-                this.mainCharacter.destroy()
-                this.forestPath.destroy()
-                this.monster.destroy()
-                this.forestPath = new SlidySprite(this,-screenWidth/2,0,'forest').setOrigin(0)
-                this.add.existing(this.forestPath)
-                this.mainCharacter = new SlidySprite(this,screenWidth/3,700,'dude').setOrigin(0)
-                this.add.existing(this.mainCharacter) 
-                this.monster = new SlidySprite(this,100,200,'dude').setOrigin(0)
-                this.add.existing(this.monster) 
-                this.monster.displayHeight = 600;
-                this.monster.slide(screenWidth/2-50,200,4000)
-                this.mainCharacter.slide(screenWidth/2+50,700,1000)
-                this.mainCharacter.slide(screenWidth/2+50,screenHeight+200,1000,1000)
-                this.mainCharacter.rotate(90,1000,1000)
-
+            delay: this.timesequence,
+            callback: () =>{
+                //remove last vignette
+                this.clof.destroy()
+                this.searchRight.destroy()
+                //create this vignette
+                this.monf = new SlidySprite(this,0,0,'shortForest').setOrigin(0)
+                this.monsil = new SlidySprite(this,1000,screenHeight,'monSil').setOrigin(0,1)
+                this.add.existing(this.monf)
+                this.add.existing(this.monsil)
+                //animate
+                this.monsil.slide(800,screenHeight,20000)
+                this.monf.slide(100,0,10000)
             }
-
         })
 
-        //blank sixth vignette
-        RLWipe(this,2000,'wipeTree',20500)
+        this.timesequence += 1500 //duration of scene
 
+        //seventh vignette
+        this.time.addEvent({
+            delay: this.timesequence,
+            callback: () =>{
+                //remove last vignette
+                this.monsil.destroy()
+                //create this vignette
+                this.monskel = new SlidySprite(this,950,screenHeight,'monStare').setOrigin(0,1)
+                this.add.existing(this.monskel)
+                //animate
+                this.monskel.slide(750,screenHeight,20000)
+            }
+        })
+
+        this.timesequence += 1500 //duration of scene
+
+        //eighth vignette
+        this.time.addEvent({
+            delay: this.timesequence,
+            callback: () =>{
+                //remove last vignette
+                this.monskel.destroy()
+                //create this vignette
+                this.monwav = new SlidySprite(this,500,screenHeight,'monWave').setOrigin(0,1)
+                this.add.existing(this.monwav)
+                //animate
+                this.monwav.slide(400,screenHeight,20000)
+            }
+        })
+
+        this.timesequence += 1000 //duration of scene
+
+        //nineth vignette
+        this.time.addEvent({
+            delay: this.timesequence,
+            callback: () =>{
+                //remove last vignette
+                this.monwav.destroy()
+                //create this vignette
+                this.monhead = new SlidySprite(this,400,screenHeight,'monHead').setOrigin(0,1)
+                this.add.existing(this.monhead)
+                //animate
+                this.monhead.slide(300,screenHeight,20000)
+            }
+        })
+
+        this.timesequence += 1000 //duration of scene
+        this.wipetime = 1000 //faster wipes for faster action
+
+        LRWipe(this,this.wipetime,'wipeTree',this.timesequence)
+
+        this.timesequence += this.wipetime/2
+
+
+        //tenth vignette
+        this.time.addEvent({
+            delay: this.timesequence,
+            callback: () =>{
+                //remove last vignette
+                this.monhead.destroy()
+                this.monf.destroy()
+                //create this vignette
+                this.clorf = new SlidySprite(this,0,0,'cliffForest').setOrigin(0)
+                this.scared = new SlidySprite(this,400,screenHeight,'flee').setOrigin(0,1) // this doesn't display and i don't know why
+                this.scared.anims.play('fleeOne')
+                this.add.existing(this.scared)
+                this.add.existing(this.clorf)
+                //animate
+                this.scared.slide(500,screenHeight,20000)
+            }
+        })
+
+        this.timesequence += 1500 //duration of scene
+
+        //elevinth vignette
+        this.time.addEvent({
+            delay: this.timesequence,
+            callback: () =>{
+                //remove last vignette
+                this.scared.destroy()
+                //create this vignette
+                this.run = new SlidySprite(this,500,screenHeight,'flee').setOrigin(0,1)
+                this.run.anims.play('fleeTwo')
+                this.add.existing(this.run)
+                //animate
+                this.run.slide(600,screenHeight,20000)
+            }
+        })
+
+        this.timesequence += 1000 //duration of scene
+
+        //twelvth vignette
+        this.time.addEvent({
+            delay: this.timesequence,
+            callback: () =>{
+                //remove last vignette
+                this.run.destroy()
+                //create this vignette
+                this.trip = new SlidySprite(this,700,screenHeight,'flee').setOrigin(0,1)
+                this.trip.anims.play('fleeThree')
+                this.add.existing(this.trip)
+                //animate
+                this.trip.slide(800,screenHeight,20000)
+            }
+        })  
+
+        this.timesequence += 500 //duration of scene
+        
+        RLWipe(this,this.wipetime,'wipeTree',this.timesequence)
+
+        this.timesequence += this.wipetime/2
+
+        //twelvth vignette
+        this.time.addEvent({
+            delay: this.timesequence,
+            callback: () =>{
+                //remove last vignette
+                this.trip.destroy()
+                this.clorf.destroy()
+                //create this vignette
+                this.cliff = new SlidySprite(this,0,0,'cliff').setOrigin(0)
+                this.fall = new SlidySprite(this,700,screenHeight,'fall').setOrigin(0,1)
+                this.add.existing(this.cliff)
+                this.add.existing(this.fall)
+                //animate
+                this.fall.slide(700,screenHeight+100,10000)
+            }
+        })     
+        
+        this.timesequence += 2500 //duration of scene
+
+        //dim screen
+        this.time.addEvent({
+            delay: this.timesequence,
+            callback: () =>{
+                this.dimmer = this.add.rectangle(screenWidth,screenHeight,screenWidth,screenHeight,0x000000).setOrigin(1)
+                this.dimmer.alpha = 0
+                this.tweens.add({
+                    targets: this.dimmer,
+                    alpha: 1, 
+                    duration: 950
+                })
+            }
+        })          
+
+        this.timesequence += 1000 //duration of dim
+        console.log(this.timesequence)
         //end scene
         this.time.addEvent({
-            delay: 19500,
+            delay: this.timesequence,
             callback: ()=> {
                 this.scene.start('ravineScene')
             }
