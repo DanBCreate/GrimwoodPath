@@ -144,7 +144,7 @@ class FForest extends Phaser.Scene {
         //deal with foreground trees
         markTree(this,this.firstTree,'ff1')
         markTree(this,this.secondTree,'ff2')
-
+        genInventory(this);
     }
 
     update(){
@@ -183,7 +183,7 @@ class FForest extends Phaser.Scene {
         this.backTree3.x = this.player.x/30
         this.backTree4.x = this.player.x/20
 
-
+        update_inv();
     }
 
 }
