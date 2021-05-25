@@ -90,7 +90,7 @@ class Cave extends Phaser.Scene {
         this.block = new slidyBlock(this, screenCenterX + 200, screenCenterY, 'slidyBlock').setScale(0.05);
         // Colliders
         this.physics.add.collider(this.block, this.ground); // Collider between block and ground.
-        this.physics.add.collider(this.block, this.axeWall); // Collider between block and ground.
+        this.physics.add.collider(this.block, this.axeWall);
         this.physics.add.collider(this.player, this.block); // Collider between player and the block
 
         //setting up the lighting
@@ -151,6 +151,11 @@ class Cave extends Phaser.Scene {
         else{
             this.block.setMovable(false, this.player.body.velocity.x);
         }
+    }
+
+    slidyCollision() {
+
+        console.log("test");
     }
 
 }

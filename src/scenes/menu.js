@@ -7,13 +7,11 @@ class Menu extends Phaser.Scene {
 
     preload(){
         // Loading Screen
-        var oldLoad = this.add.graphics();
+        this.back = this.add.sprite(2000,500,'ravineBG').setOrigin(0.5,0.5).setScale(1.1)
 		var newLoad = this.add.graphics();
         var loadingText = this.add.text(screenCenterX,screenCenterY + 100,'Loading: ', textConfig);
         this.backDrop = new Phaser.Geom.Rectangle(0, 0, 5000, 5000);
 		this.progressBarFill = new Phaser.Geom.Rectangle(screenCenterX, screenCenterY, screenWidth/2 - 10, 40);
-        oldLoad.fillStyle(0x292929, 1) // Controls color and alpha of loading screen backdrop
-        oldLoad.fillRectShape(this.backDrop);
 		newLoad.fillStyle(0x9a6363, 1);
 		newLoad.fillRectShape(this.progressBarFill);
 
@@ -62,7 +60,6 @@ class Menu extends Phaser.Scene {
         this.load.spritesheet('markedTree','assets/forest/markedSingleTree.png',{frameWidth: 300, frameHeight:1080,startFrame:0,endFrame:7});
 
         //ravine assets
-        this.load.image('ravineBG','assets/ravine/insideRavineBG.png')
         this.load.image('ravinebase','assets/ravine/insideRavineBase.png')
         this.load.image('ravineborder','assets/ravine/insideRavineBorder.png')
         this.load.image('ravinefog','assets/ravine/insideRavineFog.png')
@@ -84,7 +81,7 @@ class Menu extends Phaser.Scene {
         // For Loading Screen
         this.load.on('progress', function(value) {
             newLoad.clear();
-            newLoad.fillStyle(0xb48181, 0.8); // Controls color of loading screen progress bar
+            newLoad.fillStyle(0xb48181, 0.95); // Controls color of loading screen progress bar
             newLoad.fillRectShape(new Phaser.Geom.Rectangle(screenCenterX - 310, screenCenterY - 40, value * 590, 60));
             loadingText.setText("Loading: " + Phaser.Math.RoundTo(value * 100, -1)+ "%");
             loadingText.setFontSize(80);
