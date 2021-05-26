@@ -12,7 +12,7 @@ let screenCenterY = screenHeight / 2;
 debugToggle = true;
 playerMovementSpeed = 400;
 cameraLerp = 0.05; // Lerp is how delayed is the camera following our player, I.E Smoothness
-instrctionDelay = 500
+instrctionDelay = 10
 let favKeys = '[space]'
 
 //game config
@@ -51,7 +51,7 @@ let textConfig = {
 //text for the player
 let playerTextConfig = {
     fontFamily: 'player',
-    fontSize: '30px',
+    fontSize: '60px',
     color: '#FF0000',
     align: 'center',
     padding: {
