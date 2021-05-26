@@ -82,6 +82,7 @@ let ffTree1Marked = false //are trees marked?
 let ffTree2Marked = false //are trees marked?
 let lfTree1Marked = false //are trees marked?
 let lfTree2Marked = false //are trees marked?
+let fallen = false //has the player fallen
 
 //keys for scene navigation
 let key1,key2,key3,key4,key5,key6,key7,key8,key9,key0;

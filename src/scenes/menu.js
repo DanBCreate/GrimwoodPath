@@ -233,6 +233,9 @@ class Menu extends Phaser.Scene {
         fromRavine = true   //controls where the player spawns in fForest
         ffTree1Marked = false //are trees marked?
         ffTree2Marked = false //are trees marked?
+        lfTree1Marked = false //are trees marked?
+        lfTree2Marked = false //are trees marked?
+        fallen = false
     }
     update(){
         //debugging mode features
