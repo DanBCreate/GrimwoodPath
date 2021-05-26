@@ -235,6 +235,9 @@ class Menu extends Phaser.Scene {
         lfTree1Marked = false //are trees marked?
         lfTree2Marked = false //are trees marked?
         fallen = false
+
+        //initalize playerTextConfig or something (this makes the first call of player.think() use the right font)
+        this.add.text(-100,-100,'p',playerTextConfig)
     }
     update(){
         //debugging mode features

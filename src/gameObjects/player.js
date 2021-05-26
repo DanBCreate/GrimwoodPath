@@ -236,8 +236,20 @@ class player extends Phaser.Physics.Arcade.Sprite {
         if(this.y < 885 && !fallen){
             this.setTexture('fall');
         }
-        else {
+        else if(!fallen){
             fallen = true;
+            this.think('my leg hurts,\nmaybe I can find something to splint it')
         }
+    }
+
+    think(text,duration = 5000){
+            this.scene.playerThoughts = this.scene.add.text(this.x,this.y - 200,text,playerTextConfig).setOrigin(0.5)
+            this.scene.time.addEvent({
+                delay: duration,
+                callback: () => {
+                    this.scene.playerThoughts.destroy()
+                    console.log('ping')
+                }
+            })
     }
 }
