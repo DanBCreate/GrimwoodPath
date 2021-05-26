@@ -100,6 +100,9 @@ class Ravine extends Phaser.Scene {
             ease: 'linear'
         });*/
 
+        //set player spawns for first forest
+        playerSpawnx = -5700
+
     }
 
     update(){

@@ -62,7 +62,7 @@ class LForest extends Phaser.Scene {
         this.leftBound.displayHeight = screenHeight
 
         // Setting up our player and camera to follow player
-        this.player = new player(this, 7000, screenCenterY, 'player').setScale(0.15); // Initialize our Player
+        this.player = new player(this, playerSpawnx, playerSpawny - 200, 'player').setScale(0.15); // Initialize our Player
         this.player.depth = 200
         this.sceneCamera = this.cameras.main.startFollow(this.player);
         this.sceneCamera.setLerp(cameraLerp,cameraLerp)
@@ -150,6 +150,8 @@ class LForest extends Phaser.Scene {
         //deal with scene changes
         leave(this,this.caveExit,'cave','caveScene')
         leave(this,this.escapeCar,'car','noBroScene')
+        leave(this,this.firstTree,'mtree1','fForestScene')
+        leave(this,this.secondTree,'mtree2','fForestScene')
 
         genInventory(this);
     }

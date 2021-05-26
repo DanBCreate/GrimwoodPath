@@ -76,7 +76,10 @@ let hasCrowbar = false  //used to set hasAxe
 let hasKnife = false    //? - cosmetic?
 let axeWallFlag = true  //is the wall obstructing access to the axe
 let keyWallFlag = true  //is the keywall obstructing access to the crowbar
-let fromRavine = true   //controls where the player spawns in fForest
+
+//used for controling where the player will spawn
+let playerSpawnx
+let playerSpawny = screenHeight -140
 
 let ffTree1Marked = false //are trees marked?
 let ffTree2Marked = false //are trees marked?
@@ -237,6 +240,7 @@ function collect(scene,item,key){
 }
 
 //creates scene transistions
+//valid flags: cave tree clearing car mtree1 mtree2
 function leave(scene,entrance,type,destination){
     scene.physics.add.overlap(scene.player,entrance,()=>{
         //flag used to know if a player is allowed to enter
@@ -248,6 +252,8 @@ function leave(scene,entrance,type,destination){
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
+            if(destination === 'fForestScene'){playerSpawnx = screenWidth}
+            if(destination === 'lForestScene'){playerSpawnx = 7000}
         } 
         else if (scene.noInstruct && type === 'cave'){
             scene.instructions = scene.add.text(entrance.x,entrance.y -400,'It\'s dark in there',textConfig).setOrigin(0.5)
@@ -292,6 +298,26 @@ function leave(scene,entrance,type,destination){
             scene.noInstruct = false
             happy = true
         } 
+
+        //if Markedtree1
+        if(scene.noInstruct && type === 'mtree1' && ffTree1Marked && lfTree1Marked){
+            scene.instructions = scene.add.text(entrance.x,entrance.y-200,'hold '+favKeys+' to follow the mark',textConfig).setOrigin(0.5)
+            scene.instructions.setFontSize('40px')
+            scene.noInstruct = false
+            happy = true
+            if(destination === 'fForestScene'){playerSpawnx = 4000}
+            if(destination === 'lForestScene'){playerSpawnx = 11200}
+        }
+        //if markedtree2
+        if(scene.noInstruct && type === 'mtree2' && ffTree2Marked && lfTree2Marked){
+            scene.instructions = scene.add.text(entrance.x,entrance.y-200,'hold '+favKeys+' to follow the mark',textConfig).setOrigin(0.5)
+            scene.instructions.setFontSize('40px')
+            scene.noInstruct = false
+            happy = true
+            if(destination === 'fForestScene'){playerSpawnx = 1000}
+            if(destination === 'lForestScene'){playerSpawnx = 8300}
+        }
+
 
         //transition to scene
         if(scene.player.actionButton && happy){

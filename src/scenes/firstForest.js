@@ -82,13 +82,8 @@ class FForest extends Phaser.Scene {
         }
 
         // Setting up our player
-        if(fromRavine){
-            this.player = new player(this, -5700, screenHeight - 140, 'player').setScale(0.15).setOrigin(0.5,1); // Initialize our Player
-            fromRavine = false
-        }
-        else{
-            this.player = new player(this, screenWidth, screenHeight - 140, 'player').setScale(0.15).setOrigin(0.5,1); // Initialize our Player
-        }
+        
+        this.player = new player(this, playerSpawnx, playerSpawny, 'player').setScale(0.15).setOrigin(0.5,1); // Initialize our Player
         this.player.depth = 200
 
         //set up the camera following
@@ -146,6 +141,8 @@ class FForest extends Phaser.Scene {
         //deal with foreground trees
         markTree(this,this.firstTree,'ff1')
         markTree(this,this.secondTree,'ff2')
+        leave(this,this.firstTree,'mtree1','lForestScene')
+        leave(this,this.secondTree,'mtree2','lForestScene')
         genInventory(this);
     }
 

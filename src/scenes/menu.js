@@ -230,7 +230,6 @@ class Menu extends Phaser.Scene {
         hasKnife = false    //? - cosmetic?
         axeWallFlag = true  //is the wall obstructing access to the axe
         keyWallFlag = true  //is the keywall obstructing access to the crowbar
-        fromRavine = true   //controls where the player spawns in fForest
         ffTree1Marked = false //are trees marked?
         ffTree2Marked = false //are trees marked?
         lfTree1Marked = false //are trees marked?
