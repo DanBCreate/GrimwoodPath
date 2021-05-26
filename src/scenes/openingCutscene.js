@@ -243,12 +243,14 @@ class Opening extends Phaser.Scene {
                 this.monf.destroy()
                 //create this vignette
                 this.clorf = new SlidySprite(this,0,0,'cliffForest').setOrigin(0)
-                this.scared = new SlidySprite(this,400,screenHeight,'flee').setOrigin(0,1) // this doesn't display and i don't know why
-                this.scared.anims.play('fleeOne')
-                this.add.existing(this.scared)
+                this.terror = new SlidySprite(this,300,screenHeight,'flee').setOrigin(0,1)
+                this.terror.anims.play('fleeOne')
+                this.terror.depth = 10
+                this.add.existing(this.terror)
                 this.add.existing(this.clorf)
                 //animate
-                this.scared.slide(500,screenHeight,20000)
+                this.terror.slide(400,screenHeight,20000)
+                this.clorf.slide(-100,0,10000)
             }
         })
 
@@ -259,7 +261,7 @@ class Opening extends Phaser.Scene {
             delay: this.timesequence,
             callback: () =>{
                 //remove last vignette
-                this.scared.destroy()
+                this.terror.destroy()
                 //create this vignette
                 this.run = new SlidySprite(this,500,screenHeight,'flee').setOrigin(0,1)
                 this.run.anims.play('fleeTwo')
@@ -306,6 +308,7 @@ class Opening extends Phaser.Scene {
                 this.add.existing(this.fall)
                 //animate
                 this.fall.slide(700,screenHeight+100,10000)
+                this.cliff.slide(0,-100,10000)
             }
         })     
         
