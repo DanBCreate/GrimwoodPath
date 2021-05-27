@@ -214,6 +214,7 @@ function collect(scene,item,key){
         if(scene.noInstruct){
             scene.instructions = scene.add.text(item.x,item.y -400,favKeys +' to pick up',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
+            scene.instructions.depth = 400
             scene.noInstruct = false
         } 
         if(scene.player.actionButton){

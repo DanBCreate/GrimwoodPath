@@ -43,6 +43,8 @@ class LForest extends Phaser.Scene {
         this.backTree1 = this.add.sprite(0,screenHeight,'forTree1').setOrigin(0,1)
         this.backFog = this.add.sprite(0,screenHeight,'forFog').setOrigin(0,1)
         this.forGround = this.add.sprite(0,screenHeight,'for2Ground').setOrigin(0,1)
+        this.cabin = this.add.sprite(0,screenHeight,'cabin').setOrigin(0,1)
+        this.cabin.depth = 300
 
         //set up the ground
         this.ground = this.physics.add.sprite(0, screenHeight, 'ground'); // Initialize our ground
@@ -63,7 +65,7 @@ class LForest extends Phaser.Scene {
         this.leftBound.displayHeight = screenHeight
 
         // Setting up our player and camera to follow player
-        this.player = new player(this, playerSpawnx, playerSpawny - 200, 'player').setScale(0.15); // Initialize our Player
+        this.player = new player(this, playerSpawnx, playerSpawny - 200, 'player').setScale(0.3); // Initialize our Player
         this.player.depth = 200
         this.sceneCamera = this.cameras.main.startFollow(this.player);
         this.sceneCamera.setLerp(cameraLerp,cameraLerp)
@@ -89,11 +91,13 @@ class LForest extends Phaser.Scene {
             if(this.noInstruct && hasKey){
                 this.instructions = this.add.text(this.keyWall.x,this.keyWall.y -200,'[space] open',textConfig).setOrigin(0.5)
                 this.instructions.setFontSize('40px')
+                this.instructions.depth =400
                 this.noInstruct = false
             }
             else if(this.noInstruct){
                 this.instructions = this.add.text(this.keyWall.x,this.keyWall.y -200,'maybe there\'s a key',textConfig).setOrigin(0.5)
                 this.instructions.setFontSize('40px')
+                this.instructions.depth = 400
                 this.noInstruct = false
             }
             if(this.player.actionButton && hasKey){
