@@ -12,6 +12,8 @@ class SEnd extends Phaser.Scene {
 
         //debugging mode features
         debugCreate(this);   
+        this.explainText = this.add.text(screenWidth/2,screenHeight/2,'your bro is sad about leaving his baby monster friend behind',textConfig).setOrigin(0.5)
+        this.explainText.setFontSize('30px')
 
 
 
