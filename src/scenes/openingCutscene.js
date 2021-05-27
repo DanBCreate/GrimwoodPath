@@ -59,7 +59,7 @@ class Opening extends Phaser.Scene {
         this.startBlack = this.add.rectangle(screenWidth,screenHeight,screenWidth,screenHeight,0x000000).setOrigin(1)
         RLWipe(this,this.wipetime,'wipeTree',this.timesequence)
         
-        this.timesequence += this.wipetime + 100 //half of wipe time + a bit of padding due to scene startup being weird
+        this.timesequence += this.wipetime/2 +100 //half of wipe time + a bit of padding due to scene startup being weird
 
         //replace the background with the first vignette
         this.time.addEvent({
