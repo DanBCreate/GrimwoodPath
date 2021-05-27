@@ -31,6 +31,7 @@ class Cave extends Phaser.Scene {
         this.player = new player(this, screenCenterX, screenCenterY, 'player').setScale(0.15); // Initialize our Player
         this.sceneCamera = this.cameras.main.startFollow(this.player);
         this.sceneCamera.setLerp(cameraLerp,cameraLerp)
+        this.player.depth = 200
 
         //collide with the ground
         this.physics.add.collider(this.player, this.ground);

@@ -41,17 +41,29 @@ class player extends Phaser.Physics.Arcade.Sprite {
             loop: true
         } 
         this.sfxConfigStone = {
-            volume: 0.28,
+            volume: 0.3,
             loop: true
+        } 
+        this.sfxConfigJump = {
+            volume: 0.11,
+            loop: false
+        } 
+        this.sfxConfigOw = {
+            volume: 0.25,
+            loop: false
         } 
         this.grass = this.scene.sound.add('grassFootstep');
         this.stone = this.scene.sound.add('stoneFootstep');
+        this.jump = this.scene.sound.add('jump');
+        this.ow = this.scene.sound.add('ow');
         this.stone.setRate(0.95);
     }
 
     update(){
         // Controls the players movement and SFX sounds
-        this.playerControls(); 
+        if(fallen){
+            this.playerControls(); 
+        }   
     }
 
     playerControls(){
@@ -120,11 +132,13 @@ class player extends Phaser.Physics.Arcade.Sprite {
             this.setVelocityX(0)
 
             this.anims.pause()
-            if(this.direction == 1){
-                this.anims.play('IdleRight');
-            }
-            else{
-                this.anims.play('IdleLeft');
+            if(fallen) {
+                if(this.direction == 1){
+                    this.anims.play('IdleRight');
+                }
+                else{
+                    this.anims.play('IdleLeft');
+                }
             }
 
             this.sfxLock = false;
@@ -132,7 +146,8 @@ class player extends Phaser.Physics.Arcade.Sprite {
             this.stone.stop();
         }
         // W key || UP arrow  <Only allows jumping when on a physics 'body'>
-        if((keyW.isDown || keyUP.isDown) && this.body.velocity.y === 0  && this.actionButton == false && hasWood && hasJacket){
+        if((keyW.isDown || keyUP.isDown) && this.body.velocity.y === 0  && this.actionButton == false){
+            this.jump.play(this.sfxConfigJump);
             this.setVelocityY(this.jumpHeight);
         }
 
@@ -161,5 +176,27 @@ class player extends Phaser.Physics.Arcade.Sprite {
         else{
             return false;
         }
+    }
+
+    ravineFall(){
+        if(this.y < 885 && !fallen){
+            this.setTexture('fall');
+        }
+        else if(!fallen){
+            fallen = true;
+            this.ow.play(this.sfxConfigOw);
+            this.think('my leg hurts,\nmaybe I can find something to splint it')
+        }
+    }
+
+    think(text,duration = 5000){
+            this.scene.playerThoughts = this.scene.add.text(this.x,this.y - 200,text,playerTextConfig).setOrigin(0.5)
+            this.scene.time.addEvent({
+                delay: duration,
+                callback: () => {
+                    this.scene.playerThoughts.destroy()
+                    console.log('ping')
+                }
+            })
     }
 }

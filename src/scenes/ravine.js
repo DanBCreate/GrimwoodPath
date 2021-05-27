@@ -23,7 +23,7 @@ class Ravine extends Phaser.Scene {
 
         // Setting up our Ravine Ambience Sounds
         this.sfxConfig = {
-            volume: 0.75,
+            volume: 1,
             loop: true,
         }
         this.ravineBG = this.sound.add('ravineBG');
@@ -74,6 +74,7 @@ class Ravine extends Phaser.Scene {
 
         // Setting up our player and camera to follow player
         this.player = new player(this, screenCenterX, screenCenterY, 'player').setScale(0.15); // Initialize our Player
+        this.player.depth = 200
         this.sceneCamera = this.cameras.main.startFollow(this.player);
         this.sceneCamera.setLerp(cameraLerp,cameraLerp)
         this.sceneCamera.setBounds(0,0,4800,screenHeight)
@@ -98,9 +99,14 @@ class Ravine extends Phaser.Scene {
             alpha: 255,     
             ease: 'linear'
         });*/
+
+        //set player spawns for first forest
+        playerSpawnx = -5700
+
     }
 
     update(){
+        this.player.ravineFall();
         // Debugging mode features
         debugUpdate(this);
 
