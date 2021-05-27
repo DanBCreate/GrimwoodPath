@@ -99,6 +99,7 @@ class Menu extends Phaser.Scene {
         this.load.audio('bushRustle', 'assets/sounds/BushRustle.wav');
         this.load.audio('cutsceneRoar', 'assets/sounds/CutsceneRoar.wav');
         this.load.audio('cutsceneSpook', 'assets/sounds/CutsceneSpook.wav');
+        this.load.audio('ow', 'assets/sounds/Ow.wav');
 
         //remove loading screen
         this.LoadingBackground.destroy()

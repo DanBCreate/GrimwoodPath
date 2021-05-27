@@ -48,9 +48,14 @@ class player extends Phaser.Physics.Arcade.Sprite {
             volume: 0.11,
             loop: false
         } 
+        this.sfxConfigOw = {
+            volume: 0.35,
+            loop: false
+        } 
         this.grass = this.scene.sound.add('grassFootstep');
         this.stone = this.scene.sound.add('stoneFootstep');
         this.jump = this.scene.sound.add('jump');
+        this.ow = this.scene.sound.add('ow');
         this.stone.setRate(0.95);
     }
 
@@ -245,6 +250,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
         }
         else if(!fallen){
             fallen = true;
+            this.ow.play(this.sfxConfigOw);
             this.think('my leg hurts,\nmaybe I can find something to splint it')
         }
     }
