@@ -38,7 +38,7 @@ class slidyBlock extends Phaser.Physics.Arcade.Sprite {
     }
 
     checkProximity(playerX){
-        if(Math.abs(playerX - this.x) < 130){
+        if(Math.abs(playerX - this.x) < 150){
             this.helpText.x = this.x;
             this.helpText.y = this.y - 100;
             this.helpText.setVisible(true);
