@@ -198,7 +198,7 @@ class Menu extends Phaser.Scene {
         this.engine = this.sound.add('engine');
         this.driveCrickets = this.sound.add('driveCrickets');
         this.sfxConfigEngine = {
-            volume: 0.13,
+            volume: 0.23,
             loop: true,
         }
         this.sfxConfigDrive = {
@@ -256,6 +256,7 @@ class Menu extends Phaser.Scene {
             favKeys = '[s]'
             this.cardrift.stop()
             this.menuText.destroy()
+            this.engine.setRate(1.1);
             this.tweens.add({
                 targets:this.car,
                 x: screenWidth*2,
@@ -274,6 +275,7 @@ class Menu extends Phaser.Scene {
             favKeys = '[↓]'
             this.cardrift.stop()
             this.menuText.destroy()
+            this.engine.setRate(1.1);
             this.tweens.add({
                 targets:this.car,
                 x: screenWidth*2,
