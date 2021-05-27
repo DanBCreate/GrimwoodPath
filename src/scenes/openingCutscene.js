@@ -26,11 +26,11 @@ class Opening extends Phaser.Scene {
         this.grass = this.sound.add('grassFootstep');
         this.spook = this.sound.add('cutsceneSpook');
         this.sfxConfigCrickets = {
-            volume: 0.8,
+            volume: 3,
             loop: false,
         }
         this.sfxConfig = {
-            volume: 1.3,
+            volume: 3,
             loop: false,
         }
         this.sfxConfigBush = {
@@ -42,14 +42,14 @@ class Opening extends Phaser.Scene {
             loop: false,
         }
         this.sfxConfigGrass = {
-            volume: 0.3,
+            volume: 0.15,
             loop: false
         } 
         this.sfxConfigSpook = {
             volume: 1.5,
             loop: false
         } 
-        this.game.sound.stopAll();
+        //this.game.sound.stopAll();
         this.ambience.play(this.sfxConfig) ;
 
         //continue the treeWipe from the menu scene
@@ -118,7 +118,6 @@ class Opening extends Phaser.Scene {
                 this.sf.destroy()
                 this.exploring.destroy()
                 //create this vignette
-                this.game.sound.stopAll();
                 this.crickets.play(this.sfxConfigCrickets);
                 this.nf = new SlidySprite(this,0,0,'moonForest').setOrigin(0)
                 this.lookBack = new SlidySprite(this,400,screenHeight,'broDistracted').setOrigin(0,1)
@@ -197,7 +196,6 @@ class Opening extends Phaser.Scene {
                 this.clof.destroy()
                 this.searchRight.destroy()
                 //create this vignette
-                this.game.sound.stopAll();
                 this.spook.play(this.sfxConfigSpook);
                 this.monf = new SlidySprite(this,0,0,'shortForest').setOrigin(0)
                 this.monsil = new SlidySprite(this,1000,screenHeight,'monSil').setOrigin(0,1)

@@ -67,8 +67,9 @@ class player extends Phaser.Physics.Arcade.Sprite {
     }
 
     playerControls(){
-        if(keyA.isDown){ // A Key 
-            this.setVelocityX(-playerMovementSpeed); 
+        if(keyA.isDown || keyLEFT.isDown){ // A && Left Key 
+            if (hasJacket && hasWood) this.setVelocityX(-playerMovementSpeed); 
+            else this.setVelocityX(-playerMovementSpeed/2); 
             this.direction = 1;
 
             if(!this.anims.isPlaying || this.anims.currentAnim.key != 'walkL'){
@@ -96,66 +97,10 @@ class player extends Phaser.Physics.Arcade.Sprite {
                 }
             }
         }
-        else if(keyLEFT.isDown){ // LEFT Key
-            this.setVelocityX(-playerMovementSpeed); 
-            this.direction = 1;
-
-            if(!this.anims.isPlaying || this.anims.currentAnim.key != 'walkL'){
-                this.anims.play('walkL')
-            }
-            this.currentAnimKey ='walkL'
-
-            if(this.sfxLock == false && this.scene == game.scene.getScene("fForestScene")){
-                this.grass.play(this.sfxConfigGrass);
-                this.sfxLock = true;
-            }
-            else if(this.sfxLock == false){
-                this.stone.play(this.sfxConfigStone);
-                this.sfxLock = true;
-            }
-            if(this.body.velocity.y != 0){
-                this.grass.stop();
-                this.stone.stop();
-                this.jumpLock = true;
-            }
-            else {
-                if(this.jumpLock == true){
-                    this.sfxLock = false;
-                    this.jumpLock = false;
-                }
-            }
-        }
-        else if(keyD.isDown){ // D Key
-            this.setVelocityX(playerMovementSpeed); 
-            this.direction = 0;
-
-            if(!this.anims.isPlaying || this.anims.currentAnim.key != 'walkR'){
-                this.anims.play('walkR')
-            }
-            this.currentAnimKey ='walkR'
-
-            if(this.sfxLock == false && this.scene == game.scene.getScene("fForestScene")){
-                this.grass.play(this.sfxConfigGrass);
-                this.sfxLock = true;
-            }
-            else if(this.sfxLock == false){
-                this.stone.play(this.sfxConfigStone);
-                this.sfxLock = true;
-            }
-            if(this.body.velocity.y != 0){
-                this.grass.stop();
-                this.stone.stop();
-                this.jumpLock = true;
-            }
-            else {
-                if(this.jumpLock == true){
-                    this.sfxLock = false;
-                    this.jumpLock = false;
-                }
-            }
-        }
-        else if(keyRIGHT.isDown){ // RIGHT Key
-            this.setVelocityX(playerMovementSpeed); 
+        else if(keyRIGHT.isDown || keyD.isDown){ // RIGHT Key
+            if (hasJacket && hasWood) this.setVelocityX(playerMovementSpeed); 
+            else this.setVelocityX(playerMovementSpeed/2); 
+            
             this.direction = 0;
 
             if(!this.anims.isPlaying || this.anims.currentAnim.key != 'walkR'){
@@ -201,27 +146,16 @@ class player extends Phaser.Physics.Arcade.Sprite {
             this.stone.stop();
         }
         // W key || UP arrow  <Only allows jumping when on a physics 'body'>
-        if(keyW.isDown && this.body.velocity.y === 0  && this.actionButton == false){
-            this.jump.play(this.sfxConfigJump);
-            this.setVelocityY(this.jumpHeight);
-        }
-
-        if(keyUP.isDown && this.body.velocity.y === 0 && this.actionButton == false){
+        if((keyW.isDown || keyUP.isDown) && this.body.velocity.y === 0  && this.actionButton == false && hasWood && hasJacket){
             this.jump.play(this.sfxConfigJump);
             this.setVelocityY(this.jumpHeight);
         }
 
         // SPACE key <Used for interacting with objects>
-        if(Phaser.Input.Keyboard.JustDown(keySPACE) && this.body.touching.down){
+        if((Phaser.Input.Keyboard.JustDown(keySPACE) || Phaser.Input.Keyboard.JustDown(keyS)) && this.body.touching.down){
             this.actionButton = true;
         }
-        else if(Phaser.Input.Keyboard.JustUp(keySPACE)){
-            this.actionButton = false;
-        }
-        if(Phaser.Input.Keyboard.JustDown(keyS) && this.body.touching.down){
-            this.actionButton = true;
-        }
-        else if(Phaser.Input.Keyboard.JustUp(keyS)){
+        else if(Phaser.Input.Keyboard.JustUp(keySPACE) || Phaser.Input.Keyboard.JustUp(keyS)){
             this.actionButton = false;
         }
         if(Phaser.Input.Keyboard.JustDown(keyDOWN) && this.body.touching.down){

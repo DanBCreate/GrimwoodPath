@@ -123,6 +123,9 @@ class Menu extends Phaser.Scene {
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
 
+        // Handles lowering volume when exiting scene.
+        this.lower = false;
+
         //create animations for later use
         this.anims.create({
             key: 'walkL',
@@ -248,7 +251,12 @@ class Menu extends Phaser.Scene {
     update(){
         //debugging mode features
         debugUpdate(this);
-        
+
+        // Handles lowering volume when exiting scene.
+        if(this.lower == true){
+            this.lowerVolume();
+        }
+
         //paralax
         this.backTree1.tilePositionX += 12
         this.backTree2.tilePositionX += 11
@@ -259,6 +267,7 @@ class Menu extends Phaser.Scene {
         //transition between scenens
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             favKeys = '[s]'
+            this.lower = true;
             this.cardrift.stop()
             this.menuText.destroy()
             this.engine.setRate(1.2);
@@ -278,6 +287,7 @@ class Menu extends Phaser.Scene {
         }
         if(Phaser.Input.Keyboard.JustDown(keyDOWN)){
             favKeys = '[↓]'
+            this.lower = true;
             this.cardrift.stop()
             this.menuText.destroy()
             this.engine.setRate(1.2);
@@ -294,6 +304,15 @@ class Menu extends Phaser.Scene {
                     this.scene.start('openingScene')
                 }
             })
+        }
+    }
+
+    lowerVolume() {
+        if(this.engine.volume >= 0){
+            this.engine.setVolume(this.engine.volume - 0.0015);
+        }
+        if(this.driveCrickets.volume >= 0){
+            this.driveCrickets.setVolume(this.driveCrickets.volume - 0.05);
         }
     }
 }
