@@ -224,7 +224,11 @@ class Menu extends Phaser.Scene {
             ease:'Quad.InOut',
             loop: -1
         })
-        this.menuText = this.add.text(screenWidth/2,screenHeight/2 - 200,'Movement Options:\n\nwalk:[←][→] jump:[↑] interact:[↓]\nwalk:[a][d] jump:[w] interact:[s]\n\npress [interact] to start',textConfig).setOrigin(0.5)
+        this.titleText = this.add.text(screenWidth/2, screenHeight/2 - 430, 'Grimwood Path', titleTextConfig).setOrigin(0.5);
+        this.titleText.setFontSize('300px');
+        this.menuText = this.add.text(screenWidth/2,screenHeight/2 - 50,'Movement Options:\n\nwalk:[←][→]  jump:[↑]  interact:[↓]\nwalk:[a][d]  jump:[w]  interact:[s]\n\npress [interact] to start',textConfig).setOrigin(0.5)
+        this.menuText.setFontSize('60px');
+        this.menuText.setAlpha(0.9);
 
         //unset colletable flags
         hasRope = false     //allows exit from ravine
@@ -269,7 +273,6 @@ class Menu extends Phaser.Scene {
             favKeys = '[s]'
             this.lower = true;
             this.cardrift.stop()
-            this.menuText.destroy()
             this.engine.setRate(1.2);
             this.tweens.add({
                 targets:this.car,
@@ -289,7 +292,6 @@ class Menu extends Phaser.Scene {
             favKeys = '[↓]'
             this.lower = true;
             this.cardrift.stop()
-            this.menuText.destroy()
             this.engine.setRate(1.2);
             this.tweens.add({
                 targets:this.car,
@@ -308,11 +310,18 @@ class Menu extends Phaser.Scene {
     }
 
     lowerVolume() {
+        this.fadeOutText();
         if(this.engine.volume >= 0){
             this.engine.setVolume(this.engine.volume - 0.0015);
         }
         if(this.driveCrickets.volume >= 0){
             this.driveCrickets.setVolume(this.driveCrickets.volume - 0.05);
         }
+    }
+
+    fadeOutText() {
+
+        this.titleText.alpha -= 0.01;
+        this.menuText.alpha -= 0.01;
     }
 }
