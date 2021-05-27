@@ -42,6 +42,7 @@ class LForest extends Phaser.Scene {
         this.backTree2 = this.add.sprite(0,screenHeight,'forTree2').setOrigin(0,1)
         this.backTree1 = this.add.sprite(0,screenHeight,'forTree1').setOrigin(0,1)
         this.backFog = this.add.sprite(0,screenHeight,'forFog').setOrigin(0,1)
+        this.forGround = this.add.sprite(0,screenHeight,'for2Ground').setOrigin(0,1)
 
         //set up the ground
         this.ground = this.physics.add.sprite(0, screenHeight, 'ground'); // Initialize our ground

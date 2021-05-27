@@ -52,6 +52,7 @@ class Menu extends Phaser.Scene {
         this.load.image('forBG','assets/forest/ForestSolidBG.png')
         this.load.image('forFog','assets/forest/ForestFog.png')
         this.load.image('for1Ground','assets/forest/Forest1Ground.png')
+        this.load.image('for2Ground','assets/forest/Forest2Ground.png')
         this.load.image('forTree1','assets/forest/ForestTrees1.png')
         this.load.image('forTree2','assets/forest/ForestTrees2.png')
         this.load.image('forTree3','assets/forest/ForestTrees3.png')
