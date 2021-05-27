@@ -53,7 +53,7 @@ class Ravine extends Phaser.Scene {
         this.instructDestructor = true
 
         if(!hasRope){
-            this.rope= this.physics.add.sprite(3*screenWidth/4,screenHeight - 100,'rope').setOrigin(0.5,1)
+            this.rope= this.physics.add.sprite(4100,screenHeight - 100,'rope').setOrigin(0.5,1)
             this.rope.body.allowGravity = false
         }
         if(!hasShirt){
@@ -61,7 +61,7 @@ class Ravine extends Phaser.Scene {
             this.shirt.body.allowGravity = false
         }
         if(!hasJacket){
-            this.jacket = this.physics.add.sprite(screenWidth/6,screenHeight - 100,'jacket').setOrigin(0.5,1)
+            this.jacket = this.physics.add.sprite(screenWidth + 300,screenHeight - 100,'jacket').setOrigin(0.5,1)
             this.jacket.body.allowGravity = false
         }
         if(!hasWood){
