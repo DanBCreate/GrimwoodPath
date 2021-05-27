@@ -111,7 +111,7 @@ function debugUpdate(scene){
         if(Phaser.Input.Keyboard.JustDown(key3)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('ravineScene')}
         if(Phaser.Input.Keyboard.JustDown(key4)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('fForestScene')}
         if(Phaser.Input.Keyboard.JustDown(key5)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('caveScene')}
-        if(Phaser.Input.Keyboard.JustDown(key6)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('lForestScene')}
+        if(Phaser.Input.Keyboard.JustDown(key6)){scene.game.sound.stopAll(); playerSpawnx = screenWidth; scene.scene.start('lForestScene')}
         if(Phaser.Input.Keyboard.JustDown(key7)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('noBroScene')}
         if(Phaser.Input.Keyboard.JustDown(key8)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('sEndScene')}
         if(Phaser.Input.Keyboard.JustDown(key9)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('hEndScene')}

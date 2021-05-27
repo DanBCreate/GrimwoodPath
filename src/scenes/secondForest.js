@@ -78,24 +78,24 @@ class LForest extends Phaser.Scene {
 
         if(keyWallFlag){
             //set up the axewall
-                this.keyWall = this.physics.add.sprite(screenWidth/5, screenHeight, 'ground').setScale(0.05); // Initialize our ground
+                this.keyWall = this.physics.add.sprite(1132, screenHeight, 'ground').setScale(0.05); // Initialize our ground
                 this.keyWall.setImmovable(true); // Sets ground to immovable
                 this.keyWall.body.allowGravity = false; // So gravity has no effect ground
                 this.keyWall.displayWidth = 100;
                 this.keyWall.displayHeight = screenHeight
-                this.keyWall.setOrigin(0.5,1) 
+                this.keyWall.setOrigin(1) 
         }
 
         //destroying the wall
         this.physics.add.collider(this.player,this.keyWall,()=>{
             if(this.noInstruct && hasKey){
-                this.instructions = this.add.text(this.keyWall.x,this.keyWall.y -200,'[space] open',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.keyWall.x,this.keyWall.y -600,'[space] open',textConfig).setOrigin(0.5)
                 this.instructions.setFontSize('40px')
                 this.instructions.depth =400
                 this.noInstruct = false
             }
             else if(this.noInstruct){
-                this.instructions = this.add.text(this.keyWall.x,this.keyWall.y -200,'maybe there\'s a key',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.keyWall.x,this.keyWall.y -600,'maybe there\'s a key',textConfig).setOrigin(0.5)
                 this.instructions.setFontSize('40px')
                 this.instructions.depth = 400
                 this.noInstruct = false
@@ -114,18 +114,20 @@ class LForest extends Phaser.Scene {
         this.caveExit.body.allowGravity = false
 
         //car
-        this.escapeCar = this.physics.add.sprite(14300,screenHeight-100,'car').setOrigin(0.5,1)
+        this.escapeCar = this.physics.add.sprite(14000,screenHeight-100,'carAnim').setOrigin(0.5,1)
+        this.escapeCar.anims.play('drive')
+        this.escapeCar.anims.pause()
         this.escapeCar.body.allowGravity = false
 
 
         //collectables
         if(!hasKey){
-            this.key = this.physics.add.sprite(14000,screenHeight - 100,'key').setOrigin(0.5,1)
+            this.key = this.physics.add.sprite(13000,screenHeight - 100,'key').setOrigin(0.5,1)
             this.key.body.allowGravity = false
         }
 
         if(!hasCrowbar){
-            this.crowbar = this.physics.add.sprite(screenWidth/8,screenHeight - 100,'bar').setOrigin(0.5,1)
+            this.crowbar = this.physics.add.sprite(screenWidth/6,screenHeight - 300,'bar').setOrigin(0.5,1)
             this.crowbar.body.allowGravity = false
         }
 
