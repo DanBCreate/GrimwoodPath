@@ -49,7 +49,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
             loop: false
         } 
         this.sfxConfigOw = {
-            volume: 0.35,
+            volume: 0.25,
             loop: false
         } 
         this.grass = this.scene.sound.add('grassFootstep');
