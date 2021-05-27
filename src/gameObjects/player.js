@@ -146,7 +146,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
             this.stone.stop();
         }
         // W key || UP arrow  <Only allows jumping when on a physics 'body'>
-        if((keyW.isDown || keyUP.isDown) && this.body.velocity.y === 0  && this.actionButton == false){
+        if((keyW.isDown || keyUP.isDown) && this.body.velocity.y === 0  && this.actionButton == false && hasWood && hasJacket){
             this.jump.play(this.sfxConfigJump);
             this.setVelocityY(this.jumpHeight);
         }
