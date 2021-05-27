@@ -95,6 +95,10 @@ class Menu extends Phaser.Scene {
         this.load.audio('item', 'assets/sounds/ItemPickup.wav');
         this.load.audio('ravineBG', 'assets/sounds/RavineBG.wav');
         this.load.audio('jump', 'assets/sounds/Jump.wav');
+        this.load.audio('crickets', 'assets/sounds/Crickets.wav');
+        this.load.audio('bushRustle', 'assets/sounds/BushRustle.wav');
+        this.load.audio('cutsceneRoar', 'assets/sounds/CutsceneRoar.wav');
+        this.load.audio('cutsceneSpook', 'assets/sounds/CutsceneSpook.wav');
 
         //remove loading screen
         this.LoadingBackground.destroy()
@@ -256,7 +260,7 @@ class Menu extends Phaser.Scene {
             favKeys = '[s]'
             this.cardrift.stop()
             this.menuText.destroy()
-            this.engine.setRate(1.1);
+            this.engine.setRate(1.2);
             this.tweens.add({
                 targets:this.car,
                 x: screenWidth*2,
@@ -275,7 +279,7 @@ class Menu extends Phaser.Scene {
             favKeys = '[↓]'
             this.cardrift.stop()
             this.menuText.destroy()
-            this.engine.setRate(1.1);
+            this.engine.setRate(1.2);
             this.tweens.add({
                 targets:this.car,
                 x: screenWidth*2,
