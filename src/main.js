@@ -227,9 +227,9 @@ function collect(scene,item,key){
             if(key === 'knife'){hasKnife = true}
             else if(key === 'shirt'){hasShirt = true}
             else if(key === 'key'){hasKey = true}
-            else if(key === 'jacket'){hasJacket = true}
+            else if(key === 'jacket'){hasJacket = true; if(hasWood){scene.player.think('much better')}}
             else if(key === 'rope'){hasRope = true}
-            else if(key === 'wood'){hasWood = true}
+            else if(key === 'wood'){hasWood = true; if(hasJacket){scene.player.think('much better')}}
             else if(key === 'crowbar'){hasCrowbar = true}
             else if(key === 'axe'){hasAxe = true}
             else if(key === 'bat'){hasBat = true}
