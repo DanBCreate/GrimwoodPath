@@ -224,7 +224,7 @@ class Menu extends Phaser.Scene {
             ease:'Quad.InOut',
             loop: -1
         })
-        this.menuText = this.add.text(screenWidth/2,screenHeight/2,'press [interact] to start\n\ninteract:↓ walk:←→ jump:↑\n\ninteract:s walk:ad jump:w',textConfig).setOrigin(0.5)
+        this.menuText = this.add.text(screenWidth/2,screenHeight/2 - 200,'Movement Options:\n\nwalk:[←][→] jump:[↑] interact:[↓]\nwalk:[a][d] jump:[w] interact:[s]\n\npress [interact] to start',textConfig).setOrigin(0.5)
 
         //unset colletable flags
         hasRope = false     //allows exit from ravine
