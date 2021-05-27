@@ -52,7 +52,7 @@ let textConfig = {
 let playerTextConfig = {
     fontFamily: 'player',
     fontSize: '60px',
-    color: '#FF0000',
+    color: '#FFFFFF',
     align: 'center',
     padding: {
         top: 5,
