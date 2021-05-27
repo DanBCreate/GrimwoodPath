@@ -106,16 +106,16 @@ function debugUpdate(scene){
     //debugging mode features
     if(debugToggle){
         //debugging navigaiton checks
-        if(Phaser.Input.Keyboard.JustDown(key1)){scene.game.sound.stopAll(); scene.scene.start('menuScene')}
-        if(Phaser.Input.Keyboard.JustDown(key2)){scene.game.sound.stopAll(); scene.scene.start('openingScene')}
-        if(Phaser.Input.Keyboard.JustDown(key3)){scene.game.sound.stopAll(); scene.scene.start('ravineScene')}
-        if(Phaser.Input.Keyboard.JustDown(key4)){scene.game.sound.stopAll(); scene.scene.start('fForestScene')}
-        if(Phaser.Input.Keyboard.JustDown(key5)){scene.game.sound.stopAll(); scene.scene.start('caveScene')}
-        if(Phaser.Input.Keyboard.JustDown(key6)){scene.game.sound.stopAll(); scene.scene.start('lForestScene')}
-        if(Phaser.Input.Keyboard.JustDown(key7)){scene.game.sound.stopAll(); scene.scene.start('noBroScene')}
-        if(Phaser.Input.Keyboard.JustDown(key8)){scene.game.sound.stopAll(); scene.scene.start('sEndScene')}
-        if(Phaser.Input.Keyboard.JustDown(key9)){scene.game.sound.stopAll(); scene.scene.start('hEndScene')}
-        if(Phaser.Input.Keyboard.JustDown(key0)){scene.game.sound.stopAll(); scene.scene.start('creditScene')}
+        if(Phaser.Input.Keyboard.JustDown(key1)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('menuScene')}
+        if(Phaser.Input.Keyboard.JustDown(key2)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('openingScene')}
+        if(Phaser.Input.Keyboard.JustDown(key3)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('ravineScene')}
+        if(Phaser.Input.Keyboard.JustDown(key4)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('fForestScene')}
+        if(Phaser.Input.Keyboard.JustDown(key5)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('caveScene')}
+        if(Phaser.Input.Keyboard.JustDown(key6)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('lForestScene')}
+        if(Phaser.Input.Keyboard.JustDown(key7)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('noBroScene')}
+        if(Phaser.Input.Keyboard.JustDown(key8)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('sEndScene')}
+        if(Phaser.Input.Keyboard.JustDown(key9)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('hEndScene')}
+        if(Phaser.Input.Keyboard.JustDown(key0)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('creditScene')}
     }
 }
 
@@ -362,10 +362,15 @@ function markTree(scene,tree,flag){
         } 
         if(scene.player.actionButton && hasShirt){
             tree.anims.play('mkTree')
-            if(flag === 'ff2'){ffTree2Marked = true}
-            else if(flag === 'ff1'){ffTree1Marked = true}
-            else if(flag === 'lf1'){lfTree1Marked = true}
-            else if(flag === 'lf2'){lfTree2Marked = true}
+            scene.time.addEvent({
+                delay:500,
+                callback: () => {
+                    if(flag === 'ff2'){ffTree2Marked = true}
+                    else if(flag === 'ff1'){ffTree1Marked = true}
+                    else if(flag === 'lf1'){lfTree1Marked = true}
+                    else if(flag === 'lf2'){lfTree2Marked = true}
+                }
+            })
         }
     })
 }
