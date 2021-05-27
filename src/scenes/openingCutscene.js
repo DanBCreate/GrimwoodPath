@@ -377,12 +377,11 @@ class Opening extends Phaser.Scene {
 
         //skip insturctions
         this.skipText = this.add.text(screenWidth,screenHeight,favKeys+' to skip',textConfig).setOrigin(1)
+        this.skipText.depth = 500
         
     }
     update(){
         debugUpdate(this)
-
-        this.children.bringToTop(this.skipText)
         //skip buttons
         if(Phaser.Input.Keyboard.JustDown(keyS)){
             this.game.sound.stopAll();
