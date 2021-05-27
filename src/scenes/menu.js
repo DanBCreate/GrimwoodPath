@@ -39,7 +39,7 @@ class Menu extends Phaser.Scene {
         this.load.image('caveEntrance','assets/tempAssets/tempCave.png');
         this.load.image('clearing','assets/tempAssets/tempClearing.png');
         this.load.image('ground', 'assets/tempAssets/tempGround.png'); // Ground Asset
-        this.load.image('slidyBlock', 'assets/tempAssets/tempBlock.png') // Slidy Block Asset
+        this.load.image('slidyBlock', 'assets/other/Rock.png') // Slidy Block Asset
         this.load.image('clear','assets/other/transparent.png') // fully transparent 100x100 square for creating invisible obsitcles
 
         //player assets
