@@ -41,11 +41,16 @@ class player extends Phaser.Physics.Arcade.Sprite {
             loop: true
         } 
         this.sfxConfigStone = {
-            volume: 0.28,
+            volume: 0.3,
             loop: true
+        } 
+        this.sfxConfigJump = {
+            volume: 0.11,
+            loop: false
         } 
         this.grass = this.scene.sound.add('grassFootstep');
         this.stone = this.scene.sound.add('stoneFootstep');
+        this.jump = this.scene.sound.add('jump');
         this.stone.setRate(0.95);
     }
 
@@ -192,10 +197,12 @@ class player extends Phaser.Physics.Arcade.Sprite {
         }
         // W key || UP arrow  <Only allows jumping when on a physics 'body'>
         if(keyW.isDown && this.body.velocity.y === 0  && this.actionButton == false){
+            this.jump.play(this.sfxConfigJump);
             this.setVelocityY(this.jumpHeight);
         }
 
         if(keyUP.isDown && this.body.velocity.y === 0 && this.actionButton == false){
+            this.jump.play(this.sfxConfigJump);
             this.setVelocityY(this.jumpHeight);
         }
 

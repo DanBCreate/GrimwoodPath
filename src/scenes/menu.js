@@ -94,6 +94,7 @@ class Menu extends Phaser.Scene {
         this.load.audio('grassFootstep', 'assets/sounds/GrassFootstep.wav')
         this.load.audio('item', 'assets/sounds/ItemPickup.wav');
         this.load.audio('ravineBG', 'assets/sounds/RavineBG.wav');
+        this.load.audio('jump', 'assets/sounds/Jump.wav');
 
         //remove loading screen
         this.LoadingBackground.destroy()
