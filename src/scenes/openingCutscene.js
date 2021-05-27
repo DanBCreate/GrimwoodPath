@@ -374,7 +374,7 @@ class Opening extends Phaser.Scene {
         })
 
         //skip insturctions
-        this.skipText = this.add.text(screenWidth,screenHeight,favKeys+' to skip',textConfig).setOrigin(1)
+        this.skipText = this.add.text(screenWidth,screenHeight - 10,favKeys+' to skip',textConfig).setOrigin(1)
         this.skipText.depth = 500
         
     }

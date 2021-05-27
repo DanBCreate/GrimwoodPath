@@ -23,7 +23,7 @@ class Ravine extends Phaser.Scene {
 
         // Setting up our Ravine Ambience Sounds
         this.sfxConfig = {
-            volume: 1,
+            volume: 0.85,
             loop: true,
         }
         this.ravineBG = this.sound.add('ravineBG');

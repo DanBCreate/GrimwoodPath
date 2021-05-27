@@ -60,6 +60,18 @@ let playerTextConfig = {
     }
 }  
 
+//text for the title
+let titleTextConfig = {
+    fontFamily: 'forest',
+    fontSize: '60px',
+    color: '#FF0000',
+    align: 'center',
+    padding: {
+        top: 5,
+        bottom: 5,
+    }
+} 
+
 //define the game
 let game = new Phaser.Game(config);
 
