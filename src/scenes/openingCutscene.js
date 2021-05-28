@@ -25,6 +25,7 @@ class Opening extends Phaser.Scene {
         this.roar = this.sound.add('cutsceneRoar');
         this.grass = this.sound.add('grassFootstep');
         this.spook = this.sound.add('cutsceneSpook');
+        this.thump = this.sound.add('thump');
         this.sfxConfigCrickets = {
             volume: 3,
             loop: false,
@@ -66,6 +67,7 @@ class Opening extends Phaser.Scene {
             delay: this.timesequence,
             callback: () =>{
                 //create this vignette
+                
                 this.lot = new SlidySprite(this,0,0,'parkingLot').setOrigin(0)               
                 this.walkers = new SlidySprite(this,400,screenHeight,'withBro').setOrigin(0,1)
                 this.add.existing(this.lot)
@@ -73,7 +75,6 @@ class Opening extends Phaser.Scene {
                 //animate
                 this.walkers.slide(800,screenHeight,10000)
                 this.lot.slide(-100,0,10000)
-
             }
         })
 
@@ -151,6 +152,8 @@ class Opening extends Phaser.Scene {
                 //animate
                 this.search.slide(200,screenHeight,20000)
                 this.cf.slide(100,0,10000)
+                this.brotherText = this.add.text(screenWidth/2 + 530, screenHeight/2 - 300, 'Brother...?', playerTextConfig).setOrigin(0.5);
+                this.brotherText.setFontSize('250px');
             }
         })
 
@@ -168,6 +171,7 @@ class Opening extends Phaser.Scene {
                 //remove last vignette
                 this.cf.destroy()
                 this.search.destroy()
+                this.brotherText.destroy();
                 //create this vignette
                 this.clof = new SlidySprite(this,0,0,'shortForest').setOrigin(0)
                 this.searchRight = new SlidySprite(this,1000,screenHeight,'searchRight').setOrigin(0,1)
@@ -315,6 +319,7 @@ class Opening extends Phaser.Scene {
                 //create this vignette
                 this.trip = new SlidySprite(this,700,screenHeight,'flee').setOrigin(0,1)
                 this.grass.play(this.sfxConfigGrass);
+                this.thump.play(this.sfxConfigSpook);
                 this.trip.anims.play('fleeThree')
                 this.add.existing(this.trip)
                 //animate
