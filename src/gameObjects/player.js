@@ -195,7 +195,6 @@ class player extends Phaser.Physics.Arcade.Sprite {
                 delay: duration,
                 callback: () => {
                     this.scene.playerThoughts.destroy()
-                    console.log('ping')
                 }
             })
     }
