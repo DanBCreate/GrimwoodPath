@@ -103,6 +103,7 @@ class Menu extends Phaser.Scene {
         this.load.audio('cutsceneSpook', 'assets/sounds/CutsceneSpook.wav');
         this.load.audio('ow', 'assets/sounds/Ow.wav');
         this.load.audio('thump', 'assets/sounds/Thump.wav');
+        this.load.audio('ffBG', 'assets/sounds/FFBG.wav');
 
         //remove loading screen
         this.LoadingBackground.destroy()

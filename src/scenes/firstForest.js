@@ -10,6 +10,14 @@ class FForest extends Phaser.Scene {
         //debugging mode features
         debugCreate(this);   
 
+        // First Forest Background Ambience
+        this.sfxConfig = {
+            volume: 0.95,
+            loop: true,
+        }
+        this.ravineBG = this.sound.add('ffBG');
+        this.ravineBG.play(this.sfxConfig) ;
+
         //set up the background
         this.blackDrop = this.add.sprite(screenWidth/2,screenHeight/2,'ground').setOrigin(0.5)
         this.blackDrop.displayHeight = screenHeight*2

@@ -37,7 +37,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
         this.sfxLock = false;
         this.jumpLock = false;
         this.sfxConfigGrass = {
-            volume: 0.25,
+            volume: 0.15,
             loop: true
         } 
         this.sfxConfigStone = {
@@ -45,7 +45,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
             loop: true
         } 
         this.sfxConfigJump = {
-            volume: 0.11,
+            volume: 0.15,
             loop: false
         } 
         this.sfxConfigOw = {
@@ -77,7 +77,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
             }
             this.currentAnimKey ='walkL'
 
-            if(this.sfxLock == false && this.scene == game.scene.getScene("fForestScene")){
+            if(this.sfxLock == false && (this.scene == game.scene.getScene("fForestScene") || this.scene == game.scene.getScene("lForestScene"))){
                 this.grass.play(this.sfxConfigGrass);
                 this.sfxLock = true;
             }
@@ -108,7 +108,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
             }
             this.currentAnimKey ='walkR'
 
-            if(this.sfxLock == false && this.scene == game.scene.getScene("fForestScene")){
+            if(this.sfxLock == false && (this.scene == game.scene.getScene("fForestScene") || this.scene == game.scene.getScene("lForestScene"))){
                 this.grass.play(this.sfxConfigGrass);
                 this.sfxLock = true;
             }
