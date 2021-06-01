@@ -34,7 +34,7 @@ class slidyBlock extends Phaser.Physics.Arcade.Sprite {
         }
 
         // Collides with world bounds
-        this.setCollideWorldBounds(true); 
+        //this.setCollideWorldBounds(true); 
     }
 
     checkProximity(playerX){

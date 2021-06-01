@@ -89,6 +89,7 @@ class Cave extends Phaser.Scene {
         
         // Setting up slidy block
         this.block = new slidyBlock(this, screenCenterX + 200, screenCenterY, 'slidyBlock').setScale(0.2);
+
         // Colliders
         this.physics.add.collider(this.block, this.ground); // Collider between block and ground.
         this.physics.add.collider(this.block, this.axeWall);

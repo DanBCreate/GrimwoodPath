@@ -53,7 +53,7 @@ class Ravine extends Phaser.Scene {
         this.instructDestructor = true
 
         if(!hasRope){
-            this.rope= this.physics.add.sprite(4100,screenHeight - 100,'rope').setOrigin(0.5,1)
+            this.rope= this.physics.add.sprite(4000,screenHeight - 450,'rope').setOrigin(0.5,1)
             this.rope.body.allowGravity = false
         }
         if(!hasShirt){
@@ -69,6 +69,8 @@ class Ravine extends Phaser.Scene {
             this.wood.body.allowGravity = false
         }        
 
+        this.block = new slidyBlock(this, 3500, screenCenterY, 'slidyBlock').setScale(0.2);
+
         this.ropeTree = this.physics.add.sprite(screenWidth,screenHeight,'wipeTree').setOrigin(0.5,1)
         this.ropeTree.body.allowGravity = false
 
@@ -82,6 +84,8 @@ class Ravine extends Phaser.Scene {
         this.physics.add.collider(this.player, this.ground); // Collider between ground and player.  
         this.physics.add.collider(this.player, this.rightBound);
         this.physics.add.collider(this.player, this.leftBound);
+        this.physics.add.collider(this.block, this.ground); // Collider between block and ground.
+        this.physics.add.collider(this.player, this.block); // Collider between player and the block
 
         //collecting things
         collect(this,this.rope,'rope')
@@ -112,6 +116,9 @@ class Ravine extends Phaser.Scene {
 
         // Update functions for our gameObjects
         this.player.update();
+        this.block.update(); 
+
+        this.checkSlidyBlock();
 
         //remove unused instructions
         if(!this.noInstruct && this.instructDestructor){
@@ -129,5 +136,21 @@ class Ravine extends Phaser.Scene {
         this.backFog.x = this.player.x/25
         this.backDrop.x = this.player.x/40
         update_inv();
+    }
+
+    //checks if slidy block should be pushed
+    checkSlidyBlock() {
+        if(this.block.checkProximity(this.player.x) == true){
+            
+            if(this.player.getAction(this.block.y) == true) {
+                this.block.setMovable(true, this.player.body.velocity.x);
+            }
+            else{
+                this.block.setMovable(false, this.player.body.velocity.x);
+            }
+        }
+        else{
+            this.block.setMovable(false, this.player.body.velocity.x);
+        }
     }
 }
