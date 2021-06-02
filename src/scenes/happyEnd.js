@@ -2,6 +2,7 @@
 class HEnd extends Phaser.Scene {
     constructor(){
         super('hEndScene')
+        this.happy = false
     }
 
     preload(){
@@ -31,6 +32,8 @@ class HEnd extends Phaser.Scene {
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D)
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
+        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
+        keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
 
 
     }
@@ -47,13 +50,18 @@ class HEnd extends Phaser.Scene {
         else if(Phaser.Input.Keyboard.JustDown(keyD) || Phaser.Input.Keyboard.JustDown(keyRIGHT)){
             this.scene.start('sEndScene')
         }
+        if(this.happy){
+            if(Phaser.Input.Keyboard.JustDown(keyS)){this.scene.start('menuScene')}
+            if(Phaser.Input.Keyboard.JustDown(keyDOWN)){this.scene.start('menuScene')}
+        }
 
     }
 
     hendCutscene(){
         //happy ending cutscene here
-        this.happyText = this.add.text(screenWidth/2,screenHeight/2,'Your Bro interupts your urge for stealth to say goodby to  the baby monster',textConfig).setOrigin(0.5)
+        this.happyText = this.add.text(screenWidth/2,screenHeight/2,'Your Bro interupts your urge for stealth to say goodby to  the baby monster\n' + favKeys + 'to menu',textConfig).setOrigin(0.5)
         this.happyText.setFontSize('30px')
+        this.happy = true
     }
 
 }
