@@ -86,6 +86,8 @@ class Ravine extends Phaser.Scene {
         this.physics.add.collider(this.player, this.leftBound);
         this.physics.add.collider(this.block, this.ground); // Collider between block and ground.
         this.physics.add.collider(this.player, this.block); // Collider between player and the block
+        this.physics.add.collider(this.block, this.rightBound);
+        this.physics.add.collider(this.block, this.leftBound);
 
         //collecting things
         collect(this,this.rope,'rope')
