@@ -53,9 +53,6 @@ class FForest extends Phaser.Scene {
         this.leftBound.setImmovable(true)
         this.leftBound.displayHeight = screenHeight
 
-
-
-
         //set up the ground
         this.ground = this.physics.add.sprite(screenCenterX, screenHeight - 50, 'ground').setScale(0.05); // Initialize our ground
         this.ground.setImmovable(true); // Sets ground to immovable
@@ -85,12 +82,11 @@ class FForest extends Phaser.Scene {
             this.light.body.allowGravity = false
         }
         if(!hasKnife){
-            this.knife = this.physics.add.sprite(-4000,screenHeight - 150,'knife').setOrigin(0.5,1)
+            this.knife = this.physics.add.sprite(-3600,screenHeight - 360,'knife').setOrigin(0.5,1)
             this.knife.body.allowGravity = false
         }
 
         // Setting up our player
-        
         this.player = new player(this, playerSpawnx, playerSpawny, 'player').setScale(0.15).setOrigin(0.5,1); // Initialize our Player
         this.player.depth = 200
 
@@ -99,7 +95,32 @@ class FForest extends Phaser.Scene {
         this.sceneCamera.setLerp(cameraLerp,cameraLerp)
         this.sceneCamera.setBounds(-14400/2,0,14400,screenHeight)
 
-        //collide with the ground and bounding boxes
+        //addings some obsicles
+        this.block1 = this.physics.add.sprite(-4000,screenHeight - 100-75,'slidyBlock').setOrigin(0.5)
+        this.block1.displayWidth = 150
+        this.block1.displayHeight = 150
+        this.block1.body.allowGravity = false
+        this.block1.setImmovable(true);
+        this.block1.angle = -10
+
+        this.block2 = this.physics.add.sprite(-3600,screenHeight - 100-150,'slidyBlock').setOrigin(0.5)
+        this.block2.displayWidth = 300
+        this.block2.displayHeight = 300
+        this.block2.body.allowGravity = false
+        this.block2.setImmovable(true);
+        this.block2.angle = 93
+
+        this.block3 = this.physics.add.sprite(-3200,screenHeight - 100-75,'slidyBlock').setOrigin(0.5)
+        this.block3.displayWidth = 150
+        this.block3.displayHeight = 150
+        this.block3.body.allowGravity = false
+        this.block3.setImmovable(true);
+        this.block3.angle = 5
+
+        //collide
+        this.physics.add.collider(this.player, this.block1);
+        this.physics.add.collider(this.player, this.block2);
+        this.physics.add.collider(this.player, this.block3);
         this.physics.add.collider(this.player, this.ground);
         this.physics.add.collider(this.player, this.highground);
         this.physics.add.collider(this.player, this.rightBound);
