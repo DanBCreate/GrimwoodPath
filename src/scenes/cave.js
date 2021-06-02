@@ -20,6 +20,14 @@ class Cave extends Phaser.Scene {
         //debugging mode features
         debugCreate(this); 
 
+        // Setting up our Cave Ambience Sounds
+        this.sfxConfig = {
+            volume: 1,
+            loop: true,
+        }
+        this.caveBG = this.sound.add('caveBG');
+        this.caveBG.play(this.sfxConfig);
+
         //set up the ground
         this.ground = this.physics.add.sprite(screenCenterX, screenHeight, 'ground').setScale(0.05); // Initialize our ground
         this.ground.setImmovable(true); // Sets ground to immovable
