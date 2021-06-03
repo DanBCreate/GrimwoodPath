@@ -18,13 +18,13 @@ class Credit extends Phaser.Scene {
 
        // Setting up our back key to go back to menu
        keyESC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
-       this.backText = this.add.text(screenWidth - 110, 30, 'Back [ESC]', textConfig).setOrigin(0.5);
+       this.backText = this.add.text(screenWidth - 110, 30, 'Menu [ESC]', textConfig).setOrigin(0.5);
        this.backText.setFontSize('30px');
 
        // Displaying all of our names in a unique way for each name
        this.name;
        this.introductionText = this.add.text(screenCenterX, 170, 'Developed By:', titleTextConfig).setOrigin(0.5);
-       this.introductionText.setFontSize('90px');
+       this.introductionText.setFontSize('100px');
        this.introductionText.alpha = 0;
        this.name = this.introductionText;
 
@@ -48,7 +48,7 @@ class Credit extends Phaser.Scene {
             ease:'Quad.InOut'
         })
         this.time.addEvent({
-            delay: 1650,
+            delay: 1550,
             callback: () =>{
                 this.name = this.thomas;
             }
@@ -102,6 +102,10 @@ class Credit extends Phaser.Scene {
         // For Quinn
         this.quinn = this.add.text(screenCenterX, 800, 'Quinn Satow', textConfig).setOrigin(0.5);
         this.quinn.alpha = 0;
+        this.sources = this.add.text(screenCenterX, 950, 'Sources [S]', titleTextConfig).setOrigin(0.5);
+        this.sources.alpha = 0;
+        this.sources.setFontSize('100px');
+        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
         this.time.addEvent({
             delay: 9000,
             callback: () =>{
@@ -124,10 +128,6 @@ class Credit extends Phaser.Scene {
                 })    
             }
         })
-
-        
-
-
     }
 
     update(){
@@ -139,6 +139,10 @@ class Credit extends Phaser.Scene {
         // If back button is chosen
         if(Phaser.Input.Keyboard.JustDown(keyESC)){
             this.scene.start('menuScene')
+        }
+
+        if(Phaser.Input.Keyboard.JustDown(keyS)){
+            this.scene.start('sourceScene')
         }
     }
     
@@ -167,6 +171,7 @@ class Credit extends Phaser.Scene {
         if(this.name == this.quinn){
             if(this.quinn.alpha <= 1){
                 this.quinn.alpha += 0.008;
+                this.sources.alpha += 0.008;
             }
             if(this.quinn.alpha >= 0.8){
                 this.Emitter.setSpeed(0);
