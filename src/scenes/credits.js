@@ -13,6 +13,7 @@ class Credit extends Phaser.Scene {
         //debugging mode features
         debugCreate(this);   
         this.cameras.main.fadeIn(500);
+        this.game.sound.stopAll();
 
         // Background of credits page
         this.back = this.add.sprite(2000,500,'ravineBG').setOrigin(0.5,0.5).setScale(1.1)
@@ -164,7 +165,7 @@ class Credit extends Phaser.Scene {
     alphaUpdate(){
         if(this.name == this.introductionText){
             if(this.introductionText.alpha <= 1){
-                this.introductionText.alpha += 0.01;
+                this.introductionText.alpha += 0.02;
             }
         }
         if(this.name == this.thomas){
