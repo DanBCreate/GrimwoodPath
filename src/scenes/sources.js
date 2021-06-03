@@ -6,6 +6,8 @@ class Source extends Phaser.Scene {
         //debugging mode features
         debugCreate(this);   
 
+        this.cameras.main.fadeIn(500);
+
         // Background of sources page
         this.back = this.add.sprite(2000,500,'ravineBG').setOrigin(0.5,0.5).setScale(1.1)
 
@@ -31,7 +33,13 @@ class Source extends Phaser.Scene {
     update(){
         // If back button is chosen
         if(Phaser.Input.Keyboard.JustDown(keyESC)){
-            this.scene.start('menuScene')
+            this.cameras.main.fadeOut(2000);
+            this.time.addEvent({
+                delay: 2000,
+                callback: () =>{
+                    this.scene.start('menuScene')
+                }
+            })         
         }
         if(Phaser.Input.Keyboard.JustDown(key1)){
             this.sourcesTextTwo.alpha = 0;
