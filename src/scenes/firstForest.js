@@ -16,7 +16,7 @@ class FForest extends Phaser.Scene {
             loop: true,
         }
         this.ravineBG = this.sound.add('ffBG');
-        this.ravineBG.play(this.sfxConfig) ;
+        this.ravineBG.play(this.sfxConfig);
 
         //set up the background
         this.blackDrop = this.add.sprite(screenWidth/2,screenHeight/2,'ground').setOrigin(0.5)

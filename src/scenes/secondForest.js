@@ -12,6 +12,14 @@ class LForest extends Phaser.Scene {
 
         //debugging mode features
         debugCreate(this);   
+
+        // Second Forest Background Ambience
+        this.sfxConfig = {
+            volume: 0.95,
+            loop: true,
+        }
+        this.sfBG = this.sound.add('sfBG');
+        this.sfBG.play(this.sfxConfig);
         
         //instruction flags
         this.noInstruct = true
