@@ -66,6 +66,12 @@ class Menu extends Phaser.Scene {
         this.load.image('ravineborder','assets/ravine/insideRavineBorder.png')
         this.load.image('ravinefog','assets/ravine/insideRavineFog.png')
 
+        //cave assets
+        this.load.image('caveBG','assets/cave/caveFilling.png')
+        this.load.image('caveEnt','assets/cave/caveEntrences.png')
+        this.load.image('caveWall','assets/cave/caveBorder.png')
+
+
         //opening cutscene assets 
         this.load.spritesheet('carAnim','assets/introCutscene/carSpriteSheet(reducedBounce).png',{frameWidth: 1100, frameHeight:460,startFrame:0,endFrame:1})
         this.load.image('parkingLot','assets/introCutscene/introBGF1.png')
