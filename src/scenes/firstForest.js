@@ -66,8 +66,10 @@ class FForest extends Phaser.Scene {
         this.highground.displayWidth = 13000;
         this.highground.setOrigin(0.5,0)
         //cave transition
-        this.caveEntrance = this.physics.add.sprite(screenWidth,screenHeight-150,'caveEntrance').setOrigin(0.5,1)
+        this.caveEntrance = this.physics.add.sprite(screenWidth,screenHeight-40,'caveEnt').setOrigin(0.5,1)
         this.caveEntrance.body.allowGravity = false
+        this.caveEntrance.displayHeight = 400
+        this.caveEntrance.displayWidth = 700
         
         this.clearingEntrance = this.physics.add.sprite(0,screenHeight-150,'clearing').setOrigin(0.5,1)
         this.clearingEntrance.body.allowGravity = false
