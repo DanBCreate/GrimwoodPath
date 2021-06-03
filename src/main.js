@@ -101,7 +101,7 @@ let fallen = false //has the player fallen
 
 //keys for scene navigation
 let key1,key2,key3,key4,key5,key6,key7,key8,key9,key0;
-let keyDOWN,keyS;
+let keyDOWN,keyS, keyC, keyESC;
 //map
 // 1 - menu
 // 2 - Opening

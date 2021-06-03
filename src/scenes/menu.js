@@ -128,6 +128,7 @@ class Menu extends Phaser.Scene {
         //keys
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
+        keyC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
 
         // Handles lowering volume when exiting scene.
         this.lower = false;
@@ -235,6 +236,8 @@ class Menu extends Phaser.Scene {
         this.menuText = this.add.text(screenWidth/2,screenHeight/2 - 50,'Movement Options:\n\nwalk:[←][→]  jump:[↑]  interact:[↓]\nwalk:[a][d]  jump:[w]  interact:[s]\n\npress [interact] to start',textConfig).setOrigin(0.5)
         this.menuText.setFontSize('60px');
         this.menuText.setAlpha(0.9);
+        this.creditsText = this.add.text(screenWidth - 110, 30, 'Credits [C]', textConfig).setOrigin(0.5);
+        this.creditsText.setFontSize('30px');
 
         //unset colletable flags
         hasRope = false     //allows exit from ravine
@@ -313,6 +316,16 @@ class Menu extends Phaser.Scene {
                 }
             })
         }
+
+        if(Phaser.Input.Keyboard.JustDown(keyC)){
+            this.lower = true;
+            this.time.addEvent({
+                delay: 2000,
+                callback: () =>{
+                    this.scene.start('creditScene')
+                }
+            })
+        }
     }
 
     lowerVolume() {
@@ -326,8 +339,8 @@ class Menu extends Phaser.Scene {
     }
 
     fadeOutText() {
-
         this.titleText.alpha -= 0.01;
         this.menuText.alpha -= 0.01;
+        this.creditsText.alpha -= 0.01;
     }
 }
