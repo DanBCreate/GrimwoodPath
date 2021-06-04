@@ -267,6 +267,10 @@ function leave(scene,entrance,type,destination){
             happy = true
             if(destination === 'fForestScene'){playerSpawnx = screenWidth}
             if(destination === 'lForestScene'){playerSpawnx = 7000}
+            if(destination === 'caveScene'){
+                if(scene.sceneKey==='fForestScene'){playerSpawnx = 325}
+                if(scene.sceneKey==='lForestScene'){playerSpawnx = 7280;playerSpawny = -1400;console.log(playerSpawny)}
+            }
         } 
         else if (scene.noInstruct && type === 'cave'){
             scene.instructions = scene.add.text(entrance.x,entrance.y -400,'It\'s dark in there',textConfig).setOrigin(0.5)

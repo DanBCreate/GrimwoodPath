@@ -76,11 +76,13 @@ class Cave extends Phaser.Scene {
         this.TRGround.displayHeight = 1500    
 
         // Setting up our player and camera to follow player
-        this.player = new player(this, screenCenterX, screenCenterY, 'player').setScale(0.15); // Initialize our Player
+        playerSpawny-=200 
+        this.player = new player(this, playerSpawnx, playerSpawny, 'player').setScale(0.15); // Initialize our Player
         this.sceneCamera = this.cameras.main.startFollow(this.player);
         this.sceneCamera.setLerp(cameraLerp,cameraLerp)
         this.player.depth = 200
         this.sceneCamera.setBounds(0,screenHeight-3240,7680,3240)
+        playerSpawny = screenHeight -140 //reset y spawn
 
 
         this.axeWall = this.physics.add.sprite(6200, screenHeight, 'ground').setScale(0.05); // Initialize our ground
@@ -193,7 +195,6 @@ class Cave extends Phaser.Scene {
 
         var i
         var j
-        console.log(this.collidyThings.length)
         for(i = 0;i<this.collidyThings.length;i++){
             this.collidyThings[i].setPipeline('Light2D') //add lights to physic things to aviod list
             for(j = i+1;j<this.collidyThings.length;j++){
@@ -212,8 +213,6 @@ class Cave extends Phaser.Scene {
         }
     }
     update(){
-
-        console.log(this.player.x+' '+this.player.y)
         debugUpdate(this);
         this.player.update()
         this.block.update(); 

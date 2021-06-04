@@ -9,7 +9,7 @@ class LForest extends Phaser.Scene {
 
     }
     create(){
-
+        this.sceneKey = 'lForestScene'
         //debugging mode features
         debugCreate(this);   
 

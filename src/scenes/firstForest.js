@@ -7,6 +7,7 @@ class FForest extends Phaser.Scene {
     preload(){
     }
     create(){
+        this.sceneKey = 'fForestScene'
         //debugging mode features
         debugCreate(this);   
 
