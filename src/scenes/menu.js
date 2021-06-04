@@ -7,6 +7,7 @@ class Menu extends Phaser.Scene {
 
     preload(){
         // Loading Screen
+        this.cameras.main.fadeIn(450);
         this.back = this.add.sprite(2000,500,'ravineBG').setOrigin(0.5,0.5).setScale(1.1)
 		var newLoad = this.add.graphics();
         var loadingText = this.add.text(screenCenterX,screenCenterY + 100,'Loading: ', textConfig);
@@ -130,6 +131,8 @@ class Menu extends Phaser.Scene {
     create(){
         //debugging mode features
         debugCreate(this);
+
+        this.cameras.main.fadeIn(500);
 
         //keys
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
@@ -325,6 +328,7 @@ class Menu extends Phaser.Scene {
 
         if(Phaser.Input.Keyboard.JustDown(keyC)){
             this.lower = true;
+            this.cameras.main.fadeOut(2000);
             this.time.addEvent({
                 delay: 2000,
                 callback: () =>{

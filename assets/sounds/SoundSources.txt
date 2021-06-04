@@ -1,4 +1,8 @@
-Player Font: https://www.fontsquirrel.com/fonts/bilbo
+Player Font: 
+https://www.fontsquirrel.com/fonts/bilbo
+
+Title Font:
+https://www.dafont.com/forestside.font
 
 Child Giggle: https://freesound.org/people/RaspberryTickle/sounds/203230/ - ChildGiggle.wav
 
