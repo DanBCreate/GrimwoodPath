@@ -16,6 +16,9 @@ class Ravine extends Phaser.Scene {
     create(){
         // Debugging mode features
         debugCreate(this); 
+
+        this.cameras.main.fadeIn(650);
+
         this.backDrop = this.add.sprite(0,screenHeight,'ravineBG').setOrigin(0,1)
         this.backBase = this.add.sprite(0,screenHeight,'ravinebase').setOrigin(0,1)
         this.backFog = this.add.sprite(0,screenHeight,'ravinefog').setOrigin(0,1)

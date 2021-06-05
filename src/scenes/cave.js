@@ -21,6 +21,8 @@ class Cave extends Phaser.Scene {
         //debugging mode features
         debugCreate(this); 
 
+        this.cameras.main.fadeIn(650);
+
         //the background
         this.background = this.add.sprite(0,screenHeight,'caveBG').setOrigin(0,1)
         this.backWalls = this.add.sprite(0,screenHeight,'caveWall').setOrigin(0,1)

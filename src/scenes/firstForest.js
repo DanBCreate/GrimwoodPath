@@ -11,6 +11,8 @@ class FForest extends Phaser.Scene {
         //debugging mode features
         debugCreate(this);   
 
+        this.cameras.main.fadeIn(650);
+
         // First Forest Background Ambience
         this.sfxConfig = {
             volume: 0.95,

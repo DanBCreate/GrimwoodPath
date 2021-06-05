@@ -12,6 +12,9 @@ class HEnd extends Phaser.Scene {
 
         //debugging mode features
         debugCreate(this);      
+
+        this.cameras.main.fadeIn(650);
+
         if(favKeys === '[↓]'){
             this.leftkey = "[⟵]"
             this.rightkey = "[⟶]"
