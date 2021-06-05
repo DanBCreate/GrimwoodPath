@@ -27,7 +27,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
         keyDOWN = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
 
         // Players movement settings
-        this.jumpHeight = -700;
+        this.jumpHeight = -800;
         this.actionButton = false;
         this.bufferY = 50; // This will control the ability to push/pull while on top of a block
         this.currentAnimKey;
