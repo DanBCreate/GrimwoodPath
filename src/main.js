@@ -1,7 +1,6 @@
 //main.js
 //creates the game object, and declairs global variables
 
-
 //screen configs
 const screenWidth = 1920;
 const screenHeight = 1080;
@@ -224,7 +223,7 @@ let sfxCollect = {
 function collect(scene,item,key){
     scene.physics.add.overlap(scene.player,item,()=>{
         if(scene.noInstruct){
-            scene.instructions = scene.add.text(item.x,item.y -400,favKeys +' to pick up',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(item.x,item.y -200,favKeys +' to pick up',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.instructions.depth = 400
             scene.noInstruct = false
@@ -239,9 +238,9 @@ function collect(scene,item,key){
             if(key === 'knife'){hasKnife = true}
             else if(key === 'shirt'){hasShirt = true}
             else if(key === 'key'){hasKey = true}
-            else if(key === 'jacket'){hasJacket = true; if(hasWood){scene.player.think('much better')}}
+            else if(key === 'jacket'){hasJacket = true; if(hasWood){scene.player.think('much better, I can Jump now!')}}
             else if(key === 'rope'){hasRope = true}
-            else if(key === 'wood'){hasWood = true; if(hasJacket){scene.player.think('much better')}}
+            else if(key === 'wood'){hasWood = true; if(hasJacket){scene.player.think('much better, I can Jump now!')}}
             else if(key === 'crowbar'){hasCrowbar = true}
             else if(key === 'axe'){hasAxe = true}
             else if(key === 'bat'){hasBat = true}
@@ -310,7 +309,7 @@ function leave(scene,entrance,type,destination){
 
         //if car
         if(scene.noInstruct && type === 'car'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -200,"hold "+favKeys +' to flee in terror',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -200,"hold "+favKeys +' to flee in terror\nwithout your brother',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
@@ -340,6 +339,8 @@ function leave(scene,entrance,type,destination){
         if(scene.player.actionButton && happy){
             scene.screentint = scene.add.rectangle(screenWidth/2,screenHeight,14400,screenHeight,0x000000).setOrigin(0.5,1)
             scene.screentint.alpha = 0
+            scene.cameras.main.fadeOut(650);
+
             scene.tweens.add({
                 targets: scene.sceneCamera,
                 zoom: 10,
@@ -373,7 +374,7 @@ function markTree(scene,tree,flag){
         else{console.log('invalid flag');tempbool=true}
 
         if(scene.noInstruct && hasShirt && !tempbool){
-            scene.instructions = scene.add.text(tree.x,tree.y -600,favKeys +' to mark',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(tree.x,tree.y -600,favKeys +' to mark that you visited here',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
         } 

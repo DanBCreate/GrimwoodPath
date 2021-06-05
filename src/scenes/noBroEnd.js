@@ -12,6 +12,9 @@ class NoBro extends Phaser.Scene {
 
         //debugging mode features
         debugCreate(this);      
+
+        this.cameras.main.fadeIn(650);
+
         this.add.text(screenWidth/2,screenHeight/2,'You abandoned your bro\n' + favKeys + ' to menu',textConfig).setOrigin(0.5)
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)

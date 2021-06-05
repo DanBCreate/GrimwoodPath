@@ -13,6 +13,8 @@ class LForest extends Phaser.Scene {
         //debugging mode features
         debugCreate(this);   
 
+        this.cameras.main.fadeIn(650);
+
         // Second Forest Background Ambience
         this.sfxConfig = {
             volume: 0.95,

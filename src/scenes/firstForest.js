@@ -11,6 +11,8 @@ class FForest extends Phaser.Scene {
         //debugging mode features
         debugCreate(this);   
 
+        this.cameras.main.fadeIn(650);
+
         // First Forest Background Ambience
         this.sfxConfig = {
             volume: 0.95,
@@ -86,6 +88,7 @@ class FForest extends Phaser.Scene {
         }
         if(!hasKnife){
             this.knife = this.physics.add.sprite(-3600,screenHeight - 360,'knife').setOrigin(0.5,1)
+            this.knife.setScale(0.2);
             this.knife.body.allowGravity = false
         }
 

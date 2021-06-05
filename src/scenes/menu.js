@@ -30,13 +30,13 @@ class Menu extends Phaser.Scene {
         this.load.image('axe','assets/tempAssets/tempAxe.png');
         this.load.image('bat','assets/tempAssets/tempBat.png');
         this.load.image('bar','assets/tempAssets/tempCrowbar.png');
-        this.load.image('jacket','assets/tempAssets/tempJacket.png');
+        this.load.image('jacket','assets/items/revampedJacket.png');
         this.load.image('key','assets/tempAssets/tempKey.png');
-        this.load.image('knife','assets/tempAssets/tempKnife.png');
+        this.load.image('knife','assets/items/pocketKnife.png');
         this.load.image('light','assets/tempAssets/tempLight.png');
-        this.load.image('rope','assets/tempAssets/tempRope.png');
-        this.load.image('shirt','assets/tempAssets/tempShirt.png');
-        this.load.image('wood','assets/tempAssets/tempWood.png');
+        this.load.image('rope','assets/items/noose.png');
+        this.load.image('shirt','assets/items/tShirt.png');
+        this.load.image('wood','assets/items/logs.png');
         this.load.image('caveEntrance','assets/tempAssets/tempCave.png');
         this.load.image('clearing','assets/tempAssets/tempClearing.png');
         this.load.image('ground', 'assets/tempAssets/tempGround.png'); // Ground Asset
