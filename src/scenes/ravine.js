@@ -54,18 +54,22 @@ class Ravine extends Phaser.Scene {
 
         if(!hasRope){
             this.rope= this.physics.add.sprite(4000,screenHeight - 450,'rope').setOrigin(0.5,1)
+            this.rope.setScale(0.2);
             this.rope.body.allowGravity = false
         }
         if(!hasShirt){
             this.shirt = this.physics.add.sprite(screenWidth/2,screenHeight - 100,'shirt').setOrigin(0.5,1)
+            this.shirt.setScale(0.2);
             this.shirt.body.allowGravity = false
         }
         if(!hasJacket){
             this.jacket = this.physics.add.sprite(screenWidth + 300,screenHeight - 100,'jacket').setOrigin(0.5,1)
+            this.jacket.setScale(0.2);
             this.jacket.body.allowGravity = false
         }
         if(!hasWood){
             this.wood = this.physics.add.sprite(screenWidth/3,screenHeight - 100,'wood').setOrigin(0.5,1)
+            this.wood.setScale(0.3);
             this.wood.body.allowGravity = false
         }        
 

@@ -86,6 +86,7 @@ class FForest extends Phaser.Scene {
         }
         if(!hasKnife){
             this.knife = this.physics.add.sprite(-3600,screenHeight - 360,'knife').setOrigin(0.5,1)
+            this.knife.setScale(0.2);
             this.knife.body.allowGravity = false
         }
 
