@@ -223,7 +223,7 @@ let sfxCollect = {
 function collect(scene,item,key){
     scene.physics.add.overlap(scene.player,item,()=>{
         if(scene.noInstruct){
-            scene.instructions = scene.add.text(item.x,item.y -400,favKeys +' to pick up',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(item.x,item.y -200,favKeys +' to pick up',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.instructions.depth = 400
             scene.noInstruct = false
@@ -372,7 +372,7 @@ function markTree(scene,tree,flag){
         else{console.log('invalid flag');tempbool=true}
 
         if(scene.noInstruct && hasShirt && !tempbool){
-            scene.instructions = scene.add.text(tree.x,tree.y -600,favKeys +' to mark',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(tree.x,tree.y -600,favKeys +' to mark that you visited here',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
         } 
