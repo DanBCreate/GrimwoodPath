@@ -238,9 +238,9 @@ function collect(scene,item,key){
             if(key === 'knife'){hasKnife = true}
             else if(key === 'shirt'){hasShirt = true}
             else if(key === 'key'){hasKey = true}
-            else if(key === 'jacket'){hasJacket = true; if(hasWood){scene.player.think('Much better, I can Jump now!')}}
+            else if(key === 'jacket'){hasJacket = true; if(hasWood){scene.player.think('much better, I can Jump now!')}}
             else if(key === 'rope'){hasRope = true}
-            else if(key === 'wood'){hasWood = true; if(hasJacket){scene.player.think('Much better, I can Jump now!')}}
+            else if(key === 'wood'){hasWood = true; if(hasJacket){scene.player.think('much better, I can Jump now!')}}
             else if(key === 'crowbar'){hasCrowbar = true}
             else if(key === 'axe'){hasAxe = true}
             else if(key === 'bat'){hasBat = true}
@@ -309,7 +309,7 @@ function leave(scene,entrance,type,destination){
 
         //if car
         if(scene.noInstruct && type === 'car'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -200,"hold "+favKeys +' to flee in terror',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -200,"hold "+favKeys +' to flee in terror\nwithout your brother',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
