@@ -133,12 +133,14 @@ class LForest extends Phaser.Scene {
 
         //collectables
         if(!hasKey){
-            this.key = this.physics.add.sprite(13000,screenHeight - 100,'key').setOrigin(0.5,1)
+            this.key = this.physics.add.sprite(13000,screenHeight - 110,'key').setOrigin(0.5,1)
+            this.key.setScale(0.2);
             this.key.body.allowGravity = false
         }
 
         if(!hasCrowbar){
             this.crowbar = this.physics.add.sprite(screenWidth/6,screenHeight - 300,'bar').setOrigin(0.5,1)
+            this.crowbar.setScale(0.2);
             this.crowbar.body.allowGravity = false
         }
 

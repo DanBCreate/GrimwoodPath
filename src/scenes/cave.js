@@ -92,16 +92,17 @@ class Cave extends Phaser.Scene {
         playerSpawny = screenHeight -140 //reset y spawn
 
 
-        this.axeWall = this.physics.add.sprite(6200, screenHeight, 'ground').setScale(0.05); // Initialize our ground
+        this.axeWall = this.physics.add.sprite(6100, screenHeight - 300, 'caveLock').setScale(0.05); // Initialize our ground
         this.axeWall.setImmovable(true); // Sets ground to immovable
         this.axeWall.body.allowGravity = false; // So gravity has no effect ground
-        this.axeWall.displayWidth = 100;
-        this.axeWall.displayHeight = screenHeight
+        this.axeWall.displayWidth = 220;
+        this.axeWall.displayHeight = 800
         this.axeWall.setOrigin(0.5,1) 
         
 
         if(!hasAxe){
             this.axe = this.physics.add.sprite(7000,screenHeight - 300,'axe').setOrigin(0.5,1)
+            this.axe.setScale(0.2);
             this.axe.body.allowGravity = false
         }
 
