@@ -74,16 +74,20 @@ class FForest extends Phaser.Scene {
         this.caveEntrance.displayHeight = 400
         this.caveEntrance.displayWidth = 700
         
-        this.clearingEntrance = this.physics.add.sprite(0,screenHeight-150,'clearing').setOrigin(0.5,1)
+        this.clearingEntrance = this.physics.add.sprite(-1000,screenHeight-100,'clearing').setOrigin(0.5,1)
+        this.clearingEntrance.setScale(0.9)
         this.clearingEntrance.body.allowGravity = false
 
         //spawn collectables
         if(!hasBat){
-            this.battery = this.physics.add.sprite(3000,screenHeight - 150,'bat').setOrigin(0.5,1)
+            this.battery = this.physics.add.sprite(3300,screenHeight - 80,'bat').setOrigin(0.5,1)
+            this.battery.setScale(0.2);
             this.battery.body.allowGravity = false
         }
         if(!hasFlash){
-            this.light = this.physics.add.sprite(5000,screenHeight - 150,'light').setOrigin(0.5,1)
+            this.light = this.physics.add.sprite(5750,screenHeight - 45,'light').setOrigin(0.5,1)
+            this.light.setScale(0.2);
+            this.light.flipX = true;
             this.light.body.allowGravity = false
         }
         if(!hasKnife){
