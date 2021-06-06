@@ -61,7 +61,7 @@ class Ravine extends Phaser.Scene {
             this.rope.body.allowGravity = false
         }
         if(!hasShirt){
-            this.shirt = this.physics.add.sprite(screenWidth/5 - 250,screenHeight - 150,'shirt').setOrigin(0.5,1)
+            this.shirt = this.physics.add.sprite(screenWidth/5 - 240,screenHeight - 150,'shirt').setOrigin(0.5,1)
             this.shirt.flipX = true;
             this.shirt.setScale(0.2);
             this.shirt.body.allowGravity = false
