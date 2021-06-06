@@ -59,7 +59,7 @@ class Credit extends Phaser.Scene {
             ease:'Quad.InOut'
         })
         this.time.addEvent({
-            delay: 1650,
+            delay: 1600,
             callback: () =>{
                 this.name = this.thomas;
             }
