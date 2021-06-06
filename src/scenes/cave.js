@@ -71,11 +71,11 @@ class Cave extends Phaser.Scene {
         this.backLedge.displayWidth = 7680 - 6200
         this.backLedge.displayHeight = 500       
 
-        this.TRGround = this.physics.add.sprite(5600,-1320).setOrigin(0)
+        this.TRGround = this.physics.add.sprite(5600,-1180).setOrigin(0)
         this.TRGround.setImmovable(true)
         this.TRGround.body.allowGravity = false
         this.TRGround.displayWidth = 7680 - 5600
-        this.TRGround.displayHeight = 1500    
+        this.TRGround.displayHeight = 1200    
 
         // Setting up our player and camera to follow player
         playerSpawny-=200 
@@ -179,9 +179,12 @@ class Cave extends Phaser.Scene {
         this.tenthAirBlock = new slidyBlock(this, 5100, screenCenterY-1500, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
         this.tenthAirBlock.setImmovable(true)
         this.tenthAirBlock.body.allowGravity = false
-        this.elevinthAirBlock = new slidyBlock(this, 5550, screenCenterY-1650, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
+        this.elevinthAirBlock = new slidyBlock(this, 5550, screenCenterY-1600, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
         this.elevinthAirBlock.setImmovable(true)
         this.elevinthAirBlock.body.allowGravity = false
+        this.twelvethAirBlock = new slidyBlock(this, 7300, -1180, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
+        this.twelvethAirBlock.setImmovable(true)
+        this.twelvethAirBlock.body.allowGravity = false
 
         //setting up the lighting
         this.lights.enable().setAmbientColor(0x444444); // enable lighting, and tint the background dark
@@ -191,7 +194,7 @@ class Cave extends Phaser.Scene {
         if(axeWallFlag){this.axeWall.setPipeline('Light2D')}
 
         this.collidyThings = [this.block,this.firstAirBlock,this.secondAirBlock,this.thirdAirBlock,this.fourthAirBlock,this.fifthAirBlock,this.sixthAirBlock,
-            this.seventhAirBlock,this.eighthAirBlock,this.ninethAirBlock,this.tenthAirBlock,this.elevinthAirBlock,this.TRGround,
+            this.seventhAirBlock,this.eighthAirBlock,this.ninethAirBlock,this.tenthAirBlock,this.elevinthAirBlock,this.twelvethAirBlock, this.TRGround,
             this.axeWall,this.ground,this.player,this.firstLedge,this.midLedge,this.backLedge,this.highBlock,this.bigHighBlock,this.otherHighBlock,this.rightBound,
             this.leftBound]
 
