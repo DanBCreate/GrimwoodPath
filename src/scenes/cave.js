@@ -44,6 +44,11 @@ class Cave extends Phaser.Scene {
         }
         this.caveBG = this.sound.add('caveBG');
         this.caveBG.play(this.sfxConfig);
+        this.sfxAxeConfig = {
+            volume: 0.3,
+            loop: false,
+        }
+        this.axeSFX = this.sound.add('axeWallSFX');
 
         //set up the ground
         this.ground = this.physics.add.sprite(0, screenHeight, 'ground').setScale(0.05); // Initialize our ground
@@ -118,6 +123,7 @@ class Cave extends Phaser.Scene {
             if(this.player.actionButton && hasCrowbar){
                 this.instructions.destroy()
                 this.axeWall.destroy()
+                this.axeSFX.play(this.sfxAxeConfig);
                 axeWallFlag = false;
                 this.noInstruct = true;
             }
