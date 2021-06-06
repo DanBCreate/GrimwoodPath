@@ -56,7 +56,7 @@ class Ravine extends Phaser.Scene {
         this.instructDestructor = true
 
         if(!hasRope){
-            this.rope= this.physics.add.sprite(screenWidth*3 - 1150,screenHeight - 450,'rope').setOrigin(0.5,1)
+            this.rope= this.physics.add.sprite(screenWidth*3 - 1150,screenHeight - 500,'rope').setOrigin(0.5,1)
             this.rope.setScale(0.2);
             this.rope.body.allowGravity = false
         }
