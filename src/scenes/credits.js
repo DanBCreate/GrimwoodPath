@@ -16,6 +16,7 @@ class Credit extends Phaser.Scene {
         this.game.sound.stopAll();
 
         // Setting up our Credits Sounds
+        this.lower = false; // Utilized for Lowering Volume
         this.sfxConfig = {
             volume: 0.7,
             loop: true,
@@ -146,9 +147,14 @@ class Credit extends Phaser.Scene {
 
         this.alphaUpdate();
 
+        if(this.lower == true){
+            this.lowerVolume();
+        }
+
         // If back button is chosen
         if(Phaser.Input.Keyboard.JustDown(keyESC)){
             this.cameras.main.fadeOut(2000);
+            this.lower = true;
             this.time.addEvent({
                 delay: 2000,
                 callback: () =>{
@@ -200,6 +206,13 @@ class Credit extends Phaser.Scene {
             if(this.quinn.alpha >= 0.8){
                 this.Emitter.setSpeed(0);
             }
+        }
+    }
+
+    // Lowers volume upon exit
+    lowerVolume() {
+        if(this.creditsBG.volume >= 0){
+            this.creditsBG.setVolume(this.creditsBG.volume - 0.008);
         }
     }
 
