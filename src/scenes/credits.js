@@ -15,6 +15,14 @@ class Credit extends Phaser.Scene {
         this.cameras.main.fadeIn(500);
         this.game.sound.stopAll();
 
+        // Setting up our Credits Sounds
+        this.sfxConfig = {
+            volume: 0.7,
+            loop: true,
+        }
+        this.creditsBG = this.sound.add('creditsBG');
+        this.creditsBG.play(this.sfxConfig);
+
         // Background of credits page
         this.back = this.add.sprite(2000,500,'ravineBG').setOrigin(0.5,0.5).setScale(1.1)
 
@@ -144,6 +152,7 @@ class Credit extends Phaser.Scene {
             this.time.addEvent({
                 delay: 2000,
                 callback: () =>{
+                    this.game.sound.stopAll();
                     this.scene.start('menuScene')
                 }
             })         

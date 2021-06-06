@@ -113,6 +113,7 @@ class Menu extends Phaser.Scene {
         this.load.audio('ffBG', 'assets/sounds/FFBG.wav');
         this.load.audio('caveBG', 'assets/sounds/CaveBG.wav');
         this.load.audio('sfBG', 'assets/sounds/SFBG.wav');
+        this.load.audio('creditsBG', 'assets/sounds/EverythingBreaks.mp3');
 
         //remove loading screen
         this.LoadingBackground.destroy()
