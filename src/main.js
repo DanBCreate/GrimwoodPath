@@ -133,7 +133,7 @@ function debugUpdate(scene){
         if(Phaser.Input.Keyboard.JustDown(key2)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('openingScene')}
         if(Phaser.Input.Keyboard.JustDown(key3)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('ravineScene')}
         if(Phaser.Input.Keyboard.JustDown(key4)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('fForestScene')}
-        if(Phaser.Input.Keyboard.JustDown(key5)){scene.game.sound.stopAll(); playerSpawnx = screenWidth*4; scene.scene.start('caveScene')}
+        if(Phaser.Input.Keyboard.JustDown(key5)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('caveScene')}
         if(Phaser.Input.Keyboard.JustDown(key6)){scene.game.sound.stopAll(); playerSpawnx = screenWidth; scene.scene.start('lForestScene')}
         if(Phaser.Input.Keyboard.JustDown(key7)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('noBroScene')}
         if(Phaser.Input.Keyboard.JustDown(key8)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('sEndScene')}
@@ -254,7 +254,7 @@ function collect(scene,item,key,noteItem,noteGround){
             else if(key === 'rope'){hasRope = true; note(scene, "YOU\nHANG"); noteItem.destroy(); noteGround.alpha = 1;}
             else if(key === 'wood'){hasWood = true; if(hasJacket){scene.player.think('much better, I can Jump now!')}}
             else if(key === 'crowbar'){hasCrowbar = true}
-            else if(key === 'axe'){hasAxe = true; note(scene, "YOU CUT\nME FIND"); noteItem.destroy(); noteGround.alpha = 1;}
+            else if(key === 'axe'){hasAxe = true; note(scene, "TREE CUT\nME FIND"); noteItem.destroy(); noteGround.alpha = 1;}
             else if(key === 'bat'){hasBat = true}
             else if(key === 'flash'){hasFlash = true}
             else{console.log('Invalid Key')}
