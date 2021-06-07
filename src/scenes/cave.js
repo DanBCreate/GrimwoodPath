@@ -70,7 +70,7 @@ class Cave extends Phaser.Scene {
         this.midLedge.displayWidth = 6200 - 5364
         this.midLedge.displayHeight = 500        
 
-        this.backLedge = this.physics.add.sprite(6200,screenHeight - 275).setOrigin(0)
+        this.backLedge = this.physics.add.sprite(6200,screenHeight - 50).setOrigin(0)
         this.backLedge.setImmovable(true)
         this.backLedge.body.allowGravity = false
         this.backLedge.displayWidth = 7680 - 6200
@@ -162,8 +162,10 @@ class Cave extends Phaser.Scene {
         this.otherHighBlock.body.allowGravity = false
         this.bigHighBlock = new slidyBlock(this, 4730, screenCenterY+100, 'shortBlock').setScale(0.4).setOrigin(0.5,1);
         this.bigHighBlock.setImmovable(true)
+        this.bigHighBlock.body.offset.y = 50;
+
         this.bigHighBlock.body.allowGravity = false
-        this.firstAirBlock = new slidyBlock(this,4260,screenCenterY -230,'longBlock').setScale(0.25).setOrigin(0.5,1);
+        this.firstAirBlock = new slidyBlock(this,4260,screenCenterY -220,'longBlock').setScale(0.25).setOrigin(0.5,1);
         this.firstAirBlock.setImmovable(true)
         this.firstAirBlock.body.allowGravity = false
         this.secondAirBlock = new slidyBlock(this, 4750, screenCenterY-415, 'longBlock').setScale(0.25).setOrigin(0.5,1);

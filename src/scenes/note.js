@@ -8,8 +8,9 @@ class noteScene extends Phaser.Scene{
     
     create(){
         this.add.sprite(screenCenterX,screenCenterY,'page').setOrigin(0.5).setScale(3) //replace with paper asset once avalible
-        this.add.text(screenCenterX,screenCenterY,noteText,monsterTextConfig).setOrigin(0.5) //main body of the scene
-        this.add.text(screenWidth - 380,screenHeight - 50,favKeys+' finish reading',textConfig).setOrigin(1)//instructions for retruning to the game
+        this.noteText =this.add.text(screenCenterX,screenCenterY,noteText,monsterTextConfig).setOrigin(0.5) //main body of the scene
+        this.noteText.setFontSize(190);
+        this.add.text(screenCenterX,screenHeight - 60,favKeys+' finish reading',textConfig).setOrigin(0.5)//instructions for retruning to the game
 
         //keys for returning to the game
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);

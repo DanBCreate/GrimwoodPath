@@ -349,8 +349,8 @@ class HEnd extends Phaser.Scene {
                 this.scene.start('sEndScene')
             }
             if(this.happy){
-                if(Phaser.Input.Keyboard.JustDown(keyS)){this.scene.start('menuScene')}
-                if(Phaser.Input.Keyboard.JustDown(keyDOWN)){this.scene.start('menuScene')}
+                //if(Phaser.Input.Keyboard.JustDown(keyS)){this.scene.start('menuScene')}
+                //if(Phaser.Input.Keyboard.JustDown(keyDOWN)){this.scene.start('menuScene')}
             }
         }   
 
