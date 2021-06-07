@@ -117,7 +117,13 @@ class Menu extends Phaser.Scene {
         this.load.image('reunion','assets/goodCutscene/goodSprite9.png')
         this.load.image('monsterGoodbye','assets/goodCutscene/goodSprite9Monster.png')
         this.load.image('noteMonster','assets/goodCutscene/goodSpriteMonster7_8.png')
-
+        //assets for okay end
+        this.load.image('darkClouds','assets/okayCutscene/okaySprite2_3.png')
+        this.load.image('eyeClouds','assets/okayCutscene/okaySprite4.png')
+        this.load.image('altPlay','assets/okayCutscene/okaySprite3.png')
+        this.load.image('grabRun','assets/okayCutscene/okaySprite4people.png')
+        this.load.image('pulledAlong','assets/okayCutscene/okaySprite5.png')
+        this.load.image('youForgot','assets/okayCutscene/okaySprite7.png')
 
         //audio
         this.load.audio('giggle','assets/sounds/ChildGiggle.wav')
