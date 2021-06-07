@@ -166,15 +166,15 @@ function RLWipe(scene,duration,texture,delay = 0){
         delay: delay,
         callback:() =>{
             scene.wipetree = new SlidySprite(scene,screenWidth,0,texture).setOrigin(0);
-            scene.wipetree.scaleY = 1.3;
+            scene.wipetree.scaleY = 1.5;
             scene.trailTree = new SlidySprite(scene,screenWidth*2,0,texture).setOrigin(0);
-            scene.trailTree.scaleY = 1.3;
+            scene.trailTree.scaleY = 1.5;
             scene.wipetree.depth = 100
             scene.trailTree.depth = 100
             scene.add.existing(scene.wipetree);
             scene.add.existing(scene.trailTree);
             scene.wipebox = scene.add.rectangle(screenWidth+scene.trailTree.width/2,0,screenWidth,screenHeight,0x000000).setOrigin(0)
-            scene.wipebox.depth = 300
+            scene.wipebox.depth = 200
             scene.wipetree.slide(-screenWidth-scene.wipetree.width,0,duration)
             scene.trailTree.slide(0-scene.trailTree.width,0,duration)
             scene.tweens.add({
@@ -201,9 +201,9 @@ function LRWipe(scene,duration,texture,delay = 0){
         delay: delay,
         callback:() =>{
             scene.wipetree = new SlidySprite(scene,0,0,texture).setOrigin(1,0);
-            scene.wipetree.scaleY = 1.3;
+            scene.wipetree.scaleY = 1.5;
             scene.trailTree = new SlidySprite(scene,-screenWidth,0,texture).setOrigin(1,0);
-            scene.trailTree.scaleY = 1.3;
+            scene.trailTree.scaleY = 1.5;
             scene.wipetree.depth = 100
             scene.trailTree.depth = 100
             scene.add.existing(scene.wipetree);
