@@ -40,7 +40,6 @@ class HEnd extends Phaser.Scene {
         this.ambience = this.sound.add('nightAmbience');
         this.ambience.play(this.sfxConfig) ;
 
-
         this.timesequence = 0
         this.wipetime = 2500
 

@@ -314,7 +314,7 @@ function leave(scene,entrance,type,destination){
             happy = true
         } 
         else if (scene.noInstruct && type === 'clearing'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -400,'It\'s too dense',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -400,'It\'s too dense, need something hefty and sharp',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
         }
