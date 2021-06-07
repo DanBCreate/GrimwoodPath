@@ -124,6 +124,8 @@ class Menu extends Phaser.Scene {
         this.load.image('grabRun','assets/okayCutscene/okaySprite4people.png')
         this.load.image('pulledAlong','assets/okayCutscene/okaySprite5.png')
         this.load.image('youForgot','assets/okayCutscene/okaySprite7.png')
+        //asset for bad end
+        this.load.image('youDoneFd','assets/other/badEndingSprite.png')
 
         //audio
         this.load.audio('giggle','assets/sounds/ChildGiggle.wav')

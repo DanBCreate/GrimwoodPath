@@ -118,7 +118,7 @@ class SEnd extends Phaser.Scene {
                 //remove last vignette
                 this.pulled.destroy()
                 //animate
-                this.car.anims.play
+                this.car.anims.play('drive')
                 this.car.slide(0,2*screenHeight/3,3000)
             }
         })
