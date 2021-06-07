@@ -109,9 +109,14 @@ class Credit extends Phaser.Scene {
         // For Quinn
         this.quinn = this.add.text(screenCenterX, 800, 'Quinn Satow', textConfig).setOrigin(0.5);
         this.quinn.alpha = 0;
-        this.sources = this.add.text(screenCenterX, 950, 'Sources [S]', titleTextConfig).setOrigin(0.5);
+        this.sources = this.add.text(screenCenterX, 920, 'Sources [S]', titleTextConfig).setOrigin(0.5);
         this.sources.alpha = 0;
         this.sources.setFontSize('100px');
+        this.cutscenes = this.add.text(screenCenterX, 1030, '[Cutscene Viewer]\nTo view Leaving Brother Cutscene, Press [1]\n To view Decision Making Cutscene, Press [2]\n', titleTextConfig).setOrigin(0.5);
+        this.cutscenes.alpha = 0;
+        this.cutscenes.setFontSize('30px');
+        key1 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE)        
+        key2 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TWO)        
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
         this.time.addEvent({
             delay: 9000,
@@ -170,6 +175,30 @@ class Credit extends Phaser.Scene {
                 }
             })        
         }
+
+        if(Phaser.Input.Keyboard.JustDown(key1)){
+            this.cameras.main.fadeOut(2000);
+            this.lower = true;
+            this.time.addEvent({
+                delay: 2000,
+                callback: () =>{
+                    this.game.sound.stopAll();
+                    this.scene.start('noBroScene')
+                }
+            })         
+        }
+
+        if(Phaser.Input.Keyboard.JustDown(key2)){
+            this.cameras.main.fadeOut(2000);
+            this.lower = true;
+            this.time.addEvent({
+                delay: 2000,
+                callback: () =>{
+                    this.game.sound.stopAll();
+                    this.scene.start('hEndScene')
+                }
+            })         
+        }
     }
     
     // Un-hides our names
@@ -198,6 +227,7 @@ class Credit extends Phaser.Scene {
             if(this.quinn.alpha <= 1){
                 this.quinn.alpha += 0.008;
                 this.sources.alpha += 0.008;
+                this.cutscenes.alpha += 0.008;
             }
             if(this.quinn.alpha >= 0.8){
                 this.Emitter.setSpeed(0);

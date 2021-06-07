@@ -57,7 +57,7 @@ class thanks extends Phaser.Scene {
         }
         if(this.fadeTitle == true){
             if(this.title.alpha <= 1){
-                this.title.alpha += 0.003;
+                this.title.alpha += 0.005;
             }
         }
     }
