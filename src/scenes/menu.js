@@ -6,6 +6,12 @@ class Menu extends Phaser.Scene {
     preload(){
         // Loading Screen
         this.cameras.main.fadeIn(450);
+        this.loadingMusic = this.sound.add('loadingMusic');
+        this.sfxConfigLoading = {
+            volume: 1,
+            loop: true,
+        }
+        this.loadingMusic.play(this.sfxConfigLoading);
         this.back = this.add.sprite(2000,500,'ravineBG').setOrigin(0.5,0.5).setScale(1.1)
 		var newLoad = this.add.graphics();
         var loadingText = this.add.text(screenCenterX,screenCenterY + 100,'Loading: ', textConfig);
@@ -156,6 +162,7 @@ class Menu extends Phaser.Scene {
         //debugging mode features
         debugCreate(this);
 
+        this.game.sound.stopAll();
         this.cameras.main.fadeIn(500);
 
         //keys
