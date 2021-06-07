@@ -274,13 +274,13 @@ class Menu extends Phaser.Scene {
         })
         this.titleText = this.add.text(screenWidth/2, screenHeight/2 - 430, 'Grimwood Path', titleTextConfig).setOrigin(0.5);
         this.titleText.setFontSize('300px');
-        this.menuText = this.add.text(screenWidth/2,screenHeight/2 - 50,'Movement Options:\n\nwalk:[←][→]  jump:[↑]  interact:[↓]\nwalk:[a][d]  jump:[w]  interact:[s]\n\npress [interact] to start',textConfig).setOrigin(0.5)
+        this.menuText = this.add.text(screenWidth/2,screenHeight/2 - 50,'Movement Controls:\n\nOption 1: walk:[←][→]  jump:[↑]  interact:[↓]\nOption 2: walk:[a][d]  jump:[w]  interact:[s]\n\npress [interact] to start',textConfig).setOrigin(0.5)
         this.menuText.setFontSize('60px');
         this.menuText.setAlpha(0.9);
         this.creditsText = this.add.text(screenWidth - 110, 30, 'Credits [C]', textConfig).setOrigin(0.5);
         this.creditsText.setFontSize('30px');
         this.fullscreenText = this.add.text(120,30,'Fullscreen [F]', textConfig).setOrigin(0.5);
-        this.fullscreenText.setFontSize('30px');
+        this.fullscreenText.setFontSize('28px');
 
         //unset colletable flags
         hasRope = false     //allows exit from ravine
@@ -303,8 +303,6 @@ class Menu extends Phaser.Scene {
 
         //initalize playerTextConfig or something (this makes the first call of player.think() use the right font)
         this.add.text(-100,-100,'p',playerTextConfig)
-
-        
     }
     update(){
         //debugging mode features
