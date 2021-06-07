@@ -32,7 +32,7 @@ let config = {
             
         }
     },
-    backgroundColor: 0xFFFFFF
+    backgroundColor: 0x000000
 }
 
 //standard text config
@@ -135,11 +135,12 @@ function debugUpdate(scene){
         if(Phaser.Input.Keyboard.JustDown(key3)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('ravineScene')}
         if(Phaser.Input.Keyboard.JustDown(key4)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('fForestScene')}
         if(Phaser.Input.Keyboard.JustDown(key5)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('caveScene')}
-        if(Phaser.Input.Keyboard.JustDown(key6)){scene.game.sound.stopAll(); playerSpawnx = screenWidth; scene.scene.start('lForestScene')}
+        if(Phaser.Input.Keyboard.JustDown(key6)){scene.game.sound.stopAll(); playerSpawnx = screenWidth  ; scene.scene.start('lForestScene')}
         if(Phaser.Input.Keyboard.JustDown(key7)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('noBroScene')}
         if(Phaser.Input.Keyboard.JustDown(key8)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('sEndScene')}
         if(Phaser.Input.Keyboard.JustDown(key9)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('hEndScene')}
         if(Phaser.Input.Keyboard.JustDown(key0)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('creditScene')}
+        console.log(playerSpawny)
     }
 }
 
@@ -277,10 +278,10 @@ function leave(scene,entrance,type,destination){
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
-            if(destination === 'fForestScene'){playerSpawnx = screenWidth}
-            if(destination === 'lForestScene'){playerSpawnx = 7000}
+            if(destination === 'fForestScene'){playerSpawnx = screenWidth;playerSpawny = screenHeight -140}
+            if(destination === 'lForestScene'){playerSpawnx = 7000;playerSpawny = screenHeight -140}
             if(destination === 'caveScene'){
-                if(scene.sceneKey==='fForestScene'){playerSpawnx = 325}
+                if(scene.sceneKey==='fForestScene'){playerSpawnx = 325;playerSpawny = screenHeight -140}
                 if(scene.sceneKey==='lForestScene'){playerSpawnx = 7280;playerSpawny = -1800;console.log(playerSpawny)}
             }
         } 
@@ -335,8 +336,8 @@ function leave(scene,entrance,type,destination){
             scene.instructions.depth = 500
             scene.noInstruct = false
             happy = true
-            if(destination === 'fForestScene'){playerSpawnx = 4000}
-            if(destination === 'lForestScene'){playerSpawnx = 8150}
+            if(destination === 'fForestScene'){playerSpawnx = 4000;playerSpawny = screenHeight -140}
+            if(destination === 'lForestScene'){playerSpawnx = 8150;playerSpawny = screenHeight -140}
         }
         //if markedtree2
         if(scene.noInstruct && type === 'mtree2' && ffTree2Marked && lfTree2Marked){
@@ -345,8 +346,8 @@ function leave(scene,entrance,type,destination){
             scene.instructions.depth = 500
             scene.noInstruct = false
             happy = true
-            if(destination === 'fForestScene'){playerSpawnx = 1000}
-            if(destination === 'lForestScene'){playerSpawnx = 4310}
+            if(destination === 'fForestScene'){playerSpawnx = 1000;playerSpawny = screenHeight -140}
+            if(destination === 'lForestScene'){playerSpawnx = 4310;playerSpawny = screenHeight -140}
         }
 
         //transition to scene
