@@ -147,6 +147,7 @@ class HEnd extends Phaser.Scene {
         this.time.addEvent({
             delay: this.timesequence,
             callback: () =>{
+                this.decisionTime = false //dissables player input
                 this.watch.destroy()
                 this.traumaWatch = new SlidySprite(this,2*screenWidth/3-25,screenHeight/2+100,'traumaStand').setOrigin(0.5).setScale(0.6)
                 this.add.existing(this.traumaWatch)
