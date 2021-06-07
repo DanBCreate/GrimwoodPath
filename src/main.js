@@ -298,7 +298,7 @@ function leave(scene,entrance,type,destination){
             happy = true
         } 
         else if (scene.noInstruct && type === 'tree'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -350,'maybe with a rope',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -420,'maybe with a rope',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
         }
@@ -322,7 +322,7 @@ function leave(scene,entrance,type,destination){
 
         //if car
         if(scene.noInstruct && type === 'car'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -200,"hold "+favKeys +' to flee in terror\nwithout your brother',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -200,"hold "+favKeys +' to flee in terror\nleaving your brother forever...',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
