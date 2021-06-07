@@ -116,7 +116,7 @@ class Credit extends Phaser.Scene {
         this.time.addEvent({
             delay: 9000,
             callback: () =>{
-                this.Emitter = this.add.particles('slidyBlock').createEmitter({
+                this.Emitter = this.add.particles('shortBlock').createEmitter({
                     x: screenCenterX,
                     y: screenHeight + 100,
                     speed: 500,
