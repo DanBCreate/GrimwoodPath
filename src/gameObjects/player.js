@@ -154,7 +154,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
         }
 
         // SPACE key <Used for interacting with objects>
-        if((Phaser.Input.Keyboard.JustDown(keySPACE) || Phaser.Input.Keyboard.JustDown(keyS)) && this.body.touching.down){
+        if((Phaser.Input.Keyboard.JustDown(keySPACE) || Phaser.Input.Keyboard.JustDown(keyS))){
             this.actionButton = true;
         }
         else if(Phaser.Input.Keyboard.JustUp(keySPACE) || Phaser.Input.Keyboard.JustUp(keyS)){

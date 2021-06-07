@@ -49,6 +49,10 @@ class Ravine extends Phaser.Scene {
         this.noInstruct = true
         this.instructDestructor = true
 
+        // Note on our rope
+        this.ropeNote = this.add.sprite(screenWidth*3 - 1130,screenHeight - 540, 'noteItem').setOrigin(0.5,1);
+        this.ropeNote.setScale(0.02);
+
         if(!hasRope){
             this.rope= this.physics.add.sprite(screenWidth*3 - 1150,screenHeight - 500,'rope').setOrigin(0.5,1)
             this.rope.setScale(0.2);
@@ -92,8 +96,13 @@ class Ravine extends Phaser.Scene {
         this.physics.add.collider(this.block, this.rightBound);
         this.physics.add.collider(this.block, this.leftBound);
 
+        // Note on the ground
+        this.ropeGroundNote = this.add.sprite(screenWidth*3 - 1130,screenHeight - 90, 'noteGround').setOrigin(0.5,1);
+        this.ropeGroundNote.setScale(0.03);
+        this.ropeGroundNote.alpha = 0;
+
         //collecting things
-        collect(this,this.rope,'rope')
+        collect(this,this.rope,'rope',this.ropeNote, this.ropeGroundNote)
         collect(this,this.shirt,'shirt')
         collect(this,this.jacket,'jacket')
         collect(this,this.wood,'wood')
@@ -104,7 +113,6 @@ class Ravine extends Phaser.Scene {
         this.inventory = genInventory(this);
 
         playerSpawnx = -5700
-
     }
 
     update(){
