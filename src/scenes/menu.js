@@ -28,7 +28,7 @@ class Menu extends Phaser.Scene {
         //assets
         this.load.image('forest','assets/tempAssets/tempForest.png')
         this.load.image('car','assets/tempAssets/car.png')
-        this.load.image('wipeTree','assets/tempAssets/tempTree.png');
+        this.load.image('wipeTree','assets/items/tree.png');
         this.load.image('trail','assets/tempAssets/trail.png');
         this.load.image('dude','assets/tempAssets/tempFigure.png');
         this.load.image('axe','assets/items/axe.png');

@@ -71,14 +71,15 @@ class Ravine extends Phaser.Scene {
             this.jacket.body.allowGravity = false
         }
         if(!hasWood){
-            this.wood = this.physics.add.sprite(screenWidth - 220,screenHeight - 70,'wood').setOrigin(0.5,1)
+            this.wood = this.physics.add.sprite(screenWidth - 450,screenHeight - 70,'wood').setOrigin(0.5,1)
             this.wood.setScale(0.3);
             this.wood.body.allowGravity = false
         }        
 
         this.block = new slidyBlock(this, 3500, screenCenterY, 'slidyBlock').setScale(0.2);
 
-        this.ropeTree = this.physics.add.sprite(screenWidth,screenHeight,'wipeTree').setOrigin(0.5,1)
+        this.ropeTree = this.physics.add.sprite(screenWidth,screenHeight + 70,'wipeTree').setOrigin(0.5,1)
+        this.ropeTree.scaleY = 1.3;
         this.ropeTree.body.allowGravity = false
 
         // Setting up our player and camera to follow player
