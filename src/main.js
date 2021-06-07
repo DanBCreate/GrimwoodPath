@@ -330,8 +330,9 @@ function leave(scene,entrance,type,destination){
 
         //if Markedtree1
         if(scene.noInstruct && type === 'mtree1' && ffTree1Marked && lfTree1Marked){
-            scene.instructions = scene.add.text(entrance.x,entrance.y-200,'hold '+favKeys+' to follow the mark',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y-400,'hold '+favKeys+' to follow the mark',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
+            scene.instructions.depth = 500
             scene.noInstruct = false
             happy = true
             if(destination === 'fForestScene'){playerSpawnx = 4000}
@@ -339,8 +340,9 @@ function leave(scene,entrance,type,destination){
         }
         //if markedtree2
         if(scene.noInstruct && type === 'mtree2' && ffTree2Marked && lfTree2Marked){
-            scene.instructions = scene.add.text(entrance.x,entrance.y-200,'hold '+favKeys+' to follow the mark',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y-400,'hold '+favKeys+' to follow the mark',textConfig).setOrigin(0.5)
             scene.instructions.setFontSize('40px')
+            scene.instructions.depth = 500
             scene.noInstruct = false
             happy = true
             if(destination === 'fForestScene'){playerSpawnx = 1000}
