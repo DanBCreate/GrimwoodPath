@@ -193,6 +193,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
 
     think(text,duration = 5000){
             this.scene.playerThoughts = this.scene.add.text(this.x,this.y - 200,text,playerTextConfig).setOrigin(0.5)
+            this.scene.playerThoughts.depth = 900
             this.scene.time.addEvent({
                 delay: duration,
                 callback: () => {
