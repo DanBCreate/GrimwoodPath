@@ -396,5 +396,6 @@ class Menu extends Phaser.Scene {
         this.titleText.alpha -= 0.01;
         this.menuText.alpha -= 0.01;
         this.creditsText.alpha -= 0.01;
+        this.fullscreenText.alpha -= 0.01;
     }
 }
