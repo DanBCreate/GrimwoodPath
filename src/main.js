@@ -23,7 +23,7 @@ let config = {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
-    scene:[Preload,Menu,Cave,Credit,Source,FForest,HEnd,NoBro,Opening,Ravine,SEnd,LForest,noteScene],
+    scene:[Preload,Menu,Cave,Credit,Source,FForest,HEnd,NoBro,Opening,Ravine,SEnd,LForest,noteScene,hendOverlay],
     physics:{
         default:'arcade',
         arcade:{
