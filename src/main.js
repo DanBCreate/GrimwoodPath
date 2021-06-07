@@ -409,7 +409,6 @@ function markTree(scene,tree,flag){
     })
 }
 
-
 function genInventory(scene) {
     invAxe = scene.add.sprite(screenWidth/4,screenHeight/16 + 55,'axe');
     invAxe.displayWidth = screenWidth/16;

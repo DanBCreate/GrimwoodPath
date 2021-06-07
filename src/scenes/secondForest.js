@@ -116,8 +116,8 @@ class LForest extends Phaser.Scene {
         //cave entrance
         this.caveExit = this.physics.add.sprite(7000,screenHeight-40,'caveEnt').setOrigin(0.5,1)
         this.caveExit.body.allowGravity = false
-        this.caveExit.displayHeight = 400
-        this.caveExit.displayWidth = 700
+        this.caveExit.displayHeight = 600
+        this.caveExit.displayWidth = 900
 
         //car
         this.escapeCar = this.physics.add.sprite(14000,screenHeight-100,'carAnim').setOrigin(0.5,1)
