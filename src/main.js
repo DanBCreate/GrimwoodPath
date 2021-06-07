@@ -166,15 +166,15 @@ function RLWipe(scene,duration,texture,delay = 0){
         delay: delay,
         callback:() =>{
             scene.wipetree = new SlidySprite(scene,screenWidth,0,texture).setOrigin(0);
-            scene.wipetree.scaleY = 1.3;
+            scene.wipetree.scaleY = 1.5;
             scene.trailTree = new SlidySprite(scene,screenWidth*2,0,texture).setOrigin(0);
-            scene.trailTree.scaleY = 1.3;
+            scene.trailTree.scaleY = 1.5;
             scene.wipetree.depth = 100
             scene.trailTree.depth = 100
             scene.add.existing(scene.wipetree);
             scene.add.existing(scene.trailTree);
             scene.wipebox = scene.add.rectangle(screenWidth+scene.trailTree.width/2,0,screenWidth,screenHeight,0x000000).setOrigin(0)
-            scene.wipebox.depth = 300
+            scene.wipebox.depth = 200
             scene.wipetree.slide(-screenWidth-scene.wipetree.width,0,duration)
             scene.trailTree.slide(0-scene.trailTree.width,0,duration)
             scene.tweens.add({
@@ -201,9 +201,9 @@ function LRWipe(scene,duration,texture,delay = 0){
         delay: delay,
         callback:() =>{
             scene.wipetree = new SlidySprite(scene,0,0,texture).setOrigin(1,0);
-            scene.wipetree.scaleY = 1.3;
+            scene.wipetree.scaleY = 1.5;
             scene.trailTree = new SlidySprite(scene,-screenWidth,0,texture).setOrigin(1,0);
-            scene.trailTree.scaleY = 1.3;
+            scene.trailTree.scaleY = 1.5;
             scene.wipetree.depth = 100
             scene.trailTree.depth = 100
             scene.add.existing(scene.wipetree);
@@ -424,62 +424,62 @@ function markTree(scene,tree,flag){
 }
 
 function genInventory(scene) {
-    invAxe = scene.add.sprite(screenWidth/4,1.05*screenHeight/16 + 55,'axe');
+    invAxe = scene.add.sprite(screenWidth/5,1.05*screenHeight/16 + 62,'axe');
     invAxe.displayWidth = screenWidth/16;
     invAxe.scaleY = invAxe.scaleX;
     invAxe.alpha = 0;
     invAxe.setScrollFactor(0);
     invAxe.depth = 500
-    invBat = scene.add.sprite(screenWidth/4 + screenWidth/16,1.05*screenHeight/16 + 55,'bat');
+    invBat = scene.add.sprite(screenWidth/5 + screenWidth/16,1.05*screenHeight/16 + 62,'bat');
     invBat.displayWidth = screenWidth/16;
     invBat.scaleY = invBat.scaleX;
     invBat.alpha = 0;
     invBat.setScrollFactor(0);
     invBat.depth = 500
-    invBar = scene.add.sprite(screenWidth/4 + 2*screenWidth/16,1.05*screenHeight/16 + 55,'bar');
+    invBar = scene.add.sprite(screenWidth/5 + 2*screenWidth/16,1.05*screenHeight/16 + 62,'bar');
     invBar.displayWidth = screenWidth/16;
     invBar.scaleY = invBar.scaleX;
     invBar.alpha = 0;
     invBar.setScrollFactor(0);
     invBar.depth = 500
-    invJacket = scene.add.sprite(screenWidth/4 + 3*screenWidth/16,1.05*screenHeight/16 + 55,'jacket');
+    invJacket = scene.add.sprite(screenWidth/5 + 3*screenWidth/16,1.05*screenHeight/16 + 62,'jacket');
     invJacket.displayWidth = screenWidth/16;
     invJacket.scaleY = invJacket.scaleX;
     invJacket.alpha = 0;
     invJacket.setScrollFactor(0);
     invJacket.depth = 500
-    invKey = scene.add.sprite(screenWidth/4 + 4*screenWidth/16,1.05*screenHeight/16 + 55,'key');
+    invKey = scene.add.sprite(screenWidth/5 + 4*screenWidth/16,1.05*screenHeight/16 + 62,'key');
     invKey.displayWidth = screenWidth/16;
     invKey.scaleY = invKey.scaleX;
     invKey.alpha = 0;
     invKey.setScrollFactor(0);
     invKey.depth = 500
-    invKnife = scene.add.sprite(screenWidth/4 + 5*screenWidth/16,1.05*screenHeight/16 + 55,'knife');
+    invKnife = scene.add.sprite(screenWidth/5 + 5*screenWidth/16,1.05*screenHeight/16 + 62,'knife');
     invKnife.displayWidth = screenWidth/16;
     invKnife.scaleY = invKnife.scaleX;
     invKnife.alpha = 0;
     invKnife.setScrollFactor(0);
     invKnife.depth = 500
-    invLight = scene.add.sprite(screenWidth/4 + 6*screenWidth/16,1.05*screenHeight/16+ 55,'light');
+    invLight = scene.add.sprite(screenWidth/5 + 6*screenWidth/16,1.05*screenHeight/16+ 62,'light');
     invLight.displayWidth = screenWidth/16;
     invLight.scaleY = invLight.scaleX;
     invLight.alpha = 0;
     invLight.setScrollFactor(0);
     invLight.depth = 500
-    invRope = scene.add.sprite(screenWidth/4 + 7*screenWidth/16,1.05*screenHeight/16 + 90,'rope');
+    invRope = scene.add.sprite(screenWidth/5 + 7*screenWidth/16,1.05*screenHeight/16 + 90,'rope');
     invRope.displayWidth = screenWidth/16;
     invRope.scaleY = invRope.scaleX;
     invRope.setScale(0.2);
     invRope.alpha = 0;
     invRope.setScrollFactor(0);
     invRope.depth = 500
-    invShirt = scene.add.sprite(screenWidth/4 + 8*screenWidth/16,1.05*screenHeight/16 + 55,'shirt');
+    invShirt = scene.add.sprite(screenWidth/5 + 8*screenWidth/16,1.05*screenHeight/16 + 62,'shirt');
     invShirt.displayWidth = screenWidth/16;
     invShirt.scaleY = invShirt.scaleX;
     invShirt.alpha = 0;
     invShirt.setScrollFactor(0);
     invShirt.depth = 500
-    invWood = scene.add.sprite(screenWidth/4 + 9*screenWidth/16,1.05*screenHeight/16 + 55,'wood');
+    invWood = scene.add.sprite(screenWidth/5 + 9*screenWidth/16 + 25,1.05*screenHeight/16 + 62,'wood');
     invWood.displayWidth = screenWidth/16;
     invWood.scaleY = invWood.scaleX;
     invWood.alpha = 0;

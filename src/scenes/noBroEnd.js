@@ -96,7 +96,5 @@ class NoBro extends Phaser.Scene {
     update(){
         //debugging mode features
         debugUpdate(this);
-        if(Phaser.Input.Keyboard.JustDown(keyS)){this.scene.start('menuScene')}
-        if(Phaser.Input.Keyboard.JustDown(keyDOWN)){this.scene.start('menuScene')}
     }
 }
