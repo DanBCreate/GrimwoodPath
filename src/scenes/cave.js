@@ -120,7 +120,7 @@ class Cave extends Phaser.Scene {
         //destroying the wall
         this.physics.add.collider(this.player,this.axeWall,()=>{
             if(this.noInstruct && hasCrowbar){
-                this.instructions = this.add.text(this.axeWall.x,this.axeWall.y -200,'[space] to pry',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.axeWall.x,this.axeWall.y -200,favKeys + ' to pry',textConfig).setOrigin(0.5)
                 this.instructions.setFontSize('40px')
                 this.noInstruct = false
             }

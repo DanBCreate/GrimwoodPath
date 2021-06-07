@@ -119,7 +119,7 @@ class LForest extends Phaser.Scene {
                 if(this.doorLock == false){
                     this.doorSFX.play(this.sfxConfigDoor);
                 }
-                this.instructions = this.add.text(this.keyWall.x,this.keyWall.y -600,'[space] open',textConfig).setOrigin(0.5)
+                this.instructions = this.add.text(this.keyWall.x,this.keyWall.y -600,favKeys+' unlock',textConfig).setOrigin(0.5)
                 this.instructions.setFontSize('40px')
                 this.instructions.depth =400
                 this.noInstruct = false
