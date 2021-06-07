@@ -281,7 +281,7 @@ function leave(scene,entrance,type,destination){
             if(destination === 'lForestScene'){playerSpawnx = 7000;playerSpawny = screenHeight -140}
             if(destination === 'caveScene'){
                 if(scene.sceneKey==='fForestScene'){playerSpawnx = 325;playerSpawny = screenHeight -140}
-                if(scene.sceneKey==='lForestScene'){playerSpawnx = 7280;playerSpawny = -1800;console.log(playerSpawny)}
+                if(scene.sceneKey==='lForestScene'){playerSpawnx = 7280;playerSpawny = -1900;console.log(playerSpawny)}
             }
         } 
         else if (scene.noInstruct && type === 'cave'){
