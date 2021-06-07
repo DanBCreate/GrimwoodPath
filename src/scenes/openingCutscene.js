@@ -1,13 +1,8 @@
-
-
-
 class Opening extends Phaser.Scene {
     constructor(){
         super('openingScene')
     }
 
-    preload(){
-    }
     create(){
 
         //debugging mode features
@@ -383,6 +378,7 @@ class Opening extends Phaser.Scene {
         this.skipText.depth = 500
         
     }
+    
     update(){
         debugUpdate(this)
         //skip buttons
@@ -399,6 +395,5 @@ class Opening extends Phaser.Scene {
             this.scene.start('ravineScene')
         }
     }
-
 }
 

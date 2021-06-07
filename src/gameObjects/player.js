@@ -5,6 +5,8 @@
 // __Functions_Below__
 // playerControls(): Handles the movement and controls of the player. Also handles footstep SFX
 // getAction(blockY): Returns true if we are using the interact button, false otherwise. Disables pushing/pulling when ontop of block
+// ravineFall(): When you fall into the ravine for the first time, sets your character to the falling frame
+// think(text,duration): Player can think out-loud with white text
 
 // Keyboard inputs for player.js
 let keyA, keyD, keyW, keyLEFT, keyRIGHT, keyUP, keySPACE;

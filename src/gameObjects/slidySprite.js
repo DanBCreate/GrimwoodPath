@@ -1,5 +1,9 @@
 //SlidySprite.js
 //creates a sprite object with attached tween functions for sliding and rotation
+//
+// __Functions_Below__
+// slide(x,y,time,delay,easy): Slides over the sprite with a tween
+// rotate(angle, time, delay, easy): Rotates a sprite with a tween
 
 class SlidySprite extends Phaser.Physics.Arcade.Sprite {
     constructor(scene,x,y,texture,frame){

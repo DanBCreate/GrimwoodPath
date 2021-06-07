@@ -1,5 +1,3 @@
-
-
 class Menu extends Phaser.Scene {
     constructor(){
         super('menuScene')
@@ -21,17 +19,17 @@ class Menu extends Phaser.Scene {
  
         this.loadingText = this.add.text(screenWidth/2,screenHeight/2,'Loading...',textConfig).setOrigin(0.5)
 
-        //temp assets
+        //assets
         this.load.image('forest','assets/tempAssets/tempForest.png')
         this.load.image('car','assets/tempAssets/car.png')
         this.load.image('wipeTree','assets/tempAssets/tempTree.png');
         this.load.image('trail','assets/tempAssets/trail.png');
         this.load.image('dude','assets/tempAssets/tempFigure.png');
-        this.load.image('axe','assets/tempAssets/tempAxe.png');
+        this.load.image('axe','assets/items/axe.png');
         this.load.image('bat','assets/items/batteries.png');
-        this.load.image('bar','assets/tempAssets/tempCrowbar.png');
+        this.load.image('bar','assets/items/crowbar.png');
         this.load.image('jacket','assets/items/revampedJacket.png');
-        this.load.image('key','assets/tempAssets/tempKey.png');
+        this.load.image('key','assets/items/key.png');
         this.load.image('knife','assets/items/pocketKnife.png');
         this.load.image('light','assets/items/flashlight.png');
         this.load.image('rope','assets/items/noose.png');
@@ -40,6 +38,7 @@ class Menu extends Phaser.Scene {
         this.load.image('caveEntrance','assets/tempAssets/tempCave.png');
         this.load.image('clearing','assets/items/Dense_woods.png');
         this.load.image('ground', 'assets/tempAssets/tempGround.png'); // Ground Asset
+        this.load.image('caveLock', 'assets/items/caveLock.png');
         this.load.image('slidyBlock', 'assets/other/Rock.png') // Slidy Block Asset
         this.load.image('clear','assets/other/transparent.png') // fully transparent 100x100 square for creating invisible obsitcles
 
@@ -71,7 +70,6 @@ class Menu extends Phaser.Scene {
         this.load.image('caveBG','assets/cave/caveFilling.png')
         this.load.image('caveEnt','assets/cave/caveEntrences.png')
         this.load.image('caveWall','assets/cave/caveBorder.png')
-
 
         //opening cutscene assets 
         this.load.spritesheet('carAnim','assets/introCutscene/carSpriteSheet(reducedBounce).png',{frameWidth: 1100, frameHeight:460,startFrame:0,endFrame:1})

@@ -6,11 +6,7 @@ class HEnd extends Phaser.Scene {
         this.happy = false
     }
 
-    preload(){
-
-    }
     create(){
-
         //debugging mode features
         debugCreate(this);      
 
@@ -288,12 +284,11 @@ class HEnd extends Phaser.Scene {
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
-
-
     }
     update(){
         //debugging mode features
         debugUpdate(this);
+
 
         if(this.decisionTime){
             if(Phaser.Input.Keyboard.JustDown(keyA) || Phaser.Input.Keyboard.JustDown(keyLEFT)){
@@ -318,7 +313,6 @@ class HEnd extends Phaser.Scene {
         this.happy = true
         this.decisionTime = false
     }
-
 }
 
 //creates text overlay that doesn't care about camera pan and zoom of parent scene
