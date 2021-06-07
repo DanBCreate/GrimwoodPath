@@ -353,6 +353,7 @@ function leave(scene,entrance,type,destination){
         if(scene.player.actionButton && happy){
             scene.screentint = scene.add.rectangle(screenWidth/2,screenHeight,14400,screenHeight,0x000000).setOrigin(0.5,1)
             scene.screentint.alpha = 0
+            scene.screentint.depth = 1000
             scene.cameras.main.fadeOut(650);
 
             scene.tweens.add({
