@@ -6,6 +6,12 @@ class Menu extends Phaser.Scene {
     preload(){
         // Loading Screen
         this.cameras.main.fadeIn(450);
+        this.loadingMusic = this.sound.add('loadingMusic');
+        this.sfxConfigLoading = {
+            volume: 1,
+            loop: true,
+        }
+        this.loadingMusic.play(this.sfxConfigLoading);
         this.back = this.add.sprite(2000,500,'ravineBG').setOrigin(0.5,0.5).setScale(1.1)
 		var newLoad = this.add.graphics();
         var loadingText = this.add.text(screenCenterX,screenCenterY + 100,'Loading: ', textConfig);
@@ -159,12 +165,14 @@ class Menu extends Phaser.Scene {
         //debugging mode features
         debugCreate(this);
 
+        this.game.sound.stopAll();
         this.cameras.main.fadeIn(500);
 
         //keys
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
         keyC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
+        keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
 
         // Handles lowering volume when exiting scene.
         this.lower = false;
@@ -275,11 +283,13 @@ class Menu extends Phaser.Scene {
         })
         this.titleText = this.add.text(screenWidth/2, screenHeight/2 - 430, 'Grimwood Path', titleTextConfig).setOrigin(0.5);
         this.titleText.setFontSize('300px');
-        this.menuText = this.add.text(screenWidth/2,screenHeight/2 - 50,'Movement Options:\n\nwalk:[←][→]  jump:[↑]  interact:[↓]\nwalk:[a][d]  jump:[w]  interact:[s]\n\npress [interact] to start',textConfig).setOrigin(0.5)
+        this.menuText = this.add.text(screenWidth/2,screenHeight/2 - 50,'Movement Controls:\n\nOption 1: walk:[←][→]  jump:[↑]  interact:[↓]\nOption 2: walk:[a][d]  jump:[w]  interact:[s]\n\npress [interact] to start',textConfig).setOrigin(0.5)
         this.menuText.setFontSize('60px');
         this.menuText.setAlpha(0.9);
         this.creditsText = this.add.text(screenWidth - 110, 30, 'Credits [C]', textConfig).setOrigin(0.5);
         this.creditsText.setFontSize('30px');
+        this.fullscreenText = this.add.text(120,30,'Fullscreen [F]', textConfig).setOrigin(0.5);
+        this.fullscreenText.setFontSize('28px');
 
         //unset colletable flags
         hasRope = false     //allows exit from ravine
@@ -369,6 +379,16 @@ class Menu extends Phaser.Scene {
                 }
             })
         }
+
+        //Full Screen Option
+        if(Phaser.Input.Keyboard.JustDown(keyF)){
+            if(this.scale.isFullscreen){
+                this.scale.stopFullscreen()
+            }
+            else{
+                this.scale.startFullscreen();
+            }
+        }
     }
 
     lowerVolume() {
@@ -385,5 +405,6 @@ class Menu extends Phaser.Scene {
         this.titleText.alpha -= 0.01;
         this.menuText.alpha -= 0.01;
         this.creditsText.alpha -= 0.01;
+        this.fullscreenText.alpha -= 0.01;
     }
 }

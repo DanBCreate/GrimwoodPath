@@ -231,7 +231,7 @@ class FForest extends Phaser.Scene {
         if(this.sfxActive && this.resetSFXactive){
             this.resetSFXactive = false;
             this.time.addEvent({
-                delay: 2000,
+                delay: 10000,
                 callback: () => {
                     this.sfxActive = false
                     this.resetSFXactive = true

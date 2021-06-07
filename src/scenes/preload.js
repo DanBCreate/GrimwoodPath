@@ -5,6 +5,7 @@ class Preload extends Phaser.Scene {
 
     preload(){
         this.load.image('ravineBG','assets/ravine/insideRavineBG.png')
+        this.load.audio('loadingMusic', 'assets/sounds/VisionOfLight.wav');
     }
 
     create(){
