@@ -1,17 +1,13 @@
-
-
 class Credit extends Phaser.Scene {
     constructor(){
         super('creditScene')
     }
 
-    preload(){
-
-    }
     create(){
 
         //debugging mode features
         debugCreate(this);   
+
         this.cameras.main.fadeIn(500);
         this.game.sound.stopAll();
 
@@ -215,5 +211,4 @@ class Credit extends Phaser.Scene {
             this.creditsBG.setVolume(this.creditsBG.volume - 0.008);
         }
     }
-
 }

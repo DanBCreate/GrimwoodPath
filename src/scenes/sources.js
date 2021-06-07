@@ -2,6 +2,7 @@ class Source extends Phaser.Scene {
     constructor(){
         super('sourceScene')
     }
+    
     create(){
         //debugging mode features
         debugCreate(this);   

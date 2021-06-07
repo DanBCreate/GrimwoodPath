@@ -4,13 +4,9 @@
 // __Functions_Below__
 // checkSlidyBlock(): Checks if we are near a slidy block and our action key is pressed
 
-
 class Ravine extends Phaser.Scene {
     constructor(){
         super('ravineScene')
-    }
-
-    preload(){
     }
 
     create(){
@@ -32,7 +28,6 @@ class Ravine extends Phaser.Scene {
         this.ravineBG = this.sound.add('ravineBG');
         this.ravineBG.play(this.sfxConfig) ;
 
-
         // Setting up our ground
         this.ground = this.physics.add.sprite(0, screenHeight, 'ground').setScale(0.05); // Initialize our ground
         this.ground.setImmovable(true); // Sets ground to immovable
@@ -40,7 +35,6 @@ class Ravine extends Phaser.Scene {
         this.ground.displayWidth = 4800;
         this.ground.setOrigin(0,1)
 
-        
         //invisible bounding boxes
         this.rightBound = this.physics.add.sprite(4800,screenHeight,'clear').setOrigin(0.5,1)
         this.rightBound.body.allowGravity = false
@@ -108,14 +102,7 @@ class Ravine extends Phaser.Scene {
         leave(this, this.ropeTree,'tree','fForestScene')
 
         this.inventory = genInventory(this);
-        //this.inventory.fixedToCamera = true;
-        /*this.tweens.add({
-            targets: this.screentint,
-            alpha: 255,     
-            ease: 'linear'
-        });*/
 
-        //set player spawns for first forest
         playerSpawnx = -5700
 
     }

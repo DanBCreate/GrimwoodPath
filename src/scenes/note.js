@@ -1,11 +1,11 @@
 //note.js
 //call note(this,'your message\nhere') to create a popup note
 
-
 class noteScene extends Phaser.Scene{
     constructor(){
         super('noteScene')
     }
+    
     create(){
         this.add.sprite(screenCenterX,screenCenterY,'slidyBlock').setOrigin(0.5).setScale(1.4) //replace with paper asset once avalible
         this.add.text(screenCenterX,screenCenterY,noteText,textConfig).setOrigin(0.5) //main body of the scene
@@ -15,6 +15,7 @@ class noteScene extends Phaser.Scene{
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
     }
+
     update(){
         if(Phaser.Input.Keyboard.JustDown(keyS)||Phaser.Input.Keyboard.JustDown(keyDOWN)){
             noteSceneName.scene.resume()//resume the previous
@@ -25,6 +26,7 @@ class noteScene extends Phaser.Scene{
         }
     }
 }
+
 var noteSceneName
 var noteText
 function note(scene,text){

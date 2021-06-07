@@ -1,13 +1,11 @@
-
 class FForest extends Phaser.Scene {
     constructor(){
         super('fForestScene')
     }
 
-    preload(){
-    }
     create(){
         this.sceneKey = 'fForestScene'
+
         //debugging mode features
         debugCreate(this);   
 
@@ -26,6 +24,7 @@ class FForest extends Phaser.Scene {
         this.blackDrop.displayHeight = screenHeight*2
         this.blackDrop.displayWidth = 17000
         this.backGround = this.add.sprite(0,screenHeight,'forBG').setOrigin(0.5,1)
+
         //background marked trees
         this.backFirstTree = this.physics.add.sprite(4100,screenHeight,'singleTree').setOrigin(0.5,1)
         if(lfTree1Marked){
@@ -223,5 +222,4 @@ class FForest extends Phaser.Scene {
 
         update_inv();
     }
-
 }

@@ -1,15 +1,10 @@
-
 class HEnd extends Phaser.Scene {
     constructor(){
         super('hEndScene')
         this.happy = false
     }
 
-    preload(){
-
-    }
     create(){
-
         //debugging mode features
         debugCreate(this);      
 
@@ -37,8 +32,6 @@ class HEnd extends Phaser.Scene {
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
-
-
     }
     update(){
         //debugging mode features
@@ -57,7 +50,6 @@ class HEnd extends Phaser.Scene {
             if(Phaser.Input.Keyboard.JustDown(keyS)){this.scene.start('menuScene')}
             if(Phaser.Input.Keyboard.JustDown(keyDOWN)){this.scene.start('menuScene')}
         }
-
     }
 
     hendCutscene(){
@@ -66,5 +58,4 @@ class HEnd extends Phaser.Scene {
         this.happyText.setFontSize('30px')
         this.happy = true
     }
-
 }

@@ -1,5 +1,3 @@
-
-
 class Menu extends Phaser.Scene {
     constructor(){
         super('menuScene')
@@ -21,7 +19,7 @@ class Menu extends Phaser.Scene {
  
         this.loadingText = this.add.text(screenWidth/2,screenHeight/2,'Loading...',textConfig).setOrigin(0.5)
 
-        //temp assets
+        //assets
         this.load.image('forest','assets/tempAssets/tempForest.png')
         this.load.image('car','assets/tempAssets/car.png')
         this.load.image('wipeTree','assets/tempAssets/tempTree.png');
@@ -72,7 +70,6 @@ class Menu extends Phaser.Scene {
         this.load.image('caveBG','assets/cave/caveFilling.png')
         this.load.image('caveEnt','assets/cave/caveEntrences.png')
         this.load.image('caveWall','assets/cave/caveBorder.png')
-
 
         //opening cutscene assets 
         this.load.spritesheet('carAnim','assets/introCutscene/carSpriteSheet(reducedBounce).png',{frameWidth: 1100, frameHeight:460,startFrame:0,endFrame:1})

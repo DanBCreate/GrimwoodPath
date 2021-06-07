@@ -1,13 +1,8 @@
-
-
 class LForest extends Phaser.Scene {
     constructor(){
         super('lForestScene')
     }
 
-    preload(){
-
-    }
     create(){
         this.sceneKey = 'lForestScene'
         //debugging mode features
@@ -118,18 +113,17 @@ class LForest extends Phaser.Scene {
             }
         })
 
-
         //cave entrance
         this.caveExit = this.physics.add.sprite(7000,screenHeight-40,'caveEnt').setOrigin(0.5,1)
         this.caveExit.body.allowGravity = false
         this.caveExit.displayHeight = 400
         this.caveExit.displayWidth = 700
+
         //car
         this.escapeCar = this.physics.add.sprite(14000,screenHeight-100,'carAnim').setOrigin(0.5,1)
         this.escapeCar.anims.play('drive')
         this.escapeCar.anims.pause()
         this.escapeCar.body.allowGravity = false
-
 
         //collectables
         if(!hasKey){
@@ -175,6 +169,7 @@ class LForest extends Phaser.Scene {
 
         genInventory(this);
     }
+
     update(){
         //debugging mode features
         debugUpdate(this);
@@ -201,7 +196,5 @@ class LForest extends Phaser.Scene {
         this.backTree4.x = this.player.x/20
 
         update_inv();
-
     }
-
 }

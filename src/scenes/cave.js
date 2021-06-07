@@ -1,5 +1,3 @@
-
-
 class Cave extends Phaser.Scene {
     constructor(){
         super('caveScene')
@@ -14,10 +12,12 @@ class Cave extends Phaser.Scene {
             ease: 'linear'               
         })
     }
+
     create(){
         //instruction text variables
         this.noInstruct = true
         this.instructDestructor = true
+
         //debugging mode features
         debugCreate(this); 
 
@@ -91,7 +91,6 @@ class Cave extends Phaser.Scene {
         this.sceneCamera.setBounds(0,screenHeight-3240,7680,3240)
         playerSpawny = screenHeight -140 //reset y spawn
 
-
         this.axeWall = this.physics.add.sprite(6100, screenHeight - 300, 'caveLock').setScale(0.05); // Initialize our ground
         this.axeWall.setImmovable(true); // Sets ground to immovable
         this.axeWall.body.allowGravity = false; // So gravity has no effect ground
@@ -99,7 +98,6 @@ class Cave extends Phaser.Scene {
         this.axeWall.displayHeight = 800
         this.axeWall.setOrigin(0.5,1) 
         
-
         if(!hasAxe){
             this.axe = this.physics.add.sprite(7000,screenHeight - 300,'axe').setOrigin(0.5,1)
             this.axe.setScale(0.2);
@@ -142,7 +140,6 @@ class Cave extends Phaser.Scene {
         leave(this,this.caveEntrance,'cave','fForestScene')
         leave(this,this.caveExit,'cave','lForestScene')
        
-        
         // Setting up slidy block
         this.block = new slidyBlock(this, 2000, screenCenterY, 'slidyBlock').setScale(0.2);
 
@@ -224,6 +221,7 @@ class Cave extends Phaser.Scene {
             this.axeWall.destroy()
         }
     }
+
     update(){
         debugUpdate(this);
         this.player.update()
@@ -267,10 +265,4 @@ class Cave extends Phaser.Scene {
             block.setMovable(false, this.player.body.velocity.x);
         }
     }
-
-    slidyCollision() {
-
-        console.log("test");
-    }
-
 }

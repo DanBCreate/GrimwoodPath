@@ -1,15 +1,9 @@
-
-
 class SEnd extends Phaser.Scene {
     constructor(){
         super('sEndScene')
     }
 
-    preload(){
-
-    }
     create(){
-
         //debugging mode features
         debugCreate(this);   
 
@@ -20,10 +14,8 @@ class SEnd extends Phaser.Scene {
 
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
-
-
-
     }
+
     update(){
         //debugging mode features
         debugUpdate(this);
