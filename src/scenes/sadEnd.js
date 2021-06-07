@@ -11,14 +11,47 @@ class SEnd extends Phaser.Scene {
         this.timesequence = 0
         this.wipetime = 2000
 
+        // Adding in SFX
+        this.sfxConfigGrass = {
+            volume: 0.5,
+            loop: false
+        } 
+        this.sfxConfigPiano = {
+            volume: 0.9,
+            loop: false
+        }
+        this.sfxConfigBush = {
+            volume: 1.7,
+            loop: false
+        }
+        this.grass = this.sound.add('grassFootstep');
+        this.piano = this.sound.add('endPiano');
+        this.engine = this.sound.add('endEngine');
+        this.sadPiano = this.sound.add('endSadPiano');
+        this.bush = this.sound.add('bushRustle');
+
         //first vignette
+        this.grass.play(this.sfxConfigGrass);
+        this.time.addEvent({ //fade to black
+            delay: 300,
+            callback: () =>{
+                this.grass.play(this.sfxConfigGrass);
+                this.time.addEvent({ //fade to black
+                    delay: 300,
+                    callback: () =>{
+                        this.grass.play(this.sfxConfigGrass);
+        
+                    }
+                })
+            }
+        })
         this.backForest = new SlidySprite(this,0,0,'fullForest').setOrigin(0)
         this.add.existing(this.backForest)
         this.runner = new SlidySprite(this,screenWidth/3,screenHeight/2+100,'run').setOrigin(0.5)
         this.add.existing(this.runner)
         this.runner.slide(screenWidth,screenHeight/2+100,10000)
 
-        this.timesequence += 2000 //duration of vignette
+        this.timesequence += 2500 //duration of vignette
         RLWipe(this,this.wipetime,'wipeTree',this.timesequence)
         this.timesequence += this.wipetime/2 //time for middle of transition
         
@@ -26,6 +59,7 @@ class SEnd extends Phaser.Scene {
         this.time.addEvent({
             delay: this.timesequence,
             callback: () =>{
+                this.piano.play(this.sfxConfigPiano);
                 //remove last vignette
                 this.runner.destroy()
                 //create this vignette
@@ -42,7 +76,7 @@ class SEnd extends Phaser.Scene {
             }
         })
 
-        this.timesequence+=1500 // duration of scene
+        this.timesequence+=2500 // duration of scene
         //blank scene
         this.fade(500)
         this.timesequence+=500 //half of transition
@@ -51,6 +85,7 @@ class SEnd extends Phaser.Scene {
         this.time.addEvent({
             delay: this.timesequence,
             callback: () =>{
+                this.bush.play(this.sfxConfigBush);
                 //remove last vignette
                 this.atPlay.destroy()
                 //create this vignette
@@ -59,7 +94,7 @@ class SEnd extends Phaser.Scene {
             }
         })
 
-        this.timesequence+=1500 // duration of scene
+        this.timesequence+=2500 // duration of scene
         //blank scene
         this.fade(500)
         this.timesequence+=500 //half of transition
@@ -79,7 +114,7 @@ class SEnd extends Phaser.Scene {
             }
         })
 
-        this.timesequence+=2000 // duration of scene
+        this.timesequence+=2500 // duration of scene
         //blank scene
         this.fade(500)
         this.timesequence+=500 //half of transition
@@ -107,7 +142,7 @@ class SEnd extends Phaser.Scene {
             }
         })
 
-        this.timesequence += 2000 //duration of vignette
+        this.timesequence += 2500 //duration of vignette
         LRWipe(this,this.wipetime,'wipeTree',this.timesequence)
         this.timesequence += this.wipetime/2 //time for middle of transition
 
@@ -115,6 +150,13 @@ class SEnd extends Phaser.Scene {
         this.time.addEvent({
             delay: this.timesequence,
             callback: () =>{
+                this.time.addEvent({
+                    delay: 1000,
+                    callback: () =>{
+                        this.sadPiano.play(this.sfxConfigPiano);
+                    }
+                })
+                this.engine.play(this.sfxConfigGrass);
                 //remove last vignette
                 this.pulled.destroy()
                 //animate
@@ -123,7 +165,7 @@ class SEnd extends Phaser.Scene {
             }
         })
 
-        this.timesequence += 2000 //duration of vignette
+        this.timesequence += 3000 //duration of vignette
         LRWipe(this,this.wipetime,'wipeTree',this.timesequence)
         this.timesequence += this.wipetime/2 //time for middle of transition
 
@@ -140,7 +182,7 @@ class SEnd extends Phaser.Scene {
             }
         })
 
-        this.timesequence+=3000
+        this.timesequence+=3500
         //blank scene
         this.fade(1000)
         this.timesequence+=1000
@@ -159,8 +201,8 @@ class SEnd extends Phaser.Scene {
     update(){
         //debugging mode features
         debugUpdate(this);
-        if(Phaser.Input.Keyboard.JustDown(keyS)){this.scene.start('menuScene')}
-        if(Phaser.Input.Keyboard.JustDown(keyDOWN)){this.scene.start('menuScene')}
+        //if(Phaser.Input.Keyboard.JustDown(keyS)){this.scene.start('menuScene')}
+        //if(Phaser.Input.Keyboard.JustDown(keyDOWN)){this.scene.start('menuScene')}
     }
 
     fade(time){

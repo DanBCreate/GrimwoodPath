@@ -158,6 +158,9 @@ class Menu extends Phaser.Scene {
         this.load.audio('endEngine', 'assets/sounds/EndEngine.wav');
         this.load.audio('endDrama', 'assets/sounds/EndDrama.wav');
         this.load.audio('door', 'assets/sounds/Door.wav');
+        this.load.audio('endPiano', 'assets/sounds/EndPiano.wav');
+        this.load.audio('endSadPiano', 'assets/sounds/EndSadPiano.wav');
+        this.load.audio('endBadPiano', 'assets/sounds/EndBadPiano.wav');
 
         //remove loading screen
         this.LoadingBackground.destroy()
@@ -293,10 +296,10 @@ class Menu extends Phaser.Scene {
             ease:'Quad.InOut',
             loop: -1
         })
-        this.titleText = this.add.text(screenWidth/2, screenHeight/2 - 430, 'Grimwood Path', titleTextConfig).setOrigin(0.5);
+        this.titleText = this.add.text(screenWidth/2, screenHeight/2 - 410, 'Grimwood Path', titleTextConfig).setOrigin(0.5);
         this.titleText.setFontSize('300px');
-        this.menuText = this.add.text(screenWidth/2,screenHeight/2 - 50,'Movement Controls:\n\nOption 1: walk:[←][→]  jump:[↑]  interact:[↓]\nOption 2: walk:[a][d]  jump:[w]  interact:[s]\n\npress [interact] to start',textConfig).setOrigin(0.5)
-        this.menuText.setFontSize('60px');
+        this.menuText = this.add.text(screenWidth/2,screenHeight/2 - 55,'Movement Controls:\n\nOption 1: walk:[←][→]  jump:[↑]  interact:[↓]\nOption 2: walk:[a][d]  jump:[w]  interact:[s]\n\npress [interact] to start',textConfig).setOrigin(0.5)
+        this.menuText.setFontSize('55px');
         this.menuText.setAlpha(0.9);
         this.creditsText = this.add.text(screenWidth - 110, 30, 'Credits [C]', textConfig).setOrigin(0.5);
         this.creditsText.setFontSize('30px');

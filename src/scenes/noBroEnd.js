@@ -10,6 +10,26 @@ class NoBro extends Phaser.Scene {
         this.cameras.main.fadeIn(650);
         this.timesequence = 0
 
+        // Adding in SFX
+        this.sfxConfigEngine = {
+            volume: 0.5,
+            loop: false
+        } 
+        this.sfxConfig = {
+            volume: 0.9,
+            loop: false
+        } 
+        this.engine = this.sound.add('endEngine');
+        this.piano = this.sound.add('endBadPiano');
+        this.engine.play(this.sfxConfigEngine);
+        this.piano.play(this.sfxConfig);
+
+        this.time.addEvent({
+            delay: 300,
+            callback: () =>{
+            }
+        })
+
         //first vignette
         this.backGround = this.add.sprite(screenWidth,screenHeight,'forBG').setOrigin(1)
         this.backTree3 = this.add.sprite(screenWidth,screenHeight,'forTree3').setOrigin(1)
@@ -42,7 +62,7 @@ class NoBro extends Phaser.Scene {
                 this.add.existing(this.leftBehind)
             }
         })
-        this.timesequence+=2000
+        this.timesequence+=3000
 
         //fade to black
         this.blanker = this.add.sprite(screenWidth/2,screenHeight/2,'ground').setOrigin(0.5)
