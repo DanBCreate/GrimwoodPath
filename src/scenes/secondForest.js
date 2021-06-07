@@ -196,7 +196,6 @@ class LForest extends Phaser.Scene {
     }
 
     update(){
-        console.log(this.player.x)
         //debugging mode features
         debugUpdate(this);
         this.player.update();
