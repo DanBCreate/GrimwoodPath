@@ -38,6 +38,23 @@ class FForest extends Phaser.Scene {
         }
         this.backFirstTree.body.allowGravity = false
         this.backSecondTree.body.allowGravity =- false
+
+        //create monster in the middle of the background
+        this.monster = new SlidySprite(this,260,screenHeight/2+200,'monsterWalker').setOrigin(0.5).setScale(0.5)
+        this.monsterInMotion = false
+        this.monsterDir = 1
+        this.monster.alpha = 0.4
+        this.add.existing(this.monster)
+        this.monster.anims.play('monsterWalk')
+        this.tweens.add({
+            targets:this.monster,
+            alpha:0,
+            duration:5000,
+            yoyo:true,
+            hold:10000,
+            repeat:-1
+        })
+
         this.backTree3 = this.add.sprite(0,screenHeight,'forTree3').setOrigin(0.5,1)
         this.backTree4 = this.add.sprite(0,screenHeight,'forTree4').setOrigin(0.5,1)
         this.backTree2 = this.add.sprite(0,screenHeight,'forTree2').setOrigin(0.5,1)
@@ -230,5 +247,40 @@ class FForest extends Phaser.Scene {
         this.backTree4.x = this.player.x/20
 
         update_inv();
+
+        //do the monster walk
+        if(!this.monsterInMotion){
+            if(this.monsterDir === 1){
+                if(this.monster.x >4700){
+                    this.monster.flipX = true
+                    this.monster.slide('-=200',screenHeight/2+200,1000)
+                    this.monsterDir = -1
+                }
+                else{
+                    this.monster.slide('+=200',screenHeight/2+200,1000)
+                }
+            }
+            else if(this.monsterDir === -1){
+                if(this.monster.x < -5860){
+                    this.monster.flipX = false
+                    this.monster.slide('+=200',screenHeight/2+200,1000)
+                    this.monsterDir = 1
+                }
+                else{
+                    this.monster.slide('-=200',screenHeight/2+200,1000)
+                }
+            }
+            else{
+                console.log('ERR: monsterDir not correct')
+            }
+            //sleep for 1000 before checking monster status
+            this.monsterInMotion = true
+            this.time.addEvent({
+                delay:1000,
+                callback:()=>{
+                    this.monsterInMotion = false
+                }
+            })
+        }
     }
 }

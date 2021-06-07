@@ -50,6 +50,9 @@ class Menu extends Phaser.Scene {
         this.load.spritesheet('walkLeft','assets/player/LeftRunSheet.png',{frameWidth: 767,frameHeight:1085,startFrame:0,endFrame:9});
         this.load.spritesheet('walkRight','assets/player/RightRunSheet.png',{frameWidth: 767,frameHeight:1085,startFrame:0,endFrame:9});
 
+        //monster assets
+        this.load.spritesheet('monsterWalker','assets/monster/monsterWalkSprite.png',{frameWidth: 650, frameHeight:950,startFrame:0,endframe:7})
+
         //forest assets
         this.load.image('forBG','assets/forest/ForestSolidBG.png')
         this.load.image('forFog','assets/forest/ForestFog.png')
@@ -219,6 +222,12 @@ class Menu extends Phaser.Scene {
             key: 'fleeThree',
             frames: this.anims.generateFrameNumbers('flee', {frames:[2]}),
             frameRate: 0,
+            repeat: -1
+        })
+        this.anims.create({
+            key: 'monsterWalk',
+            frames: this.anims.generateFrameNumbers('monsterWalker', {frames:[0,1,2,3,4,5,6,7]}),
+            frameRate: 10,
             repeat: -1
         })
 
