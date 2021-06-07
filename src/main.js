@@ -140,7 +140,6 @@ function debugUpdate(scene){
         if(Phaser.Input.Keyboard.JustDown(key8)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('sEndScene')}
         if(Phaser.Input.Keyboard.JustDown(key9)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('hEndScene')}
         if(Phaser.Input.Keyboard.JustDown(key0)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('creditScene')}
-        console.log(playerSpawny)
     }
 }
 
