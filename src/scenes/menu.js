@@ -94,6 +94,21 @@ class Menu extends Phaser.Scene {
         this.load.image('monWave','assets/introCutscene/introSpriteF8part2.png')
         this.load.image('fall','assets/introCutscene/introSpriteF10.png')
 
+        //end scene assets
+        this.load.image('fullForest','assets/goodCutscene/goodBG1_4plus9.png')
+        this.load.image('run','assets/goodCutscene/goodSprite1.png')
+        this.load.image('playerStare','assets/goodCutscene/goodSprite2.png')
+        this.load.image('atPlay','assets/goodCutscene/goodSprite3.png')
+        this.load.image('playerStand','assets/goodCutscene/goodSprite4.png')
+        this.load.image('reachHand','assets/goodCutscene/goodSpriteHand6.png')
+        this.load.image('traumaStand','assets/goodCutscene/goodSprite6.png')
+        this.load.image('turn','assets/goodCutscene/goodSprite7.png')
+        this.load.image('isKind','assets/goodCutscene/goodSprite8.png')
+        this.load.image('reunion','assets/goodCutscene/goodSprite9.png')
+        this.load.image('monsterGoodbye','assets/goodCutscene/goodSprite9Monster.png')
+        this.load.image('noteMonster','assets/goodCutscene/goodSpriteMonster7_8.png')
+
+
         //audio
         this.load.audio('giggle','assets/sounds/ChildGiggle.wav')
         this.load.audio('engine', 'assets/sounds/CarEngineLoop.wav')
