@@ -7,7 +7,7 @@ class noteScene extends Phaser.Scene{
     }
     
     create(){
-        this.add.sprite(screenCenterX,screenCenterY,'slidyBlock').setOrigin(0.5).setScale(1.4) //replace with paper asset once avalible
+        this.add.sprite(screenCenterX,screenCenterY,'page').setOrigin(0.5).setScale(3) //replace with paper asset once avalible
         this.add.text(screenCenterX,screenCenterY,noteText,monsterTextConfig).setOrigin(0.5) //main body of the scene
         this.add.text(screenWidth - 380,screenHeight - 50,favKeys+' finish reading',textConfig).setOrigin(1)//instructions for retruning to the game
 

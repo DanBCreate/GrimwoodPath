@@ -49,6 +49,7 @@ class Menu extends Phaser.Scene {
         this.load.image('clear','assets/other/transparent.png') // fully transparent 100x100 square for creating invisible obsitcles
         this.load.image('noteItem', 'assets/tempAssets/tempNote.png');
         this.load.image('noteGround', 'assets/tempAssets/tempNoteGround.png');
+        this.load.image('page','assets/other/tatteredPaper.png');
 
         //player assets
         this.load.image('player', 'assets/player/playerIdle.png');
