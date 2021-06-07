@@ -12,10 +12,54 @@ class HEnd extends Phaser.Scene {
 
         this.cameras.main.fadeIn(650);
 
+        // Adding in SFX
+        this.sfxConfigGrass = {
+            volume: 0.5,
+            loop: false
+        } 
+        this.grass = this.sound.add('grassFootstep');
+        this.sfxConfigLaugh = {
+            volume: 0.8,
+            loop: false
+        } 
+        this.laugh = this.sound.add('childLaugh');
+        this.sfxConfigSuspnse = {
+            volume: 0.9,
+            loop: false
+        } 
+        this.sfxConfig = {
+            volume: 10,
+            loop: false,
+        }
+        this.suspense = this.sound.add('suspense');
+        this.shock = this.sound.add('shock');
+        this.grab = this.sound.add('grab');
+        this.happy = this.sound.add('happy');
+        this.engine = this.sound.add('endEngine');
+        this.drama = this.sound.add('endDrama');
+        this.ambience = this.sound.add('nightAmbience');
+        this.ambience.play(this.sfxConfig) ;
+
+
         this.timesequence = 0
-        this.wipetime = 2000
+        this.wipetime = 2500
 
         //first vignette
+        this.grass.play(this.sfxConfigGrass);
+        this.laugh.play(this.sfxConfigLaugh);
+        this.time.addEvent({ //fade to black
+            delay: 300,
+            callback: () =>{
+                this.grass.play(this.sfxConfigGrass);
+                this.time.addEvent({ //fade to black
+                    delay: 300,
+                    callback: () =>{
+                        this.grass.play(this.sfxConfigGrass);
+        
+                    }
+                })
+            }
+        })
         this.backforest = new SlidySprite(this,0,0,'fullForest').setOrigin(0)
         this.add.existing(this.backforest)
         this.runner = new SlidySprite(this,screenWidth/3,screenHeight/2+100,'run').setOrigin(0.5)
@@ -32,6 +76,7 @@ class HEnd extends Phaser.Scene {
         this.time.addEvent({
             delay: this.timesequence,
             callback: () =>{
+                this.suspense.play(this.sfxConfigSuspense);
                 //remove last vignette
                 this.runner.destroy()
                 this.callout.destroy()
@@ -73,6 +118,7 @@ class HEnd extends Phaser.Scene {
         this.time.addEvent({ //fade to black
             delay: this.timesequence,
             callback: () =>{
+                this.shock.play(this.sfxConfigSuspense);
                 //unfade and reset camera
                 this.tweens.add({
                     targets:this.blanker,
@@ -114,6 +160,7 @@ class HEnd extends Phaser.Scene {
                     alpha: 0,
                     duration:500,//duration of unfade
                 })
+                this.grab.play(this.sfxConfigSuspense);
                 //destroy previous vignette
                 this.playing.destroy()
                 //create this vignette
@@ -166,7 +213,7 @@ class HEnd extends Phaser.Scene {
             }
         })
 
-        this.timesequence+=1000//duration of vignette
+        this.timesequence+=2000//duration of vignette
 
         //sixth vignette
         this.time.addEvent({
@@ -194,6 +241,7 @@ class HEnd extends Phaser.Scene {
                 this.time.addEvent({
                     delay: 1000,
                     callback: () =>{
+                        this.drama.play(this.sfxConfigSuspense);
                         this.voiced = new SlidySprite(this,2*screenWidth/3,screenHeight/2,'isKind').setOrigin(0.5)
                         this.add.existing(this.voiced)
                     }
@@ -226,6 +274,7 @@ class HEnd extends Phaser.Scene {
                     alpha: 0,
                     duration:500,//duration of unfade
                 })
+                this.happy.play(this.sfxConfigSuspense);
                 this.cameras.main.pan(screenWidth/2,screenHeight/2,0)
                 this.cameras.main.zoom = 1
                 //destroy last vignette
@@ -242,7 +291,7 @@ class HEnd extends Phaser.Scene {
             }
         })
         
-        this.timesequence +=2000//duration of scene
+        this.timesequence +=2500//duration of scene
         //wipe
         LRWipe(this,2000,'wipeTree',this.timesequence)
         this.timesequence +=1000 //half of transition
@@ -251,6 +300,7 @@ class HEnd extends Phaser.Scene {
         this.time.addEvent({
             delay: this.timesequence,
             callback: () =>{
+                this.engine.play(this.sfxConfigGrass);
                 //destroy last vignette
                 this.reunited.destroy()
                 this.goodbye.destroy()

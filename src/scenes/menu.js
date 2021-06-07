@@ -130,6 +130,13 @@ class Menu extends Phaser.Scene {
         this.load.audio('sfBG', 'assets/sounds/SFBG.wav');
         this.load.audio('creditsBG', 'assets/sounds/EverythingBreaks.mp3');
         this.load.audio('axeWallSFX', 'assets/sounds/axeWall.wav');
+        this.load.audio('childLaugh', 'assets/sounds/ChildLaugh.wav');
+        this.load.audio('suspense', 'assets/sounds/EndSuspense.wav');
+        this.load.audio('shock', 'assets/sounds/EndShock.wav');
+        this.load.audio('grab', 'assets/sounds/EndGrab.wav');
+        this.load.audio('happy', 'assets/sounds/EndHappy.wav');
+        this.load.audio('endEngine', 'assets/sounds/EndEngine.wav');
+        this.load.audio('endDrama', 'assets/sounds/EndDrama.wav');
 
         //remove loading screen
         this.LoadingBackground.destroy()
