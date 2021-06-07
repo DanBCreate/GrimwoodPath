@@ -162,6 +162,7 @@ class Menu extends Phaser.Scene {
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
         keyC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
+        keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
 
         // Handles lowering volume when exiting scene.
         this.lower = false;
@@ -271,6 +272,8 @@ class Menu extends Phaser.Scene {
         this.menuText.setAlpha(0.9);
         this.creditsText = this.add.text(screenWidth - 110, 30, 'Credits [C]', textConfig).setOrigin(0.5);
         this.creditsText.setFontSize('30px');
+        this.fullscreenText = this.add.text(120,30,'Fullscreen [F]', textConfig).setOrigin(0.5);
+        this.fullscreenText.setFontSize('30px');
 
         //unset colletable flags
         hasRope = false     //allows exit from ravine
@@ -293,6 +296,8 @@ class Menu extends Phaser.Scene {
 
         //initalize playerTextConfig or something (this makes the first call of player.think() use the right font)
         this.add.text(-100,-100,'p',playerTextConfig)
+
+        
     }
     update(){
         //debugging mode features
@@ -359,6 +364,16 @@ class Menu extends Phaser.Scene {
                     this.scene.start('creditScene')
                 }
             })
+        }
+
+        //Full Screen Option
+        if(Phaser.Input.Keyboard.JustDown(keyF)){
+            if(this.scale.isFullscreen){
+                this.scale.stopFullscreen()
+            }
+            else{
+                this.scale.startFullscreen();
+            }
         }
     }
 
