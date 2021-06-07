@@ -45,7 +45,9 @@ class Menu extends Phaser.Scene {
         this.load.image('clearing','assets/items/Dense_woods.png');
         this.load.image('ground', 'assets/tempAssets/tempGround.png'); // Ground Asset
         this.load.image('caveLock', 'assets/items/caveLock.png');
-        this.load.image('slidyBlock', 'assets/other/Rock.png') // Slidy Block Asset
+        this.load.image('slidyBlock', 'assets/rock/interact rock.png') // Slidy Block Asset
+        this.load.image('longBlock' , 'assets/rock/long rock.png');
+        this.load.image('shortBlock', 'assets/rock/new rock.png');
         this.load.image('clear','assets/other/transparent.png') // fully transparent 100x100 square for creating invisible obsitcles
         this.load.image('noteItem', 'assets/tempAssets/tempNote.png');
         this.load.image('noteGround', 'assets/tempAssets/tempNoteGround.png');
@@ -117,7 +119,6 @@ class Menu extends Phaser.Scene {
         this.load.image('reunion','assets/goodCutscene/goodSprite9.png')
         this.load.image('monsterGoodbye','assets/goodCutscene/goodSprite9Monster.png')
         this.load.image('noteMonster','assets/goodCutscene/goodSpriteMonster7_8.png')
-
 
         //audio
         this.load.audio('giggle','assets/sounds/ChildGiggle.wav')

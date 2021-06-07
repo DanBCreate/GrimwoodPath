@@ -154,51 +154,48 @@ class Cave extends Phaser.Scene {
         this.block = new slidyBlock(this, 2000, screenCenterY, 'slidyBlock').setScale(0.2);
 
         //parkoor
-        this.highBlock = new slidyBlock(this, 4360, screenCenterY+100, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
+        this.highBlock = new slidyBlock(this, 4360, screenCenterY+100, 'shortBlock').setScale(0.2).setOrigin(0.5,1);
         this.highBlock.setImmovable(true)
         this.highBlock.body.allowGravity = false
-        this.otherHighBlock = new slidyBlock(this, 5000, screenCenterY+100, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
+        this.otherHighBlock = new slidyBlock(this, 5000, screenCenterY+100, 'shortBlock').setScale(0.2).setOrigin(0.5,1);
         this.otherHighBlock.setImmovable(true)
         this.otherHighBlock.body.allowGravity = false
-        this.bigHighBlock = new slidyBlock(this, 4730, screenCenterY+100, 'slidyBlock').setScale(0.4).setOrigin(0.5,1);
+        this.bigHighBlock = new slidyBlock(this, 4730, screenCenterY+100, 'shortBlock').setScale(0.4).setOrigin(0.5,1);
         this.bigHighBlock.setImmovable(true)
         this.bigHighBlock.body.allowGravity = false
-        this.firstAirBlock = new slidyBlock(this,4330,screenCenterY -200,'slidyBlock').setScale(0.15).setOrigin(0.5,1);
+        this.firstAirBlock = new slidyBlock(this,4260,screenCenterY -230,'longBlock').setScale(0.25).setOrigin(0.5,1);
         this.firstAirBlock.setImmovable(true)
         this.firstAirBlock.body.allowGravity = false
-        this.secondAirBlock = new slidyBlock(this, 4200, screenCenterY-300, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
+        this.secondAirBlock = new slidyBlock(this, 4750, screenCenterY-415, 'longBlock').setScale(0.25).setOrigin(0.5,1);
         this.secondAirBlock.setImmovable(true)
         this.secondAirBlock.body.allowGravity = false
-        this.thirdAirBlock = new slidyBlock(this, 4650, screenCenterY-450, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
+        this.thirdAirBlock = new slidyBlock(this, 5200, screenCenterY-580, 'longBlock').setScale(0.25).setOrigin(0.5,1);
         this.thirdAirBlock.setImmovable(true)
         this.thirdAirBlock.body.allowGravity = false
-        this.fourthAirBlock = new slidyBlock(this, 5100, screenCenterY-600, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
+        this.fourthAirBlock = new slidyBlock(this, 5550, screenCenterY-730, 'longBlock').setScale(0.25).setOrigin(0.5,1);
         this.fourthAirBlock.setImmovable(true)
         this.fourthAirBlock.body.allowGravity = false
-        this.fifthAirBlock = new slidyBlock(this, 5550, screenCenterY-750, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
+        this.fifthAirBlock = new slidyBlock(this, 5100, screenCenterY-900, 'longBlock').setScale(0.25).setOrigin(0.5,1);
         this.fifthAirBlock.setImmovable(true)
         this.fifthAirBlock.body.allowGravity = false
-        this.sixthAirBlock = new slidyBlock(this, 5100, screenCenterY-900, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
+        this.sixthAirBlock = new slidyBlock(this, 4600, screenCenterY-1050, 'longBlock').setScale(0.25).setOrigin(0.5,1);
         this.sixthAirBlock.setImmovable(true)
         this.sixthAirBlock.body.allowGravity = false
-        this.seventhAirBlock = new slidyBlock(this, 4650, screenCenterY-1050, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
+        this.seventhAirBlock = new slidyBlock(this, 4150, screenCenterY-1180, 'longBlock').setScale(0.25).setOrigin(0.5,1);
         this.seventhAirBlock.setImmovable(true)
         this.seventhAirBlock.body.allowGravity = false
-        this.eighthAirBlock = new slidyBlock(this, 4200, screenCenterY-1200, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
+        this.eighthAirBlock = new slidyBlock(this, 4640, screenCenterY-1370, 'longBlock').setScale(0.25).setOrigin(0.5,1);
         this.eighthAirBlock.setImmovable(true)
         this.eighthAirBlock.body.allowGravity = false
-        this.ninethAirBlock = new slidyBlock(this, 4650, screenCenterY-1350, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
+        this.ninethAirBlock = new slidyBlock(this, 5150, screenCenterY-1500, 'longBlock').setScale(0.25).setOrigin(0.5,1);
         this.ninethAirBlock.setImmovable(true)
         this.ninethAirBlock.body.allowGravity = false
-        this.tenthAirBlock = new slidyBlock(this, 5100, screenCenterY-1500, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
+        this.tenthAirBlock = new slidyBlock(this, 5550, screenCenterY-1605, 'longBlock').setScale(0.25).setOrigin(0.5,1);
         this.tenthAirBlock.setImmovable(true)
         this.tenthAirBlock.body.allowGravity = false
-        this.elevinthAirBlock = new slidyBlock(this, 5550, screenCenterY-1600, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
+        this.elevinthAirBlock = new slidyBlock(this, 7300, -1180, 'shortBlock').setScale(0.2).setOrigin(0.5,1);
         this.elevinthAirBlock.setImmovable(true)
         this.elevinthAirBlock.body.allowGravity = false
-        this.twelvethAirBlock = new slidyBlock(this, 7300, -1180, 'slidyBlock').setScale(0.2).setOrigin(0.5,1);
-        this.twelvethAirBlock.setImmovable(true)
-        this.twelvethAirBlock.body.allowGravity = false
 
         //setting up the lighting
         this.lights.enable().setAmbientColor(0x444444); // enable lighting, and tint the background dark
@@ -208,7 +205,7 @@ class Cave extends Phaser.Scene {
         if(axeWallFlag){this.axeWall.setPipeline('Light2D')}
 
         this.collidyThings = [this.block,this.firstAirBlock,this.secondAirBlock,this.thirdAirBlock,this.fourthAirBlock,this.fifthAirBlock,this.sixthAirBlock,
-            this.seventhAirBlock,this.eighthAirBlock,this.ninethAirBlock,this.tenthAirBlock,this.elevinthAirBlock,this.twelvethAirBlock, this.TRGround,
+            this.seventhAirBlock,this.eighthAirBlock,this.ninethAirBlock,this.tenthAirBlock,this.elevinthAirBlock, this.TRGround,
             this.axeWall,this.ground,this.player,this.firstLedge,this.midLedge,this.backLedge,this.highBlock,this.bigHighBlock,this.otherHighBlock,this.rightBound,
             this.leftBound]
 

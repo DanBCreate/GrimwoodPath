@@ -126,21 +126,21 @@ class FForest extends Phaser.Scene {
         this.sceneCamera.setBounds(-14400/2,0,14400,screenHeight)
 
         //addings some obsicles
-        this.block1 = this.physics.add.sprite(-4000,screenHeight - 100-75,'slidyBlock').setOrigin(0.5)
+        this.block1 = this.physics.add.sprite(-4000,screenHeight - 100-75,'shortBlock').setOrigin(0.5)
         this.block1.displayWidth = 150
         this.block1.displayHeight = 150
         this.block1.body.allowGravity = false
         this.block1.setImmovable(true);
         this.block1.angle = -10
 
-        this.block2 = this.physics.add.sprite(-3600,screenHeight - 100-150,'slidyBlock').setOrigin(0.5)
+        this.block2 = this.physics.add.sprite(-3600,screenHeight - 100-150,'shortBlock').setOrigin(0.5)
         this.block2.displayWidth = 300
         this.block2.displayHeight = 300
         this.block2.body.allowGravity = false
         this.block2.setImmovable(true);
         this.block2.angle = 93
 
-        this.block3 = this.physics.add.sprite(-3200,screenHeight - 100-75,'slidyBlock').setOrigin(0.5)
+        this.block3 = this.physics.add.sprite(-3200,screenHeight - 100-75,'shortBlock').setOrigin(0.5)
         this.block3.displayWidth = 150
         this.block3.displayHeight = 150
         this.block3.body.allowGravity = false

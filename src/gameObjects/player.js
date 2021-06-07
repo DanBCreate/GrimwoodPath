@@ -160,7 +160,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
         else if(Phaser.Input.Keyboard.JustUp(keySPACE) || Phaser.Input.Keyboard.JustUp(keyS)){
             this.actionButton = false;
         }
-        if(Phaser.Input.Keyboard.JustDown(keyDOWN) && this.body.touching.down){
+        if(Phaser.Input.Keyboard.JustDown(keyDOWN)){
             this.actionButton = true;
         }
         else if(Phaser.Input.Keyboard.JustUp(keyDOWN)){
