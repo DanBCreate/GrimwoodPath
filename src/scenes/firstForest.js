@@ -136,6 +136,7 @@ class FForest extends Phaser.Scene {
         this.block2 = this.physics.add.sprite(-3600,screenHeight - 100-150,'shortBlock').setOrigin(0.5)
         this.block2.displayWidth = 300
         this.block2.displayHeight = 300
+        this.block2.body.offset.y = 70;
         this.block2.body.allowGravity = false
         this.block2.setImmovable(true);
         this.block2.angle = 93
