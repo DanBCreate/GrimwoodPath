@@ -161,6 +161,8 @@ class Menu extends Phaser.Scene {
         this.load.audio('endPiano', 'assets/sounds/EndPiano.wav');
         this.load.audio('endSadPiano', 'assets/sounds/EndSadPiano.wav');
         this.load.audio('endBadPiano', 'assets/sounds/EndBadPiano.wav');
+        this.load.audio('treeChop', 'assets/sounds/TreeChop.wav');
+        this.load.audio('slide', 'assets/sounds/Slide.wav');
 
         //remove loading screen
         this.LoadingBackground.destroy()

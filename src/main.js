@@ -110,6 +110,7 @@ let lfTree1Marked = false //are trees marked?
 let lfTree2Marked = false //are trees marked?
 let fallen = false //has the player fallen
 let lockMarkThought = false; //did we think about what marking trees do?
+let chopLock = false; //did we go through the dense trees?
 
 //keys for scene navigation
 let key1,key2,key3,key4,key5,key6,key7,key8,key9,key0;
@@ -159,7 +160,6 @@ function debugCreate(scene){
         key0 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ZERO)
     }   
 }
-
 
 function RLWipe(scene,duration,texture,delay = 0){
     scene.time.addEvent({
@@ -309,7 +309,7 @@ function leave(scene,entrance,type,destination){
             scene.sfxActive = true;
         }
         if(scene.noInstruct && hasAxe && type === 'clearing'){
-            scene.instructions = scene.add.text(entrance.x,entrance.y -400,"hold "+favKeys +' to enter',textConfig).setOrigin(0.5)
+            scene.instructions = scene.add.text(entrance.x,entrance.y -400,"hold "+favKeys +' to enter',textConfig).setOrigin(0.5);
             scene.instructions.setFontSize('40px')
             scene.noInstruct = false
             happy = true
@@ -351,6 +351,13 @@ function leave(scene,entrance,type,destination){
 
         //transition to scene
         if(scene.player.actionButton && happy){
+
+            if(type === 'clearing' && chopLock == false){
+                scene.choppingSFX = scene.sound.add('treeChop');
+                scene.choppingSFX.play(sfxCollect);
+                chopLock = true;
+            }
+
             scene.screentint = scene.add.rectangle(screenWidth/2,screenHeight,14400,screenHeight,0x000000).setOrigin(0.5,1)
             scene.screentint.alpha = 0
             scene.screentint.depth = 1000

@@ -19,6 +19,14 @@ class slidyBlock extends Phaser.Physics.Arcade.Sprite {
 
         this.helpText = this.scene.add.text(this.x, this.y - 5, favKeys +" Hold to Push/Pull", textConfig).setOrigin(0.5).setFontSize(40);
         this.helpText.setVisible(false);
+
+        // Sound of Sliding
+        this.sfxConfigSlide = {
+            volume: 12,
+            loop: true
+        } 
+        this.slide = this.scene.sound.add('slide');
+        this.slideLock = false;
     }
 
     update(){    
@@ -26,11 +34,17 @@ class slidyBlock extends Phaser.Physics.Arcade.Sprite {
         if(this.movable == true){
             this.setImmovable(false);
             this.setVelocityX(this.playerX);
+            if(this.slideLock == false){
+                this.slide.play(this.sfxConfigSlide);
+                this.slideLock = true;
+            }
 
         }
         else{
             this.setVelocityX(0);
             this.setPushable(false);
+            this.slide.stop();
+            this.slideLock = false;
         }
     }
 
