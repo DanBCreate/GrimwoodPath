@@ -1,4 +1,4 @@
-//creates text overlay that doesn't care about camera pan and zoom of parent scene
+
 class thanks extends Phaser.Scene {
     constructor(){
         super('thanksScene')
