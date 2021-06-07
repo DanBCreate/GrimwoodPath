@@ -33,7 +33,7 @@ class NoBro extends Phaser.Scene {
             delay: this.timesequence,
             callback: () =>{
                 this.car.destroy()
-                this.scene.start('creditScene')
+                this.scene.start('thanksScene')
             }
         })
 

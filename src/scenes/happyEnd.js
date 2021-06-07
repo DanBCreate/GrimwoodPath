@@ -321,7 +321,7 @@ class HEnd extends Phaser.Scene {
         this.time.addEvent({
             delay: this.timesequence,
             callback: () =>{
-                this.scene.start('creditScene')
+                this.scene.start('thanksScene')
             }
         })
         
