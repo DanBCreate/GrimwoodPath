@@ -77,6 +77,10 @@ class FForest extends Phaser.Scene {
         this.clearingEntrance.setScale(0.9)
         this.clearingEntrance.body.allowGravity = false
 
+        // Note on our knife
+        this.knifeNote = this.add.sprite(-3600,screenHeight - 370, 'noteItem').setOrigin(0.5,1);
+        this.knifeNote.setScale(0.02);
+
         //spawn collectables
         if(!hasBat){
             this.battery = this.physics.add.sprite(3300,screenHeight - 80,'bat').setOrigin(0.5,1)
@@ -154,9 +158,14 @@ class FForest extends Phaser.Scene {
         this.noInstruct = true
         this.instructDestructor = true
 
+        // Note on the ground
+        this.knifeGroundNote = this.add.sprite(-3600,screenHeight - 360, 'noteGround').setOrigin(0.5,1);
+        this.knifeGroundNote.setScale(0.03);
+        this.knifeGroundNote.alpha = 0;
+
         collect(this,this.battery,'bat')
         collect(this,this.light,'flash')
-        collect(this,this.knife,'knife')
+        collect(this,this.knife,'knife',this.knifeNote,this.knifeGroundNote)
 
         //scene changes
         leave(this,this.caveEntrance, 'cave', 'caveScene')

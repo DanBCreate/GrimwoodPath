@@ -97,6 +97,16 @@ class Cave extends Phaser.Scene {
         this.axeWall.displayWidth = 220;
         this.axeWall.displayHeight = 800
         this.axeWall.setOrigin(0.5,1) 
+
+        // Note on our axe
+        this.axeNote = this.add.sprite(7070,screenHeight - 360, 'noteItem').setOrigin(0.5,1);
+        this.axeNote.flipX = true;
+        this.axeNote.setScale(0.02);
+
+        // Note on the ground
+        this.axeGroundNote = this.add.sprite(7070,screenHeight - 200, 'noteGround').setOrigin(0.5,1);
+        this.axeGroundNote.setScale(0.03);
+        this.axeGroundNote.alpha = 0;
         
         if(!hasAxe){
             this.axe = this.physics.add.sprite(7000,screenHeight - 300,'axe').setOrigin(0.5,1)
@@ -105,7 +115,7 @@ class Cave extends Phaser.Scene {
         }
 
         //collecting the axe
-        collect(this,this.axe,'axe')
+        collect(this,this.axe,'axe',this.axeNote,this.axeGroundNote)
 
         //destroying the wall
         this.physics.add.collider(this.player,this.axeWall,()=>{

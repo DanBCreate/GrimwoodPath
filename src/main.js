@@ -71,6 +71,18 @@ let titleTextConfig = {
     }
 } 
 
+//text for the monster
+let monsterTextConfig = {
+    fontFamily: 'monster',
+    fontSize: '250px',
+    color: '#FF0000',
+    align: 'center',
+    padding: {
+        top: 5,
+        bottom: 5,
+    }
+} 
+
 //define the game
 let game = new Phaser.Game(config);
 
@@ -121,7 +133,7 @@ function debugUpdate(scene){
         if(Phaser.Input.Keyboard.JustDown(key2)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('openingScene')}
         if(Phaser.Input.Keyboard.JustDown(key3)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('ravineScene')}
         if(Phaser.Input.Keyboard.JustDown(key4)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('fForestScene')}
-        if(Phaser.Input.Keyboard.JustDown(key5)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('caveScene')}
+        if(Phaser.Input.Keyboard.JustDown(key5)){scene.game.sound.stopAll(); playerSpawnx = screenWidth*4; scene.scene.start('caveScene')}
         if(Phaser.Input.Keyboard.JustDown(key6)){scene.game.sound.stopAll(); playerSpawnx = screenWidth; scene.scene.start('lForestScene')}
         if(Phaser.Input.Keyboard.JustDown(key7)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('noBroScene')}
         if(Phaser.Input.Keyboard.JustDown(key8)){scene.game.sound.stopAll(); playerSpawnx = screenWidth/2; scene.scene.start('sEndScene')}
@@ -220,7 +232,7 @@ let sfxCollect = {
     loop: false
 } 
 
-function collect(scene,item,key){
+function collect(scene,item,key,noteItem,noteGround){
     scene.physics.add.overlap(scene.player,item,()=>{
         if(scene.noInstruct){
             scene.instructions = scene.add.text(item.x,item.y -200,favKeys +' to pick up',textConfig).setOrigin(0.5)
@@ -235,14 +247,14 @@ function collect(scene,item,key){
             item.destroy()
             //I wish pass by referance was a thing
             //set the appropreate flag
-            if(key === 'knife'){hasKnife = true}
+            if(key === 'knife'){hasKnife = true; note(scene, "TEAR YOU\nMORE"); noteItem.destroy(); noteGround.alpha = 1;}
             else if(key === 'shirt'){hasShirt = true}
             else if(key === 'key'){hasKey = true}
             else if(key === 'jacket'){hasJacket = true; if(hasWood){scene.player.think('much better, I can Jump now!')}}
-            else if(key === 'rope'){hasRope = true}
+            else if(key === 'rope'){hasRope = true; note(scene, "YOU\nHANG"); noteItem.destroy(); noteGround.alpha = 1;}
             else if(key === 'wood'){hasWood = true; if(hasJacket){scene.player.think('much better, I can Jump now!')}}
             else if(key === 'crowbar'){hasCrowbar = true}
-            else if(key === 'axe'){hasAxe = true}
+            else if(key === 'axe'){hasAxe = true; note(scene, "YOU CUT\nME FIND"); noteItem.destroy(); noteGround.alpha = 1;}
             else if(key === 'bat'){hasBat = true}
             else if(key === 'flash'){hasFlash = true}
             else{console.log('Invalid Key')}
@@ -333,7 +345,6 @@ function leave(scene,entrance,type,destination){
             if(destination === 'fForestScene'){playerSpawnx = 1000}
             if(destination === 'lForestScene'){playerSpawnx = 8300}
         }
-
 
         //transition to scene
         if(scene.player.actionButton && happy){
