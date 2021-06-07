@@ -249,12 +249,12 @@ function collect(scene,item,key,noteItem,noteGround){
             //I wish pass by referance was a thing
             //set the appropreate flag
             if(key === 'knife'){hasKnife = true; note(scene, "TEAR YOU\nMORE"); noteItem.destroy(); noteGround.alpha = 1;}
-            else if(key === 'shirt'){hasShirt = true}
-            else if(key === 'key'){hasKey = true}
-            else if(key === 'jacket'){hasJacket = true; if(hasWood){scene.player.think('much better, I can Jump now!')}}
+            else if(key === 'shirt'){hasShirt = true;scene.player.think('too raged for a splint')}
+            else if(key === 'key'){hasKey = true;scene.player.think('I wonder what this opens')}
+            else if(key === 'jacket'){hasJacket = true; if(hasWood){scene.player.think('much better, I can Jump now!')}else{scene.player.think('this could tie a splint on...')}}
             else if(key === 'rope'){hasRope = true; note(scene, "YOU\nHANG"); noteItem.destroy(); noteGround.alpha = 1;}
-            else if(key === 'wood'){hasWood = true; if(hasJacket){scene.player.think('much better, I can Jump now!')}}
-            else if(key === 'crowbar'){hasCrowbar = true}
+            else if(key === 'wood'){hasWood = true; if(hasJacket){scene.player.think('much better, I can Jump now!')}else{scene.player.think('now something to tie it on...')}}
+            else if(key === 'crowbar'){hasCrowbar = true;scene.player.think('I could pry boards loose with this')}
             else if(key === 'axe'){hasAxe = true; note(scene, "TREE CUT\nME FIND"); noteItem.destroy(); noteGround.alpha = 1;}
             else if(key === 'bat'){hasBat = true}
             else if(key === 'flash'){hasFlash = true}
