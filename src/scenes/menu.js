@@ -146,6 +146,7 @@ class Menu extends Phaser.Scene {
         this.load.audio('happy', 'assets/sounds/EndHappy.wav');
         this.load.audio('endEngine', 'assets/sounds/EndEngine.wav');
         this.load.audio('endDrama', 'assets/sounds/EndDrama.wav');
+        this.load.audio('door', 'assets/sounds/Door.wav');
 
         //remove loading screen
         this.LoadingBackground.destroy()

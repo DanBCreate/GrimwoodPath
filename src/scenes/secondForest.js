@@ -15,7 +15,13 @@ class LForest extends Phaser.Scene {
             volume: 0.95,
             loop: true,
         }
+        this.sfxConfigDoor = {
+            volume: 0.95,
+            loop: false,
+        }
         this.sfBG = this.sound.add('sfBG');
+        this.doorSFX = this.sound.add('door');
+        this.doorLock = false;
         this.sfBG.play(this.sfxConfig);
         
         //instruction flags
@@ -110,6 +116,9 @@ class LForest extends Phaser.Scene {
         //destroying the wall
         this.physics.add.collider(this.player,this.keyWall,()=>{
             if(this.noInstruct && hasKey){
+                if(this.doorLock == false){
+                    this.doorSFX.play(this.sfxConfigDoor);
+                }
                 this.instructions = this.add.text(this.keyWall.x,this.keyWall.y -600,'[space] open',textConfig).setOrigin(0.5)
                 this.instructions.setFontSize('40px')
                 this.instructions.depth =400
