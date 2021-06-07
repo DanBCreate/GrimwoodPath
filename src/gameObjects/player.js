@@ -187,7 +187,7 @@ class player extends Phaser.Physics.Arcade.Sprite {
         else if(!fallen){
             fallen = true;
             this.ow.play(this.sfxConfigOw);
-            this.think('my leg hurts,\nmaybe I can find something to splint it')
+            this.think('my leg hurts,\nmaybe I can find something to splint it',4000)
         }
     }
 
