@@ -109,6 +109,7 @@ let ffTree2Marked = false //are trees marked?
 let lfTree1Marked = false //are trees marked?
 let lfTree2Marked = false //are trees marked?
 let fallen = false //has the player fallen
+let lockMarkThought = false; //did we think about what marking trees do?
 
 //keys for scene navigation
 let key1,key2,key3,key4,key5,key6,key7,key8,key9,key0;
@@ -398,6 +399,10 @@ function markTree(scene,tree,flag){
                     else if(flag === 'ff1'){ffTree1Marked = true}
                     else if(flag === 'lf1'){lfTree1Marked = true}
                     else if(flag === 'lf2'){lfTree2Marked = true}
+                    if(lockMarkThought == false){
+                        scene.player.think('now that I marked,\nI can find my way back faster.');
+                        lockMarkThought = true;
+                    }
                 }
             })
         }
