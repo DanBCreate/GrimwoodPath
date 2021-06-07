@@ -8,7 +8,7 @@ let screenCenterX = screenWidth / 2;
 let screenCenterY = screenHeight / 2;
 
 //global vars:
-debugToggle = true;
+debugToggle = false;
 playerMovementSpeed = 400;
 cameraLerp = 0.05; // Lerp is how delayed is the camera following our player, I.E Smoothness
 instrctionDelay = 10
@@ -23,7 +23,7 @@ let config = {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
-    scene:[Preload,Menu,Cave,Credit,Source,FForest,HEnd,NoBro,Opening,Ravine,SEnd,LForest,noteScene,hendOverlay,thanks],
+    scene:[Preload,Menu,Cave,Credit,Source,FForest,HEnd,NoBro,Opening,Ravine,SEnd,LForest,noteScene,hendOverlay,thanks,dev],
     physics:{
         default:'arcade',
         arcade:{
@@ -113,7 +113,7 @@ let lockMarkThought = false; //did we think about what marking trees do?
 
 //keys for scene navigation
 let key1,key2,key3,key4,key5,key6,key7,key8,key9,key0;
-let keyDOWN,keyS, keyC, keyESC, keyF;
+let keyDOWN,keyS, keyC, keyESC, keyF,keyJ;
 //map
 // 1 - menu
 // 2 - Opening

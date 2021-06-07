@@ -185,6 +185,7 @@ class Menu extends Phaser.Scene {
         keyDOWN = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
         keyC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
+        keyJ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
 
         // Handles lowering volume when exiting scene.
         this.lower = false;
@@ -390,6 +391,9 @@ class Menu extends Phaser.Scene {
                     this.scene.start('creditScene')
                 }
             })
+        }
+        if(Phaser.Input.Keyboard.JustDown(keyJ)){
+            this.scene.start('devScene')
         }
 
         //Full Screen Option
