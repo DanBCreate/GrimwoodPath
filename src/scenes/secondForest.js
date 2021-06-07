@@ -29,12 +29,12 @@ class LForest extends Phaser.Scene {
         this.backGround = this.add.sprite(0,screenHeight,'forBG').setOrigin(0,1)
 
         //background marked trees
-        this.backFirstTree = this.physics.add.sprite(11300,screenHeight,'singleTree').setOrigin(0.5,1)
+        this.backFirstTree = this.physics.add.sprite(8190,screenHeight,'singleTree').setOrigin(0.5,1)
         if(ffTree1Marked){
             this.backFirstTree.anims.play('mkTree')
             this.backFirstTree.displayWidth = 100
         }
-        this.backSecondTree = this.physics.add.sprite(8300,screenHeight,'singleTree').setOrigin(0.5,1)
+        this.backSecondTree = this.physics.add.sprite(4350,screenHeight,'singleTree').setOrigin(0.5,1)
         if(ffTree2Marked){
             this.backSecondTree.anims.play('mkTree')
             this.backSecondTree.displayWidth = 100
@@ -159,11 +159,11 @@ class LForest extends Phaser.Scene {
         collect(this,this.crowbar,'crowbar')
 
         //foreground trees
-        this.firstTree = this.physics.add.sprite(11200,screenHeight,'singleTree').setOrigin(0.5,1)
+        this.firstTree = this.physics.add.sprite(8140,screenHeight,'singleTree').setOrigin(0.5,1)
         if(lfTree1Marked){
             this.firstTree.anims.play('mkTree')
         }
-        this.secondTree = this.physics.add.sprite(8200,screenHeight,'singleTree').setOrigin(0.5,1)
+        this.secondTree = this.physics.add.sprite(4300,screenHeight,'singleTree').setOrigin(0.5,1)
         if(lfTree2Marked){
             this.secondTree.anims.play('mkTree')
         }

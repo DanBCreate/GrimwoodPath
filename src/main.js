@@ -335,7 +335,7 @@ function leave(scene,entrance,type,destination){
             scene.noInstruct = false
             happy = true
             if(destination === 'fForestScene'){playerSpawnx = 4000}
-            if(destination === 'lForestScene'){playerSpawnx = 11200}
+            if(destination === 'lForestScene'){playerSpawnx = 8150}
         }
         //if markedtree2
         if(scene.noInstruct && type === 'mtree2' && ffTree2Marked && lfTree2Marked){
@@ -344,7 +344,7 @@ function leave(scene,entrance,type,destination){
             scene.noInstruct = false
             happy = true
             if(destination === 'fForestScene'){playerSpawnx = 1000}
-            if(destination === 'lForestScene'){playerSpawnx = 8300}
+            if(destination === 'lForestScene'){playerSpawnx = 4310}
         }
 
         //transition to scene
